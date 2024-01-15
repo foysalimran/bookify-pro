@@ -33,7 +33,7 @@ class BOP_Metaboxes {
 			$prefix,
 			array(
 				'title'        => esc_html__( 'Bookify', 'bookify-pro' ),
-				'post_type'    => 'bookify_shortcode',
+				'post_type'    => 'generate_shortcode',
 				'show_restore' => false,
 				'context'      => 'normal',
 			)
@@ -54,7 +54,7 @@ class BOP_Metaboxes {
 			$prefix,
 			array(
 				'title'        => esc_html__( 'View Options', 'bookify-pro' ),
-				'post_type'    => 'bookify_shortcode',
+				'post_type'    => 'generate_shortcode',
 				'show_restore' => false,
 				'nav'        => 'inline',
 				'theme'        => 'light',
@@ -78,7 +78,7 @@ class BOP_Metaboxes {
 			$prefix,
 			array(
 				'title'        => esc_html__( 'Bookify', 'bookify-pro' ),
-				'post_type'    => 'bookify_shortcode',
+				'post_type'    => 'generate_shortcode',
 				'context'      => 'side',
 				'show_restore' => false,
 			)

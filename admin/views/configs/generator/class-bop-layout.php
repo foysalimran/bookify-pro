@@ -25,13 +25,13 @@ class BOP_Layout
 						'image' => BOP_URL . 'admin/assets/img/bookify-logo.svg',
 						'after' => '<i class="fas fa-life-ring"></i> Support',
 						'link'  => 'https://themeatelier.net/',
-						'class' => 'BOP-admin-header',
+						'class' => 'bop-admin-header',
 					),
 					array(
-						'id'      => 'BOP_layout_preset',
+						'id'      => 'bop_layout_preset',
 						'type'    => 'layout_preset',
 						'title'   => esc_html__('Layout Preset', 'bookify-pro'),
-						'class'   => 'BOP-layout-preset',
+						'class'   => 'bop-layout-preset',
 						'options' => array(
 							'grid_layout'      => array(
 								'image' => BOP_URL . 'admin/assets/img/grid.png',

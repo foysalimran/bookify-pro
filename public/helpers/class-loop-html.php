@@ -180,7 +180,7 @@ class BOP_HTML
 		$_post_thumb_setting = BOP_Functions::bop_metabox_value('bop_post_thumb', $sorter);
 		$bop_page_link_type  = BOP_Functions::bop_metabox_value('bop_page_link_type', $options);
 		$bop_link_rel        = BOP_Functions::bop_metabox_value('bop_link_rel', $options);
-		$bop_post_type       = 'tribe_events';
+		$bop_post_type       = 'bookify';
 
 		$post_thumb_meta 	= $_post_thumb_setting['post_thumb_meta'];
 		$taxonomy_name 	= isset($_post_thumb_setting['post_thumb_meta_taxonomy']) ? $_post_thumb_setting['post_thumb_meta_taxonomy'] : '';

@@ -107,7 +107,7 @@ class BOP_FilterPost {
 					array(
 						'id'       => 'bop_advanced_filter',
 						'type'     => 'checkbox',
-						'class'    => 'bop_column_2 BOP_advanced_filter',
+						'class'    => 'bop_column_2 bop_advanced_filter',
 						'title'    => esc_html__( 'Filter by', 'bookify-pro' ),
 						'subtitle' => esc_html__( 'Check the option(s) to filter by.', 'bookify-pro' ),
 						'options'  => array(
@@ -122,7 +122,7 @@ class BOP_FilterPost {
 					array(
 						'id'         => 'bop_filter_by_taxonomy',
 						'type'       => 'accordion',
-						'class'      => 'padding-t-0 BOP-opened-accordion',
+						'class'      => 'padding-t-0 bop-opened-accordion',
 						'accordions' => array(
 							array(
 								'title'  => esc_html__( 'Taxonomy', 'bookify-pro' ),
@@ -132,7 +132,7 @@ class BOP_FilterPost {
 									array(
 										'id'     => 'bop_taxonomy_and_terms',
 										'type'   => 'group',
-										'class'  => 'bop_taxonomy_terms_group BOP_custom_group_design',
+										'class'  => 'bop_taxonomy_terms_group bop_custom_group_design',
 										'accordion_title_auto' => true,
 										'fields' => array(
 											array(
@@ -309,7 +309,7 @@ class BOP_FilterPost {
 					array(
 						'id'         => 'bop_filter_by_author',
 						'type'       => 'accordion',
-						'class'      => 'padding-t-0 BOP-opened-accordion',
+						'class'      => 'padding-t-0 bop-opened-accordion',
 						'accordions' => array(
 							array(
 								'title'  => esc_html__( 'Author', 'bookify-pro' ),
@@ -436,7 +436,7 @@ class BOP_FilterPost {
 					array(
 						'id'         => 'bop_filter_by_order',
 						'type'       => 'accordion',
-						'class'      => 'padding-t-0 BOP-opened-accordion',
+						'class'      => 'padding-t-0 bop-opened-accordion',
 						'accordions' => array(
 							array(
 								'title'  => esc_html__('Sort By', 'bookify-pro'),
@@ -617,13 +617,13 @@ class BOP_FilterPost {
 										'type'       => 'checkbox',
 										'title'      => esc_html__( 'Add to Ajax Live Filters', 'bookify-pro' ),
 										'title_help' => esc_html__( 'Check to add ajax live filter for order.', 'bookify-pro' ),
-										'dependency' => array( 'bop_select_filter_orderby|BOP_layout_preset', '!=|!=', 'post__in|filter_layout', true ),
+										'dependency' => array( 'bop_select_filter_orderby|bop_layout_preset', '!=|!=', 'post__in|filter_layout', true ),
 									),
 									array(
 										'id'         => 'order_filter_options',
 										'type'       => 'fieldset',
 										'title'      => esc_html__( 'Ajax Live Filters', 'bookify-pro' ),
-										'dependency' => array( 'add_order_filter_post|BOP_select_filter_orderby', '==|!=', 'true|post__in', true ),
+										'dependency' => array( 'add_order_filter_post|bop_select_filter_orderby', '==|!=', 'true|post__in', true ),
 										'fields'     => array(
 											array(
 												'id'      => 'order_filter_style',
@@ -688,7 +688,7 @@ class BOP_FilterPost {
 					array(
 						'id'         => 'bop_filter_custom_field',
 						'type'       => 'accordion',
-						'class'      => 'padding-t-0 BOP-opened-accordion',
+						'class'      => 'padding-t-0 bop-opened-accordion',
 						'accordions' => array(
 							array(
 								'title'  => esc_html__( 'Custom Fields', 'bookify-pro' ),
@@ -698,7 +698,7 @@ class BOP_FilterPost {
 									array(
 										'id'     => 'bop_filter_by_custom_field_group',
 										'type'   => 'group',
-										'class'  => 'bop_filter_custom_field_group BOP_custom_group_design',
+										'class'  => 'bop_filter_custom_field_group bop_custom_group_design',
 										'accordion_title_auto' => true,
 										'fields' => array(
 											array(
@@ -823,7 +823,7 @@ class BOP_FilterPost {
 												'text_from' => 'From',
 												'text_to'  => 'To',
 												'placeholder' => esc_html__( 'yy-mm-dd', 'bookify-pro' ),
-												'dependency' => array( 'bop_select_custom_field_value_type|BOP_select_custom_compare_operator_date|add_filter_post', '==|any|!=', 'DATE|BETWEEN,NOT BETWEEN,EXISTS,NOT EXISTS|true' ),
+												'dependency' => array( 'bop_select_custom_field_value_type|bop_select_custom_compare_operator_date|add_filter_post', '==|any|!=', 'DATE|BETWEEN,NOT BETWEEN,EXISTS,NOT EXISTS|true' ),
 											),
 											array(
 												'id'       => 'bop_select_custom_field_date_value',
@@ -834,7 +834,7 @@ class BOP_FilterPost {
 													'dateFormat' => 'yy-mm-dd',
 												),
 												'placeholder' => esc_html__( 'yy-mm-dd', 'bookify-pro' ),
-												'dependency' => array( 'bop_select_custom_field_value_type|BOP_select_custom_compare_operator_date|add_filter_post', '==|not-any|!=', 'DATE|BETWEEN,NOT BETWEEN,EXISTS,NOT EXISTS|true' ),
+												'dependency' => array( 'bop_select_custom_field_value_type|bop_select_custom_compare_operator_date|add_filter_post', '==|not-any|!=', 'DATE|BETWEEN,NOT BETWEEN,EXISTS,NOT EXISTS|true' ),
 											),
 											array(
 												'id'      => 'bop_select_custom_field_boolean_value',
@@ -959,7 +959,7 @@ class BOP_FilterPost {
 					array(
 						'id'         => 'bop_filter_by_status',
 						'type'       => 'accordion',
-						'class'      => 'padding-t-0 BOP-opened-accordion',
+						'class'      => 'padding-t-0 bop-opened-accordion',
 						'accordions' => array(
 							array(
 								'title'  => esc_html__( 'Status', 'bookify-pro' ),
@@ -981,7 +981,7 @@ class BOP_FilterPost {
 					array(
 						'id'         => 'bop_filter_by_date',
 						'type'       => 'accordion',
-						'class'      => 'padding-t-0 BOP-opened-accordion',
+						'class'      => 'padding-t-0 bop-opened-accordion',
 						'accordions' => array(
 							array(
 								'title'  => esc_html__( 'Published Date', 'bookify-pro' ),
@@ -1078,7 +1078,7 @@ class BOP_FilterPost {
 					array(
 						'id'         => 'bop_filter_by_keyword',
 						'type'       => 'accordion',
-						'class'      => 'padding-t-0 BOP-opened-accordion',
+						'class'      => 'padding-t-0 bop-opened-accordion',
 						'accordions' => array(
 							array(
 								'title'  => esc_html__( 'Keyword', 'bookify-pro' ),

@@ -256,7 +256,7 @@ if (!class_exists('BOP_Metabox')) {
           }
         } else {
 
-          echo '<div class="bop-no-option">' . esc_html__('No data available.', 'bookify-pro' ) . '</div>';
+          echo '<div class="bop-no-option">' . esc_html__('No data available.', 'bookify-pro') . '</div>';
         }
 
         echo '</div>';
@@ -271,8 +271,8 @@ if (!class_exists('BOP_Metabox')) {
         echo '<div class="bop-sections-reset">';
         echo '<label>';
         echo '<input type="checkbox" name="' . esc_attr($this->unique) . '[_reset]" />';
-        echo '<span class="button bop-button-reset">' . esc_html__('Reset', 'bookify-pro' ) . '</span>';
-        echo '<span class="button bop-button-cancel">' . sprintf('<small>( %s )</small> %s', esc_html__('update post', 'bookify-pro' ), esc_html__('Cancel', 'bookify-pro' )) . '</span>';
+        echo '<span class="button bop-button-reset">' . esc_html__('Reset', 'bookify-pro') . '</span>';
+        echo '<span class="button bop-button-cancel">' . sprintf('<small>( %s )</small> %s', esc_html__('update post', 'bookify-pro'), esc_html__('Cancel', 'bookify-pro')) . '</span>';
         echo '</label>';
         echo '</div>';
       }

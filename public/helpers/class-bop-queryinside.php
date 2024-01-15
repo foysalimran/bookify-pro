@@ -31,7 +31,7 @@ class BOP_QueryInside
 	 */
 	public static function get_filtered_content($view_options, $id = '', $layout_preset = 'default', $on_screen = null)
 	{
-		$bop_post_type                 = 'tribe_events';
+		$bop_post_type                 = 'bookify';
 
 		$post_limit      = isset($view_options['bop_post_limit']) ? $view_options['bop_post_limit'] : 10000;
 		$post_per_page   = isset($view_options['post_per_page']) ? $view_options['post_per_page'] : 12;

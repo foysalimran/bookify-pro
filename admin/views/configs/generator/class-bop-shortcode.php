@@ -23,7 +23,7 @@ class BOP_Shortcode
 					'fields' => array(
 						array(
 							'type'  => 'shortcode',
-							'class' => 'BOP-admin-sidebar',
+							'class' => 'bop-admin-sidebar',
 						),
 					),
 				)

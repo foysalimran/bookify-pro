@@ -5,8 +5,8 @@
  *
  * @link       https://themeatelier.net/
  *
- * @package Bookify_Pro
- * @subpackage Bookify_Pro/admin/views
+ * @package Eookify_Pro
+ * @subpackage Eookify_Pro/admin/views
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

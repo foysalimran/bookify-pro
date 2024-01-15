@@ -92,7 +92,7 @@ class BOP_Display
 						'title'    => esc_html__('Content Orientation ', 'bookify-pro'),
 						'subtitle' => esc_html__('Set a position for the item content.', 'bookify-pro'),
 						'desc'     => esc_html__('More amazing Content Orientation and Layout', 'bookify-pro'),
-						'class'    => 'BOP-content-orientation',
+						'class'    => 'bop-content-orientation',
 						'options'  => array(
 							'default'     => array(
 								'image' => BOP_URL . 'admin/views/ta-framework/assets/img/default.png',
@@ -275,7 +275,7 @@ class BOP_Display
 												'attributes' => array(
 													'min' => 0,
 												),
-												'dependency' => array('post_thumb_show|BOP_thumb_sizes', '==|==', 'true|custom'),
+												'dependency' => array('post_thumb_show|bop_thumb_sizes', '==|==', 'true|custom'),
 											),
 											array(
 												'id'       => 'load_2x_image',
@@ -285,7 +285,7 @@ class BOP_Display
 												'text_off' => esc_html__('Disabled', 'bookify-pro'),
 												'text_width' => 94,
 												'default'  => false,
-												'dependency' => array('post_thumb_show|BOP_thumb_sizes', '==|==', 'true|custom'),
+												'dependency' => array('post_thumb_show|bop_thumb_sizes', '==|==', 'true|custom'),
 											),
 											array(
 												'id'       => 'post_thumb_margin',
@@ -324,7 +324,7 @@ class BOP_Display
 													'even_featured_img_found' => esc_html__('Even featured image was found', 'bookify-pro'),
 												),
 												'default' => 'no_featured_img_found',
-												'dependency' => array('post_thumb_show|BOP_thumb_src_replace', '==|any', 'true|image,video,audio'),
+												'dependency' => array('post_thumb_show|bop_thumb_src_replace', '==|any', 'true|image,video,audio'),
 											),
 
 											array(
@@ -389,7 +389,7 @@ class BOP_Display
 												'text_on'  => esc_html__('Enabled', 'bookify-pro'),
 												'text_off' => esc_html__('Disabled', 'bookify-pro'),
 												'text_width' => 100,
-												'dependency' => array('post_thumb_show|BOP_layout_preset', '==|!=', 'true|carousel_layout', true),
+												'dependency' => array('post_thumb_show|bop_layout_preset', '==|!=', 'true|carousel_layout', true),
 											),
 											array(
 												'id'       => 'post_thumb_meta',
@@ -661,7 +661,7 @@ class BOP_Display
 															'bottom_right' => esc_html__('Bottom Right', 'bookify-pro'),
 														),
 														'default' => 'top_left',
-														'dependency' => array('select_post_meta|BOP_meta_position', '==|==', 'taxonomy|over_thumb'),
+														'dependency' => array('select_post_meta|bop_meta_position', '==|==', 'taxonomy|over_thumb'),
 													),
 													array(
 														'id'      => 'bop_meta_pill_color',
@@ -675,7 +675,7 @@ class BOP_Display
 															'text' => '#fff',
 															'bg' => '#e53935',
 														),
-														'dependency' => array('select_post_meta|BOP_meta_position', '==|!=', 'taxonomy|beside_meta'),
+														'dependency' => array('select_post_meta|bop_meta_position', '==|!=', 'taxonomy|beside_meta'),
 													),
 													array(
 														'id'      => 'bop_word_per_minute',
@@ -1001,7 +1001,7 @@ class BOP_Display
 												'sanitize' => 'bop_sanitize_number_field',
 												'default'  => 30,
 												'max'      => 10000,
-												'dependency' => array( 'show_post_content|post_content_type|BOP_content_length_type', '==|==|==', 'true|limit_content|words' ),
+												'dependency' => array( 'show_post_content|post_content_type|bop_content_length_type', '==|==|==', 'true|limit_content|words' ),
 											),
 											array(
 												'id'       => 'bop_content_characters_limit',
@@ -1010,7 +1010,7 @@ class BOP_Display
 												'sanitize' => 'bop_sanitize_number_field',
 												'default'  => 300,
 												'max'      => 10000,
-												'dependency' => array( 'show_post_content|post_content_type|BOP_content_length_type', '==|==|==', 'true|limit_content|characters' ),
+												'dependency' => array( 'show_post_content|post_content_type|bop_content_length_type', '==|==|==', 'true|limit_content|characters' ),
 											),
 											array(
 												'id'       => 'post_content_margin',
@@ -1044,7 +1044,7 @@ class BOP_Display
 												'type'  => 'text',
 												'title' => esc_html__( 'Allow HTML Tags Names', 'bookify-pro' ),
 												'title_help' => esc_html__( 'Separate multiple tags by comma, e.g. h1,h2', 'bookify-pro' ),
-												'dependency' => array( 'show_post_content|BOP_strip_tags', '==|==', 'true|allow_some' ),
+												'dependency' => array( 'show_post_content|bop_strip_tags', '==|==', 'true|allow_some' ),
 											),
 											array(
 												'id'      => 'post_content_ellipsis',
@@ -1179,7 +1179,7 @@ class BOP_Display
 							array(
 								'id'         => 'bop_social_share',
 								'type'       => 'accordion',
-								'class'      => 'BOP-pro-only',
+								'class'      => 'bop-pro-only',
 								'accordions' => array(
 									array(
 										'title'  => esc_html__('Social Share', 'bookify-pro'),

@@ -83,7 +83,7 @@ class BOP_Carousel
 						'max'        => 10000,
 						'step'       => 100,
 						'unit'       => 'ms',
-						'dependency' => array( 'bop_autoplay|BOP_carousel_mode', '==|!=', 'true|ticker' ),
+						'dependency' => array( 'bop_autoplay|bop_carousel_mode', '==|!=', 'true|ticker' ),
 					),
 					array(
 						'id'         => 'bop_carousel_speed',
@@ -129,7 +129,7 @@ class BOP_Carousel
 						'text_off'   => esc_html__( 'Disabled', 'bookify-pro' ),
 						'text_width' => 94,
 						'default'    => true,
-						'dependency' => array( 'bop_carousel_mode|BOP_slide_effect', '!=|not-any', 'ticker|cube,flip' ),
+						'dependency' => array( 'bop_carousel_mode|bop_slide_effect', '!=|not-any', 'ticker|cube,flip' ),
 					),
 					array(
 						'id'       => 'bop_carousel_direction',
@@ -210,7 +210,7 @@ class BOP_Carousel
 							'vertical_center_inner_hover' => esc_html__( 'Vertically center inner on hover', 'bookify-pro' ),
 						),
 						'default'    => 'top_right',
-						'dependency' => array( 'bop_navigation|BOP_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'bop_navigation|bop_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
 						'id'         => 'navigation_icons',
@@ -225,7 +225,7 @@ class BOP_Carousel
 							'fa-chevron'      => '<i class="fas fa-chevron-right"></i>',
 						),
 						'default'    => 'fa-angle',
-						'dependency' => array( 'bop_navigation|BOP_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'bop_navigation|bop_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
 						'id'         => 'bop_nav_icon_size',
@@ -237,7 +237,7 @@ class BOP_Carousel
 						'min'        => 0,
 						'max'        => 100,
 						'unit'       => 'px',
-						'dependency' => array( 'bop_navigation|BOP_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'bop_navigation|bop_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
 						'id'         => 'navigation_icons_border_radius',
@@ -252,7 +252,7 @@ class BOP_Carousel
 						'default'    => array(
 							'all' => '0',
 						),
-						'dependency' => array( 'bop_navigation|BOP_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'bop_navigation|bop_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
 						'id'         => 'bop_nav_colors',
@@ -275,7 +275,7 @@ class BOP_Carousel
 							'border-color'       => '#aaa',
 							'hover-border-color' => '#263ad0',
 						),
-						'dependency' => array( 'bop_navigation|BOP_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'bop_navigation|bop_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 
 					// Pagination Settings.
@@ -307,12 +307,12 @@ class BOP_Carousel
 							'number' => esc_html__( 'Number', 'bookify-pro' ),
 						),
 						'default'    => 'dots',
-						'dependency' => array( 'bop_pagination|BOP_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'bop_pagination|bop_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
 						'id'         => 'bop_pagination_color_set',
 						'type'       => 'fieldset',
-						'class'      => 'BOP-pagination-color-set',
+						'class'      => 'bop-pagination-color-set',
 						'title'      => esc_html__( 'Pagination Color', 'bookify-pro' ),
 						'subtitle'   => esc_html__( 'Set color for the carousel pagination.', 'bookify-pro' ),
 						'fields'     => array(
@@ -347,7 +347,7 @@ class BOP_Carousel
 								'dependency' => array( 'bullet_types', '==', 'number', true ),
 							),
 						),
-						'dependency' => array( 'bop_pagination|BOP_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'bop_pagination|bop_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
 						'id'         => 'bop_dynamicBullets',
@@ -355,7 +355,7 @@ class BOP_Carousel
 						'title'      => esc_html__( 'Dynamic Pagination', 'bookify-pro' ),
 						'subtitle'   => esc_html__( 'Check to show dynamic pagination.', 'bookify-pro' ),
 						'default'    => false,
-						'dependency' => array( 'bop_pagination|BOP_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'bop_pagination|bop_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
 						'id'         => 'bop_slides_to_scroll',
@@ -388,7 +388,7 @@ class BOP_Carousel
 						'text_on'    => esc_html__( 'Enabled', 'bookify-pro' ),
 						'text_off'   => esc_html__( 'Disabled', 'bookify-pro' ),
 						'text_width' => 94,
-						'dependency' => array( 'bop_carousel_mode|BOP_slide_effect', '!=|not-any', 'ticker|flip,cube' ),
+						'dependency' => array( 'bop_carousel_mode|bop_slide_effect', '!=|not-any', 'ticker|flip,cube' ),
 					),
 					array(
 						'id'         => 'bop_accessibility',
