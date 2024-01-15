@@ -1,0 +1,157 @@
+/**
+ * 12. Responsive
+ */
+@media only screen and (max-width:1200px){
+
+  .bop-metabox{
+
+    .bop-field{
+
+      .bop-title{
+        float: none;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .bop-fieldset{
+        float: none;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:782px){
+
+  .bop-header-inner{
+    text-align: center;
+
+    h1{
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  .bop-form-result{
+    float: none;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .bop-search,
+  .bop-header-right,
+  .bop-header-left{
+    width: 100%;
+  }
+
+  .bop-search{
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .bop-footer{
+    text-align: center;
+  }
+
+  .bop-buttons{
+    float: none;
+  }
+
+  .bop-copyright{
+    float: none;
+    margin-top: 10px;
+  }
+
+  .bop-nav,
+  .bop-expand-all,
+  .bop-reset-section,
+  .bop-nav-background{
+    display: none !important;
+  }
+
+  .bop-nav-normal + .bop-content{
+    margin-left: 0;
+  }
+
+  .bop-section-title,
+  .bop-section{
+    display: block !important;
+  }
+
+  .bop-field{
+
+    .bop-title{
+      float: none;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .bop-fieldset{
+      float: none;
+      width: 100%;
+    }
+  }
+
+  .bop-field-color{
+
+    .button.wp-picker-clear{
+      padding: 0 8px;
+      line-height: 2.14285714;
+      min-height: 32px;
+    }
+  }
+
+  .bop-profile-options,
+  .bop-taxonomy-edit-fields{
+
+    > .bop-field{
+
+      > .bop-title{
+        float: none;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      > .bop-fieldset{
+        float: none;
+        width: 100%;
+      }
+    }
+  }
+
+  .bop-nav-menu-options{
+
+    > .bop-fields{
+      margin-left: -10px;
+      margin-right: -10px;
+
+      > .bop-field{
+        padding: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 782px) {
+
+  .bop-modal{
+
+    .bop-modal-inner{
+      width: 90%;
+    }
+  }
+}
+
+@media only screen and (max-height: 750px) {
+
+  .bop-modal{
+
+    .bop-modal-inner{
+      height: auto;
+    }
+
+    .bop-modal-content{
+      height: calc(100vh - 200px);
+    }
+  }
+}
