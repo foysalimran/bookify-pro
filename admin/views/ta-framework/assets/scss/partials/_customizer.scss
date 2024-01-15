@@ -1,0 +1,185 @@
+/**
+ * 05. Widget
+ */
+.control-section{
+
+  .bop-field{
+    padding: 0;
+
+    .bop-title{
+      float: none;
+      width: 100%;
+      margin-bottom: 6px;
+
+      h4{
+        display: block;
+        font-size: 13px;
+        line-height: 1;
+        font-weight: 600;
+        color: inherit;
+      }
+    }
+
+    .bop-fieldset{
+      float: none;
+      width: 100%;
+    }
+  }
+
+  .bop-help{
+    top: -5px;
+    right: -5px;
+  }
+
+  .bop-field-select select{
+    width: 100%;
+  }
+
+  .bop-field-heading{
+    color: inherit;
+    font-size: 14px;
+    line-height: 1em;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 15px;
+  }
+
+  .bop-field-subheading{
+    color: inherit;
+    font-size: 11px;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 10px 15px;
+  }
+
+  .bop-subtitle-text{
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
+  .bop-field-submessage .bop-submessage{
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 15px;
+  }
+
+  .bop-fieldset{
+
+    .bop-field-submessage .bop-submessage,
+    .bop-field-heading,
+    .bop-field-subheading{
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .bop-field-date,
+  .bop-field-datetime{
+
+    label{
+      display: block;
+    }
+
+    .bop--to{
+      margin-top: 4px;
+      margin-left: 0;
+    }
+  }
+
+  .bop-field-sorter{
+
+    ul li{
+      padding: 5px;
+    }
+
+    .bop-modules{
+      float: none;
+      width: 100%;
+    }
+
+    .bop-modules:first-child{
+      padding-right: 0;
+      padding-bottom: 15px;
+    }
+  }
+
+  .bop-field-background{
+
+    .bop--background-attributes{
+      flex-direction: column;
+    }
+  }
+
+  .bop-field-spacing{
+    input{
+      width: 90px;
+    }
+  }
+
+  .bop-field-border{
+
+    .bop--input{
+      flex: 1 50%;
+    }
+
+    input,
+    select{
+      width: 100%;
+    }
+  }
+
+  .bop-field-spinner{
+    input{
+      width: 50px;
+    }
+  }
+
+  .bop-field-number{
+
+    .bop--wrap{
+      width: 100%;
+    }
+  }
+
+  .bop-field-backup{
+
+    .bop-export-data{
+      display: none;
+    }
+  }
+
+  .bop-field-fieldset{
+
+    .bop-fieldset-content{
+      border-color: #e5e5e5;
+    }
+  }
+
+  .bop-tabbed-content,
+  .bop-sortable-content,
+  .bop-repeater-content,
+  .bop-fieldset-content,
+  .bop-cloneable-content,
+  .bop-accordion-content{
+
+    > .bop-field{
+      padding: 10px;
+
+      .bop-title{
+        margin-bottom: 5px;
+      }
+
+      h4{
+        font-size: 12px;
+      }
+    }
+  }
+
+  .bop-depend-hidden.bop-depend-on{
+    display: none !important;
+  }
+
+  .bop-depend-visible.bop-depend-on{
+    border-top: 0 !important;
+  }
+}

@@ -49,11 +49,60 @@ class Bookify_Pro_Admin {
 	 */
 	public function __construct( $plugin_name, $version ) {
 
+		$this->suffix      = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG || defined('WP_DEBUG') && WP_DEBUG ? '' : '.min';
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		// Autoload system.
+		spl_autoload_register(array($this, 'autoload'));
+
+		BOP_Metaboxes::bookify_metabox('ta_bop_postmeta');
+		BOP_Metaboxes::layout_metabox('ta_bop_layouts');
+		BOP_Metaboxes::option_metabox('ta_bop_view_options');
+		BOP_Metaboxes::shortcode_metabox('ta_bop_display_shortcode');
+		BOP_Settings::settings('ta_bookify_settings');
+
+		$active_plugins = get_option('active_plugins');
+		foreach ($active_plugins as $active_plugin) {
+			$_temp = strpos($active_plugin, 'bookify-pro.php');
+			if (false != $_temp) {
+				add_filter('plugin_action_links_' . $active_plugin, array($this, 'add_plugin_action_links'));
+			}
+		}
+
 		add_action('init', array($this, 'register_bookify_post'));
 		add_action('init', array($this, 'register_bookify_category'));
+		add_action('init', array($this, 'register_bookify_author'));
+	}
+
+	public function add_plugin_action_links($links)
+	{
+		$new_links = array(
+			sprintf('<a href="%s">%s</a>', admin_url('post-new.php?post_type=bookify'), esc_html__('Add New', 'bookify-pro')),
+			sprintf('<a href="%s">%s</a>', admin_url('edit.php?post_type=bookify'), esc_html__('Settings', 'bookify-pro')),
+		);
+		return array_merge($new_links, $links);
+	}
+
+	/**
+	 * Autoload class files on demand
+	 *
+	 * @param string $class requested class name.
+	 * @since 2.2.0
+	 */
+	private function autoload($class)
+	{
+		$name = explode('_', $class);
+		if (isset($name[1])) {
+			$class_name       = strtolower($name[1]);
+			$BOP_config_paths = array('views/', 'views/configs/settings/', 'views/configs/generator/');
+			foreach ($BOP_config_paths as $ta_bop_path) {
+				$filename = plugin_dir_path(__FILE__) . '/' . $ta_bop_path . 'class-bop-' . $class_name . '.php';
+				if (file_exists($filename)) {
+					require_once $filename;
+				}
+			}
+		}
 	}
 
 	/**
@@ -158,4 +207,40 @@ class Bookify_Pro_Admin {
 
         register_taxonomy('bookify_category', 'bookify', $taxonomy_args);
     }
+	public function register_bookify_author() {
+        $taxonomy_labels = array(
+            'name'          => __('Bookify Author', 'bookify-pro'),
+            'singular_name' => __('Bookify Author', 'bookify-pro'),
+            'search_items'  => __('Search Bookify Authors', 'bookify-pro'),
+            'all_items'     => __('All Bookify Authors', 'bookify-pro'),
+            'parent_item'   => __('Parent Bookify Author', 'bookify-pro'),
+            'parent_item_colon' => __('Parent Bookify Author:', 'bookify-pro'),
+            'edit_item'     => __('Edit Bookify Author', 'bookify-pro'),
+            'update_item'   => __('Update Bookify Author', 'bookify-pro'),
+            'add_new_item'  => __('Add New Bookify Author', 'bookify-pro'),
+            'new_item_name' => __('New Bookify Author Name', 'bookify-pro'),
+            'menu_name'     => __('Bookify Author', 'bookify-pro'),
+        );
+
+        $taxonomy_args = array(
+            'hierarchical'      => true, // Set to true if your taxonomy should have parent-child relationships
+            'labels'            => $taxonomy_labels,
+            'show_ui'           => true,
+            'show_admin_column' => true,
+            'query_var'         => true,
+            'rewrite'           => array('slug' => 'bookify_category'),
+        );
+
+        register_taxonomy('bookify_author', 'bookify', $taxonomy_args);
+    }
+}
+
+/**
+ * Bookify dashboard capability.
+ *
+ * @return string
+ */
+function bop_dashboard_capability()
+{
+	return apply_filters('bop_dashboard_capability', 'manage_options');
 }

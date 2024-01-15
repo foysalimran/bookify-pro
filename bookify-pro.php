@@ -36,12 +36,13 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'BOOKIFY_PRO_VERSION', '1.0.0' );
+define('BOOKIFY_PRO_BASENAME', plugin_basename(__FILE__));
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-bookify-pro-activator.php
  */
-function activate_bookify_pro() {
+function bookify_pro_activate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-bookify-pro-activator.php';
 	Bookify_Pro_Activator::activate();
 }
@@ -50,13 +51,13 @@ function activate_bookify_pro() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-bookify-pro-deactivator.php
  */
-function deactivate_bookify_pro() {
+function bookify_pro_deactivate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-bookify-pro-deactivator.php';
 	Bookify_Pro_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_bookify_pro' );
-register_deactivation_hook( __FILE__, 'deactivate_bookify_pro' );
+register_activation_hook( __FILE__, 'bookify_pro_activate' );
+register_deactivation_hook( __FILE__, 'bookify_pro_deactivate' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -73,10 +74,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-bookify-pro.php';
  *
  * @since    1.0.0
  */
-function run_bookify_pro() {
+function bookify_pro_run() {
 
 	$plugin = new Bookify_Pro();
 	$plugin->run();
 
 }
-run_bookify_pro();
+bookify_pro_run();
