@@ -73,7 +73,6 @@ class Bookify_Pro_Admin
 		}
 
 		add_action('init', array($this, 'register_bookify_post'));
-		// add_action('init', array($this, 'register_generate_shortcode'));
 		add_action('init', array($this, 'register_bookify_category'));
 		add_action('init', array($this, 'register_bookify_author'));
 	}

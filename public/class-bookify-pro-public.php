@@ -147,26 +147,26 @@ class Bookify_Pro_Public {
 				$view_options     = get_post_meta($bop_id, 'ta_bop_view_options', true);
 				$all_fonts        = array();
 				$bop_typography   = array();
-				// $bop_typography[] = $view_options['section_title_typography'];
-				// $bop_typography[] = $view_options['post_title_typography'];
-				// $bop_typography[] = $view_options['post_meta_typography'];
-				// $bop_typography[] = $view_options['post_content_typography'];
-				// $bop_typography[] = isset($view_options['read_more_typography']) ? $view_options['read_more_typography'] : array(
-				// 	'font-family'        => '',
-				// 	'font-weight'        => '600',
-				// 	'subset'             => '',
-				// 	'font-size'          => '12',
-				// 	'tablet-font-size'   => '12',
-				// 	'mobile-font-size'   => '10',
-				// 	'line-height'        => '18',
-				// 	'tablet-line-height' => '18',
-				// 	'mobile-line-height' => '16',
-				// 	'letter-spacing'     => '0',
-				// 	'text-align'         => 'left',
-				// 	'text-transform'     => 'uppercase',
-				// 	'type'               => '',
-				// 	'unit'               => 'px',
-				// );
+				$bop_typography[] = $view_options['section_title_typography'];
+				$bop_typography[] = $view_options['post_title_typography'];
+				$bop_typography[] = $view_options['post_meta_typography'];
+				$bop_typography[] = $view_options['post_content_typography'];
+				$bop_typography[] = isset($view_options['read_more_typography']) ? $view_options['read_more_typography'] : array(
+					'font-family'        => '',
+					'font-weight'        => '600',
+					'subset'             => '',
+					'font-size'          => '12',
+					'tablet-font-size'   => '12',
+					'mobile-font-size'   => '10',
+					'line-height'        => '18',
+					'tablet-line-height' => '18',
+					'mobile-line-height' => '16',
+					'letter-spacing'     => '0',
+					'text-align'         => 'left',
+					'text-transform'     => 'uppercase',
+					'type'               => '',
+					'unit'               => 'px',
+				);
 				if (!empty($bop_typography)) {
 					foreach ($bop_typography as $font) {
 						if (isset($font['font-family']) && isset($font['type']) && 'google' === $font['type']) {
