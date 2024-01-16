@@ -294,7 +294,7 @@ if ( ! class_exists( 'BOP_Fields' ) ) {
         case 'taxonomies':
           case 'taxonomy':
             global $post;
-            $view_options       = get_post_meta( $post->ID, 'ta_bop_view_options', true );
+            $view_options       = get_post_meta( $post->ID, 'ta_bookify_options', true );
             $bop_post_types     = 'bookify';
               $taxonomy_names = get_object_taxonomies( $bop_post_types, 'names' );
             if ( ! is_wp_error( $taxonomy_names ) && ! empty( $taxonomy_names ) ) {
@@ -308,7 +308,7 @@ if ( ! class_exists( 'BOP_Fields' ) ) {
           case 'terms':
           case 'term':
             global $post;
-            $view_options   = get_post_meta( $post->ID, 'ta_bop_view_options', true );
+            $view_options   = get_post_meta( $post->ID, 'ta_bookify_options', true );
             $bop_post_types = 'bookify';
   
             $field_index = preg_replace( '/[^0-9]/', '', $field_unique );

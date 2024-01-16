@@ -44,9 +44,10 @@ class Bookify_Pro_Admin
 		// Autoload system.
 		spl_autoload_register(array($this, 'autoload'));
 
-		BOP_Metaboxes::layout_metabox('ta_bop_layouts');
-		BOP_Metaboxes::option_metabox('ta_bop_view_options');
-		BOP_Metaboxes::shortcode_metabox('ta_bop_display_shortcode');
+		BOP_Metaboxes::bookify_metabox('ta_bop_postmeta');
+		BOP_Metaboxes::layout_metabox('ta_bookify_layouts');
+		BOP_Metaboxes::option_metabox('ta_bookify_options');
+		BOP_Metaboxes::shortcode_metabox('ta_bookify_shortcode');
 		BOP_Settings::settings('ta_bookify_settings');
 
 		$active_plugins = get_option('active_plugins');
@@ -293,7 +294,7 @@ class Bookify_Pro_Admin
 	public function display_bookify_admin_fields($column, $post_id)
 	{
 
-		$bop_layouts     = get_post_meta($post_id, 'ta_bop_layouts', true);
+		$bop_layouts     = get_post_meta($post_id, 'ta_bookify_layouts', true);
 		$bookifys_types = isset($bop_layouts['bop_layout_preset']) ? $bop_layouts['bop_layout_preset'] : '';
 		switch ($column) {
 			case 'shortcode':

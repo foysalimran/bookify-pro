@@ -125,7 +125,7 @@ class Bookify_Pro_Public {
 
 		$bop_posts       = new WP_Query(
 			array(
-				'post_type'      => 'bookify',
+				'post_type'      => 'bookify_shortcode',
 				'posts_per_page' => 900,
 			)
 		);
@@ -133,18 +133,17 @@ class Bookify_Pro_Public {
 		$custom_css      = '';
 		$enqueue_fonts   = array();
 		$setting_options = get_option('ta_bookify_settings');
+		
 		$bop_custom_css  = isset($setting_options['bop_custom_css']) ? $setting_options['bop_custom_css'] : '';
 
 		$bop_enqueue_google_font = isset($setting_options['bop_enqueue_google_font']) ? $setting_options['bop_enqueue_google_font'] : true;
 		foreach ($post_ids as $bop_id) {
 			// Include dynamic style file.
-			$view_options = get_post_meta($bop_id, 'ta_bop_view_options', true);
 			$layouts      = get_post_meta($bop_id, 'ta_bop_layouts', true);
 			include 'dynamic-css/dynamic-css.php';
-
 			if ($bop_enqueue_google_font) {
 				// Google fonts.
-				$view_options     = get_post_meta($bop_id, 'ta_bop_view_options', true);
+				$view_options     = get_post_meta($bop_id, 'ta_bookify_options', true);
 				$all_fonts        = array();
 				$bop_typography   = array();
 				$bop_typography[] = $view_options['section_title_typography'];
@@ -236,7 +235,7 @@ class Bookify_Pro_Public {
 		// $bop_search_url     = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ) : '';
 		$layout        = get_post_meta($views_id, 'ta_bop_layouts', true);
 		$layout_preset = isset($layout['bop_layout_preset']) ? $layout['bop_layout_preset'] : '';
-		$view_options  = get_post_meta($views_id, 'ta_bop_view_options', true);
+		$view_options  = get_post_meta($views_id, 'ta_bookify_options', true);
 		// Post display settings.
 		if ('filter_layout' === $layout_preset) {
 			$pagination_type        = isset($view_options['filter_pagination_type']) ? $view_options['filter_pagination_type'] : '';
@@ -309,7 +308,7 @@ class Bookify_Pro_Public {
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
-		$view_options        = get_post_meta($views_id, 'ta_bop_view_options', true);
+		$view_options        = get_post_meta($views_id, 'ta_bookify_options', true);
 		$layout              = get_post_meta($views_id, 'ta_bop_layouts', true);
 		$layout_preset       = isset($layout['bop_layout_preset']) ? $layout['bop_layout_preset'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
@@ -350,7 +349,7 @@ class Bookify_Pro_Public {
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
-		$view_options        = get_post_meta($views_id, 'ta_bop_view_options', true);
+		$view_options        = get_post_meta($views_id, 'ta_bookify_options', true);
 		$layout              = get_post_meta($views_id, 'ta_bop_layouts', true);
 		$layout_preset       = isset($layout['bop_layout_preset']) ? $layout['bop_layout_preset'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
@@ -393,7 +392,7 @@ class Bookify_Pro_Public {
 		$custom_fields_array    = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$layout                 = get_post_meta($views_id, 'ta_bop_layouts', true);
 		$layout_preset          = isset($layout['bop_layout_preset']) ? $layout['bop_layout_preset'] : '';
-		$view_options           = get_post_meta($views_id, 'ta_bop_view_options', true);
+		$view_options           = get_post_meta($views_id, 'ta_bookify_options', true);
 		$pagination_type        = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
 		$pagination_type_mobile = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
 		$post_content_sorter    = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';
@@ -428,8 +427,9 @@ class Bookify_Pro_Public {
 		$bop_gl_id = $attribute['id']; // Bookify Pro global ID for Shortcode metaboxes.
 		// Preset Layouts.
 		$layout        = get_post_meta($bop_gl_id, 'ta_bop_layouts', true);
-		$view_options  = get_post_meta($bop_gl_id, 'ta_bop_view_options', true);
+		$view_options  = get_post_meta($bop_gl_id, 'ta_bookify_options', true);
 		$section_title = get_the_title($bop_gl_id);
+
 		ob_start();
 		BOP_HTML::bop_html_show($view_options, $layout, $bop_gl_id, $section_title);
 		return ob_get_clean();

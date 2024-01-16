@@ -1120,7 +1120,7 @@ class BOP_Functions
 		if (!$bop_gl_id) {
 			return;
 		}
-		$view_options = get_post_meta($bop_gl_id, 'ta_bop_view_options', true);
+		$view_options = get_post_meta($bop_gl_id, 'ta_bookify_options', true);
 		return $view_options;
 	}
 

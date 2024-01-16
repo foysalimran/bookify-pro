@@ -207,7 +207,7 @@ class BOP_Live_Filter
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : ''; //phpcs:ignore
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : ''; //phpcs:ignore
 
-		$view_options                 = get_post_meta($bop_gl_id, 'ta_bop_view_options', true);
+		$view_options                 = get_post_meta($bop_gl_id, 'ta_bookify_options', true);
 		$query_args                   = BOP_QueryInside::get_filtered_content($view_options, $bop_gl_id);
 		$query_args['fields']         = 'ids';
 		$post_limit                   = isset($view_options['bop_post_limit']) && !empty($view_options['bop_post_limit']) ? $view_options['bop_post_limit'] : 10000;
@@ -403,9 +403,9 @@ class BOP_Live_Filter
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		$settings            = array(); //phpcs:ignore
 		parse_str($_POST['data'], $settings); //phpcs:ignore
-		$layout                       = $settings['ta_bop_layouts'];
+		$layout                       = $settings['ta_bookify_layouts'];
 		$layout_preset                = isset($layout['bop_layout_preset']) ? $layout['bop_layout_preset'] : '';
-		$view_options                 = $settings['ta_bop_view_options'];
+		$view_options                 = $settings['ta_bookify_options'];
 		$query_args                   = BOP_QueryInside::get_filtered_content($view_options, $bop_gl_id);
 		$query_args['fields']         = 'ids';
 		$new_query_args               = $query_args;

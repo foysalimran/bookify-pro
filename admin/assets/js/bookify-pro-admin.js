@@ -8,13 +8,13 @@
   
 	$(function () {
 	  /* Preloader */
-	  $("#ta_bop_view_options .bop-metabox").css("visibility", "hidden");
+	  $("#ta_bookify_options .bop-metabox").css("visibility", "hidden");
   
 	  var PCP_layout_type = $(
-		'#bop-section-ta_bop_layouts_1 .bop-field-layout_preset .bop-siblings .bop--sibling'
+		'#bop-section-ta_bookify_layouts_1 .bop-field-layout_preset .bop-siblings .bop--sibling'
 	  )
 	  var PCP_get_layout_value = $(
-		'#bop-section-ta_bop_layouts_1 .bop-field-layout_preset .bop-siblings .bop--sibling.bop--active'
+		'#bop-section-ta_bookify_layouts_1 .bop-field-layout_preset .bop-siblings .bop--sibling.bop--active'
 	  )
 		.find('input')
 		.val()
@@ -22,14 +22,14 @@
 	  // Carousel Layout.
 	  if (PCP_get_layout_value !== 'carousel_layout') {
 		$(
-		  '#ta_bop_view_options .bop-nav ul li.menu-item_ta_bop_view_options_3'
+		  '#ta_bookify_options .bop-nav ul li.menu-item_ta_bookify_options_3'
 		).hide()
 		$(
-		  '#ta_bop_view_options .bop-nav ul li.menu-item_ta_bop_view_options_1 a'
+		  '#ta_bookify_options .bop-nav ul li.menu-item_ta_bookify_options_1 a'
 		).trigger('click');
 	  } else {
 		$(
-		  '#ta_bop_view_options .bop-nav ul li.menu-item_ta_bop_view_options_3'
+		  '#ta_bookify_options .bop-nav ul li.menu-item_ta_bookify_options_3'
 		).show()
 	  }
   
@@ -42,21 +42,21 @@
 		// Carousel Layout.
 		if (PCP_get_layout_value !== 'carousel_layout') {
 		  $(
-			'#ta_bop_view_options .bop-nav ul li.menu-item_ta_bop_view_options_3'
+			'#ta_bookify_options .bop-nav ul li.menu-item_ta_bookify_options_3'
 		  ).hide()
 		  $(
-			'#ta_bop_view_options .bop-nav ul li.menu-item_ta_bop_view_options_1 a'
+			'#ta_bookify_options .bop-nav ul li.menu-item_ta_bookify_options_1 a'
 		  ).trigger('click');
 		} else {
 		  $(
-			'#ta_bop_view_options .bop-nav ul li.menu-item_ta_bop_view_options_3'
+			'#ta_bookify_options .bop-nav ul li.menu-item_ta_bookify_options_3'
 		  ).show()
 		}
 	  })
   
 	  /* Preloader js */
-	  $("#ta_bop_view_options .bop-metabox").css({ "backgroundImage": "none", "visibility": "visible", "minHeight": "auto" });
-	  $("#ta_bop_view_options .bop-nav-metabox li").css("opacity", 1);
+	  $("#ta_bookify_options .bop-metabox").css({ "backgroundImage": "none", "visibility": "visible", "minHeight": "auto" });
+	  $("#ta_bookify_options .bop-nav-metabox li").css("opacity", 1);
   
 	  /* Copy to clipboard */
 	  $('.bop-shortcode-selectable').on('click',function (e) {

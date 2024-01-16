@@ -11,8 +11,8 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-$view_options = get_post_meta($bop_id, 'ta_bop_view_options', true);
-$layouts      = get_post_meta($bop_id, 'ta_bop_layouts', true);
+$view_options = get_post_meta($bop_id, 'ta_bookify_options', true);
+$layouts      = get_post_meta($bop_id, 'ta_bookify_layouts', true);
 $layout = isset($layouts['bop_layout_preset']) ? $layouts['bop_layout_preset'] : '';
 $popup_content_color       = isset( $view_options['popup_content_color'] ) ? $view_options['popup_content_color'] : '';
 $popup_custom_fields_color = isset( $popup_content_color['custom-fields'] ) ? $popup_content_color['custom-fields'] : '#888';
