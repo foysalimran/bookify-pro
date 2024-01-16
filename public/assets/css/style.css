@@ -63,7 +63,7 @@
   list-style: none;
   color: #fff;
   text-decoration: none;
-  background-color: #263ad0;
+  background-color: #876585;
   padding: 6px 12px;
   border-radius: 7px;
   font-size: 14px;
@@ -511,7 +511,7 @@
 .bop-post-pagination .page-numbers {
   background: #fff;
   color: #5e5e5e;
-  border: 2px solid #263ad0;
+  border: 2px solid #876585;
   width: 34px;
   height: 34px;
   line-height: 34px;
@@ -534,8 +534,8 @@
 .bop-post-pagination a.active {
   cursor: auto;
   color: #fff;
-  background: #263ad0;
-  border-color: #263ad0;
+  background: #876585;
+  border-color: #876585;
 }
 .bop-load-more button {
   margin-top: 20px;
@@ -543,7 +543,7 @@
   border: none;
   border-radius: 2px;
   padding: 10px 18px;
-  background: #263ad0;
+  background: #876585;
   color: #fff;
   font-size: 14px;
   text-transform: uppercase;
@@ -557,7 +557,7 @@
   display: none;
 }
 .bop-infinite-scroll-loader svg {
-  stroke: #263ad0;
+  stroke: #876585;
 }
 .bop-post-pagination .page-numbers i {
   font-size: 18px;
@@ -598,7 +598,7 @@
 
 /* Filter Bar */
 .bop-filter-bar .bop-order button:hover {
-  background: #263ad0;
+  background: #876585;
   color: #fff;
 }
 
@@ -612,7 +612,7 @@
   padding: 0;
   width: 100px;
   line-height: 1;
-  background: #263ad0;
+  background: #876585;
   color: #fff;
   border: none;
 }
@@ -676,8 +676,8 @@
 .bop-author-filter.bop-bar.fl_button input:checked ~ div,
 .bop-custom-field-filter.bop-bar.fl_button input:checked ~ div,
 .bop-filter-bar .bop-filter-by.bop-bar.fl_button input:checked ~ div {
-  background: #263ad0;
-  border-color: #263ad0;
+  background: #876585;
+  border-color: #876585;
   color: #fff;
   cursor: default;
 }

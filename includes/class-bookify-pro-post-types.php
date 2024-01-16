@@ -104,7 +104,6 @@ class Bookify_pro_Post_Type
 					'read_post'           => $capability,
 				),
 				'capability_type' => 'post',
-				// 'rewrite'         => true,
 				'labels'          => $labels,
 			)
 		);

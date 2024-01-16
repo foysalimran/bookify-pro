@@ -79,7 +79,7 @@ if ($show_post_title) {
 
 	$_post_title_typography = isset($view_options['post_title_typography']) && array_key_exists('font-size', $view_options['post_title_typography']) ? $view_options['post_title_typography'] : array(
 		'color'              => '#111',
-		'hover_color'        => '#263ad0',
+		'hover_color'        => '#876585',
 		'font-family'        => '',
 		'font-weight'        => '',
 		'subset'             => '',
@@ -315,7 +315,7 @@ $custom_css .= "text-transform: {$_custom_fields_typography['text-transform']};f
 // Post Meta.
 $_post_meta_typography    = isset($view_options['post_meta_typography']) && array_key_exists('font-size', $view_options['post_meta_typography']) ? $view_options['post_meta_typography'] : array(
 	'color'              => '#888',
-	'hover_color'        => '#263ad0',
+	'hover_color'        => '#876585',
 	'font-family'        => '',
 	'font-weight'        => '',
 	'subset'             => '',
@@ -377,7 +377,7 @@ if (is_array($post_meta_group) && $show_post_meta) {
 		$meta_position      = isset($post_meta['bop_meta_position']) ? $post_meta['bop_meta_position'] : '';
 		$meta_pill_color    = isset($post_meta['bop_meta_pill_color']) ? $post_meta['bop_meta_pill_color'] : array(
 			'text' => '#fff',
-			'bg'   => '#0015b5',
+			'bg'   => '#c27b7f',
 		);
 		$bop_taxonomy       = isset($post_meta['post_meta_taxonomy']) ? $post_meta['post_meta_taxonomy'] : '';
 		$bop_taxonomy_class = !empty($bop_taxonomy) ? ".{$bop_taxonomy}" : '';
@@ -415,7 +415,7 @@ if (!empty($_post_meta_typography['font-family'])) {
 // Event Meta.
 $_event_fildes_typography    = isset($view_options['event_fildes_typography']) && array_key_exists('font-size', $view_options['event_fildes_typography']) ? $view_options['event_fildes_typography'] : array(
 	'color'              => '#888',
-	'hover_color'        => '#263ad0',
+	'hover_color'        => '#876585',
 	'font-family'        => '',
 	'font-weight'        => '',
 	'subset'             => '',
@@ -478,7 +478,7 @@ if (is_array($event_fildes_group) && $show_event_fildes) {
 		$meta_position      = isset($event_fildes['bop_meta_position']) ? $event_fildes['bop_meta_position'] : '';
 		$meta_pill_color    = isset($event_fildes['bop_meta_pill_color']) ? $event_fildes['bop_meta_pill_color'] : array(
 			'text' => '#fff',
-			'bg'   => '#0015b5',
+			'bg'   => '#c27b7f',
 		);
 		$bop_taxonomy       = isset($event_fildes['event_fildes_taxonomy']) ? $event_fildes['event_fildes_taxonomy'] : '';
 		$bop_taxonomy_class = !empty($bop_taxonomy) ? ".{$bop_taxonomy}" : '';
@@ -563,9 +563,9 @@ if ($show_read_more) {
 			'standard'     => '#111',
 			'hover'        => '#fff',
 			'bg'           => 'transparent',
-			'hover_bg'     => '#263ad0',
+			'hover_bg'     => '#876585',
 			'border'       => '#888',
-			'hover_border' => '#263ad0',
+			'hover_border' => '#876585',
 		);
 		$_border_radius = isset($post_content_settings['readmore_button_radius']) ? $post_content_settings['readmore_button_radius'] : array(
 			'all'  => '0',
@@ -613,9 +613,9 @@ if ($post_thumb_show && $post_thumb_meta != 'none') {
 			'standard'     => '#111',
 			'hover'        => '#fff',
 			'bg'           => 'transparent',
-			'hover_bg'     => '#263ad0',
+			'hover_bg'     => '#876585',
 			'border'       => '#888',
-			'hover_border' => '#263ad0',
+			'hover_border' => '#876585',
 		);
 		$_border_radius = isset($post_content_settings['readmore_button_radius']) ? $post_content_settings['readmore_button_radius'] : array(
 			'all'  => '0',
@@ -635,14 +635,14 @@ if ($show_pagination) {
 		'text_color'        => '#5e5e5e',
 		'text_acolor'       => '#ffffff',
 		'border_color'      => '#bbbbbb',
-		'border_acolor'     => '#263ad0',
+		'border_acolor'     => '#876585',
 		'background'        => '#ffffff',
-		'active_background' => '#263ad0',
+		'active_background' => '#876585',
 	);
 	$bop_loadmore_btn_color = isset($view_options['bop_loadmore_btn_color']) ? $view_options['bop_loadmore_btn_color'] : array(
 		'text_color'        => '#ffffff',
 		'text_hcolor'       => '#5e5e5e',
-		'background'        => '#263ad0',
+		'background'        => '#876585',
 		'active_background' => '#ffffff',
 	);
 	$pagination_alignment   = isset($view_options['pagination_alignment']) ? $view_options['pagination_alignment'] : 'left';
@@ -661,9 +661,9 @@ if (is_array($taxonomy_types) && !empty($taxonomy_types) && is_array($filter_by)
 			'text_color'        => '#5e5e5e',
 			'text_acolor'       => '#ffffff',
 			'border_color'      => '#bbbbbb',
-			'border_acolor'     => '#263ad0',
+			'border_acolor'     => '#876585',
 			'background'        => '#ffffff',
-			'active_background' => '#263ad0',
+			'active_background' => '#876585',
 		);
 		$bop_margin_between_button = isset($filter_options['bop_margin_between_button']) ? $filter_options['bop_margin_between_button'] : array(
 			'top'    => '0',
@@ -714,9 +714,9 @@ $icon_custom_color    = isset($post_social_settings['social_icon_custom_color'])
 $social_icon_color    = isset($post_social_settings['social_icon_color']) ? $post_social_settings['social_icon_color'] : array(
 	'icon_color'        => '#ffffff',
 	'icon_hover_color'  => '#ffffff',
-	'icon_bg'           => '#263ad0',
-	'icon_bg_hover'     => '#0015b5',
-	'icon_border_hover' => '#0015b5',
+	'icon_bg'           => '#876585',
+	'icon_bg_hover'     => '#c27b7f',
+	'icon_border_hover' => '#c27b7f',
 );
 $social_position      = isset($post_social_settings['social_position']) ? $post_social_settings['social_position'] : 'left';
 if ('zigzag_layout' !== $layouts['bop_layout_preset']) {
@@ -740,9 +740,9 @@ $orderby_btn_color = isset($orderby_options['bop_orderby_filter_btn_color']) ? $
 	'text_color'        => '#5e5e5e',
 	'text_acolor'       => '#ffffff',
 	'border_color'      => '#bbbbbb',
-	'border_acolor'     => '#263ad0',
+	'border_acolor'     => '#876585',
 	'background'        => '#ffffff',
-	'active_background' => '#263ad0',
+	'active_background' => '#876585',
 );
 
 if (!empty($orderby_btn_color) && $add_orderby_filter_post && is_array($filter_by) && in_array('sortby', $filter_by)) {
@@ -764,9 +764,9 @@ if ($ajax_filter_style && $add_author_filter_post && is_array($filter_by) && in_
 		'text_color'        => '#5e5e5e',
 		'text_acolor'       => '#ffffff',
 		'border_color'      => '#bbbbbb',
-		'border_acolor'     => '#263ad0',
+		'border_acolor'     => '#876585',
 		'background'        => '#ffffff',
-		'active_background' => '#263ad0',
+		'active_background' => '#876585',
 	);
 	$author_margin_between_button = isset($author_ajax_filter_options['author_margin_between_button']) ? $author_ajax_filter_options['author_margin_between_button'] : array(
 		'top'    => '0',
@@ -783,9 +783,9 @@ $bop_order_btn_color = isset($bop_order_options['bop_order_filter_button_color']
 	'text_color'        => '#5e5e5e',
 	'text_acolor'       => '#ffffff',
 	'border_color'      => '#bbbbbb',
-	'border_acolor'     => '#263ad0',
+	'border_acolor'     => '#876585',
 	'background'        => '#ffffff',
-	'active_background' => '#263ad0',
+	'active_background' => '#876585',
 );
 if (!empty($bop_order_btn_color)) {
 	$custom_css .= "
@@ -800,9 +800,9 @@ $filer_btn_bg            = isset($view_options['bop_filer_btn_bg']) ? $view_opti
 	'text_color'        => '#444444',
 	'text_acolor'       => '#ffffff',
 	'border_color'      => '#bbbbbb',
-	'border_acolor'     => '#263ad0',
+	'border_acolor'     => '#876585',
 	'background'        => 'transparent',
-	'active-background' => '#263ad0',
+	'active-background' => '#876585',
 );
 $margin_between_button   = isset($view_options['bop_margin_between_button']) ? $view_options['bop_margin_between_button'] : array(
 	'top'    => '0',

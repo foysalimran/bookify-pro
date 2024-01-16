@@ -53,7 +53,7 @@ class BOP_Typography {
 						'hover_color' => true,
 						'default'    => array(
 							'color'              => '#111111',
-							'hover_color'        => '#0015b5',
+							'hover_color'        => '#c27b7f',
 							'font-family'        => '',
 							'font-weight'        => '600',
 							'subset'             => '',
@@ -79,7 +79,7 @@ class BOP_Typography {
 						'hover_color' => true,
 						'default'     => array(
 							'color'              => '#111111',
-							'hover_color'        => '#0015b5',
+							'hover_color'        => '#c27b7f',
 							'font-family'        => '',
 							'font-weight'        => '',
 							'subset'             => '',
@@ -105,7 +105,7 @@ class BOP_Typography {
 						'hover_color' => true,
 						'default'     => array(
 							'color'              => '#111111',
-							'hover_color'        => '#0015b5',
+							'hover_color'        => '#c27b7f',
 							'font-family'        => '',
 							'font-weight'        => '',
 							'subset'             => '',
@@ -131,7 +131,7 @@ class BOP_Typography {
 						'hover_color' => true,
 						'default'     => array(
 							'color'              => '#111111',
-							'hover_color'        => '#0015b5',
+							'hover_color'        => '#c27b7f',
 							'font-family'        => '',
 							'font-weight'        => '',
 							'subset'             => '',
