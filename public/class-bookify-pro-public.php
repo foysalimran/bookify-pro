@@ -139,7 +139,7 @@ class Bookify_Pro_Public {
 		$bop_enqueue_google_font = isset($setting_options['bop_enqueue_google_font']) ? $setting_options['bop_enqueue_google_font'] : true;
 		foreach ($post_ids as $bop_id) {
 			// Include dynamic style file.
-			$layouts      = get_post_meta($bop_id, 'ta_bop_layouts', true);
+			$layouts      = get_post_meta($bop_id, 'ta_bookify_layouts', true);
 			include 'dynamic-css/dynamic-css.php';
 			if ($bop_enqueue_google_font) {
 				// Google fonts.
@@ -233,7 +233,7 @@ class Bookify_Pro_Public {
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		// $bop_search_url     = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ) : '';
-		$layout        = get_post_meta($views_id, 'ta_bop_layouts', true);
+		$layout        = get_post_meta($views_id, 'ta_bookify_layouts', true);
 		$layout_preset = isset($layout['bop_layout_preset']) ? $layout['bop_layout_preset'] : '';
 		$view_options  = get_post_meta($views_id, 'ta_bookify_options', true);
 		// Post display settings.
@@ -309,7 +309,7 @@ class Bookify_Pro_Public {
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		$view_options        = get_post_meta($views_id, 'ta_bookify_options', true);
-		$layout              = get_post_meta($views_id, 'ta_bop_layouts', true);
+		$layout              = get_post_meta($views_id, 'ta_bookify_layouts', true);
 		$layout_preset       = isset($layout['bop_layout_preset']) ? $layout['bop_layout_preset'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
@@ -350,7 +350,7 @@ class Bookify_Pro_Public {
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$view_options        = get_post_meta($views_id, 'ta_bookify_options', true);
-		$layout              = get_post_meta($views_id, 'ta_bop_layouts', true);
+		$layout              = get_post_meta($views_id, 'ta_bookify_layouts', true);
 		$layout_preset       = isset($layout['bop_layout_preset']) ? $layout['bop_layout_preset'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
@@ -390,7 +390,7 @@ class Bookify_Pro_Public {
 		$author_id              = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$selected_term_list     = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		$custom_fields_array    = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
-		$layout                 = get_post_meta($views_id, 'ta_bop_layouts', true);
+		$layout                 = get_post_meta($views_id, 'ta_bookify_layouts', true);
 		$layout_preset          = isset($layout['bop_layout_preset']) ? $layout['bop_layout_preset'] : '';
 		$view_options           = get_post_meta($views_id, 'ta_bookify_options', true);
 		$pagination_type        = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
@@ -426,7 +426,7 @@ class Bookify_Pro_Public {
 		}
 		$bop_gl_id = $attribute['id']; // Bookify Pro global ID for Shortcode metaboxes.
 		// Preset Layouts.
-		$layout        = get_post_meta($bop_gl_id, 'ta_bop_layouts', true);
+		$layout        = get_post_meta($bop_gl_id, 'ta_bookify_layouts', true);
 		$view_options  = get_post_meta($bop_gl_id, 'ta_bookify_options', true);
 		$section_title = get_the_title($bop_gl_id);
 

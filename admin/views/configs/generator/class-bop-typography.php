@@ -126,7 +126,7 @@ class BOP_Typography {
 					array(
 						'id'          => 'event_fildes_typography',
 						'type'        => 'typography',
-						'title'       => esc_html__( 'Event Fields', 'bookify-pro' ),
+						'title'       => esc_html__( 'Book Fields', 'bookify-pro' ),
 						'subtitle'    => esc_html__( 'Set event fields font properties.', 'bookify-pro' ),
 						'hover_color' => true,
 						'default'     => array(

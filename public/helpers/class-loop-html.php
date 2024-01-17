@@ -93,6 +93,79 @@ class BOP_HTML
 			echo wp_kses_post($title);
 		}
 	}
+	/**
+	 * Post subtitle html.
+	 *
+	 * @param array  $sorter post content option array.
+	 * @param string $layout layout preset.
+	 * @return void
+	 */
+	public static function bop_post_subtitle($sorter, $layout, $options, $post, $is_table = false)
+	{
+
+		$_meta_settings     = BOP_Functions::bop_metabox_value('bop_post_meta', $sorter);
+		$post_meta_fields   = BOP_Functions::bop_metabox_value('bop_post_meta_group', $_meta_settings);
+		$show_post_meta     = BOP_Functions::bop_metabox_value('show_post_meta', $_meta_settings, true);
+		$bop_page_link_type = BOP_Functions::bop_metabox_value('bop_page_link_type', $options);
+		$bop_link_rel       = BOP_Functions::bop_metabox_value('bop_link_rel', $options);
+		$bop_link_rel_text  = '1' === $bop_link_rel ? "rel='nofollow'" : '';
+
+		$bop_link_target = BOP_Functions::bop_metabox_value('bop_link_target', $options);
+		if (is_array($post_meta_fields) && 'accordion_layout' !== $layout && $show_post_meta) {
+			foreach ($post_meta_fields as $each_meta) {
+				if ('taxonomy' === $each_meta['select_post_meta']) {
+					$taxonomy      = $each_meta['post_meta_taxonomy'];
+					$meta_position = $each_meta['bop_meta_position'];
+					if ('above_subtitle' === $meta_position) {
+						$terms = get_the_term_list($post->ID, $taxonomy, '', ' ');
+						if ($terms) {
+							ob_start();
+							include BOP_Functions::bop_locate_template('item/meta-over-subtitle.php');
+							$meta_over_subtitle = apply_filters('bop_meta_over_subtitle', ob_get_clean());
+							echo wp_kses_post($meta_over_subtitle);
+						};
+					}
+				}
+			}
+		}
+
+		$post_subtitle_setting = isset($sorter['bop_post_subtitle']) ? $sorter['bop_post_subtitle'] : '';
+		$show_post_subtitle    = BOP_Functions::bop_metabox_value('show_post_subtitle', $post_subtitle_setting);
+
+		$bop_post_subtitle = get_the_subtitle($post->ID);
+
+		if ($show_post_subtitle && !empty($bop_post_subtitle)) {
+			// Post Title Settings.
+			$post_subtitle_tag    = BOP_Functions::bop_metabox_value('post_subtitle_tag', $post_subtitle_setting, 'h2');
+			$limit_post_subtitle = BOP_Functions::bop_metabox_value('post_subtitle_limit', $post_subtitle_setting);
+			if ($limit_post_subtitle) {
+				$post_subtitle_length = (int) isset($post_subtitle_setting['bop_subtitle_length']) ? $post_subtitle_setting['bop_subtitle_length'] : '';
+				$bop_post_subtitle    = BOP_Functions::limit_post_subtitle($bop_post_subtitle, $post_subtitle_length);
+			}
+
+			$allowed_html_tags = array(
+				'em'     => array(),
+				'strong' => array(),
+				'sup'    => array(),
+				'i'      => array(),
+				'small'  => array(),
+				'del'    => array(),
+				'ins'    => array(),
+				'span'   => array(
+					'style' => array(),
+					'class' => array(),
+				),
+			);
+			$td                = self::table_td($is_table);
+			$allow_tag         = array('td' => array());
+			ob_start();
+			echo wp_kses($td['start'], $allow_tag);
+			include BOP_Functions::bop_locate_template('item/subtitle.php');
+			echo wp_kses($td['end'], $allow_tag);
+			$subtitle = apply_filters('bop_item_subtitle', ob_get_clean());
+			echo wp_kses_post($subtitle);
+		}
+	}
 
 	/**
 	 * Show Post Content html.
@@ -307,10 +380,10 @@ class BOP_HTML
 	 * @param int   $visitor_count views count.
 	 * @return void
 	 */
-	public static function bop_event_fildes_html($sorter, $visitor_count, $post, $is_table = false)
+	public static function bop_book_fildes_html($sorter, $visitor_count, $post, $is_table = false)
 	{
-		$_meta_settings   = BOP_Functions::bop_metabox_value('bop_event_fildes', $sorter);
-		$event_fildes_fields = BOP_Functions::bop_metabox_value('bop_event_fildes_group', $_meta_settings);
+		$_meta_settings   = BOP_Functions::bop_metabox_value('bop_book_fildes', $sorter);
+		$event_fildes_fields = BOP_Functions::bop_metabox_value('bop_book_fildes_group', $_meta_settings);
 		$show_event_fildes   = BOP_Functions::bop_metabox_value('show_event_fildes', $_meta_settings, true);
 		$_event_meta_separator  = BOP_Functions::bop_metabox_value('event_meta_separator', $_meta_settings);
 
@@ -345,6 +418,9 @@ class BOP_HTML
 					case 'bop_post_title':
 						self::bop_post_title($sorter, $layout, $options, $post, $is_table);
 						break;
+					case 'bop_post_subtitle':
+						self::bop_post_subtitle($sorter, $layout, $options, $post, $is_table);
+						break;
 					case 'bop_post_content':
 						self::bop_content_html($sorter, $options, $post, $is_table);
 						break;
@@ -354,8 +430,8 @@ class BOP_HTML
 					case 'bop_post_meta':
 						self::bop_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
-					case 'bop_event_fildes':
-						self::bop_event_fildes_html($sorter, $visitor_count, $post, $is_table);
+					case 'bop_book_fildes':
+						self::bop_book_fildes_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'bop_social_share':
 						self::bop_social_share_html($sorter, $options, $post, $is_table);
@@ -387,6 +463,9 @@ class BOP_HTML
 					case 'bop_post_title':
 						self::bop_post_title($sorter, $layout, $options, $post, $is_table);
 						break;
+					case 'bop_post_subtitle':
+						self::bop_post_subtitle($sorter, $layout, $options, $post, $is_table);
+						break;
 					case 'bop_post_content':
 						self::bop_content_html($sorter, $options, $post, $is_table);
 						break;
@@ -396,8 +475,8 @@ class BOP_HTML
 					case 'bop_post_meta':
 						self::bop_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
-					case 'bop_event_fildes':
-						self::bop_event_fildes_html($sorter, $visitor_count, $post, $is_table);
+					case 'bop_book_fildes':
+						self::bop_book_fildes_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'bop_social_share':
 						self::bop_social_share_html($sorter, $options, $post, $is_table);
@@ -605,6 +684,26 @@ class BOP_HTML
 			do_action('bop_after_section_title');
 			$section_title = apply_filters('bop_filter_section_title', ob_get_clean());
 			echo wp_kses_post($section_title);
+		}
+	}
+	/**
+	 * Section subtitle
+	 *
+	 * @param int $bop_id Shortcode id.
+	 * @return void
+	 */
+
+	public static function bop_section_subtitle($section_subtitle_text, $show_section_subtitle)
+	{
+
+		if ($show_section_subtitle) {
+			$section_subtitle_text = apply_filters('bop_section_subtitle_text', $section_subtitle_text);
+			ob_start();
+			do_action('bop_before_section_subtitle');
+			include BOP_Functions::bop_locate_template('section-subtitle.php');
+			do_action('bop_after_section_subtitle');
+			$section_subtitle = apply_filters('bop_filter_section_subtitle', ob_get_clean());
+			echo wp_kses_post($section_subtitle);
 		}
 	}
 
