@@ -128,6 +128,9 @@
   margin: 0;
   padding: 0;
   line-height: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .bookify__item .bookify__item--meta ul li {
@@ -150,7 +153,12 @@
   text-decoration: none;
   box-shadow: none;
 }
-
+.bookify__item .bookify__item--meta ul li,
+.bookify__item .bookify__item--meta ul li a {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
 .bookify__item .bookify__item__content {
   margin-bottom: 16px;
 }
@@ -857,4 +865,21 @@
 .bookify__item.ta-overlay .bookify__item__details .bookify__item__content p {
   color: #fff;
   margin-bottom: 10px;
+}
+.bookify__item__category {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.bookify__item__category li {
+  list-style: none;
+}
+.bookify__item__category li a {
+  padding: 3px 10px;
+  background-color: #1a1668;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
 }

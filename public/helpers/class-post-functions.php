@@ -1041,7 +1041,6 @@ class BOP_Functions
 	public static function bop_post_thumb_taxonomy($taxonomy, $id, $meta_icon = null)
 	{
 		$terms = get_the_terms($id, $taxonomy);
-
 		if (!empty($terms) && !is_wp_error($terms)) {
 			$first_term = reset($terms); // Get the first term
 
@@ -1049,6 +1048,26 @@ class BOP_Functions
 				return '<a href="' . get_tag_link($first_term->term_id) . '">' . $first_term->name . '</a>';
 			}
 		}
+	}
+	/**
+	 * Show category.
+	 *
+	 * @param integer $post_id The post ID.
+	 * @return statement.
+	 */
+	public static function bop_taxonomy($taxonomy, $id, $meta_icon = null)
+	{
+		$terms = get_the_terms($id, $taxonomy);
+		$result = '';
+
+		if (!empty($terms) && !is_wp_error($terms)) {
+			foreach ($terms as $term) {
+				$result .= '<a href="' . get_term_link($term->term_id) . '">' . $term->name . '</a> ';
+			}
+		}
+
+		return $result;
+
 	}
 
 	/**

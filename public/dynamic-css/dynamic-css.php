@@ -453,7 +453,7 @@ if (!empty($_post_meta_typography['font-family'])) {
 	$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item-thumb-area .bop-category a{font-family: {$_post_meta_typography['font-family']};}";
 }
 
-// Event Meta.
+// Book Meta.
 $_book_fildes_typography    = isset($view_options['book_fildes_typography']) && array_key_exists('font-size', $view_options['book_fildes_typography']) ? $view_options['book_fildes_typography'] : array(
 	'color'              => '#888',
 	'hover_color'        => '#876585',
@@ -506,6 +506,90 @@ if ('zigzag_layout' !== $layouts['bop_layout_preset']) {
 $custom_css .= '}';
 
 $custom_css .= "#bop_wrapper-{$bop_id} .bookify__item--meta li a:hover{color: {$_book_fildes_typography['hover_color']};}";
+
+// Book Category
+$_book_category    = isset($view_options['book_category']) && array_key_exists('font-size', $view_options['book_category']) ? $view_options['book_category'] : array(
+	'color'              => '#ffffff',
+	'hover_color'        => '#ffffff',
+	'font-family'        => '',
+	'font-weight'        => '',
+	'subset'             => '',
+	'font-size'          => '14',
+	'tablet-font-size'   => '14',
+	'mobile-font-size'   => '12',
+	'line-height'        => '16',
+	'tablet-line-height' => '16',
+	'mobile-line-height' => '16',
+	'letter-spacing'     => '0',
+	'text-align'         => 'left',
+	'text-transform'     => 'none',
+	'type'               => '',
+	'unit'               => 'px',
+);
+$book_fildes_font_weight    = !empty($_book_category['font-weight']) ? $_book_category['font-weight'] : '400';
+$book_fildes_font_style     = !empty($_book_category['font-style']) ? $_book_category['font-style'] : 'normal';
+$book_fildes_margin         = isset($post_sorter['bop_book_fildes']['book_fildes_margin']) ? $post_sorter['bop_book_fildes']['book_fildes_margin'] : array(
+	'top'    => '0',
+	'right'  => '0',
+	'bottom' => '15',
+	'left'   => '0',
+);
+$book_fildes_between_margin = isset($post_sorter['bop_book_fildes']['book_fildes_between_margin']) ? $post_sorter['bop_book_fildes']['book_fildes_between_margin'] : array(
+	'top'    => '0',
+	'right'  => '',
+	'bottom' => '',
+	'left'   => '0',
+);
+$book_category_settings = isset($post_sorter['bop_book_category']) ? $post_sorter['bop_book_category'] : '';
+$bop_category_margin      = isset($post_content_settings['bop_category_margin']) ? $post_content_settings['bop_category_margin'] : array(
+	'top'    => '0',
+	'right'  => '0',
+	'bottom' => '15',
+	'left'   => '0',
+);
+$bop_book_category_padding      = isset($post_content_settings['bop_book_category_padding']) ? $post_content_settings['bop_book_category_padding'] : array(
+	'top'    => '3',
+	'right'  => '10',
+	'bottom' => '3',
+	'left'   => '10',
+);
+$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item__category li,#bop_wrapper-{$bop_id} td.bookify__item__category,#bop_wrapper-{$bop_id} .bookify__item__category ul,#bop_wrapper-{$bop_id} .bookify__item__category li a{";
+if (!empty($_book_category['font-family'])) {
+	$custom_css .= "font-family: {$_book_category['font-family']};font-weight: {$book_fildes_font_weight};font-style: {$book_fildes_font_style};";
+}
+
+$custom_css .= "text-transform: {$_book_category['text-transform']};font-size: {$_book_category['font-size']}px;line-height: {$_book_category['line-height']}px;letter-spacing: {$_book_category['letter-spacing']}px;color: {$_book_category['color']};}#bop_wrapper-{$bop_id} .bookify__item__category.event_meta{margin: {$book_fildes_margin['top']}px {$book_fildes_margin['right']}px {$book_fildes_margin['bottom']}px {$book_fildes_margin['left']}px;";
+if ('zigzag_layout' !== $layouts['bop_layout_preset']) {
+	$custom_css .= "text-align: {$_book_category['text-align']};";
+}
+$custom_css .= '}';
+
+$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item__category li a:hover{color: {$_book_category['hover_color']};}";
+
+$_book_category_color  = isset($post_content_settings['bop_book_category_bg']) ? $post_content_settings['bop_book_category_bg'] : array(
+	'standard'     => '#ffffff',
+	'hover'        => '#ffffff',
+	'bg'           => '#c27b7f',
+	'hover_bg'     => '#876585',
+	'border'       => '#876585',
+	'hover_border' => '#876585',
+);
+$_book_category_border_radius = isset($book_category_settings['bop_category_button_radius']) ? $book_category_settings['bop_category_button_radius'] : array(
+	'all'  => '0',
+	'unit' => 'px',
+);
+$custom_css    .= "#bop_wrapper-{$bop_id} .bookify__item__category li a{ background: {$_book_category_color['bg']}; color: {$_book_category_color['standard']}; border-color: {$_book_category_color['border']}; border-radius: {$_book_category_border_radius['all']}{$_book_category_border_radius['unit']}; padding: {$bop_book_category_padding['top']}px {$bop_book_category_padding['right']}px {$bop_book_category_padding['bottom']}px {$bop_book_category_padding['left']}px; } #bop_wrapper-{$bop_id} .bookify__item__category li a:hover { background: {$_book_category_color['hover_bg']}; color: {$_book_category_color['hover']}; border-color: {$_book_category_color['hover_border']};  }";
+$custom_css    .= "#bop_wrapper-{$bop_id} .bookify__item__category li { margin: {$bop_category_margin['top']}px {$bop_category_margin['right']}px {$bop_category_margin['bottom']}px {$bop_category_margin['left']}px;}";
+
+// Book Price
+$book_price_settings = isset($post_sorter['bop_book_price']) ? $post_sorter['bop_book_price'] : '';
+$book_price_margin = isset($book_price_settings['book_fildes_margin']) ? $book_price_settings['book_fildes_margin'] : array(
+	'top'    => '0',
+	'right'  => '0',
+	'bottom' => '20',
+	'left'   => '0',
+);
+$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item__price{margin: {$book_price_margin['top']}px {$book_price_margin['right']}px {$book_price_margin['bottom']}px {$book_price_margin['left']}px;}";
 
 // Post Pill Meta Color. ( button style meta ).
 $book_fildes_group = isset($post_sorter['bop_book_fildes']['bop_book_fildes_group']) ? $post_sorter['bop_book_fildes']['bop_book_fildes_group'] : '';

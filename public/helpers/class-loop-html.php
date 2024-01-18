@@ -173,6 +173,29 @@ class BOP_HTML
 	 * @param array $options options.
 	 * @return void
 	 */
+	public static function bop_book_category($sorter, $layout, $options, $post, $bookify_postmeta, $is_table) {
+		$book_content_setting = BOP_Functions::bop_metabox_value('bop_book_category', $sorter);
+		$show_book_category    = BOP_Functions::bop_metabox_value('show_book_category', $book_content_setting);
+		$bop_book_category_taxonomy    = BOP_Functions::bop_metabox_value('bop_book_category_taxonomy', $book_content_setting);
+		$td                   = self::table_td($is_table);
+		$allow_tag            = array('td' => array());
+		if($show_book_category) {
+			ob_start();
+			echo wp_kses($td['start'], $allow_tag);
+			include BOP_Functions::bop_locate_template('item/category.php');
+			echo wp_kses($td['end'], $allow_tag);
+			$category = apply_filters('bop_book_category', ob_get_clean());
+			echo wp_kses_post($category);
+		}
+	}
+
+	/**
+	 * Show Post Content html.
+	 *
+	 * @param array $sorter The field ID array.
+	 * @param array $options options.
+	 * @return void
+	 */
 	public static function bop_content_html($sorter, $options, $post, $is_table = false)
 	{
 		$post_content_setting = BOP_Functions::bop_metabox_value('bop_post_content', $sorter);
@@ -197,7 +220,7 @@ class BOP_HTML
 	 * @param array $options options.
 	 * @return void
 	 */
-	public static function bop_read_more_html($sorter, $options, $post, $bookify_postmeta, $is_table = false)
+	public static function bop_read_more_html($sorter, $options, $post, $is_table = false)
 	{
 		$post_content_setting = BOP_Functions::bop_metabox_value('bop_post_content_readmore', $sorter);
 		$show_read_more                = BOP_Functions::bop_metabox_value('show_read_more', $post_content_setting);
@@ -205,7 +228,29 @@ class BOP_HTML
 		$td                            = self::table_td($is_table);
 		$allow_tag                     = array('td' => array());
 		if ($show_read_more) {
+			ob_start();
 			self::bop_readmore($post_content_setting, $bop_content_type, $options, $post);
+			$readmore = apply_filters('bop_post_content_readmore', ob_get_clean());
+			echo wp_kses_post($readmore);
+		}
+	}
+	/**
+	 * Show Post Content html.
+	 *
+	 * @param array $sorter The field ID array.
+	 * @param array $options options.
+	 * @return void
+	 */
+	public static function bop_buy_now_button_html($sorter, $options, $post, $bookify_postmeta, $is_table = false)
+	{
+		
+		$post_content_setting = BOP_Functions::bop_metabox_value('bop_post_buy_now_button', $sorter);
+		$show_buy_now_button                = BOP_Functions::bop_metabox_value('show_bye_now_button', $post_content_setting);
+		$bop_content_type              = BOP_Functions::bop_metabox_value('post_content_type', $post_content_setting);
+		$td                            = self::table_td($is_table);
+		$allow_tag                     = array('td' => array());
+		if ($show_buy_now_button) {
+			self::bop_buy_now_button($post_content_setting, $bop_content_type, $options, $post, $bookify_postmeta);
 		}
 	}
 
@@ -236,6 +281,20 @@ class BOP_HTML
 		include BOP_Functions::bop_locate_template('item/read-more.php');
 		$read_more_button = apply_filters('bop_read_more_btn', ob_get_clean(), $link = get_permalink($post));
 		echo wp_kses_post($read_more_button);
+	}
+	/**
+	 * Bye now link function
+	 *
+	 * @param array $view_options Bye now link options array.
+	 * @param array $content_type The content type.
+	 * @param array $options The parent of this field.
+	 */
+	public static function bop_buy_now_button($view_options, $content_type, $options, $post, $bookify_postmeta)
+	{
+		ob_start();
+		include BOP_Functions::bop_locate_template('item/buy-now-button.php');
+		$buy_now_button_button = apply_filters('bop_buy_now_button_btn', ob_get_clean(), $link = get_permalink($post));
+		echo wp_kses_post($buy_now_button_button);
 	}
 
 	/**
@@ -372,7 +431,7 @@ class BOP_HTML
 		}
 	}
 	/**
-	 * Event fildes HTML
+	 * Book fildes HTML
 	 *
 	 * @param array $sorter post content option array.
 	 * @param int   $visitor_count views count.
@@ -393,6 +452,26 @@ class BOP_HTML
 			echo wp_kses_post($item_meta);
 		}
 	}
+	/**
+	 * Book Price HTML
+	 *
+	 * @param array $sorter post content option array.
+	 * @param int   $visitor_count views count.
+	 * @return void
+	 */
+	public static function bop_book_price_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table = false)
+	{
+		$_bop_book_price   = BOP_Functions::bop_metabox_value('bop_book_price', $sorter);
+		$show_book_price = BOP_Functions::bop_metabox_value('show_book_price', $_bop_book_price);
+		
+		if ('none' != $show_book_price) {
+
+			ob_start();
+			include BOP_Functions::bop_locate_template('item/price.php');
+			$price = apply_filters('bop_price', ob_get_clean());
+			echo wp_kses_post($price);
+		}
+	}
 
 
 	/**
@@ -407,6 +486,7 @@ class BOP_HTML
 	 */
 	public static function bop_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $bookify_postmeta, $is_table = false)
 	{
+
 		if ($sorter) {
 			foreach ($sorter as $style_key => $style_value) {
 				switch ($style_key) {
@@ -419,17 +499,26 @@ class BOP_HTML
 					case 'bop_post_subtitle':
 						self::bop_post_subtitle($sorter, $layout, $options, $post, $bookify_postmeta, $is_table);
 						break;
+					case 'bop_book_category':
+						self::bop_book_category($sorter, $layout, $options, $post, $bookify_postmeta, $is_table);
+						break;
 					case 'bop_post_content':
 						self::bop_content_html($sorter, $options, $post, $is_table);
 						break;
 					case 'bop_post_content_readmore':
-						self::bop_read_more_html($sorter, $options, $post, $bookify_postmeta, $is_table);
+						self::bop_read_more_html($sorter, $options, $post, $is_table);
+						break;
+					case 'bop_post_buy_now_button':
+						self::bop_buy_now_button_html($sorter, $options, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_post_meta':
 						self::bop_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'bop_book_fildes':
 						self::bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
+						break;
+					case 'bop_book_price':
+						self::bop_book_price_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_social_share':
 						self::bop_social_share_html($sorter, $options, $post, $is_table);
@@ -464,17 +553,26 @@ class BOP_HTML
 					case 'bop_post_subtitle':
 						self::bop_post_subtitle($sorter, $layout, $options, $post, $bookify_postmeta, $is_table);
 						break;
+					case 'bop_book_category':
+						self::bop_book_category($sorter, $layout, $options, $post, $bookify_postmeta, $is_table);
+						break;
 					case 'bop_post_content':
 						self::bop_content_html($sorter, $options, $post, $is_table);
 						break;
 					case 'bop_post_content_readmore':
-						self::bop_read_more_html($sorter, $options, $post, $bookify_postmeta, $is_table);
+						self::bop_read_more_html($sorter, $options, $post, $is_table);
+						break;
+					case 'bop_post_buy_now_button':
+						self::bop_buy_now_button_html($sorter, $options, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_post_meta':
 						self::bop_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'bop_book_fildes':
 						self::bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
+						break;
+					case 'bop_book_price':
+						self::bop_book_price_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_social_share':
 						self::bop_social_share_html($sorter, $options, $post, $is_table);
