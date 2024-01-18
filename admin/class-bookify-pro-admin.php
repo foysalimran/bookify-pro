@@ -44,7 +44,7 @@ class Bookify_Pro_Admin
 		// Autoload system.
 		spl_autoload_register(array($this, 'autoload'));
 
-		BOP_Metaboxes::bookify_metabox('ta_bop_postmeta');
+		BOP_Metaboxes::bookify_metabox('ta_bookify_postmeta');
 		BOP_Metaboxes::layout_metabox('ta_bookify_layouts');
 		BOP_Metaboxes::option_metabox('ta_bookify_options');
 		BOP_Metaboxes::shortcode_metabox('ta_bookify_shortcode');

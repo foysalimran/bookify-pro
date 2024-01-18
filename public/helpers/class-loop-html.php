@@ -100,9 +100,8 @@ class BOP_HTML
 	 * @param string $layout layout preset.
 	 * @return void
 	 */
-	public static function bop_post_subtitle($sorter, $layout, $options, $post, $is_table = false)
-	{
-
+	public static function bop_post_subtitle($sorter, $layout, $options, $post, $bookify_postmeta, $is_table = false)
+	{		
 		$_meta_settings     = BOP_Functions::bop_metabox_value('bop_post_meta', $sorter);
 		$post_meta_fields   = BOP_Functions::bop_metabox_value('bop_post_meta_group', $_meta_settings);
 		$show_post_meta     = BOP_Functions::bop_metabox_value('show_post_meta', $_meta_settings, true);
@@ -132,7 +131,7 @@ class BOP_HTML
 		$post_subtitle_setting = isset($sorter['bop_post_subtitle']) ? $sorter['bop_post_subtitle'] : '';
 		$show_post_subtitle    = BOP_Functions::bop_metabox_value('show_post_subtitle', $post_subtitle_setting);
 
-		$bop_post_subtitle = get_the_subtitle($post->ID);
+		$bop_post_subtitle = $bookify_postmeta['bop_subtitle'];
 
 		if ($show_post_subtitle && !empty($bop_post_subtitle)) {
 			// Post Title Settings.
@@ -178,10 +177,10 @@ class BOP_HTML
 	{
 		$post_content_setting = BOP_Functions::bop_metabox_value('bop_post_content', $sorter);
 		$show_post_content    = BOP_Functions::bop_metabox_value('show_post_content', $post_content_setting);
-		$show_read_more                = BOP_Functions::bop_metabox_value('show_read_more', $post_content_setting);
-		$bop_content_type              = BOP_Functions::bop_metabox_value('post_content_type', $post_content_setting);
-		$td                            = self::table_td($is_table);
-		$allow_tag                     = array('td' => array());
+		$show_read_more       = BOP_Functions::bop_metabox_value('show_read_more', $post_content_setting);
+		$bop_content_type     = BOP_Functions::bop_metabox_value('post_content_type', $post_content_setting);
+		$td                   = self::table_td($is_table);
+		$allow_tag            = array('td' => array());
 		if ($show_post_content || $show_read_more) {
 			ob_start();
 			echo wp_kses($td['start'], $allow_tag);
@@ -198,7 +197,7 @@ class BOP_HTML
 	 * @param array $options options.
 	 * @return void
 	 */
-	public static function bop_read_more_html($sorter, $options, $post, $is_table = false)
+	public static function bop_read_more_html($sorter, $options, $post, $bookify_postmeta, $is_table = false)
 	{
 		$post_content_setting = BOP_Functions::bop_metabox_value('bop_post_content_readmore', $sorter);
 		$show_read_more                = BOP_Functions::bop_metabox_value('show_read_more', $post_content_setting);
@@ -206,7 +205,7 @@ class BOP_HTML
 		$td                            = self::table_td($is_table);
 		$allow_tag                     = array('td' => array());
 		if ($show_read_more) {
-			self::bop_readmore( $post_content_setting, $bop_content_type, $options, $post );
+			self::bop_readmore($post_content_setting, $bop_content_type, $options, $post);
 		}
 	}
 
@@ -322,7 +321,6 @@ class BOP_HTML
 			}
 		}
 	}
-
 	/**
 	 * Post Social Html
 	 *
@@ -380,17 +378,17 @@ class BOP_HTML
 	 * @param int   $visitor_count views count.
 	 * @return void
 	 */
-	public static function bop_book_fildes_html($sorter, $visitor_count, $post, $is_table = false)
+	public static function bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table = false)
 	{
 		$_meta_settings   = BOP_Functions::bop_metabox_value('bop_book_fildes', $sorter);
-		$event_fildes_fields = BOP_Functions::bop_metabox_value('bop_book_fildes_group', $_meta_settings);
-		$show_event_fildes   = BOP_Functions::bop_metabox_value('show_event_fildes', $_meta_settings, true);
+		$book_fildes_fields = BOP_Functions::bop_metabox_value('bop_book_fildes_group', $_meta_settings);
+		$show_book_fildes   = BOP_Functions::bop_metabox_value('show_book_fildes', $_meta_settings, true);
 		$_event_meta_separator  = BOP_Functions::bop_metabox_value('event_meta_separator', $_meta_settings);
 
-		if ($event_fildes_fields && $show_event_fildes) {
-			
+		if ($book_fildes_fields && $show_book_fildes) {
+
 			ob_start();
-			include BOP_Functions::bop_locate_template('item/event-fildes.php');
+			include BOP_Functions::bop_locate_template('item/book-fildes.php');
 			$item_meta = apply_filters('bop_item_meta', ob_get_clean());
 			echo wp_kses_post($item_meta);
 		}
@@ -407,7 +405,7 @@ class BOP_HTML
 	 * @param object $post The Post object.
 	 * @return void
 	 */
-	public static function bop_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $is_table = false)
+	public static function bop_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $bookify_postmeta, $is_table = false)
 	{
 		if ($sorter) {
 			foreach ($sorter as $style_key => $style_value) {
@@ -419,25 +417,25 @@ class BOP_HTML
 						self::bop_post_title($sorter, $layout, $options, $post, $is_table);
 						break;
 					case 'bop_post_subtitle':
-						self::bop_post_subtitle($sorter, $layout, $options, $post, $is_table);
+						self::bop_post_subtitle($sorter, $layout, $options, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_post_content':
 						self::bop_content_html($sorter, $options, $post, $is_table);
 						break;
 					case 'bop_post_content_readmore':
-						self::bop_read_more_html($sorter, $options, $post, $is_table);
+						self::bop_read_more_html($sorter, $options, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_post_meta':
 						self::bop_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'bop_book_fildes':
-						self::bop_book_fildes_html($sorter, $visitor_count, $post, $is_table);
+						self::bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_social_share':
 						self::bop_social_share_html($sorter, $options, $post, $is_table);
 						break;
 					case 'bop_custom_fields':
-			
+
 						bop_custom_field_html($post, $sorter, true, $is_table);
 						break;
 				}
@@ -455,7 +453,7 @@ class BOP_HTML
 	 * @param array  $options Shortcode options.
 	 * @return void
 	 */
-	public static function bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $is_table = false)
+	public static function bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $bookify_postmeta, $is_table = false)
 	{
 		if ($sorter) {
 			foreach ($sorter as $style_key => $style_value) {
@@ -464,25 +462,25 @@ class BOP_HTML
 						self::bop_post_title($sorter, $layout, $options, $post, $is_table);
 						break;
 					case 'bop_post_subtitle':
-						self::bop_post_subtitle($sorter, $layout, $options, $post, $is_table);
+						self::bop_post_subtitle($sorter, $layout, $options, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_post_content':
 						self::bop_content_html($sorter, $options, $post, $is_table);
 						break;
 					case 'bop_post_content_readmore':
-						self::bop_read_more_html($sorter, $options, $post, $is_table);
+						self::bop_read_more_html($sorter, $options, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_post_meta':
 						self::bop_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'bop_book_fildes':
-						self::bop_book_fildes_html($sorter, $visitor_count, $post, $is_table);
+						self::bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_social_share':
 						self::bop_social_share_html($sorter, $options, $post, $is_table);
 						break;
 					case 'bop_custom_fields':
-						bop_custom_field_html( $post, $sorter, true, $is_table );
+						bop_custom_field_html($post, $sorter, true, $is_table);
 						break;
 				}
 			}
@@ -496,8 +494,8 @@ class BOP_HTML
 	 */
 	public static function bop_alt_post_class($options, $layout_preset)
 	{
-		if ( 'list_layout' === $layout_preset ) {
-			if ( 'left-thumb' === BOP_Functions::bop_metabox_value( 'post_list_orientation', $options ) ) {
+		if ('list_layout' === $layout_preset) {
+			if ('left-thumb' === BOP_Functions::bop_metabox_value('post_list_orientation', $options)) {
 				$bop_alt_post_class = 'bookify__item left-thumb';
 			} else {
 				$bop_alt_post_class = 'right-thumb bookify__item';
@@ -739,6 +737,7 @@ class BOP_HTML
 		$all_posts = $bop_query->posts;
 		foreach ($all_posts as $key => $post) {
 			$visitor_count = get_post_meta($post->ID, '_post_views_count', true);
+			$bookify_postmeta = get_post_meta($post->ID, 'ta_bookify_postmeta', true);
 			self::bop_post_loop($options, $layout, $sorter, $bop_count, $view_id, $post);
 			$bop_count++;
 		}
@@ -777,7 +776,7 @@ class BOP_HTML
 		$bop_post_columns = '';
 		if ('carousel_layout' === $layout) {
 			$bop_post_columns .= ' swiper-slide swiper-lazy';
-		} elseif ( 'list_layout' === $layout ) {
+		} elseif ('list_layout' === $layout) {
 			$bop_post_columns = 'ta-col-xs-1';
 		} else {
 			$bop_post_columns .= " ta-col-xs-$columns[mobile] ta-col-sm-$columns[mobile_landscape] ta-col-md-$columns[tablet] ta-col-lg-$columns[desktop] ta-col-xl-$columns[lg_desktop]";
@@ -799,6 +798,8 @@ class BOP_HTML
 		$number_of_columns = BOP_Functions::bop_metabox_value('bop_number_of_columns', $options);
 		$slide_effect      = BOP_Functions::bop_metabox_value('bop_slide_effect', $options);
 		$visitor_count     = get_post_meta($post->ID, '_post_views_count', true);
+		$bookify_postmeta     = get_post_meta($post->ID, 'ta_bookify_postmeta', true);
+
 		$lazy_load         = BOP_Functions::bop_metabox_value('bop_lazy_load', $options);
 		if ('cube' === $slide_effect || 'flip' === $slide_effect) {
 			$lazy_load = 'false';
@@ -808,7 +809,7 @@ class BOP_HTML
 			<div class="<?php echo esc_attr(self::bop_post_responsive_columns($layout, $number_of_columns, $post->ID)); ?>">
 				<div class="bookify__item bop-item-<?php echo esc_attr($post->ID); ?>" data-id="<?php echo esc_attr($post->ID); ?>">
 					<?php
-					self::bop_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options);
+					self::bop_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $bookify_postmeta);
 					?>
 				</div>
 				<?php if ('carousel_layout' === $layout && $lazy_load && 'ticker' !== BOP_Functions::bop_metabox_value('bop_carousel_mode', $options)) { ?>
@@ -832,7 +833,7 @@ class BOP_HTML
 					?>
 					<div class="bookify__item__details <?php echo esc_html($animation_class); ?>">
 						<?php
-						self::bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options);
+						self::bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $bookify_postmeta, $options);
 						?>
 					</div>
 				</div>

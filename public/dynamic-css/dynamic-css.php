@@ -454,7 +454,7 @@ if (!empty($_post_meta_typography['font-family'])) {
 }
 
 // Event Meta.
-$_event_fildes_typography    = isset($view_options['event_fildes_typography']) && array_key_exists('font-size', $view_options['event_fildes_typography']) ? $view_options['event_fildes_typography'] : array(
+$_book_fildes_typography    = isset($view_options['book_fildes_typography']) && array_key_exists('font-size', $view_options['book_fildes_typography']) ? $view_options['book_fildes_typography'] : array(
 	'color'              => '#888',
 	'hover_color'        => '#876585',
 	'font-family'        => '',
@@ -472,22 +472,22 @@ $_event_fildes_typography    = isset($view_options['event_fildes_typography']) &
 	'type'               => '',
 	'unit'               => 'px',
 );
-$event_fildes_font_weight    = !empty($_event_fildes_typography['font-weight']) ? $_event_fildes_typography['font-weight'] : '400';
-$event_fildes_font_style     = !empty($_event_fildes_typography['font-style']) ? $_event_fildes_typography['font-style'] : 'normal';
-$event_fildes_margin         = isset($post_sorter['bop_book_fildes']['event_fildes_margin']) ? $post_sorter['bop_book_fildes']['event_fildes_margin'] : array(
+$book_fildes_font_weight    = !empty($_book_fildes_typography['font-weight']) ? $_book_fildes_typography['font-weight'] : '400';
+$book_fildes_font_style     = !empty($_book_fildes_typography['font-style']) ? $_book_fildes_typography['font-style'] : 'normal';
+$book_fildes_margin         = isset($post_sorter['bop_book_fildes']['book_fildes_margin']) ? $post_sorter['bop_book_fildes']['book_fildes_margin'] : array(
 	'top'    => '0',
 	'right'  => '0',
 	'bottom' => '15',
 	'left'   => '0',
 );
-$event_fildes_between_margin = isset($post_sorter['bop_book_fildes']['event_fildes_between_margin']) ? $post_sorter['bop_book_fildes']['event_fildes_between_margin'] : array(
+$book_fildes_between_margin = isset($post_sorter['bop_book_fildes']['book_fildes_between_margin']) ? $post_sorter['bop_book_fildes']['book_fildes_between_margin'] : array(
 	'top'    => '0',
 	'right'  => '',
 	'bottom' => '',
 	'left'   => '0',
 );
 $custom_css              .= "#bop_wrapper-{$bop_id} .bookify__item .bop-category a,#bop_wrapper-{$bop_id}  .bookify__item .bookify__item--meta ul li{
-	margin: {$event_fildes_between_margin['top']}px {$event_fildes_between_margin['right']}px {$event_fildes_between_margin['bottom']}px {$event_fildes_between_margin['left']}px;
+	margin: {$book_fildes_between_margin['top']}px {$book_fildes_between_margin['right']}px {$book_fildes_between_margin['bottom']}px {$book_fildes_between_margin['left']}px;
 }";
 $event_separator_color = isset($post_sorter['bop_book_fildes']['event_meta_separator_color']) ? $post_sorter['bop_book_fildes']['event_meta_separator_color'] : "";
 $custom_css              .= "#bop_wrapper-{$bop_id} .bookify__item .event_separator{
@@ -495,63 +495,63 @@ $custom_css              .= "#bop_wrapper-{$bop_id} .bookify__item .event_separa
 }";
 
 $custom_css .= "#bop_wrapper-{$bop_id} .bookify__item--meta li,#bop_wrapper-{$bop_id} td.bookify__item--meta,#bop_wrapper-{$bop_id} .bookify__item--meta ul,#bop_wrapper-{$bop_id} .bookify__item--meta li a{";
-if (!empty($_event_fildes_typography['font-family'])) {
-	$custom_css .= "font-family: {$_event_fildes_typography['font-family']};font-weight: {$event_fildes_font_weight};font-style: {$event_fildes_font_style};";
+if (!empty($_book_fildes_typography['font-family'])) {
+	$custom_css .= "font-family: {$_book_fildes_typography['font-family']};font-weight: {$book_fildes_font_weight};font-style: {$book_fildes_font_style};";
 }
 
-$custom_css .= "text-transform: {$_event_fildes_typography['text-transform']};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;color: {$_event_fildes_typography['color']};}#bop_wrapper-{$bop_id} .bookify__item--meta.event_meta{margin: {$event_fildes_margin['top']}px {$event_fildes_margin['right']}px {$event_fildes_margin['bottom']}px {$event_fildes_margin['left']}px;";
+$custom_css .= "text-transform: {$_book_fildes_typography['text-transform']};font-size: {$_book_fildes_typography['font-size']}px;line-height: {$_book_fildes_typography['line-height']}px;letter-spacing: {$_book_fildes_typography['letter-spacing']}px;color: {$_book_fildes_typography['color']};}#bop_wrapper-{$bop_id} .bookify__item--meta.event_meta{margin: {$book_fildes_margin['top']}px {$book_fildes_margin['right']}px {$book_fildes_margin['bottom']}px {$book_fildes_margin['left']}px;";
 if ('zigzag_layout' !== $layouts['bop_layout_preset']) {
-	$custom_css .= "text-align: {$_event_fildes_typography['text-align']};";
+	$custom_css .= "text-align: {$_book_fildes_typography['text-align']};";
 }
 $custom_css .= '}';
 
-$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item--meta li a:hover{color: {$_event_fildes_typography['hover_color']};}";
+$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item--meta li a:hover{color: {$_book_fildes_typography['hover_color']};}";
 
 // Post Pill Meta Color. ( button style meta ).
-$event_fildes_group = isset($post_sorter['bop_book_fildes']['bop_book_fildes_group']) ? $post_sorter['bop_book_fildes']['bop_book_fildes_group'] : '';
+$book_fildes_group = isset($post_sorter['bop_book_fildes']['bop_book_fildes_group']) ? $post_sorter['bop_book_fildes']['bop_book_fildes_group'] : '';
 $title_above     = 1;
 $over_thumb      = 1;
-$show_event_fildes  = isset($post_sorter['bop_book_fildes']['show_event_fildes']) ? $post_sorter['bop_book_fildes']['show_event_fildes'] : true;
+$show_book_fildes  = isset($post_sorter['bop_book_fildes']['show_book_fildes']) ? $post_sorter['bop_book_fildes']['show_book_fildes'] : true;
 
-if (is_array($event_fildes_group) && $show_event_fildes) {
-	foreach ($event_fildes_group as $key => $event_fildes) {
-		$selected_meta      = $event_fildes['select_book_fildes'];
-		$meta_position      = isset($event_fildes['bop_meta_position']) ? $event_fildes['bop_meta_position'] : '';
-		$meta_pill_color    = isset($event_fildes['bop_meta_pill_color']) ? $event_fildes['bop_meta_pill_color'] : array(
+if (is_array($book_fildes_group) && $show_book_fildes) {
+	foreach ($book_fildes_group as $key => $book_fildes) {
+		$selected_meta      = $book_fildes['select_book_fildes'];
+		$meta_position      = isset($book_fildes['bop_meta_position']) ? $book_fildes['bop_meta_position'] : '';
+		$meta_pill_color    = isset($book_fildes['bop_meta_pill_color']) ? $book_fildes['bop_meta_pill_color'] : array(
 			'text' => '#fff',
 			'bg'   => '#c27b7f',
 		);
-		$bop_taxonomy       = isset($event_fildes['event_fildes_taxonomy']) ? $event_fildes['event_fildes_taxonomy'] : '';
+		$bop_taxonomy       = isset($book_fildes['book_fildes_taxonomy']) ? $book_fildes['book_fildes_taxonomy'] : '';
 		$bop_taxonomy_class = !empty($bop_taxonomy) ? ".{$bop_taxonomy}" : '';
 		$text_color         = $meta_pill_color['text'];
 		$bg                 = $meta_pill_color['bg'];
 		if ('taxonomy' === $selected_meta) {
 			if ('over_thumb' === $meta_position) {
-				$meta_over_thumb_position = isset($event_fildes['bop_meta_over_thump_position']) ? $event_fildes['bop_meta_over_thump_position'] : 'top_left';
+				$meta_over_thumb_position = isset($book_fildes['bop_meta_over_thump_position']) ? $book_fildes['bop_meta_over_thump_position'] : 'top_left';
 				$custom_css              .= "#bop_wrapper-{$bop_id} .bookify__item-thumb-area {$bop_taxonomy_class}.bop-category.{$meta_over_thumb_position} a {color: {$text_color}; background: {$bg};";
-				if (!empty($_event_fildes_typography['font-family'])) {
-					$custom_css .= "font-family: {$_event_fildes_typography['font-family']};font-weight: {$event_fildes_font_weight};font-style: {$event_fildes_font_style};";
+				if (!empty($_book_fildes_typography['font-family'])) {
+					$custom_css .= "font-family: {$_book_fildes_typography['font-family']};font-weight: {$book_fildes_font_weight};font-style: {$book_fildes_font_style};";
 				}
-				$custom_css .= "text-transform: {$_event_fildes_typography['text-transform']};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;
+				$custom_css .= "text-transform: {$_book_fildes_typography['text-transform']};font-size: {$_book_fildes_typography['font-size']}px;line-height: {$_book_fildes_typography['line-height']}px;letter-spacing: {$_book_fildes_typography['letter-spacing']}px;
 			}";
 				++$over_thumb;
 			}
 			if ('above_title' === $meta_position) {
 				$custom_css .= "#bop_wrapper-{$bop_id} {$bop_taxonomy_class}.bop-category.above_title{
-					text-align: {$_event_fildes_typography['text-align']};
+					text-align: {$_book_fildes_typography['text-align']};
 				}#bop_wrapper-{$bop_id} {$bop_taxonomy_class}.bop-category.above_title a{ color: {$text_color}; background: {$bg};";
-				if (!empty($_event_fildes_typography['font-family'])) {
-					$custom_css .= "font-family: {$_event_fildes_typography['font-family']};font-weight: {$event_fildes_font_weight};font-style: {$event_fildes_font_style};";
+				if (!empty($_book_fildes_typography['font-family'])) {
+					$custom_css .= "font-family: {$_book_fildes_typography['font-family']};font-weight: {$book_fildes_font_weight};font-style: {$book_fildes_font_style};";
 				}
-				$custom_css .= "text-transform: {$_event_fildes_typography['text-transform']};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;
+				$custom_css .= "text-transform: {$_book_fildes_typography['text-transform']};font-size: {$_book_fildes_typography['font-size']}px;line-height: {$_book_fildes_typography['line-height']}px;letter-spacing: {$_book_fildes_typography['letter-spacing']}px;
 			}";
 				++$title_above;
 			}
 		}
 	}
 }
-if (!empty($_event_fildes_typography['font-family'])) {
-	$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item-thumb-area .bop-category a{font-family: {$_event_fildes_typography['font-family']};}";
+if (!empty($_book_fildes_typography['font-family'])) {
+	$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item-thumb-area .bop-category a{font-family: {$_book_fildes_typography['font-family']};}";
 }
 
 // Post ReadMore Settings.

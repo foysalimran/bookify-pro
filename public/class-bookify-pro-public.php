@@ -232,7 +232,6 @@ class Bookify_Pro_Public {
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
-		// $bop_search_url     = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ) : '';
 		$layout        = get_post_meta($views_id, 'ta_bookify_layouts', true);
 		$layout_preset = isset($layout['bop_layout_preset']) ? $layout['bop_layout_preset'] : '';
 		$view_options  = get_post_meta($views_id, 'ta_bookify_options', true);
@@ -426,6 +425,7 @@ class Bookify_Pro_Public {
 		}
 		$bop_gl_id = $attribute['id']; // Bookify Pro global ID for Shortcode metaboxes.
 		// Preset Layouts.
+
 		$layout        = get_post_meta($bop_gl_id, 'ta_bookify_layouts', true);
 		$view_options  = get_post_meta($bop_gl_id, 'ta_bookify_options', true);
 		$section_title = get_the_title($bop_gl_id);

@@ -759,19 +759,19 @@ class BOP_Functions
 	 * Process all the event fildes.
 	 *
 	 * @param object $event The selected event.
-	 * @param array  $event_fildes_fields The selected event fildes to show.
+	 * @param array  $book_fildes_fields The selected event fildes to show.
 	 * @param int    $visitor_count Number of visitor saw the event.
 	 * @param string $fildes_separator The event fildes separator.
 	 * @param string $is_table the table layout check.
 	 * @return void
 	 */
-	public static function bop_get_event_fildes($post, $event_fildes_fields, $visitor_count, $meta_separator, $is_table)
+	public static function bop_get_book_fildes($post, $book_fildes_fields, $visitor_count, $meta_separator, $bookify_postmeta, $is_table)
 	{
 		$meta_wrapper_start_tag = !$is_table ? apply_filters('bop_book_fildes_wrapper_start', '<ul>') : '';
 		$meta_wrapper_end_tag   = !$is_table ? apply_filters('bop_book_fildes_wrapper_end', '</ul>') : '';
 		echo wp_kses_post($meta_wrapper_start_tag);
 		$i = 0;
-		foreach ($event_fildes_fields as $each_meta) {
+		foreach ($book_fildes_fields as $each_meta) {
 			$selected_meta        = isset($each_meta['select_book_fildes']) ? $each_meta['select_book_fildes'] : '';
 			$custom_date_format   = isset($each_meta['bop_custom_event_date_format']) ? $each_meta['bop_custom_event_date_format'] : 'j F, Y g:i A';
 
@@ -809,11 +809,40 @@ class BOP_Functions
 						<span class="event_separator"><?php echo wp_kses_post($meta_separator); ?></span>
 					<?php
 					}
-					if (tribe_get_book_author($post->ID, true)) {
-						echo wp_kses_post($meta_tag_start);
+					echo wp_kses_post($meta_tag_start);
+					if ($bookify_postmeta['bop_author']) {
 						echo wp_kses($meta_icon, $allowed_html);
-						echo wp_kses_post($meta_tag_end);
+						echo '<span>' . esc_html($bookify_postmeta['bop_author']) . '</span>';
 					}
+					echo wp_kses_post($meta_tag_end);
+					break;
+				case 'publisher':
+					if (0 < $i) {
+					?>
+						<span class="event_separator"><?php echo wp_kses_post($meta_separator); ?></span>
+					<?php
+					}
+					echo wp_kses_post($meta_tag_start);
+					if ($bookify_postmeta['bop_publisher']) {
+						echo wp_kses($meta_icon, $allowed_html);
+						echo '<span>' . $bookify_postmeta['bop_publisher'] . '</span>';
+					}
+					echo wp_kses_post($meta_tag_end);
+
+					break;
+				case 'publish_date':
+					if (0 < $i) {
+					?>
+						<span class="event_separator"><?php echo wp_kses_post($meta_separator); ?></span>
+					<?php
+					}
+					echo wp_kses_post($meta_tag_start);
+					if ($bookify_postmeta['bop_publish_date']) {
+						echo wp_kses($meta_icon, $allowed_html);
+						echo '<span>' . $bookify_postmeta['bop_publish_date'] . '</span>';
+					}
+					echo wp_kses_post($meta_tag_end);
+
 					break;
 				case 'price':
 					if (0 < $i) {
@@ -821,11 +850,97 @@ class BOP_Functions
 						<span class="event_separator"><?php echo wp_kses_post($meta_separator); ?></span>
 					<?php
 					}
-					if (tribe_get_cost($post->ID)) {
-						echo wp_kses_post($meta_tag_start);
+					echo wp_kses_post($meta_tag_start);
+					if ($bookify_postmeta['bop_book_sale_price']) {
 						echo wp_kses($meta_icon, $allowed_html);
-						echo wp_kses_post($meta_tag_end);
+						echo '<span>' . $bookify_postmeta['bop_book_sale_price'] . '</span>';
 					}
+					echo wp_kses_post($meta_tag_end);
+
+					break;
+				case 'isbn':
+					if (0 < $i) {
+					?>
+						<span class="event_separator"><?php echo wp_kses_post($meta_separator); ?></span>
+					<?php
+					}
+					echo wp_kses_post($meta_tag_start);
+					if ($bookify_postmeta['bop_book_isbn']) {
+						echo wp_kses($meta_icon, $allowed_html);
+						echo '<span>' . $bookify_postmeta['bop_book_isbn'] . '</span>';
+					}
+					echo wp_kses_post($meta_tag_end);
+
+					break;
+				case 'isbn_10':
+					if (0 < $i) {
+					?>
+						<span class="event_separator"><?php echo wp_kses_post($meta_separator); ?></span>
+					<?php
+					}
+					echo wp_kses_post($meta_tag_start);
+					if ($bookify_postmeta['bop_book_isbn_10']) {
+						echo wp_kses($meta_icon, $allowed_html);
+						echo '<span>' . $bookify_postmeta['bop_book_isbn_10'] . '</span>';
+					}
+					echo wp_kses_post($meta_tag_end);
+
+					break;
+				case 'isbn_13':
+					if (0 < $i) {
+					?>
+						<span class="event_separator"><?php echo wp_kses_post($meta_separator); ?></span>
+					<?php
+					}
+					echo wp_kses_post($meta_tag_start);
+					if ($bookify_postmeta['bop_book_isbn_13']) {
+						echo wp_kses($meta_icon, $allowed_html);
+						echo '<span>' . $bookify_postmeta['bop_book_isbn_13'] . '</span>';
+					}
+					echo wp_kses_post($meta_tag_end);
+
+					break;
+				case 'asin':
+					if (0 < $i) {
+					?>
+						<span class="event_separator"><?php echo wp_kses_post($meta_separator); ?></span>
+					<?php
+					}
+					echo wp_kses_post($meta_tag_start);
+					if ($bookify_postmeta['bop_book_asin']) {
+						echo wp_kses($meta_icon, $allowed_html);
+						echo '<span>' . $bookify_postmeta['bop_book_asin'] . '</span>';
+					}
+					echo wp_kses_post($meta_tag_end);
+
+					break;
+				case 'subject':
+					if (0 < $i) {
+					?>
+						<span class="event_separator"><?php echo wp_kses_post($meta_separator); ?></span>
+					<?php
+					}
+					echo wp_kses_post($meta_tag_start);
+					if ($bookify_postmeta['bop_book_subject']) {
+						echo wp_kses($meta_icon, $allowed_html);
+						echo '<span>' . $bookify_postmeta['bop_book_subject'] . '</span>';
+					}
+					echo wp_kses_post($meta_tag_end);
+
+					break;
+				case 'genre':
+					if (0 < $i) {
+					?>
+						<span class="event_separator"><?php echo wp_kses_post($meta_separator); ?></span>
+					<?php
+					}
+					echo wp_kses_post($meta_tag_start);
+					if ($bookify_postmeta['bop_book_genre']) {
+						echo wp_kses($meta_icon, $allowed_html);
+						echo '<span>' . $bookify_postmeta['bop_book_genre'] . '</span>';
+					}
+					echo wp_kses_post($meta_tag_end);
+
 					break;
 			}
 			++$i;
