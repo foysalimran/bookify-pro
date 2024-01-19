@@ -28,49 +28,24 @@ class BOP_Postmeta
         BOP::createSection($prefix, array(
             'fields' => array(
                 array(
-                    'id'    => 'bop_original_book_name',
+                    'id'    => 'bop_subtitle',
                     'type'  => 'text',
-                    'title' => __('Original Book Name', 'bookify-pro'),
+                    'title' => __('Subtitle', 'bookify-pro'),
                 ),
                 array(
-                    'id'    => 'bop_original_book_url',
+                    'id'    => 'bop_author',
                     'type'  => 'text',
-                    'title' => __('Original Book URL', 'bookify-pro'),
+                    'title' => __('Author', 'bookify-pro'),
                 ),
                 array(
-                    'id'    => 'bop_book_name',
+                    'id'    => 'bop_publisher',
                     'type'  => 'text',
-                    'title' => __('Book Name', 'bookify-pro'),
+                    'title' => __('Publisher', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_publish_date',
                     'type'  => 'date',
                     'title' => __('Publish Date', 'bookify-pro'),
-                ),
-                array(
-                    'id'    => 'bop_publisher_name',
-                    'type'  => 'text',
-                    'title' => __('Publisher Name', 'bookify-pro'),
-                ),
-                array(
-                    'id'    => 'bop_country',
-                    'type'  => 'text',
-                    'title' => __('Country', 'bookify-pro'),
-                ),
-                array(
-                    'id'    => 'bop_book_language',
-                    'type'  => 'text',
-                    'title' => __('Book language', 'bookify-pro'),
-                ),
-                array(
-                    'id'    => 'bop_book_format',
-                    'type'  => 'text',
-                    'title' => __('Book Format', 'bookify-pro'),
-                ),
-                array(
-                    'id'    => 'bop_book_page',
-                    'type'  => 'text',
-                    'title' => __('Book Pages', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_isbn',
@@ -88,136 +63,93 @@ class BOP_Postmeta
                     'title' => __('ISBN-13', 'bookify-pro'),
                 ),
                 array(
-                    'id'    => 'bop_book_translator_name',
-                    'type'  => 'text',
-                    'title' => __('Translator Name', 'bookify-pro'),
-                ),
-                array(
-                    'id'    => 'bop_book_dimension',
-                    'type'  => 'text',
-                    'title' => __('Dimension', 'bookify-pro'),
-                ),
-                array(
-                    'id'    => 'bop_book_weight',
-                    'type'  => 'text',
-                    'title' => __('Weight', 'bookify-pro'),
-                ),
-                array(
-                    'id'    => 'bop_book_file_size',
-                    'type'  => 'text',
-                    'title' => __('File size (If Ebook)', 'bookify-pro'),
-                ),
-                array(
-                    'id'    => 'bop_book_simultaneous_device',
-                    'type'  => 'text',
-                    'title' => __('Simultaneous device usage', 'bookify-pro'),
-                ),
-                array(
-                    'id'    => 'bop_book_file_format',
-                    'type'  => 'text',
-                    'title' => __('File Format (If Ebook)', 'bookify-pro'),
-                ),
-                array(
                     'id'    => 'bop_book_asin',
                     'type'  => 'text',
                     'title' => __('ASIN', 'bookify-pro'),
                 ),
                 array(
-                    'id'    => 'bop_book_speech',
-                    'type'  => 'select',
-                    'placeholder'   => __('Choose an option', 'bookify-pro'),
-                    'title' => __('Text To Speech', 'bookify-pro'),
-                    'options' => array(
-                        'enabled' => __('Enabled', 'bookify-pro'),
-                        'not_enabled' => __('Not Enabled', 'bookify-pro'),
-                    )
-                ),
-                array(
-                    'id'    => 'bop_book_screen_reader',
-                    'type'  => 'select',
-                    'placeholder'   => __('Choose an option', 'bookify-pro'),
-                    'title' => __('Screen Reader', 'bookify-pro'),
-                    'options' => array(
-                        'enabled' => __('Enabled', 'bookify-pro'),
-                        'not_enabled' => __('Not Enabled', 'bookify-pro'),
-                    )
-                ),
-                array(
-                    'id'    => 'bop_book_enhanced_typesetting',
-                    'type'  => 'select',
-                    'placeholder'   => __('Choose an option', 'bookify-pro'),
-                    'title' => __('Enhanced typesetting', 'bookify-pro'),
-                    'options' => array(
-                        'enabled' => __('Enabled', 'bookify-pro'),
-                        'not_enabled' => __('Not Enabled', 'bookify-pro'),
-                    )
-                ),
-                array(
-                    'id'    => 'bop_book_x_ray',
-                    'type'  => 'select',
-                    'placeholder'   => __('Choose an option', 'bookify-pro'),
-                    'title' => __('X-Ray', 'bookify-pro'),
-                    'options' => array(
-                        'enabled' => __('Enabled', 'bookify-pro'),
-                        'not_enabled' => __('Not Enabled', 'bookify-pro'),
-                    )
-                ),
-                array(
-                    'id'    => 'bop_book_word_wise',
-                    'type'  => 'select',
-                    'placeholder'   => __('Choose an option', 'bookify-pro'),
-                    'title' => __('Word Wise', 'bookify-pro'),
-                    'options' => array(
-                        'enabled' => __('Enabled', 'bookify-pro'),
-                        'not_enabled' => __('Not Enabled', 'bookify-pro'),
-                    )
-                ),
-                array(
-                    'id'    => 'bop_book_sticky_notes',
+                    'id'    => 'bop_book_subject',
                     'type'  => 'text',
-                    'title' => __('Sticky Notes', 'bookify-pro'),
+                    'title' => __('Subject', 'bookify-pro'),
+                    'desc'  => __('eg:  Self-Help / Compulsive Behavior / General', 'bookify-pro')
                 ),
                 array(
-                    'id'    => 'bop_book_print_length',
+                    'id'    => 'bop_book_genre',
                     'type'  => 'text',
-                    'title' => __('Print Length', 'bookify-pro'),
+                    'title' => __('Genre', 'bookify-pro'),
+                    'desc'  => __('eg: Motivational / Self-help book', 'bookify-pro')
                 ),
                 array(
-                    'id'    => 'bop_book_availability_status',
-                    'type'  => 'select',
-                    'title' => __('Book Availability Status', 'bookify-pro'),
-                    'placeholder' => __('Choose an option', 'bookify-pro'),
-                    'options' => array(
-                        'available'  => __('Available', 'bookify-pro'),
-                        'upcoming'  => __('Upcoming', 'bookify-pro'),
-                    )
-                ),
-                array(
-                    'id'    => 'bop_book_average_rating',
-                    'type'  => 'select',
-                    'placeholder' => __('Rate This Book', 'bookify-pro'),
-                    'title' => __('Average Book Rating', 'bookify-pro'),
-                    'options' => array(
-                        '5' => __('5 Start', 'bookify-pro'),
-                        '4.5' => __('4.5 Start', 'bookify-pro'),
-                        '4' => __('4 Start', 'bookify-pro'),
-                        '3.5' => __('3.5 Start', 'bookify-pro'),
-                        '3' => __('3 Start', 'bookify-pro'),
-                        '2.5' => __('2.5 Start', 'bookify-pro'),
-                        '2' => __('2 Start', 'bookify-pro'),
-                        '1.5' => __('1.5 Start', 'bookify-pro'),
-                        '1' => __('1 Start', 'bookify-pro'),
-                    )
-                ),
-                array(
-                    'id'    => 'bop_book_total_rating',
+                    'id'    => 'bop_country',
                     'type'  => 'text',
-                    'title' => __('Total Book Ratings', 'bookify-pro'),
+                    'title' => __('Country', 'bookify-pro'),
                 ),
                 array(
-                    'id'    => 'bop_book_rating_link',
+                    'id'    => 'bop_book_language',
                     'type'  => 'text',
-                    'title' => __('Book Rating Links', 'bookify-pro'),
+                    'title' => __('Book language', 'bookify-pro'),
+                ),
+                array(
+                    'id'    => 'bop_book_translator_name',
+                    'type'  => 'text',
+                    'title' => __('Translator Name', 'bookify-pro'),
+                ),
+                array(
+                    'id'        => 'book_format',
+                    'type'      => 'fieldset',
+                    'title'     => 'Book Format',
+                    'fields'    => array(
+                        array(
+                            'id'    => 'bop_book_format',
+                            'type'  => 'select',
+                            'title' => __('Book Format', 'bookify-pro'),
+                            'options' => array(
+                                'text' => __('Text', 'bookify-pro'),
+                                'ebook' => __('E-book', 'bookify-pro'),
+                                'audio' => __('Audio', 'bookify-pro'),
+                            ),
+                        ),
+                        array(
+                            'id'    => 'bop_book_page',
+                            'type'  => 'text',
+                            'title' => __('Book Pages', 'bookify-pro'),
+                            'dependency' => array('bop_book_format', '==', 'text'),
+                        ),
+                        array(
+                            'id'    => 'bop_book_dimension',
+                            'type'  => 'text',
+                            'title' => __('Dimension', 'bookify-pro'),
+                            'dependency' => array('bop_book_format', '==', 'text'),
+                        ),
+                        array(
+                            'id'    => 'bop_book_weight',
+                            'type'  => 'text',
+                            'title' => __('Weight', 'bookify-pro'),
+                            'dependency' => array('bop_book_format', '==', 'text'),
+                        ),
+                        array(
+                            'id'    => 'bop_book_file_size',
+                            'type'  => 'text',
+                            'title' => __('File size', 'bookify-pro'),
+                            'dependency' => array('bop_book_format', '!=', 'text'),
+                        ),
+                        array(
+                            'id'    => 'bop_book_file_format',
+                            'type'  => 'text',
+                            'title' => __('File Format', 'bookify-pro'),
+                            'dependency' => array('bop_book_format', '!=', 'text'),
+                        ),
+                    ),
+                ),
+                array(
+                    'id'    => 'bop_book_rating',
+                    'type'  => 'slider',
+                    'title' => __('Ratings', 'bookify-pro'),
+                    'min'     => 0,
+                    'max'     => 5,
+                    'step'    => 1,
+                    'unit'    => 'px',
+                    'default' => 4,
                 ),
                 array(
                     'id'    => 'bop_book_regular_price',
@@ -239,8 +171,6 @@ class BOP_Postmeta
                     'type'  => 'text',
                     'title' => __('Buy Button Link', 'bookify-pro'),
                 ),
-                
-
                 array(
                     'id'        => 'bop_book_multiple_purchase_link',
                     'type'      => 'repeater',
@@ -277,7 +207,6 @@ class BOP_Postmeta
                             'type'  => 'link',
                             'title' => 'Website Name & Book Link',
                         ),
-
                     ),
                 ),
             )

@@ -294,8 +294,8 @@ if ( ! class_exists( 'BOP_Fields' ) ) {
         case 'taxonomies':
           case 'taxonomy':
             global $post;
-            $view_options       = get_post_meta( $post->ID, 'ta_bop_view_options', true );
-            $bop_post_types     = 'tribe_events';
+            $view_options       = get_post_meta( $post->ID, 'ta_bookify_options', true );
+            $bop_post_types     = 'bookify';
               $taxonomy_names = get_object_taxonomies( $bop_post_types, 'names' );
             if ( ! is_wp_error( $taxonomy_names ) && ! empty( $taxonomy_names ) ) {
               $options[''] =esc_html__( 'Select Taxonomy', 'bookify-pro' );
@@ -308,8 +308,8 @@ if ( ! class_exists( 'BOP_Fields' ) ) {
           case 'terms':
           case 'term':
             global $post;
-            $view_options   = get_post_meta( $post->ID, 'ta_bop_view_options', true );
-            $bop_post_types = 'tribe_events';
+            $view_options   = get_post_meta( $post->ID, 'ta_bookify_options', true );
+            $bop_post_types = 'bookify';
   
             $field_index = preg_replace( '/[^0-9]/', '', $field_unique );
             $bop_taxonomy = isset( $view_options['bop_filter_by_taxonomy']['bop_taxonomy_and_terms'][ $field_index ]['bop_select_taxonomy'] ) ? $view_options['bop_filter_by_taxonomy']['bop_taxonomy_and_terms'][ $field_index ]['bop_select_taxonomy'] : get_object_taxonomies( $bop_post_types, 'names' );

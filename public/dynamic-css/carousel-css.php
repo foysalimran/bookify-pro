@@ -18,9 +18,9 @@
 			'color'              => '#aaa',
 			'hover-color'        => '#fff',
 			'bg'                 => '#fff',
-			'hover-bg'           => '#263ad0',
+			'hover-bg'           => '#876585',
 			'border-color'       => '#aaa',
-			'hover-border-color' => '#263ad0',
+			'hover-border-color' => '#876585',
 		)
 	);
 	$nav_color                     = BOP_Functions::bop_metabox_value( 'color', $_nav_colors );
@@ -44,7 +44,7 @@
 	$_pagination_color_set         = isset( $view_options['bop_pagination_color_set'] ) ? $view_options['bop_pagination_color_set'] : '';
 	$_pagination_colors            = isset( $_pagination_color_set['bop_pagination_color'] ) ? $_pagination_color_set['bop_pagination_color'] : array(
 		'color'        => '#cccccc',
-		'active-color' => '#263ad0',
+		'active-color' => '#876585',
 	);
 	$pagination_color              = $_pagination_colors['color'];
 	$pagination_color_active       = $_pagination_colors['active-color'];
@@ -52,7 +52,7 @@
 		'color'       => '#ffffff',
 		'hover-color' => '#ffffff',
 		'bg'          => '#444444',
-		'hover-bg'    => '#263ad0',
+		'hover-bg'    => '#876585',
 	);
 	$pagination_number_color       = $_pagination_number_colors['color'];
 	$pagination_number_hover_color = $_pagination_number_colors['hover-color'];

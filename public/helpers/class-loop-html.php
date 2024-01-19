@@ -93,6 +93,101 @@ class BOP_HTML
 			echo wp_kses_post($title);
 		}
 	}
+	/**
+	 * Post subtitle html.
+	 *
+	 * @param array  $sorter post content option array.
+	 * @param string $layout layout preset.
+	 * @return void
+	 */
+	public static function bop_post_subtitle($sorter, $layout, $options, $post, $bookify_postmeta, $is_table = false)
+	{		
+		$_meta_settings     = BOP_Functions::bop_metabox_value('bop_post_meta', $sorter);
+		$post_meta_fields   = BOP_Functions::bop_metabox_value('bop_post_meta_group', $_meta_settings);
+		$show_post_meta     = BOP_Functions::bop_metabox_value('show_post_meta', $_meta_settings, true);
+		$bop_page_link_type = BOP_Functions::bop_metabox_value('bop_page_link_type', $options);
+		$bop_link_rel       = BOP_Functions::bop_metabox_value('bop_link_rel', $options);
+		$bop_link_rel_text  = '1' === $bop_link_rel ? "rel='nofollow'" : '';
+
+		$bop_link_target = BOP_Functions::bop_metabox_value('bop_link_target', $options);
+		if (is_array($post_meta_fields) && 'accordion_layout' !== $layout && $show_post_meta) {
+			foreach ($post_meta_fields as $each_meta) {
+				if ('taxonomy' === $each_meta['select_post_meta']) {
+					$taxonomy      = $each_meta['post_meta_taxonomy'];
+					$meta_position = $each_meta['bop_meta_position'];
+					if ('above_subtitle' === $meta_position) {
+						$terms = get_the_term_list($post->ID, $taxonomy, '', ' ');
+						if ($terms) {
+							ob_start();
+							include BOP_Functions::bop_locate_template('item/meta-over-subtitle.php');
+							$meta_over_subtitle = apply_filters('bop_meta_over_subtitle', ob_get_clean());
+							echo wp_kses_post($meta_over_subtitle);
+						};
+					}
+				}
+			}
+		}
+
+		$post_subtitle_setting = isset($sorter['bop_post_subtitle']) ? $sorter['bop_post_subtitle'] : '';
+		$show_post_subtitle    = BOP_Functions::bop_metabox_value('show_post_subtitle', $post_subtitle_setting);
+
+		$bop_post_subtitle = $bookify_postmeta['bop_subtitle'];
+
+		if ($show_post_subtitle && !empty($bop_post_subtitle)) {
+			// Post Title Settings.
+			$post_subtitle_tag    = BOP_Functions::bop_metabox_value('post_subtitle_tag', $post_subtitle_setting, 'h2');
+			$limit_post_subtitle = BOP_Functions::bop_metabox_value('post_subtitle_limit', $post_subtitle_setting);
+			if ($limit_post_subtitle) {
+				$post_subtitle_length = (int) isset($post_subtitle_setting['bop_subtitle_length']) ? $post_subtitle_setting['bop_subtitle_length'] : '';
+				$bop_post_subtitle    = BOP_Functions::limit_post_subtitle($bop_post_subtitle, $post_subtitle_length);
+			}
+
+			$allowed_html_tags = array(
+				'em'     => array(),
+				'strong' => array(),
+				'sup'    => array(),
+				'i'      => array(),
+				'small'  => array(),
+				'del'    => array(),
+				'ins'    => array(),
+				'span'   => array(
+					'style' => array(),
+					'class' => array(),
+				),
+			);
+			$td                = self::table_td($is_table);
+			$allow_tag         = array('td' => array());
+			ob_start();
+			echo wp_kses($td['start'], $allow_tag);
+			include BOP_Functions::bop_locate_template('item/subtitle.php');
+			echo wp_kses($td['end'], $allow_tag);
+			$subtitle = apply_filters('bop_item_subtitle', ob_get_clean());
+			echo wp_kses_post($subtitle);
+		}
+	}
+
+	/**
+	 * Show Post Content html.
+	 *
+	 * @param array $sorter The field ID array.
+	 * @param array $options options.
+	 * @return void
+	 */
+	public static function bop_book_category($sorter, $layout, $options, $post, $bookify_postmeta, $is_table) {
+		$book_content_setting = BOP_Functions::bop_metabox_value('bop_book_category', $sorter);
+		$show_book_category    = BOP_Functions::bop_metabox_value('show_book_category', $book_content_setting);
+		$bop_book_category_taxonomy    = BOP_Functions::bop_metabox_value('bop_book_category_taxonomy', $book_content_setting);
+		$td                   = self::table_td($is_table);
+		$allow_tag            = array('td' => array());
+		if($show_book_category) {
+			ob_start();
+			echo wp_kses($td['start'], $allow_tag);
+			include BOP_Functions::bop_locate_template('item/category.php');
+			echo wp_kses($td['end'], $allow_tag);
+			$category = apply_filters('bop_book_category', ob_get_clean());
+			echo wp_kses_post($category);
+		}
+	}
 
 	/**
 	 * Show Post Content html.
@@ -105,10 +200,10 @@ class BOP_HTML
 	{
 		$post_content_setting = BOP_Functions::bop_metabox_value('bop_post_content', $sorter);
 		$show_post_content    = BOP_Functions::bop_metabox_value('show_post_content', $post_content_setting);
-		$show_read_more                = BOP_Functions::bop_metabox_value('show_read_more', $post_content_setting);
-		$bop_content_type              = BOP_Functions::bop_metabox_value('post_content_type', $post_content_setting);
-		$td                            = self::table_td($is_table);
-		$allow_tag                     = array('td' => array());
+		$show_read_more       = BOP_Functions::bop_metabox_value('show_read_more', $post_content_setting);
+		$bop_content_type     = BOP_Functions::bop_metabox_value('post_content_type', $post_content_setting);
+		$td                   = self::table_td($is_table);
+		$allow_tag            = array('td' => array());
 		if ($show_post_content || $show_read_more) {
 			ob_start();
 			echo wp_kses($td['start'], $allow_tag);
@@ -133,7 +228,29 @@ class BOP_HTML
 		$td                            = self::table_td($is_table);
 		$allow_tag                     = array('td' => array());
 		if ($show_read_more) {
-			self::bop_readmore( $post_content_setting, $bop_content_type, $options, $post );
+			ob_start();
+			self::bop_readmore($post_content_setting, $bop_content_type, $options, $post);
+			$readmore = apply_filters('bop_post_content_readmore', ob_get_clean());
+			echo wp_kses_post($readmore);
+		}
+	}
+	/**
+	 * Show Post Content html.
+	 *
+	 * @param array $sorter The field ID array.
+	 * @param array $options options.
+	 * @return void
+	 */
+	public static function bop_buy_now_button_html($sorter, $options, $post, $bookify_postmeta, $is_table = false)
+	{
+		
+		$post_content_setting = BOP_Functions::bop_metabox_value('bop_post_buy_now_button', $sorter);
+		$show_buy_now_button                = BOP_Functions::bop_metabox_value('show_bye_now_button', $post_content_setting);
+		$bop_content_type              = BOP_Functions::bop_metabox_value('post_content_type', $post_content_setting);
+		$td                            = self::table_td($is_table);
+		$allow_tag                     = array('td' => array());
+		if ($show_buy_now_button) {
+			self::bop_buy_now_button($post_content_setting, $bop_content_type, $options, $post, $bookify_postmeta);
 		}
 	}
 
@@ -164,6 +281,20 @@ class BOP_HTML
 		include BOP_Functions::bop_locate_template('item/read-more.php');
 		$read_more_button = apply_filters('bop_read_more_btn', ob_get_clean(), $link = get_permalink($post));
 		echo wp_kses_post($read_more_button);
+	}
+	/**
+	 * Bye now link function
+	 *
+	 * @param array $view_options Bye now link options array.
+	 * @param array $content_type The content type.
+	 * @param array $options The parent of this field.
+	 */
+	public static function bop_buy_now_button($view_options, $content_type, $options, $post, $bookify_postmeta)
+	{
+		ob_start();
+		include BOP_Functions::bop_locate_template('item/buy-now-button.php');
+		$buy_now_button_button = apply_filters('bop_buy_now_button_btn', ob_get_clean(), $link = get_permalink($post));
+		echo wp_kses_post($buy_now_button_button);
 	}
 
 	/**
@@ -249,7 +380,6 @@ class BOP_HTML
 			}
 		}
 	}
-
 	/**
 	 * Post Social Html
 	 *
@@ -301,25 +431,45 @@ class BOP_HTML
 		}
 	}
 	/**
-	 * Event fildes HTML
+	 * Book fildes HTML
 	 *
 	 * @param array $sorter post content option array.
 	 * @param int   $visitor_count views count.
 	 * @return void
 	 */
-	public static function bop_event_fildes_html($sorter, $visitor_count, $post, $is_table = false)
+	public static function bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table = false)
 	{
-		$_meta_settings   = BOP_Functions::bop_metabox_value('bop_event_fildes', $sorter);
-		$event_fildes_fields = BOP_Functions::bop_metabox_value('bop_event_fildes_group', $_meta_settings);
-		$show_event_fildes   = BOP_Functions::bop_metabox_value('show_event_fildes', $_meta_settings, true);
+		$_meta_settings   = BOP_Functions::bop_metabox_value('bop_book_fildes', $sorter);
+		$book_fildes_fields = BOP_Functions::bop_metabox_value('bop_book_fildes_group', $_meta_settings);
+		$show_book_fildes   = BOP_Functions::bop_metabox_value('show_book_fildes', $_meta_settings, true);
 		$_event_meta_separator  = BOP_Functions::bop_metabox_value('event_meta_separator', $_meta_settings);
 
-		if ($event_fildes_fields && $show_event_fildes) {
-			
+		if ($book_fildes_fields && $show_book_fildes) {
+
 			ob_start();
-			include BOP_Functions::bop_locate_template('item/event-fildes.php');
+			include BOP_Functions::bop_locate_template('item/book-fildes.php');
 			$item_meta = apply_filters('bop_item_meta', ob_get_clean());
 			echo wp_kses_post($item_meta);
+		}
+	}
+	/**
+	 * Book Price HTML
+	 *
+	 * @param array $sorter post content option array.
+	 * @param int   $visitor_count views count.
+	 * @return void
+	 */
+	public static function bop_book_price_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table = false)
+	{
+		$_bop_book_price   = BOP_Functions::bop_metabox_value('bop_book_price', $sorter);
+		$show_book_price = BOP_Functions::bop_metabox_value('show_book_price', $_bop_book_price);
+		
+		if ('none' != $show_book_price) {
+
+			ob_start();
+			include BOP_Functions::bop_locate_template('item/price.php');
+			$price = apply_filters('bop_price', ob_get_clean());
+			echo wp_kses_post($price);
 		}
 	}
 
@@ -334,8 +484,9 @@ class BOP_HTML
 	 * @param object $post The Post object.
 	 * @return void
 	 */
-	public static function bop_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $is_table = false)
+	public static function bop_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $bookify_postmeta, $is_table = false)
 	{
+
 		if ($sorter) {
 			foreach ($sorter as $style_key => $style_value) {
 				switch ($style_key) {
@@ -345,23 +496,35 @@ class BOP_HTML
 					case 'bop_post_title':
 						self::bop_post_title($sorter, $layout, $options, $post, $is_table);
 						break;
+					case 'bop_post_subtitle':
+						self::bop_post_subtitle($sorter, $layout, $options, $post, $bookify_postmeta, $is_table);
+						break;
+					case 'bop_book_category':
+						self::bop_book_category($sorter, $layout, $options, $post, $bookify_postmeta, $is_table);
+						break;
 					case 'bop_post_content':
 						self::bop_content_html($sorter, $options, $post, $is_table);
 						break;
 					case 'bop_post_content_readmore':
 						self::bop_read_more_html($sorter, $options, $post, $is_table);
 						break;
+					case 'bop_post_buy_now_button':
+						self::bop_buy_now_button_html($sorter, $options, $post, $bookify_postmeta, $is_table);
+						break;
 					case 'bop_post_meta':
 						self::bop_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
-					case 'bop_event_fildes':
-						self::bop_event_fildes_html($sorter, $visitor_count, $post, $is_table);
+					case 'bop_book_fildes':
+						self::bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
+						break;
+					case 'bop_book_price':
+						self::bop_book_price_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_social_share':
 						self::bop_social_share_html($sorter, $options, $post, $is_table);
 						break;
 					case 'bop_custom_fields':
-			
+
 						bop_custom_field_html($post, $sorter, true, $is_table);
 						break;
 				}
@@ -379,7 +542,7 @@ class BOP_HTML
 	 * @param array  $options Shortcode options.
 	 * @return void
 	 */
-	public static function bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $is_table = false)
+	public static function bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $bookify_postmeta, $is_table = false)
 	{
 		if ($sorter) {
 			foreach ($sorter as $style_key => $style_value) {
@@ -387,23 +550,35 @@ class BOP_HTML
 					case 'bop_post_title':
 						self::bop_post_title($sorter, $layout, $options, $post, $is_table);
 						break;
+					case 'bop_post_subtitle':
+						self::bop_post_subtitle($sorter, $layout, $options, $post, $bookify_postmeta, $is_table);
+						break;
+					case 'bop_book_category':
+						self::bop_book_category($sorter, $layout, $options, $post, $bookify_postmeta, $is_table);
+						break;
 					case 'bop_post_content':
 						self::bop_content_html($sorter, $options, $post, $is_table);
 						break;
 					case 'bop_post_content_readmore':
 						self::bop_read_more_html($sorter, $options, $post, $is_table);
 						break;
+					case 'bop_post_buy_now_button':
+						self::bop_buy_now_button_html($sorter, $options, $post, $bookify_postmeta, $is_table);
+						break;
 					case 'bop_post_meta':
 						self::bop_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
-					case 'bop_event_fildes':
-						self::bop_event_fildes_html($sorter, $visitor_count, $post, $is_table);
+					case 'bop_book_fildes':
+						self::bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
+						break;
+					case 'bop_book_price':
+						self::bop_book_price_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
 						break;
 					case 'bop_social_share':
 						self::bop_social_share_html($sorter, $options, $post, $is_table);
 						break;
 					case 'bop_custom_fields':
-						bop_custom_field_html( $post, $sorter, true, $is_table );
+						bop_custom_field_html($post, $sorter, true, $is_table);
 						break;
 				}
 			}
@@ -417,8 +592,8 @@ class BOP_HTML
 	 */
 	public static function bop_alt_post_class($options, $layout_preset)
 	{
-		if ( 'list_layout' === $layout_preset ) {
-			if ( 'left-thumb' === BOP_Functions::bop_metabox_value( 'post_list_orientation', $options ) ) {
+		if ('list_layout' === $layout_preset) {
+			if ('left-thumb' === BOP_Functions::bop_metabox_value('post_list_orientation', $options)) {
 				$bop_alt_post_class = 'bookify__item left-thumb';
 			} else {
 				$bop_alt_post_class = 'right-thumb bookify__item';
@@ -607,6 +782,26 @@ class BOP_HTML
 			echo wp_kses_post($section_title);
 		}
 	}
+	/**
+	 * Section subtitle
+	 *
+	 * @param int $bop_id Shortcode id.
+	 * @return void
+	 */
+
+	public static function bop_section_subtitle($section_subtitle_text, $show_section_subtitle)
+	{
+
+		if ($show_section_subtitle) {
+			$section_subtitle_text = apply_filters('bop_section_subtitle_text', $section_subtitle_text);
+			ob_start();
+			do_action('bop_before_section_subtitle');
+			include BOP_Functions::bop_locate_template('section-subtitle.php');
+			do_action('bop_after_section_subtitle');
+			$section_subtitle = apply_filters('bop_filter_section_subtitle', ob_get_clean());
+			echo wp_kses_post($section_subtitle);
+		}
+	}
 
 	/**
 	 * Preloader
@@ -640,6 +835,7 @@ class BOP_HTML
 		$all_posts = $bop_query->posts;
 		foreach ($all_posts as $key => $post) {
 			$visitor_count = get_post_meta($post->ID, '_post_views_count', true);
+			$bookify_postmeta = get_post_meta($post->ID, 'ta_bookify_postmeta', true);
 			self::bop_post_loop($options, $layout, $sorter, $bop_count, $view_id, $post);
 			$bop_count++;
 		}
@@ -678,7 +874,7 @@ class BOP_HTML
 		$bop_post_columns = '';
 		if ('carousel_layout' === $layout) {
 			$bop_post_columns .= ' swiper-slide swiper-lazy';
-		} elseif ( 'list_layout' === $layout ) {
+		} elseif ('list_layout' === $layout) {
 			$bop_post_columns = 'ta-col-xs-1';
 		} else {
 			$bop_post_columns .= " ta-col-xs-$columns[mobile] ta-col-sm-$columns[mobile_landscape] ta-col-md-$columns[tablet] ta-col-lg-$columns[desktop] ta-col-xl-$columns[lg_desktop]";
@@ -700,6 +896,8 @@ class BOP_HTML
 		$number_of_columns = BOP_Functions::bop_metabox_value('bop_number_of_columns', $options);
 		$slide_effect      = BOP_Functions::bop_metabox_value('bop_slide_effect', $options);
 		$visitor_count     = get_post_meta($post->ID, '_post_views_count', true);
+		$bookify_postmeta     = get_post_meta($post->ID, 'ta_bookify_postmeta', true);
+
 		$lazy_load         = BOP_Functions::bop_metabox_value('bop_lazy_load', $options);
 		if ('cube' === $slide_effect || 'flip' === $slide_effect) {
 			$lazy_load = 'false';
@@ -709,7 +907,7 @@ class BOP_HTML
 			<div class="<?php echo esc_attr(self::bop_post_responsive_columns($layout, $number_of_columns, $post->ID)); ?>">
 				<div class="bookify__item bop-item-<?php echo esc_attr($post->ID); ?>" data-id="<?php echo esc_attr($post->ID); ?>">
 					<?php
-					self::bop_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options);
+					self::bop_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $bookify_postmeta);
 					?>
 				</div>
 				<?php if ('carousel_layout' === $layout && $lazy_load && 'ticker' !== BOP_Functions::bop_metabox_value('bop_carousel_mode', $options)) { ?>
@@ -733,7 +931,7 @@ class BOP_HTML
 					?>
 					<div class="bookify__item__details <?php echo esc_html($animation_class); ?>">
 						<?php
-						self::bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options);
+						self::bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $bookify_postmeta, $options);
 						?>
 					</div>
 				</div>

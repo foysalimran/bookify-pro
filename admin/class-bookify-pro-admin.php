@@ -23,22 +23,8 @@
 class Bookify_Pro_Admin
 {
 
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
-	 */
+	protected $suffix;
 	private $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
 	private $version;
 
 	/**
@@ -58,10 +44,10 @@ class Bookify_Pro_Admin
 		// Autoload system.
 		spl_autoload_register(array($this, 'autoload'));
 
-		BOP_Metaboxes::bookify_metabox('ta_bop_postmeta');
-		BOP_Metaboxes::layout_metabox('ta_bop_layouts');
-		BOP_Metaboxes::option_metabox('ta_bop_view_options');
-		BOP_Metaboxes::shortcode_metabox('ta_bop_display_shortcode');
+		BOP_Metaboxes::bookify_metabox('ta_bookify_postmeta');
+		BOP_Metaboxes::layout_metabox('ta_bookify_layouts');
+		BOP_Metaboxes::option_metabox('ta_bookify_options');
+		BOP_Metaboxes::shortcode_metabox('ta_bookify_shortcode');
 		BOP_Settings::settings('ta_bookify_settings');
 
 		$active_plugins = get_option('active_plugins');
@@ -73,7 +59,6 @@ class Bookify_Pro_Admin
 		}
 
 		add_action('init', array($this, 'register_bookify_post'));
-		// add_action('init', array($this, 'register_generate_shortcode'));
 		add_action('init', array($this, 'register_bookify_category'));
 		add_action('init', array($this, 'register_bookify_author'));
 	}
@@ -128,7 +113,11 @@ class Bookify_Pro_Admin
 		 * class.
 		 */
 
-		wp_enqueue_style('bookify-admin', BOP_URL . 'admin/assets/css/bookify-pro-admin.css', array(), $this->version, 'all');
+		 $current_screen        = get_current_screen();
+		 $the_current_post_type = $current_screen->post_type;
+		 if ('bookify' == $the_current_post_type || 'bookify_shortcode' === $the_current_post_type) {
+			 wp_enqueue_style('bookify-admin', BOP_URL . 'admin/assets/css/bookify-pro-admin' . $this->suffix . '.css', array(), $this->version, 'all');
+		 }
 	}
 
 	/**
@@ -151,7 +140,11 @@ class Bookify_Pro_Admin
 		 * class.
 		 */
 
-		wp_enqueue_script('bookify-admin', BOP_URL . 'admin/assets/js/bookify-pro-admin.js', array('jquery'), $this->version, false);
+		 $current_screen        = get_current_screen();
+		 $the_current_post_type = $current_screen->post_type;
+		 if ('bookify' == $the_current_post_type || 'bookify_shortcode' == $the_current_post_type) {
+			 wp_enqueue_script('bookify-admin', BOP_URL . 'admin/assets/js/bookify-pro-admin' . $this->suffix . '.js', array('jquery'), $this->version, false);
+		 }
 	}
 
 	public function register_bookify_post()
@@ -182,7 +175,7 @@ class Bookify_Pro_Admin
 			'taxonomies'    => array('bookify_category'),
 		);
 
-		$generate_shortcode = array(
+		$bookify_shortcode = array(
 			'name'               => esc_html__('Generate Shortcodes', 'bookify-pro'),
 			'singular_name'      => esc_html__('Generate Shortcode', 'bookify-pro'),
 			'menu_name'          => esc_html__('Generate Shortcode', 'bookify-pro'),
@@ -199,14 +192,14 @@ class Bookify_Pro_Admin
 			'not_found_in_trash' => esc_html__('No Shortcode found in Trash.', 'bookify-pro')
 		);
 	
-		$generate_shortcode_args = array(
-			'labels'              => $generate_shortcode,
+		$bookify_shortcode_args = array(
+			'labels'              => $bookify_shortcode,
 			'public'              => false,
 			'publicly_queryable'  => true,
 			'exclude_from_search' => false,
 			'show_ui'             => true,
 			'query_var'           => true,
-			'rewrite'             => array('slug' => 'generate_shortcode'),
+			'rewrite'             => array('slug' => 'bookify_shortcode'),
 			'capability_type'     => 'post',
 			'hierarchical'        => false,
 			'supports'            => array('title'),
@@ -215,7 +208,7 @@ class Bookify_Pro_Admin
 		);
 
 		register_post_type('bookify', $args);
-		register_post_type('generate_shortcode', $generate_shortcode_args);
+		register_post_type('bookify_shortcode', $bookify_shortcode_args);
 	}
 
 	public function register_bookify_category()
@@ -271,6 +264,59 @@ class Bookify_Pro_Admin
 		);
 
 		register_taxonomy('bookify_author', 'bookify', $taxonomy_args);
+	}
+
+	/**
+	 * Add bookify admin columns.
+	 *
+	 * @since 2.0.0
+	 * @return statement
+	 */
+	public function filter_bookify_admin_column()
+	{
+
+		$admin_columns['cb']         = '<input type="checkbox" />';
+		$admin_columns['title']      = esc_html__('Title', 'bookify-pro');
+		$admin_columns['shortcode']  = esc_html__('Shortcode', 'bookify-pro');
+		$admin_columns['bop_layout'] = esc_html__('Layout', 'bookify-pro');
+		$admin_columns['date']       = esc_html__('Date', 'bookify-pro');
+
+		return $admin_columns;
+	}
+
+	/**
+	 * Display admin columns for the bookifys.
+	 *
+	 * @param mix    $column The columns.
+	 * @param string $post_id The post ID.
+	 * @return void
+	 */
+	public function display_bookify_admin_fields($column, $post_id)
+	{
+
+		$bop_layouts     = get_post_meta($post_id, 'ta_bookify_layouts', true);
+		$bookifys_types = isset($bop_layouts['bop_layout_preset']) ? $bop_layouts['bop_layout_preset'] : '';
+		switch ($column) {
+			case 'shortcode':
+				$column_field = '<input  class="ta_bop_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[bookify id=&quot;' . $post_id . '&quot;]"/> <div class="bop-after-copy-text"><i class="far fa-check-circle"></i> Shortcode Copied to Clipboard! </div>';
+				echo $column_field;
+				break;
+			case 'bop_layout':
+				$layout = ucwords(str_replace('_layout', ' ', $bookifys_types));
+				esc_html_e($layout, 'bookify-pro');
+				break;
+		} // end switch.
+	}
+
+	/**
+	 * If it is the plugins page.
+	 *
+	 * @since 2.2.0
+	 * @access private
+	 */
+	private function is_plugins_screen()
+	{
+		return in_array(get_current_screen()->id, ['plugins', 'plugins-network']);
 	}
 }
 

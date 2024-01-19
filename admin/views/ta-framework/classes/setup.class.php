@@ -510,7 +510,7 @@ if ( ! class_exists( 'BOP_Setup' ) ) {
     public static function add_admin_enqueue_scripts() {
       $current_screen        = get_current_screen();
 			$the_current_post_type = $current_screen->post_type;
-      if ( 'bookify' === $the_current_post_type || 'generate_shortcode' === $the_current_post_type) {
+      if ( 'bookify' === $the_current_post_type || 'bookify_shortcode' === $the_current_post_type ) {
       if ( ! self::$enqueue ) {
 
         // Loads scripts and styles only when needed

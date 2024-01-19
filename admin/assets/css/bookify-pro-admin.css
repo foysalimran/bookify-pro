@@ -82,7 +82,7 @@
   div.ta-bop-help .feature-section i.ta-bop-font-icon {
     font-size: 30px;
     display: block;
-    color: #263ad0;
+    color: #876585;
     font-family: "Font Awesome 5 Free";
     font-style: normal;
   }
@@ -102,7 +102,7 @@
     background-color: #fff;
   }
   /* Preloader */
-  #ta_bop_view_options .bop-metabox {
+  #ta_bookify_options .bop-metabox {
     min-height: 300px;
     z-index: 999;
     background-image: url(../img/preloader.gif);
@@ -110,7 +110,7 @@
     background-color: #fff;
     background-position: center 65%;
   }
-  #ta_bop_view_options .bop-nav-metabox li {
+  #ta_bookify_options .bop-nav-metabox li {
     opacity: 0;
   }
   /* Shortcode sidebar */
@@ -178,7 +178,7 @@
   .post-type-bookify .misc-pub-section.curtime.misc-pub-curtime{
     display: none;
   }
-  #ta_bop_layouts .postbox-header{
+  #ta_bookify_layouts .postbox-header{
       border: none;
   }
   

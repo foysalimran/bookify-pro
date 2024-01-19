@@ -281,7 +281,6 @@ class BOP_QueryInside
 						$url_args['posts_per_page'] = '10000';
 					}
 					$url_post_ids     = get_posts($url_args);
-					print_r($url_post_ids);
 					$args             = array_merge($args, array('tax_query' => $tax_settings_by_url));
 					$args['post__in'] = $url_post_ids;
 				}

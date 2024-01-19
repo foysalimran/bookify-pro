@@ -149,6 +149,12 @@ class Bookify_Pro
 		 */
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-bookify-pro-admin.php';
 		require_once BOP_PATH . 'admin/views/ta-framework/classes/setup.class.php';
+
+		/**
+		 * The class responsible for defining metabox config that occur in the admin area.
+		 */
+		require_once BOP_PATH . 'admin/helpers/class-bookify-pro-image-resizer.php';
+
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.

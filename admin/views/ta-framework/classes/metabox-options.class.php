@@ -21,7 +21,7 @@ if (!class_exists('BOP_Metabox')) {
     public $post_type      = array();
     public $args           = array(
       'title'              => '',
-      'post_type'          => 'tribe_events',
+      'post_type'          => 'bookify',
       'data_type'          => 'serialize',
       'context'            => 'advanced',
       'priority'           => 'default',
