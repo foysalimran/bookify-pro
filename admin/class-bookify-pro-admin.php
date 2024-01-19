@@ -170,7 +170,7 @@ class Bookify_Pro_Admin
 			'public'        => true,
 			'has_archive'   => true,
 			'menu_position' => 5,
-			'supports'      => array('title', 'editor', 'thumbnail', 'excerpt'),
+			'supports'      => array('title', 'editor', 'thumbnail'),
 			'menu_icon'          => 'dashicons-book',
 			'taxonomies'    => array('bookify_category'),
 		);

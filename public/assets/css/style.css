@@ -49,8 +49,6 @@
 
 .bookify__item .bookify__item--thumbnail {
   position: relative;
-  /* margin-bottom: 15px;
-    order: 1; */
 }
 
 .bookify__item .bookify__item--thumbnail img {
@@ -882,4 +880,13 @@
   font-size: 13px;
   font-weight: 500;
   color: #fff;
+}
+.bookify__book_fildes .book_fildes .book_filde {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+#bop_wrapper-1638 .bookify__book_fildes .ta-row [class*='ta-col-'] {
+  padding-bottom: 0;
 }
