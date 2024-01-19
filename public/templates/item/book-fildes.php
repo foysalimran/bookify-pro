@@ -8,8 +8,8 @@
  * @subpackage Bookify_Pro/public
  */
 
- echo '<div class="bookify__item--meta event_meta">';
+ echo '<div class="bookify__item--meta event_meta ta-row">';
 
-BOP_Functions::bop_get_book_fildes( $post, $book_fildes_fields, $visitor_count, $_event_meta_separator, $bookify_postmeta, $is_table );
+BOP_Functions::bop_get_book_fildes( $sorter, $post, $book_fildes_fields, $visitor_count, $_event_meta_separator, $bookify_postmeta, $is_table );
 
 echo '</div>';

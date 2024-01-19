@@ -953,11 +953,21 @@ class BOP_Display
 											array(
 												'id'       => 'show_book_fildes',
 												'type'     => 'switcher',
-												'title'    => esc_html__('Meta Fields', 'bookify-pro'),
+												'title'    => esc_html__('Book Fields', 'bookify-pro'),
 												'text_on'  => esc_html__('Show', 'bookify-pro'),
 												'text_off' => esc_html__('Hide', 'bookify-pro'),
 												'default'  => true,
 												'text_width' => 80,
+											),
+											array(
+												'id' => 'show_book_column',
+												'type' => 'button_set',
+												'options'  	=> array(
+													'1'   	=> __('1 Column', 'bookify-pro'),
+													'2'   	=> __('2 Column', 'bookify-pro'),
+													'3' 	=> __('3 Column', 'bookify-pro'),
+												),
+												'default'=> '2'
 											),
 											array(
 												'id'      => 'bop_book_fildes_group',
@@ -1001,6 +1011,20 @@ class BOP_Display
 														'default'   => esc_html__('F j, Y', 'bookify-pro'),
 														'desc' => __('To define format, check <a href="https://wordpress.org/support/article/formatting-date-and-time/" target="_blank" rel="noopener noreferrer nofollow"><em>this doc</em></a>.', 'bookify-pro'),
 														'dependency' => array('select_book_fildes', '==', 'publish_date'),
+													),
+													array(
+														'id'       => 'show_before_text',
+														'type'     => 'switcher',
+														'title'    => esc_html__('Before Text', 'bookify-pro'),
+														'text_on'  => esc_html__('Show', 'bookify-pro'),
+														'text_off' => esc_html__('Hide', 'bookify-pro'),
+														'text_width' => 80,
+													),
+													array(
+														'id'       => 'bop_before_text',
+														'type'     => 'text',
+														'title'    => ' ',
+														'dependency' => array('show_before_text', '==', 'true'),
 													),
 												),
 
@@ -1088,9 +1112,9 @@ class BOP_Display
 												'type'     => 'button_set',
 												'title'    => esc_html__('Price', 'bookify-pro'),
 												'options'    => array(
-												'none'  => 'None',
-												'price' => 'Price',
-												'regular_sale' => 'Regular and Sale Price',
+													'none'  => 'None',
+													'price' => 'Price',
+													'regular_sale' => 'Regular and Sale Price',
 												),
 												'default'    => 'none',
 											),
