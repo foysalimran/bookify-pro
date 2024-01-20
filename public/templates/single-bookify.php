@@ -1,5 +1,8 @@
 <?php
 get_header(); // Include your header template
+$options = get_option( 'ta_bookify_settings' );
+$title = $options['bop_title']; // Title
+$subtitle = $options['bop_subtitle']; // Title
 ?>
 
 <section class="bookify bookify__single">
@@ -7,9 +10,6 @@ get_header(); // Include your header template
         <?php
         while (have_posts()) : the_post();
             $bookify_postmeta = get_post_meta(get_the_ID(), 'ta_bookify_postmeta', true);
-            echo "<pre>";
-            print_r($bookify_postmeta);
-            echo "</pre>";
         ?>
             <div class="ta-row">
                 <div class="ta-col-xl-2 col-xs-1">
@@ -26,8 +26,10 @@ get_header(); // Include your header template
                 <div class="ta-col-xl-2 col-xs-1">
                     <div class="bookify__content">
                         <?php
-                        the_title('<h3 class="bookify__title">', '</h3>');
-                        if ($bookify_postmeta['bop_subtitle']) :
+                        if($title) {
+                            the_title('<h3 class="bookify__title">', '</h3>');
+                        }
+                        if ($bookify_postmeta['bop_subtitle'] && $subtitle) :
                         ?>
                             <div class="bookify__subtitle">
                                 <?php echo esc_html($bookify_postmeta['bop_subtitle']) ?>
