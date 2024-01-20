@@ -203,9 +203,14 @@ class BOP_Postmeta
                             'dependency' => array('bop_website_icon_or_image', '==', 'image')
                         ),
                         array(
+                            'id'    => 'bop_website_text',
+                            'type'  => 'text',
+                            'title' => 'Website Name',
+                        ),
+                        array(
                             'id'    => 'bop_website_link',
                             'type'  => 'text',
-                            'title' => 'Website Name & Book Link',
+                            'title' => 'Website Link',
                         ),
                     ),
                 ),

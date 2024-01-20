@@ -974,6 +974,18 @@
 .bookify__single .bookify__abarage__rating {
   display: flex;
   gap: 7px;
-  color: #808080;
+  color: #faca51;
   font-size: 14px;
   font-weight: 400; }
+
+.bookify__btn__primary {
+  background-color: #c27b7f;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+}
+.bookify_purchase_btn:hover {
+  color: #ffffff;
+}

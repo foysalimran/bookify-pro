@@ -756,12 +756,12 @@ class BOP_Functions
 		echo wp_kses_post($meta_wrapper_end_tag);
 	}
 	/**
-	 * Process all the event fildes.
+	 * Process all the book fildes.
 	 *
 	 * @param object $event The selected event.
-	 * @param array  $book_fildes_fields The selected event fildes to show.
+	 * @param array  $book_fildes_fields The selected book fildes to show.
 	 * @param int    $visitor_count Number of visitor saw the event.
-	 * @param string $fildes_separator The event fildes separator.
+	 * @param string $fildes_separator The book fildes separator.
 	 * @param string $is_table the table layout check.
 	 * @return void
 	 */

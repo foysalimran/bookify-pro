@@ -348,7 +348,7 @@ if ( ! empty( $_custom_fields_typography['font-family'] ) ) {
 if ( 'zigzag_layout' !== $layouts['bop_layout_preset'] ) {
 	$custom_css .= "text-align: {$_custom_fields_typography['text-align']};";
 }
-$custom_css .= "text-transform: {$_custom_fields_typography['text-transform']};font-size: {$_custom_fields_typography['font-size']}px;line-height: {$_custom_fields_typography['line-height']}px;letter-spacing: {$_custom_fields_typography['letter-spacing']}px;color: {$_custom_fields_typography['color']};margin: {$bop_custom_fields_margin['top']}px {$bop_custom_fields_margin['right']}px {$bop_custom_fields_margin['bottom']}px {$bop_custom_fields_margin['left']}px;}}";
+$custom_css .= "text-transform: {$_custom_fields_typography['text-transform']};font-size: {$_custom_fields_typography['font-size']}px;line-height: {$_custom_fields_typography['line-height']}px;letter-spacing: {$_custom_fields_typography['letter-spacing']}px;color: {$_custom_fields_typography['color']};margin: {$bop_custom_fields_margin['top']}px {$bop_custom_fields_margin['right']}px {$bop_custom_fields_margin['bottom']}px {$bop_custom_fields_margin['left']}px;}";
 
 
 // Post Meta.

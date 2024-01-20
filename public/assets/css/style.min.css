@@ -917,7 +917,7 @@
   padding: 0px 0px 10px 0px;
 }
 .bookify__single .bookify__price span {
-  color: #f15123;
+  color: #876585;
   font-size: 18px;
   font-style: italic;
   font-weight: 500;
@@ -931,7 +931,7 @@
   flex-direction: column;
 }
 .bookify__single .bookify__details ul li {
-  color: #e58c23;
+  color: #c27b7f;
   list-style: none;
   display: flex;
   gap: 10px;
@@ -940,6 +940,12 @@
 .bookify__single .bookify__details ul li ul {
   flex-direction: row;
   gap: 10px;
+}
+.bookify__single .bookify__details ul li ul a {
+  color: #c27b7f;
+}
+.bookify__single .bookify__details ul li ul a:hover {
+  color: #876585;
 }
 .bookify__single .bookify__details ul li b {
   width: 180px;
@@ -953,16 +959,13 @@
   color: #222;
   font-size: 16px;
 }
-.bookify__single .bookify__details ul li a {
-  color: #e58c23;
-}
 
 .bookify__single .bookify__description {
   padding: 0;
   margin-top: 20px;
 }
 .bookify__single .bookify__description__title {
-  color: #e58c23;
+  color: #c27b7f;
   font-size: 20x;
   font-weight: 500;
   padding: 0px 0px 5px 0px;
@@ -995,7 +998,21 @@
 .bookify__single .bookify__abarage__rating {
   display: flex;
   gap: 7px;
-  color: #808080;
+  color: #faca51;
   font-size: 14px;
   font-weight: 400;
+}
+.bookify_purchase_btn {
+  background-color: #c27b7f;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.bookify_purchase_btn:hover {
+  color: #ffffff;
 }
