@@ -109,5 +109,5 @@ class Bookify_pro_Post_Type
 		);
 
 		register_post_type('bookify', $args);
-	}
+	}	
 }

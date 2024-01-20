@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       https://https://https://https://themeatelier.net/
+ * @link       https://themeatelier.net/
  * @since      1.0.0
  *
  * @package    Bookify_Pro
