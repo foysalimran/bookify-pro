@@ -8,7 +8,7 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://https://https://https://themeatelier.net/
+ * @link              https://themeatelier.net/
  * @since             1.0.0
  * @package           Bookify_Pro
  *
@@ -18,7 +18,7 @@
  * Description:       Bookify Pro
  * Version:           1.0.0
  * Author:            ThemeAtelier
- * Author URI:        https://https://https://https://themeatelier.net//
+ * Author URI:        https://themeatelier.net//
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       bookify-pro
@@ -81,3 +81,15 @@ function bookify_pro_run() {
 
 }
 bookify_pro_run();
+
+
+function load_bookify_template($template) {
+    global $post;
+
+    if ($post->post_type == 'bookify') {
+        $template = plugin_dir_path(__FILE__) . 'public/templates/single-bookify.php';
+    }
+
+    return $template;
+}
+add_filter('template_include', 'load_bookify_template');

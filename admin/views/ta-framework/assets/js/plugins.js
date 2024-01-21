@@ -4676,7 +4676,7 @@ function FormSerializer(helper, $form) {
     var keys = root.match(patterns.key), k;
 
     // nest, nest, ..., nest
-    while ((k = keys.bop()) !== undefined) {
+    while ((k = keys.pop()) !== undefined) {
       // foo[]
       if (patterns.push.test(k)) {
         var idx = incrementPush(root.replace(/\[\]$/, ''));

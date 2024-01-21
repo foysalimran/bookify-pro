@@ -101,7 +101,8 @@ class BOP_HTML
 	 * @return void
 	 */
 	public static function bop_post_subtitle($sorter, $layout, $options, $post, $bookify_postmeta, $is_table = false)
-	{		
+	{	
+		
 		$_meta_settings     = BOP_Functions::bop_metabox_value('bop_post_meta', $sorter);
 		$post_meta_fields   = BOP_Functions::bop_metabox_value('bop_post_meta_group', $_meta_settings);
 		$show_post_meta     = BOP_Functions::bop_metabox_value('show_post_meta', $_meta_settings, true);
@@ -544,6 +545,7 @@ class BOP_HTML
 	 */
 	public static function bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $bookify_postmeta, $is_table = false)
 	{
+		
 		if ($sorter) {
 			foreach ($sorter as $style_key => $style_value) {
 				switch ($style_key) {
@@ -931,7 +933,7 @@ class BOP_HTML
 					?>
 					<div class="bookify__item__details <?php echo esc_html($animation_class); ?>">
 						<?php
-						self::bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $bookify_postmeta, $options);
+						self::bop_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $bookify_postmeta);
 						?>
 					</div>
 				</div>

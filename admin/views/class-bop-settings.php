@@ -43,6 +43,7 @@ class BOP_Settings {
 		);
 		BOP_ScriptsAndStyles::section( $prefix );
 		BOP_Accessibility::section( $prefix );
+		BOP_SinglePage::section( $prefix );
 		BOP_CustomCSS::section( $prefix );
 	}
 

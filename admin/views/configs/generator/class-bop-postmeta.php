@@ -192,20 +192,25 @@ class BOP_Postmeta
                         array(
                             'id'    => 'bop_website_icon',
                             'type'  => 'icon',
-                            'title' => 'Website Name & Book Link',
+                            'title' => 'Website Icon',
                             'dependency' => array('bop_website_icon_or_image', '==', 'icon')
                         ),
                         array(
                             'id'    => 'bop_website_image',
                             'type'    => 'media',
-                            'title' => 'Website Name & Book Link',
+                            'title' => 'Website Image Icon',
                             'preview' => false,
                             'dependency' => array('bop_website_icon_or_image', '==', 'image')
                         ),
                         array(
+                            'id'    => 'bop_website_text',
+                            'type'  => 'text',
+                            'title' => 'Website Name',
+                        ),
+                        array(
                             'id'    => 'bop_website_link',
-                            'type'  => 'link',
-                            'title' => 'Website Name & Book Link',
+                            'type'  => 'text',
+                            'title' => 'Website Link',
                         ),
                     ),
                 ),
