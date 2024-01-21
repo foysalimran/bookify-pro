@@ -53,6 +53,7 @@ $custom_css              .= "#bop_wrapper-{$bop_id} .ta-row{ margin-right: -{$ma
 if ( 'large_with_small' === $layouts['bop_layout_preset'] ) {
 	$custom_css .= "#bop_wrapper-{$bop_id} .ta-bop-block-8, #bop_wrapper-{$bop_id} .ta-bop-block-4, #bop_wrapper-{$bop_id} .ta-bop-block-6, #bop_wrapper-{$bop_id} .ta-bop-block-3{padding-right: {$margin_between_post_half}px;padding-left: {$margin_between_post_half}px;}#bop_wrapper-{$bop_id} .ta-bop-block-4 .ta-bop-block-half,#bop_wrapper-{$bop_id} .ta-bop-block-8,#bop_wrapper-{$bop_id} .ta-bop-block-3 .ta-bop-block-half,#bop_wrapper-{$bop_id} .ta-bop-block-6{padding-bottom: {$margin_between_post}px;}";
 }
+$custom_css .= "#bop_wrapper-{$bop_id} .ta-row.book_fildes{margin-right: 0px;margin-left: 0px;}";
 /**
  * Style for each slide/post.
  */

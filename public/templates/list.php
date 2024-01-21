@@ -12,6 +12,7 @@
 if (!defined('ABSPATH')) {
 	exit;
 }
+
 ?>
 <div id="bop_wrapper-<?php echo esc_attr($bop_gl_id); ?>" class="<?php self::bop_wrapper_classes($layout_preset, $bop_gl_id, $pagination_type); ?>" <?php self::wrapper_data($pagination_type, $pagination_type_mobile, $bop_gl_id); ?> data-sid="<?php echo esc_attr($bop_gl_id); ?>" data-lang="<?php echo esc_attr($spta_lang); ?>">
 	<?php
