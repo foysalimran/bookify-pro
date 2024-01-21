@@ -60,7 +60,6 @@ class Bookify_Pro_Admin
 
 		add_action('init', array($this, 'register_bookify_post'));
 		add_action('init', array($this, 'register_bookify_category'));
-		add_action('init', array($this, 'register_bookify_author'));
 	}
 
 	public function add_plugin_action_links($links)
@@ -237,33 +236,6 @@ class Bookify_Pro_Admin
 		);
 
 		register_taxonomy('bookify_category', 'bookify', $taxonomy_args);
-	}
-	public function register_bookify_author()
-	{
-		$taxonomy_labels = array(
-			'name'          => __('Bookify Author', 'bookify-pro'),
-			'singular_name' => __('Bookify Author', 'bookify-pro'),
-			'search_items'  => __('Search Bookify Authors', 'bookify-pro'),
-			'all_items'     => __('All Bookify Authors', 'bookify-pro'),
-			'parent_item'   => __('Parent Bookify Author', 'bookify-pro'),
-			'parent_item_colon' => __('Parent Bookify Author:', 'bookify-pro'),
-			'edit_item'     => __('Edit Bookify Author', 'bookify-pro'),
-			'update_item'   => __('Update Bookify Author', 'bookify-pro'),
-			'add_new_item'  => __('Add New Bookify Author', 'bookify-pro'),
-			'new_item_name' => __('New Bookify Author Name', 'bookify-pro'),
-			'menu_name'     => __('Bookify Author', 'bookify-pro'),
-		);
-
-		$taxonomy_args = array(
-			'hierarchical'      => true, // Set to true if your taxonomy should have parent-child relationships
-			'labels'            => $taxonomy_labels,
-			'show_ui'           => true,
-			'show_admin_column' => true,
-			'query_var'         => true,
-			'rewrite'           => array('slug' => 'bookify_author'),
-		);
-
-		register_taxonomy('bookify_author', 'bookify', $taxonomy_args);
 	}
 
 	/**
