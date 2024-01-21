@@ -920,7 +920,7 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 												'dependency' => array('show_book_category', '==', 'true'),
@@ -1261,7 +1261,7 @@ class BOP_Display
 												'id'      => 'bop_read_label',
 												'type'    => 'text',
 												'title'   => esc_html__('Read More Label', 'bookify-pro'),
-												'default' => 'Read More',
+												'default' => esc_html__('Read More', 'bookify-pro'),
 												'dependency' => array('show_read_more', '==', 'true'),
 											),
 											array(

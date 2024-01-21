@@ -533,7 +533,7 @@ $book_fildes_margin         = isset($bop_book_fildes['book_fildes_margin']) ? $b
 );
 
 $book_category_settings = isset($post_sorter['bop_book_category']) ? $post_sorter['bop_book_category'] : '';
-$bop_category_margin      = isset($post_content_settings['bop_category_margin']) ? $post_content_settings['bop_category_margin'] : array(
+$bop_category_margin      = isset($book_category_settings['bop_category_margin']) ? $book_category_settings['bop_category_margin'] : array(
 	'top'    => '0',
 	'right'  => '0',
 	'bottom' => '15',
@@ -550,7 +550,7 @@ if (!empty($_book_category['font-family'])) {
 	$custom_css .= "font-family: {$_book_category['font-family']};font-weight: {$book_fildes_font_weight};font-style: {$book_fildes_font_style};";
 }
 
-$custom_css .= "text-transform: {$_book_category['text-transform']};font-size: {$_book_category['font-size']}px;line-height: {$_book_category['line-height']}px;letter-spacing: {$_book_category['letter-spacing']}px;color: {$_book_category['color']};}#bop_wrapper-{$bop_id} .bookify__item__category.event_meta{margin: {$book_fildes_margin['top']}px {$book_fildes_margin['right']}px {$book_fildes_margin['bottom']}px {$book_fildes_margin['left']}px;";
+$custom_css .= "text-transform: {$_book_category['text-transform']};font-size: {$_book_category['font-size']}px;line-height: {$_book_category['line-height']}px;letter-spacing: {$_book_category['letter-spacing']}px;color: {$_book_category['color']};}#bop_wrapper-{$bop_id} .bookify__item__category{margin: {$bop_category_margin['top']}px {$bop_category_margin['right']}px {$bop_category_margin['bottom']}px {$bop_category_margin['left']}px;";
 if ('zigzag_layout' !== $layouts['bop_layout_preset']) {
 	$custom_css .= "text-align: {$_book_category['text-align']};";
 }
@@ -571,7 +571,6 @@ $_book_category_border_radius = isset($book_category_settings['bop_category_butt
 	'unit' => 'px',
 );
 $custom_css    .= "#bop_wrapper-{$bop_id} .bookify__item__category li a{ background: {$_book_category_color['bg']}; color: {$_book_category_color['standard']}; border-color: {$_book_category_color['border']}; border-radius: {$_book_category_border_radius['all']}{$_book_category_border_radius['unit']}; padding: {$bop_book_category_padding['top']}px {$bop_book_category_padding['right']}px {$bop_book_category_padding['bottom']}px {$bop_book_category_padding['left']}px; } #bop_wrapper-{$bop_id} .bookify__item__category li a:hover { background: {$_book_category_color['hover_bg']}; color: {$_book_category_color['hover']}; border-color: {$_book_category_color['hover_border']};  }";
-$custom_css    .= "#bop_wrapper-{$bop_id} .bookify__item__category li { margin: {$bop_category_margin['top']}px {$bop_category_margin['right']}px {$bop_category_margin['bottom']}px {$bop_category_margin['left']}px;}";
 
 // Book Price
 $book_price_settings = isset($post_sorter['bop_book_price']) ? $post_sorter['bop_book_price'] : '';

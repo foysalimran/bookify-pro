@@ -6,7 +6,7 @@ $subtitle = $options['bop_subtitle']; // Title
 $bop_single_book_fildes = $options['bop_single_book_fildes']; // Title
 ?>
 
-<section class="bookify bookify__single">
+<section class="bookify bookify_single bookify__single">
     <div class="container">
         <?php
         while (have_posts()) : the_post();
