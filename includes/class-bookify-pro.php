@@ -195,6 +195,9 @@ class Bookify_Pro
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+
+		$this->loader->add_filter('manage_bookify_posts_columns', $plugin_admin, 'filter_bookify_admin_column');
+		$this->loader->add_action('manage_bookify_posts_custom_column', $plugin_admin, 'display_bookify_admin_fields', 10, 2);
 	}
 
 	/**
