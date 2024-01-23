@@ -8,7 +8,6 @@
  * @subpackage Bookify_Pro/public
  */
 
-
-BOP_Functions::bop_get_book_fildes( $sorter, $post, $book_fildes_fields, $visitor_count, $_event_meta_separator, $bookify_postmeta, $is_table );
+BOP_Functions::bop_get_book_fildes( $sorter, $layout, $book_fildes_fields, $visitor_count, $_event_meta_separator, $bookify_postmeta );
 
 

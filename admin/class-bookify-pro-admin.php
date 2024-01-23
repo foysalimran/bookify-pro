@@ -212,6 +212,14 @@ class Bookify_Pro_Admin
 
 	public function register_bookify_category()
 	{
+		$options = get_option('ta_bookify_settings');
+		$book_category_slug = $options['bop_archive_slug'];
+		// Section creator post type
+		if ($book_category_slug) {
+			$book_category_slug;
+		} else {
+			$book_category_slug = 'book_category';
+		}
 		$taxonomy_labels = array(
 			'name'          => __('Book Categories', 'bookify-pro'),
 			'singular_name' => __('Book Categories', 'bookify-pro'),
@@ -232,7 +240,7 @@ class Bookify_Pro_Admin
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
-			'rewrite'           => array('slug' => 'bookify_category'),
+			'rewrite'           => array('slug' => $book_category_slug),
 		);
 
 		register_taxonomy('bookify_category', 'bookify', $taxonomy_args);

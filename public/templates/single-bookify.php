@@ -6,7 +6,7 @@ $subtitle = $options['bop_subtitle']; // Title
 $bop_single_book_fildes = $options['bop_single_book_fildes']; // Title
 ?>
 
-<section class="bookify bookify__single">
+<section class="bookify bookify_single bookify__single">
     <div class="container">
         <?php
         while (have_posts()) : the_post();
@@ -308,39 +308,39 @@ $bop_single_book_fildes = $options['bop_single_book_fildes']; // Title
                                                 <div class="bookify__abarage__rating">
                                                     <div class="bookify__rating">
                                                         <?php if (1 == $bookify_postmeta['bop_book_rating']) : ?>
-                                                            <i class="fa-solid fa-star"></i>
+                                                            <i class="fas fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                         <?php endif; ?>
                                                         <?php if (2 == $bookify_postmeta['bop_book_rating']) : ?>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                         <?php endif; ?>
                                                         <?php if (3 == $bookify_postmeta['bop_book_rating']) : ?>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                         <?php endif; ?>
                                                         <?php if (4 == $bookify_postmeta['bop_book_rating']) : ?>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                         <?php endif; ?>
                                                         <?php if (5 == $bookify_postmeta['bop_book_rating']) : ?>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
                                                         <?php endif; ?>
                                                     </div>
                                                     <span><?php echo esc_html($bookify_postmeta['bop_book_rating']) ?> reviews</span>

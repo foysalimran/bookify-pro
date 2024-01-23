@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Bookify Pro
  * Plugin URI:        https://https://https://wp-plugins.themeatelier.net/bookify-pro
- * Description:       Bookify Pro
+ * Description:       Book showcase for WordPress
  * Version:           1.0.0
  * Author:            ThemeAtelier
  * Author URI:        https://themeatelier.net//
@@ -87,7 +87,11 @@ function load_bookify_template($template) {
     global $post;
 
     if ($post->post_type == 'bookify') {
-        $template = plugin_dir_path(__FILE__) . 'public/templates/single-bookify.php';
+		if (is_single()) {
+			$template = plugin_dir_path(__FILE__) . 'public/templates/single-bookify.php';
+		} elseif (is_archive()) {
+			$template = plugin_dir_path(__FILE__) . 'public/templates/archive.php';
+		}
     }
 
     return $template;

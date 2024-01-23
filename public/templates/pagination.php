@@ -22,7 +22,7 @@ if ( $show_pagination && ! $bop_query->is_main_query() ) {
 		$bop_paged = 1;
 	}
 	$load_more_button_text    = isset( $view_options['load_more_button_text'] ) ? $view_options['load_more_button_text'] : 'Load More';
-	$load_more_ending_message = isset( $view_options['load_more_ending_message'] ) ? $view_options['load_more_ending_message'] : 'No more events available';
+	$load_more_ending_message = isset( $view_options['load_more_ending_message'] ) ? $view_options['load_more_ending_message'] : 'No more books available';
 	?>
 	<span class="ta-bop-pagination-data" style="display:none;" data-loadmoretext="<?php echo esc_attr( $load_more_button_text ); ?>" data-endingtext="<?php echo esc_attr( $load_more_ending_message ); ?>"></span>
 

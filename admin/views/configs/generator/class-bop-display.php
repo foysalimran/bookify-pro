@@ -69,7 +69,7 @@ class BOP_Display
 						),
 						'min'      => '1',
 						'dependency' => array('bop_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
-						'help'       => wp_kses(esc_html__('<i class="fa fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fa fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fa fa-tablet"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fa fa-mobile"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fa fa-mobile"></i> <b> Mobile </b> - size is smaller than 576px.', 'bookify-pro'), array('i' => array('class' => array()), 'br' => array())),
+						'help'       => wp_kses(esc_html__('<i class="fas fa-tv"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fas fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fas fa-tablet-alt"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile </b> - size is smaller than 576px.', 'bookify-pro'), array('i' => array('class' => array()), 'br' => array())),
 					),
 					array(
 						'id'              => 'margin_between_post',
@@ -297,7 +297,7 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 												'dependency' => array('post_thumb_show', '==', 'true'),
@@ -531,7 +531,7 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 												'dependency' => array('show_post_title', '==', 'true'),
@@ -600,7 +600,7 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 												'dependency' => array('show_post_subtitle', '==', 'true'),
@@ -810,6 +810,18 @@ class BOP_Display
 												'dependency' => array('show_post_meta', '==', 'true'),
 											),
 											array(
+												'id'       => 'post_meta_alignment',
+												'type'     => 'button_set',
+												'title'   => esc_html__('Alignment', 'bookify-pro'),
+												'options'    => array(
+													'left'   => wp_kses(__('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'center' => wp_kses(__('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'right'  => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+												),
+												'default' => 'left',
+												'dependency' => array('show_post_meta', '==', 'true'),
+											),
+											array(
 												'id'       => 'post_meta_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'bookify-pro'),
@@ -820,7 +832,7 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 											),
@@ -896,6 +908,18 @@ class BOP_Display
 												'dependency' => array('show_book_category', '==', 'true'),
 											),
 											array(
+												'id'       => 'bop_book_category_alignment',
+												'type'     => 'button_set',
+												'title'   => esc_html__('Alignment', 'bookify-pro'),
+												'options'    => array(
+													'left'   => wp_kses(__('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'center' => wp_kses(__('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'right'  => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+												),
+												'default' => 'left',
+												'dependency' => array('show_book_category', '==', 'true'),
+											),
+											array(
 												'id'       => 'bop_book_category_padding',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Padding', 'bookify-pro'),
@@ -920,7 +944,7 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 												'dependency' => array('show_book_category', '==', 'true'),
@@ -967,7 +991,8 @@ class BOP_Display
 													'2'   	=> __('2 Column', 'bookify-pro'),
 													'3' 	=> __('3 Column', 'bookify-pro'),
 												),
-												'default' => '2'
+												'default' => '2',
+												'dependency' => array('bop_layout_preset|show_book_fildes', '!=|==', 'list_layout|true', 'all'),
 											),
 											array(
 												'id'      => 'bop_book_fildes_group',
@@ -1054,6 +1079,7 @@ class BOP_Display
 													'right'  => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
 												),
 												'default' => 'left',
+												'dependency' => array('bop_layout_preset|show_book_fildes', '!=|==', 'list_layout|true', 'all'),
 											),
 											array(
 												'id'       => 'book_fildes_between_padding',
@@ -1081,7 +1107,7 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 											),
@@ -1102,11 +1128,30 @@ class BOP_Display
 												'type'     => 'button_set',
 												'title'    => esc_html__('Price', 'bookify-pro'),
 												'options'    => array(
-													'none'  => 'None',
-													'price' => 'Price',
-													'regular_sale' => 'Regular and Sale Price',
+													'none'  => __('None', 'bookify-pro'),
+													'price' => __('Price', 'bookify-pro'),
+													'regular_sale' => __('Regular and Sale Price', 'bookify-pro'),
 												),
 												'default'    => 'none',
+											),
+											array(
+												'id'       => 'show_book_price_text',
+												'type'     => 'text',
+												'title'    => esc_html__('Price Before Text', 'bookify-pro'),
+												'default'    => __('Price:', 'bookify-pro'),
+												'dependency' => array('show_book_price', '!=', 'none'),
+											),
+											array(
+												'id'       => 'show_book_price_alignment',
+												'type'     => 'button_set',
+												'title'   => esc_html__('Alignment', 'bookify-pro'),
+												'options'    => array(
+													'left'   => wp_kses(__('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'center' => wp_kses(__('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'right'  => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+												),
+												'default' => 'left',
+												'dependency' => array('show_book_price', '!=', 'none'),
 											),
 											array(
 												'id'       => 'book_fildes_margin',
@@ -1119,7 +1164,7 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 											),
@@ -1194,7 +1239,7 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 												'dependency' => array('show_post_content', '==', 'true'),
@@ -1261,7 +1306,7 @@ class BOP_Display
 												'id'      => 'bop_read_label',
 												'type'    => 'text',
 												'title'   => esc_html__('Read More Label', 'bookify-pro'),
-												'default' => 'Read More',
+												'default' => esc_html__('Read More', 'bookify-pro'),
 												'dependency' => array('show_read_more', '==', 'true'),
 											),
 											array(
@@ -1311,7 +1356,7 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 												'dependency' => array('show_read_more', '==', 'true'),
@@ -1355,7 +1400,7 @@ class BOP_Display
 									array(
 										'title'  => esc_html('Buy Now', 'bookify-pro'),
 										'fields' => array(
-											// ReadMore settings.
+											// Buy Now settings.
 											array(
 												'id'       => 'show_bye_now_button',
 												'type'     => 'switcher',
@@ -1366,7 +1411,7 @@ class BOP_Display
 												'text_width' => 80,
 											),
 											array(
-												'id'      => 'buy_now_button_color_button',
+												'id'      => 'buy_now_color_button',
 												'type'    => 'color_group',
 												'title'   => esc_html__('Buy Now Color', 'bookify-pro'),
 												'options' => array(
@@ -1388,7 +1433,7 @@ class BOP_Display
 												'dependency' => array('show_bye_now_button', '==', 'true'),
 											),
 											array(
-												'id'       => 'buy_now_button_padding',
+												'id'       => 'buy_now_padding',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Padding', 'bookify-pro'),
 												'sanitize' => 'bop_sanitize_number_array_field',
@@ -1403,7 +1448,7 @@ class BOP_Display
 												'dependency' => array('show_bye_now_button', '==', 'true'),
 											),
 											array(
-												'id'       => 'buy_now_button_margin',
+												'id'       => 'buy_now_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'bookify-pro'),
 												'sanitize' => 'bop_sanitize_number_array_field',
@@ -1412,13 +1457,13 @@ class BOP_Display
 												'default'  => array(
 													'top'  => '0',
 													'right' => '0',
-													'bottom' => '20',
+													'bottom' => '15',
 													'left' => '0',
 												),
 												'dependency' => array('show_bye_now_button', '==', 'true'),
 											),
 											array(
-												'id'       => 'buy_now_button_button_radius',
+												'id'       => 'buy_now_button_radius',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Border Radius', 'bookify-pro'),
 												'sanitize' => 'bop_sanitize_number_array_field',
@@ -1431,7 +1476,7 @@ class BOP_Display
 												'dependency' => array('show_bye_now_button', '==', 'true'),
 											),
 											array(
-												'id'      => 'buy_now_button_color_text',
+												'id'      => 'buy_now_color_text',
 												'type'    => 'color_group',
 												'title'   => esc_html__('Buy Now Color', 'bookify-pro'),
 												'options' => array(
@@ -1742,7 +1787,7 @@ class BOP_Display
 						'type'       => 'text',
 						'title'      => esc_html__('Ending Message', 'bookify-pro'),
 						'subtitle'   => esc_html__('Set ending message for load more/infinite scroll.', 'bookify-pro'),
-						'default'    => esc_html__('No more events available', 'bookify-pro'),
+						'default'    => esc_html__('No more books available', 'bookify-pro'),
 						'dependency' => array('bop_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
@@ -1765,6 +1810,30 @@ class BOP_Display
 							'border_acolor'     => '#c27b7f',
 							'background'        => '#ffffff',
 							'active_background' => '#c27b7f',
+						),
+						'dependency' => array('bop_layout_preset|show_post_pagination|post_pagination_type', '!=|==|any', 'carousel_layout|true|ajax_pagination,no_ajax', true),
+					),
+					array(
+						'id'       => 'bop_pagination_btn_border_radius',
+						'type'     => 'spacing',
+						'title'    => esc_html__('Pagination Border Radius', 'bookify-pro'),
+						'subtitle' => esc_html__('Set pagination border radius for item.', 'bookify-pro'),
+						'all'      => true,
+						'units'    => array('px', '%'),
+						'default'  => array(
+							'all' => '0',
+						),
+						'dependency' => array('bop_layout_preset|show_post_pagination|post_pagination_type', '!=|==|any', 'carousel_layout|true|ajax_pagination,no_ajax', true),
+					),
+					array(
+						'id'       => 'bop_pagination_btn_margin_between',
+						'type'     => 'spacing',
+						'title'    => esc_html__('Pagination Margin Between', 'bookify-pro'),
+						'subtitle' => esc_html__('Set pagination border radius for item.', 'bookify-pro'),
+						'all'      => true,
+						'units'    => array('px'),
+						'default'  => array(
+							'all' => '0',
 						),
 						'dependency' => array('bop_layout_preset|show_post_pagination|post_pagination_type', '!=|==|any', 'carousel_layout|true|ajax_pagination,no_ajax', true),
 					),

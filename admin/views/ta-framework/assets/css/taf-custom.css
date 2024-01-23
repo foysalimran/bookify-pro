@@ -163,7 +163,7 @@
   background: #c27b7f;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #876585, #c27b7f);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #876585, #c27b7f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  padding: 18px 26px;
+  padding: 12px 26px;
   overflow: hidden;
 }
 
