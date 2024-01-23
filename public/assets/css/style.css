@@ -512,6 +512,8 @@
 .bop-post-pagination {
   margin-top: 20px;
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
 }
 .bop-post-pagination a,
 .bop-post-pagination .page-numbers {

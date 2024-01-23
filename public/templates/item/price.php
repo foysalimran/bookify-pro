@@ -14,8 +14,8 @@ if ('price' == $show_book_price) {
     echo esc_html($bookify_postmeta['bop_book_regular_price']);
 } else {
 ?>
-    <del>$<?php echo esc_html($bookify_postmeta['bop_book_regular_price']) ?></del>
+    <del><?php echo esc_html($bookify_postmeta['bop_book_regular_price']) ?></del>
 <?php
-    echo '$' . esc_html($bookify_postmeta['bop_book_regular_price']);
+    echo esc_html($bookify_postmeta['bop_book_regular_price']);
 }
 echo '</div>';

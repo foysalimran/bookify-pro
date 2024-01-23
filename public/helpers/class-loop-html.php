@@ -438,7 +438,7 @@ class BOP_HTML
 	 * @param int   $visitor_count views count.
 	 * @return void
 	 */
-	public static function bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table = false)
+	public static function bop_book_fildes_html($sorter, $layout, $visitor_count, $bookify_postmeta)
 	{
 		$_meta_settings   = BOP_Functions::bop_metabox_value('bop_book_fildes', $sorter);
 		$book_fildes_fields = BOP_Functions::bop_metabox_value('bop_book_fildes_group', $_meta_settings);
@@ -516,7 +516,7 @@ class BOP_HTML
 						self::bop_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'bop_book_fildes':
-						self::bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
+						self::bop_book_fildes_html($sorter, $layout, $visitor_count, $bookify_postmeta);
 						break;
 					case 'bop_book_price':
 						self::bop_book_price_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
@@ -571,7 +571,7 @@ class BOP_HTML
 						self::bop_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'bop_book_fildes':
-						self::bop_book_fildes_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
+						self::bop_book_fildes_html($sorter, $layout, $visitor_count, $bookify_postmeta);
 						break;
 					case 'bop_book_price':
 						self::bop_book_price_html($sorter, $visitor_count, $post, $bookify_postmeta, $is_table);
