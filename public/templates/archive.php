@@ -98,9 +98,13 @@ $bop_single_book_fildes = $options['bop_single_book_fildes'];
             $view_options = "";
             $layout = array('bop_layout_preset' => 'grid_layout');
             $layout_preset = "grid_layout";
+
+            if (is_archive()) {
+                require BOP_Functions::bop_locate_template('pagination.php');
+            }
             ?>
 
-            <?php require BOP_Functions::bop_locate_template('pagination.php'); ?>
+
         </div>
     </div>
 </div>

@@ -908,6 +908,18 @@ class BOP_Display
 												'dependency' => array('show_book_category', '==', 'true'),
 											),
 											array(
+												'id'       => 'bop_book_category_alignment',
+												'type'     => 'button_set',
+												'title'   => esc_html__('Alignment', 'bookify-pro'),
+												'options'    => array(
+													'left'   => wp_kses(__('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'center' => wp_kses(__('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'right'  => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+												),
+												'default' => 'left',
+												'dependency' => array('show_book_category', '==', 'true'),
+											),
+											array(
 												'id'       => 'bop_book_category_padding',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Padding', 'bookify-pro'),

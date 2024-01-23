@@ -177,9 +177,6 @@
   justify-content: space-between;
 }
 
-.bookify__item .bookify__item__content .read-more {
-  display: none;
-}
 
 .bookify__item .bookify__item__content .bookify__item__content__readmore a {
   display: inline-block;
@@ -362,10 +359,6 @@
   left: 40px;
 }
 
-.bop-carousel-wrapper .swiper-button-prev::after,
-.bop-carousel-wrapper .swiper-button-next::after {
-  display: none;
-}
 
 .swiper-lazy-preloader-black {
   --swiper-preloader-color: #888;
@@ -525,7 +518,9 @@
   line-height: 34px;
   font-size: 14px;
   text-align: center;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
   text-decoration: none;
   -webkit-transition: all 0.33s;
@@ -533,10 +528,6 @@
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
   cursor: pointer;
-}
-.bop-post-pagination a.bop_next.active,
-.bop-post-pagination a.bop_prev.active {
-  display: none;
 }
 .bop-post-pagination .page-numbers.current,
 .bop-post-pagination a.active {
@@ -557,12 +548,21 @@
   text-transform: uppercase;
   font-weight: 500;
 }
-.bop-hide {
-  display: none;
-}
+
+.bookify__item .bookify__item__content .read-more,
+.bop-carousel-wrapper .swiper-button-prev::after,
+.bop-carousel-wrapper .swiper-button-next::after,
+.bop-post-pagination a.bop_next.active,
+.bop-post-pagination a.bop_prev.active,
+.bop-hide,
 .bop-post-pagination a.bop-hide,
-.bop-post-pagination .page-numbers.bop-hide {
-  display: none;
+.bop-post-pagination .page-numbers.bop-hide,.ta-container .bx-wrapper .bx-loading,
+.bop-order.bop-bar.fl-btn input,
+.bop-order-by.bop-bar.fl-btn input,
+.bop-author-filter.bop-bar.fl_button input,
+.bop-custom-field-filter.bop-bar.fl_button input,
+.bop-filter-bar .bop-filter-by.bop-bar.fl_button input {
+  display: none !important;
 }
 .bop-infinite-scroll-loader svg {
   stroke: #876585;
@@ -598,10 +598,6 @@
 .bx-wrapper {
   background-color: inherit;
   border: none;
-}
-
-.ta-container .bx-wrapper .bx-loading {
-  display: none;
 }
 
 /* Filter Bar */
@@ -703,14 +699,6 @@
   border: 2px solid #bbb;
   text-transform: uppercase;
   text-align: center;
-}
-
-.bop-order.bop-bar.fl-btn input,
-.bop-order-by.bop-bar.fl-btn input,
-.bop-author-filter.bop-bar.fl_button input,
-.bop-custom-field-filter.bop-bar.fl_button input,
-.bop-filter-bar .bop-filter-by.bop-bar.fl_button input {
-  display: none;
 }
 
 .fl_checkbox input {
@@ -1104,4 +1092,9 @@
   background: #876585;
   color: #ffffff;
   border-color: #876585;
+}
+.bookify__item .bookify__item__price {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
