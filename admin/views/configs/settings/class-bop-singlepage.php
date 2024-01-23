@@ -107,28 +107,6 @@ class BOP_SinglePage
 								'type'     => 'text',
 								'title'    => esc_html__('Before Text', 'bookify-pro'),
 							),
-							// array(
-							// 	'id'      => 'bop_purchase_btn',
-							// 	'type'    => 'color_group',
-							// 	'title'   => esc_html__('Purchase Button Color', 'bookify-pro'),
-							// 	'options' => array(
-							// 		'standard' => esc_html__('Text Color', 'bookify-pro'),
-							// 		'hover' => esc_html__('Text Hover Color', 'bookify-pro'),
-							// 		'bg' => esc_html__('Background', 'bookify-pro'),
-							// 		'hover_bg' => esc_html__('Hover Background', 'bookify-pro'),
-							// 		'border' => esc_html__('Border', 'bookify-pro'),
-							// 		'hover_border' => esc_html__('Hover Border', 'bookify-pro'),
-							// 	),
-							// 	'default' => array(
-							// 		'standard' => '#ffffff',
-							// 		'hover' => '#ffffff',
-							// 		'bg' => '#c27b7f',
-							// 		'hover_bg' => '#876585',
-							// 		'border' => '#c27b7f',
-							// 		'hover_border' => '#876585',
-							// 	),
-							// 	'dependency' => array('select_single_book_fildes', '==', 'book_multiple_purchase_link'),
-							// ),
 						),
 
 

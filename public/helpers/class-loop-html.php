@@ -672,12 +672,12 @@ class BOP_HTML
 						'show_all'  => true,
 						'prev_next' => false,
 						'type'      => 'array',
-						'prev_text' => '<i class="fa fa-angle-left"></i>',
-						'next_text' => '<i class="fa fa-angle-right"></i>',
+						'prev_text' => '<i class="fas fa-angle-left"></i>',
+						'next_text' => '<i class="fas fa-angle-right"></i>',
 					)
 				);
-				$prev_link  = '<a class="next page-numbers" href="#"><i class="fa fa-angle-right"></i></a>';
-				$next_link  = '<a class="prev page-numbers active" href="#"><i class="fa fa-angle-left"></i></a>';
+				$prev_link  = '<a class="next page-numbers" href="#"><i class="fas fa-angle-right"></i></a>';
+				$next_link  = '<a class="prev page-numbers active" href="#"><i class="fas fa-angle-left"></i></a>';
 				array_unshift($page_links, $next_link);
 				$page_links[] = $prev_link;
 				$html         = '';
@@ -718,8 +718,8 @@ class BOP_HTML
 						'end_size'  => 2,
 						'mid_size'  => 1,
 						'type'      => 'array',
-						'prev_text' => '<i class="fa fa-angle-left"></i>',
-						'next_text' => '<i class="fa fa-angle-right"></i>',
+						'prev_text' => '<i class="fas fa-angle-left"></i>',
+						'next_text' => '<i class="fas fa-angle-right"></i>',
 					)
 				);
 				echo implode($page_links); //phpcs:ignore
@@ -733,8 +733,8 @@ class BOP_HTML
 						'show_all'  => true,
 						'prev_next' => false,
 						'type'      => 'array',
-						'prev_text' => '<i class="fa fa-angle-left"></i>',
-						'next_text' => '<i class="fa fa-angle-right"></i>',
+						'prev_text' => '<i class="fas fa-angle-left"></i>',
+						'next_text' => '<i class="fas fa-angle-right"></i>',
 					)
 				);
 				$html       = '';

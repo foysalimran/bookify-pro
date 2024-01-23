@@ -373,13 +373,14 @@ $_post_meta_typography    = isset($view_options['post_meta_typography']) && arra
 );
 $post_meta_font_weight    = !empty($_post_meta_typography['font-weight']) ? $_post_meta_typography['font-weight'] : '400';
 $post_meta_font_style     = !empty($_post_meta_typography['font-style']) ? $_post_meta_typography['font-style'] : 'normal';
-$post_meta_margin         = isset($post_sorter['bop_post_meta']['post_meta_margin']) ? $post_sorter['bop_post_meta']['post_meta_margin'] : array(
+$bop_post_meta     = !empty($post_sorter['bop_post_meta']) ? $post_sorter['bop_post_meta'] : '';
+$post_meta_margin         = isset($bop_post_meta['post_meta_margin']) ? $bop_post_meta['post_meta_margin'] : array(
 	'top'    => '0',
 	'right'  => '0',
 	'bottom' => '9',
 	'left'   => '0',
 );
-$post_meta_between_margin = isset($post_sorter['bop_post_meta']['post_meta_between_margin']) ? $post_sorter['bop_post_meta']['post_meta_between_margin'] : array(
+$post_meta_between_margin = isset($bop_post_meta['post_meta_between_margin']) ? $bop_post_meta['post_meta_between_margin'] : array(
 	'top'    => '0',
 	'right'  => '0',
 	'bottom' => '0',
@@ -388,7 +389,7 @@ $post_meta_between_margin = isset($post_sorter['bop_post_meta']['post_meta_betwe
 $custom_css              .= "#bop_wrapper-{$bop_id} .bookify__item .bop-category a,#bop_wrapper-{$bop_id}  .bookify__item .bookify__item--meta ul li{
 	margin: {$post_meta_between_margin['top']}px {$post_meta_between_margin['right']}px {$post_meta_between_margin['bottom']}px {$post_meta_between_margin['left']}px;
 }";
-$meta_separator_color = isset($post_sorter['bop_post_meta']['meta_separator_color']) ? $post_sorter['bop_post_meta']['meta_separator_color'] : "";
+$meta_separator_color = isset($bop_post_meta['meta_separator_color']) ? $bop_post_meta['meta_separator_color'] : "";
 $custom_css              .= "#bop_wrapper-{$bop_id} .bookify__item .meta_separator{
 	color: {$meta_separator_color};
 }";
@@ -396,12 +397,14 @@ $custom_css .= "#bop_wrapper-{$bop_id} .bookify__item--meta li,#bop_wrapper-{$bo
 if (!empty($_post_meta_typography['font-family'])) {
 	$custom_css .= "font-family: {$_post_meta_typography['font-family']};font-weight: {$post_meta_font_weight};font-style: {$post_meta_font_style};";
 }
-
 $custom_css .= "text-transform: {$_post_meta_typography['text-transform']};font-size: {$_post_meta_typography['font-size']}px;line-height: {$_post_meta_typography['line-height']}px;letter-spacing: {$_post_meta_typography['letter-spacing']}px;color: {$_post_meta_typography['color']};}#bop_wrapper-{$bop_id} .bookify__item--meta{margin: {$post_meta_margin['top']}px {$post_meta_margin['right']}px {$post_meta_margin['bottom']}px {$post_meta_margin['left']}px;";
 if ('zigzag_layout' !== $layouts['bop_layout_preset']) {
 	$custom_css .= "text-align: {$_post_meta_typography['text-align']};";
 }
 $custom_css .= '}';
+$post_meta_alignment = isset($bop_post_meta['post_meta_alignment']) ? $bop_post_meta['post_meta_alignment'] : "";
+$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item--meta ul{justify-content:{$post_meta_alignment}}";
+
 
 $custom_css .= "#bop_wrapper-{$bop_id} .bookify__item--meta li a:hover{color: {$_post_meta_typography['hover_color']};}";
 
@@ -580,7 +583,8 @@ $book_price_margin = isset($book_price_settings['book_fildes_margin']) ? $book_p
 	'bottom' => '15',
 	'left'   => '0',
 );
-$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item__price{margin: {$book_price_margin['top']}px {$book_price_margin['right']}px {$book_price_margin['bottom']}px {$book_price_margin['left']}px;}";
+$show_book_price_alignment = isset($book_price_settings['show_book_price_alignment']) ? $book_price_settings['show_book_price_alignment'] : 'left';
+$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item__price{margin: {$book_price_margin['top']}px {$book_price_margin['right']}px {$book_price_margin['bottom']}px {$book_price_margin['left']}px;text-align:{$show_book_price_alignment};}";
 
 // Post Pill Meta Color. ( button style meta ).
 $book_fildes_group = isset($bop_book_fildes['bop_book_fildes_group']) ? $bop_book_fildes['bop_book_fildes_group'] : '';

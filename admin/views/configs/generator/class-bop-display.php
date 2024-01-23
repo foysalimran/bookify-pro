@@ -69,7 +69,7 @@ class BOP_Display
 						),
 						'min'      => '1',
 						'dependency' => array('bop_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
-						'help'       => wp_kses(esc_html__('<i class="fa fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fa fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fa fa-tablet"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fa fa-mobile"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fa fa-mobile"></i> <b> Mobile </b> - size is smaller than 576px.', 'bookify-pro'), array('i' => array('class' => array()), 'br' => array())),
+						'help'       => wp_kses(esc_html__('<i class="fas fa-tv"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fas fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fas fa-tablet-alt"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile </b> - size is smaller than 576px.', 'bookify-pro'), array('i' => array('class' => array()), 'br' => array())),
 					),
 					array(
 						'id'              => 'margin_between_post',
@@ -810,6 +810,18 @@ class BOP_Display
 												'dependency' => array('show_post_meta', '==', 'true'),
 											),
 											array(
+												'id'       => 'post_meta_alignment',
+												'type'     => 'button_set',
+												'title'   => esc_html__('Alignment', 'bookify-pro'),
+												'options'    => array(
+													'left'   => wp_kses(__('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'center' => wp_kses(__('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'right'  => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+												),
+												'default' => 'left',
+												'dependency' => array('show_post_meta', '==', 'true'),
+											),
+											array(
 												'id'       => 'post_meta_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'bookify-pro'),
@@ -1104,11 +1116,30 @@ class BOP_Display
 												'type'     => 'button_set',
 												'title'    => esc_html__('Price', 'bookify-pro'),
 												'options'    => array(
-													'none'  => 'None',
-													'price' => 'Price',
-													'regular_sale' => 'Regular and Sale Price',
+													'none'  => __('None', 'bookify-pro'),
+													'price' => __('Price', 'bookify-pro'),
+													'regular_sale' => __('Regular and Sale Price', 'bookify-pro'),
 												),
 												'default'    => 'none',
+											),
+											array(
+												'id'       => 'show_book_price_text',
+												'type'     => 'text',
+												'title'    => esc_html__('Price Before Text', 'bookify-pro'),
+												'default'    => __('Price:', 'bookify-pro'),
+												'dependency' => array('show_book_price', '!=', 'none'),
+											),
+											array(
+												'id'       => 'show_book_price_alignment',
+												'type'     => 'button_set',
+												'title'   => esc_html__('Alignment', 'bookify-pro'),
+												'options'    => array(
+													'left'   => wp_kses(__('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'center' => wp_kses(__('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+													'right'  => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+												),
+												'default' => 'left',
+												'dependency' => array('show_book_price', '!=', 'none'),
 											),
 											array(
 												'id'       => 'book_fildes_margin',

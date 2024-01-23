@@ -167,18 +167,18 @@
     margin-bottom: 7px;
     font-size: 1.2em;
   }
-  .post-type-bookify .postbox-header .handle-actions .handle-order-lower,
-  .post-type-bookify
+  .post-type-bookify_shortcode .postbox-header .handle-actions .handle-order-lower,
+  .post-type-bookify_shortcode
     .postbox-header
     .handle-actions
     .handle-order-higher {
     display: none;
   }
-  .post-type-bookify .misc-pub-section.misc-pub-visibility,
-  .post-type-bookify .misc-pub-section.curtime.misc-pub-curtime{
+  .post-type-bookify_shortcode .misc-pub-section.misc-pub-visibility,
+  .post-type-bookify_shortcode .misc-pub-section.curtime.misc-pub-curtime{
     display: none;
   }
-  #ta_bookify_layouts .postbox-header{
+  #ta_bop_layouts .postbox-header{
       border: none;
   }
   
