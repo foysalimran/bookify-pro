@@ -109,16 +109,16 @@ class Bookify_Pro_Public {
 		$bop_like_css        = isset($bop_settings['bop_like_css']) ? $bop_settings['bop_like_css'] : true;
 		$bop_magnific_css    = isset($bop_settings['bop_magnific_css']) ? $bop_settings['bop_magnific_css'] : true;
 		if ($bop_fontawesome_css) {
-			wp_enqueue_style('font-awesome', BOP_URL . 'public/assets/css/fontawesome.min.css', array(), BOP_VERSION, 'all');
+			wp_enqueue_style('fontawesome', BOP_URL . 'public/assets/css/fontawesome.min.css', array(), BOP_VERSION, 'all');
 		}
 		if ($bop_swiper_css) {
-			wp_enqueue_style('swiper', BOP_URL . 'public/assets/css/swiper-bundle' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
+			wp_enqueue_style('swiperslider', BOP_URL . 'public/assets/css/swiper-bundle' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
 		}
 		if ($bop_bxslider_css) {
 			wp_enqueue_style('bxslider', BOP_URL . 'public/assets/css/jquery.bxslider' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
 		}
 		if ($bop_like_css) {
-			wp_enqueue_style('likes', BOP_URL . 'public/assets/css/bop-likes-public' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
+			wp_enqueue_style('bop-likes', BOP_URL . 'public/assets/css/bop-likes-public' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
 		}
 		wp_enqueue_style('bop-grid', BOP_URL . 'public/assets/css/ta-grid' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
 		wp_enqueue_style('bop-style', BOP_URL . 'public/assets/css/style' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
@@ -181,7 +181,7 @@ class Bookify_Pro_Public {
 		}
 		// Enqueue Google fonts.
 		if ($bop_enqueue_google_font && !empty($enqueue_fonts)) {
-			wp_enqueue_style('bop-google-fonts', esc_url(add_query_arg('family', rawurlencode(implode('|', array_merge(...$enqueue_fonts))), '//fonts.googleapis.com/css')), array(), BOP_VERSION, false);
+			wp_enqueue_style('google-fonts', esc_url(add_query_arg('family', rawurlencode(implode('|', array_merge(...$enqueue_fonts))), '//fonts.googleapis.com/css')), array(), BOP_VERSION, false);
 		}
 		include 'dynamic-css/responsive-css.php';
 		if (!empty($bop_custom_css)) {
