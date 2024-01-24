@@ -26,23 +26,28 @@ $bop_single_book_fildes = $options['bop_single_book_fildes'];
                 while ($bookify_query->have_posts()) :
                     $bookify_query->the_post();
                     $bookify_postmeta = get_post_meta(get_the_ID(), 'ta_bookify_postmeta', true);
+
+                    // Get the permalink for the post/page
+                    $permalink = get_permalink();
             ?>
 
                     <div class="ta-col-xs-1 ta-col-sm-2 ta-col-md-2 ta-col-lg-3 ta-col-xl-3 bop-added">
                         <div class="bookify__item bop-item-1701" data-id="1701">
                             <div class="bookify__item--thumbnail">
-                                <?php if (has_post_thumbnail()) {
+                                <?php 
+                                if (has_post_thumbnail()) {
+                                    // Wrap the image in an anchor tag with the permalink
+                                    echo '<a href="' . esc_url($permalink) . '">';
                                     the_post_thumbnail('large'); // You can change 'large' to other image sizes
-                                } ?>
+                                    echo '</a>';
+                                }
+                                ?>
 
                             </div>
                             <?php
                             if ($title) {
-                                // Get the permalink for the post/page
-                                $permalink = get_permalink();
-
                                 // Output the title with a link
-                                echo '<h2 class="bookify__item--title"><a href="' . esc_url($permalink) . '">' . esc_html($title) . '</a></h2>';
+                                echo '<h2 class="bookify__item--title"><a href="' . esc_url($permalink) . '">' . esc_html(get_the_title()) . '</a></h2>';
                             }
 
                             ?>
