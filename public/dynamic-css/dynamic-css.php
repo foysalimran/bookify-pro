@@ -584,7 +584,7 @@ $book_price_margin = isset($book_price_settings['book_fildes_margin']) ? $book_p
 	'left'   => '0',
 );
 $show_book_price_alignment = isset($book_price_settings['show_book_price_alignment']) ? $book_price_settings['show_book_price_alignment'] : 'left';
-$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item__price{margin: {$book_price_margin['top']}px {$book_price_margin['right']}px {$book_price_margin['bottom']}px {$book_price_margin['left']}px;text-align:{$show_book_price_alignment};}";
+$custom_css .= "#bop_wrapper-{$bop_id} .bookify__item__price{margin: {$book_price_margin['top']}px {$book_price_margin['right']}px {$book_price_margin['bottom']}px {$book_price_margin['left']}px;text-align:{$show_book_price_alignment};justify-content:{$show_book_price_alignment};}";
 
 // Post Pill Meta Color. ( button style meta ).
 $book_fildes_group = isset($bop_book_fildes['bop_book_fildes_group']) ? $bop_book_fildes['bop_book_fildes_group'] : '';

@@ -871,6 +871,11 @@
   font-weight: 500;
   color: #fff;
 }
+
+.bookify__book_fildes .book_fildes{
+  display: flex;
+  gap: 10px;
+}
 .bookify__book_fildes .book_fildes .book_filde {
   display: flex;
   gap: 3px;
@@ -998,15 +1003,15 @@
 .bookify_purchase_btn:hover {
   color: #ffffff;
 }
-.ta-fields-row.column-1 {
+.bookify__book_fildes .book_fildes.ta-fields-row.column-1 {
   display: grid;
   grid-template-columns: 1fr;
 }
-.ta-fields-row.column-2 {
+.bookify__book_fildes .book_fildes.ta-fields-row.column-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.ta-fields-row.column-3 {
+.bookify__book_fildes .book_fildes.ta-fields-row.column-3 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
