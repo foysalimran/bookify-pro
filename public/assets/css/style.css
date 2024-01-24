@@ -1010,6 +1010,11 @@
   border-radius: 5px;
   text-decoration: none;
 }
+.bookify_purchase_btn a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 .bookify__book_fildes .book_fildes.ta-fields-row.column-1 {
   display: grid;
   grid-template-columns: 1fr;
