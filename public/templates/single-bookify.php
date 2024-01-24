@@ -118,8 +118,9 @@ $bop_single_book_fildes = $options['bop_single_book_fildes']; // Title
                                                     echo esc_html($before_text);
                                                 }
                                                 echo '</b>';
-                                                echo '<span>$' . esc_html($bookify_postmeta['bop_book_sale_price']) . '</span>';
-                                                echo '$' . esc_html($bookify_postmeta['bop_book_regular_price']);
+                                                echo '<del>' . esc_html($bookify_postmeta['bop_book_sale_price']) . '</del>';
+                                                echo "-";
+                                                echo esc_html($bookify_postmeta['bop_book_regular_price']);
 
                                                 echo '</li>';
                                             }
@@ -362,8 +363,8 @@ $bop_single_book_fildes = $options['bop_single_book_fildes']; // Title
                                                 echo '</b>';
                                                 foreach ($purchase_links as $purchase_link) {
                                                     echo '<div>';
-                                                    echo '<button>';
-                                                    echo '<a class="bookify_purchase_btn" href="' . esc_url($purchase_link['bop_website_link']) . '">';
+                                                    echo '<button class="bookify_purchase_btn">';
+                                                    echo '<a href="' . esc_url($purchase_link['bop_website_link']) . '">';
                                                     if ('icon' == $purchase_link['bop_website_icon_or_image']) {
                                                         echo '<i class="' . esc_attr($purchase_link['bop_website_icon']) . '"></i>';
                                                     } else {
