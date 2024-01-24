@@ -28,19 +28,26 @@ class BOP_Archive
 		BOP::createSection(
 			$prefix,
 			array(
-				'title'  => esc_html__('Book Archive', 'bookify-pro'),
+				'title'  => esc_html__('Slug', 'bookify-pro'),
 				'icon'   => 'far fa-file-code',
 				'fields' => array(
 					array(
-						'type'    => 'subheading',
-						'content' => esc_html__('Book Archive', 'bookify-pro'),
+						'type'    		=> 'subheading',
+						'content' 		=> esc_html__('Book Archive', 'bookify-pro'),
 					),
 					array(
-						'id'         => 'bop_archive_slug',
-						'type'       => 'text',
-						'title'      => esc_html__('Archive Slug', 'bookify-pro'),
-						'desc'		=> esc_html__('After changing the slug go to settings->reading then click save changes button to flash your permalink.', 'bookify-pro'),
-						'default'    => 'book_category',
+						'id'         	=> 'bop_post_slug',
+						'type'       	=> 'text',
+						'title'      	=> esc_html__('Post Slug', 'bookify-pro'),
+						'desc'			=> esc_html__('After changing the slug go to settings->reading then click save changes button to flash your permalink.', 'bookify-pro'),
+						'default'    	=> 'books',
+					),
+					array(
+						'id'         	=> 'bop_archive_slug',
+						'type'       	=> 'text',
+						'title'      	=> esc_html__('Archive Slug', 'bookify-pro'),
+						'desc'			=> esc_html__('After changing the slug go to settings->reading then click save changes button to flash your permalink.', 'bookify-pro'),
+						'default'    	=> 'book_category',
 					),
 				),
 			),
