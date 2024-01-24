@@ -177,7 +177,6 @@
   justify-content: space-between;
 }
 
-
 .bookify__item .bookify__item__content .bookify__item__content__readmore a {
   display: inline-block;
   border: 1px solid;
@@ -358,7 +357,6 @@
   right: auto;
   left: 40px;
 }
-
 
 .swiper-lazy-preloader-black {
   --swiper-preloader-color: #888;
@@ -556,7 +554,8 @@
 .bop-post-pagination a.bop_prev.active,
 .bop-hide,
 .bop-post-pagination a.bop-hide,
-.bop-post-pagination .page-numbers.bop-hide,.ta-container .bx-wrapper .bx-loading,
+.bop-post-pagination .page-numbers.bop-hide,
+.ta-container .bx-wrapper .bx-loading,
 .bop-order.bop-bar.fl-btn input,
 .bop-order-by.bop-bar.fl-btn input,
 .bop-author-filter.bop-bar.fl_button input,
@@ -871,6 +870,11 @@
   font-weight: 500;
   color: #fff;
 }
+
+.bookify__book_fildes .book_fildes {
+  display: flex;
+  gap: 10px;
+}
 .bookify__book_fildes .book_fildes .book_filde {
   display: flex;
   gap: 3px;
@@ -907,7 +911,6 @@
   padding: 0px 0px 10px 0px;
 }
 .bookify__single .bookify__price span {
-  color: #f15123;
   font-size: 18px;
   font-style: italic;
   font-weight: 500;
@@ -921,7 +924,6 @@
   flex-direction: column;
 }
 .bookify__single .bookify__details ul li {
-  color: #e58c23;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -940,8 +942,13 @@
   color: #222;
   font-size: 16px;
 }
-.bookify__single .bookify__details ul li a {
-  color: #e58c23;
+
+.bookify__single .bookify__details ul li ul {
+  flex-direction: row;
+  gap: 10px;
+}
+.bookify__single .bookify__details ul li ul li {
+  padding: 0 !important;
 }
 
 .bookify__single .bookify__description {
@@ -949,7 +956,6 @@
   margin-top: 20px;
 }
 .bookify__single .bookify__description__title {
-  color: #e58c23;
   font-size: 20x;
   font-weight: 500;
   padding: 0px 0px 5px 0px;
@@ -982,9 +988,11 @@
 .bookify__single .bookify__abarage__rating {
   display: flex;
   gap: 7px;
-  color: #faca51;
   font-size: 14px;
   font-weight: 400;
+}
+.bookify__single .bookify__abarage__rating .bookify__rating {
+  color: #faca51;
 }
 
 .bookify__btn__primary {
@@ -995,18 +1003,27 @@
   border: none;
   text-decoration: none;
 }
-.bookify_purchase_btn:hover {
-  color: #ffffff;
+.bookify_purchase_btn {
+  background-color: inherit;
+  color: inherit;
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-decoration: none;
 }
-.ta-fields-row.column-1 {
+.bookify_purchase_btn a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.bookify__book_fildes .book_fildes.ta-fields-row.column-1 {
   display: grid;
   grid-template-columns: 1fr;
 }
-.ta-fields-row.column-2 {
+.bookify__book_fildes .book_fildes.ta-fields-row.column-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.ta-fields-row.column-3 {
+.bookify__book_fildes .book_fildes.ta-fields-row.column-3 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -1026,21 +1043,21 @@
 }
 .bookify_category .bookify__item .bookify__item--title {
   font-size: 20px;
-    margin-top: 0;
-    margin-bottom: 15px;
-    color: #111;
-    font-weight: 700;
-    word-break: break-word;
-    text-decoration: none;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #111;
+  font-weight: 700;
+  word-break: break-word;
+  text-decoration: none;
 }
 .bookify_category .bookify__item .bookify__item--subtitle {
   font-size: 18px;
-    margin-top: 0;
-    margin-bottom: 15px;
-    color: #111;
-    font-weight: 700;
-    word-break: break-word;
-    text-decoration: none;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #111;
+  font-weight: 700;
+  word-break: break-word;
+  text-decoration: none;
 }
 .bookify_category .bookify__item .bookify__item__category {
   margin-bottom: 15px;
@@ -1079,7 +1096,10 @@
   color: #111111;
 }
 
-.bookify_category .bookify__item .bookify__item__content__readmore .bookify__item__btn {
+.bookify_category
+  .bookify__item
+  .bookify__item__content__readmore
+  .bookify__item__btn {
   background: #c27b7f;
   color: #ffffff;
   border-color: #c27b7f;
@@ -1088,7 +1108,10 @@
   padding: 5px 20px 5px 20px;
 }
 
-.bookify_category .bookify__item .bookify__item__content__readmore .bookify__item__btn:hover {
+.bookify_category
+  .bookify__item
+  .bookify__item__content__readmore
+  .bookify__item__btn:hover {
   background: #876585;
   color: #ffffff;
   border-color: #876585;

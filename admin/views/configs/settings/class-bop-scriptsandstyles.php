@@ -54,8 +54,8 @@ class BOP_ScriptsAndStyles
 						'default'    => true,
 					),
 					array(
-						'type'    => 'subheading',
-						'content' => esc_html__('Enqueue or Dequeue CSS', 'bookify-pro'),
+						'type'    	 => 'subheading',
+						'content' 	 => esc_html__('Enqueue or Dequeue CSS', 'bookify-pro'),
 					),
 					array(
 						'id'         => 'bop_swiper_css',

@@ -771,7 +771,7 @@ class BOP_Functions
 
 		$show_book_column = isset($sorter['bop_book_fildes']['show_book_column']) ? $sorter['bop_book_fildes']['show_book_column'] : "1";
 
-		$meta_wrapper_start_tag = "<div class='bookify__book_fildes'><div class='". esc_attr($layout != 'list_layout' ? "ta-fields-row book_fildes column-$show_book_column" : "") ."'>";
+		$meta_wrapper_start_tag = "<div class='bookify__book_fildes'><div class='book_fildes ". esc_attr($layout != 'list_layout' ? "ta-fields-row column-$show_book_column" : "") ."'>";
 		$meta_wrapper_end_tag   = apply_filters('bop_book_fildes_wrapper_end', '</div></div>');
 		if ($is_meta_not_empty) {
 			echo wp_kses_post($meta_wrapper_start_tag);

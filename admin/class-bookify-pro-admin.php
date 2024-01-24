@@ -148,6 +148,14 @@ class Bookify_Pro_Admin
 
 	public function register_bookify_post()
 	{
+		$options = get_option('ta_bookify_settings');
+		$bop_post_slug = $options['bop_post_slug'];
+		// Section creator post type
+		if ($bop_post_slug) {
+			$bop_post_slug;
+		} else {
+			$bop_post_slug = 'books';
+		}
 		$labels = array(
 			'name'               => __('Bookify', 'bookify-pro'),
 			'singular_name'      => __('Bookify', 'bookify-pro'),
@@ -172,6 +180,7 @@ class Bookify_Pro_Admin
 			'supports'      => array('title', 'editor', 'thumbnail'),
 			'menu_icon'          => 'dashicons-book',
 			'taxonomies'    => array('bookify_category'),
+			'rewrite'           => array('slug' => $bop_post_slug),
 		);
 
 		$bookify_shortcode = array(
