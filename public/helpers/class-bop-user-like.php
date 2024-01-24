@@ -36,9 +36,9 @@ class BOP_User_Like
 	 */
 	public function likes_enqueue_scripts()
 	{
-		wp_register_script('bop-likes-public-js', BOP_URL . 'public/assets/js/bop-likes-public.js', array('jquery'), '2.0.0', true);
+		wp_register_script('likes-public-js', BOP_URL . 'public/assets/js/bop-likes-public.js', array('jquery'), '2.0.0', true);
 		wp_localize_script(
-			'bop-likes-public-js',
+			'likes-public-js',
 			'simpleLikes',
 			array(
 				'ajaxurl' => admin_url('admin-ajax.php'),
@@ -46,7 +46,7 @@ class BOP_User_Like
 				'unlike'  => esc_html__('Unlike', 'bookify-pro'),
 			)
 		);
-		wp_enqueue_script('bop-likes-public-js');
+		wp_enqueue_script('likes-public-js');
 	}
 	/**
 	 * Process post likes.

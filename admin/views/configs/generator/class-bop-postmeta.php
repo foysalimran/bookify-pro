@@ -30,113 +30,113 @@ class BOP_Postmeta
                 array(
                     'id'    => 'bop_subtitle',
                     'type'  => 'text',
-                    'title' => __('Subtitle', 'bookify-pro'),
+                    'title' => esc_html__('Subtitle', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_author',
                     'type'  => 'text',
-                    'title' => __('Author', 'bookify-pro'),
+                    'title' => esc_html__('Author', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_publisher',
                     'type'  => 'text',
-                    'title' => __('Publisher', 'bookify-pro'),
+                    'title' => esc_html__('Publisher', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_publish_date',
                     'type'  => 'date',
-                    'title' => __('Publish Date', 'bookify-pro'),
+                    'title' => esc_html__('Publish Date', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_isbn',
                     'type'  => 'text',
-                    'title' => __('ISBN', 'bookify-pro'),
+                    'title' => esc_html__('ISBN', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_isbn_10',
                     'type'  => 'text',
-                    'title' => __('ISBN-10', 'bookify-pro'),
+                    'title' => esc_html__('ISBN-10', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_isbn_13',
                     'type'  => 'text',
-                    'title' => __('ISBN-13', 'bookify-pro'),
+                    'title' => esc_html__('ISBN-13', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_asin',
                     'type'  => 'text',
-                    'title' => __('ASIN', 'bookify-pro'),
+                    'title' => esc_html__('ASIN', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_subject',
                     'type'  => 'text',
-                    'title' => __('Subject', 'bookify-pro'),
-                    'desc'  => __('eg:  Self-Help / Compulsive Behavior / General', 'bookify-pro')
+                    'title' => esc_html__('Subject', 'bookify-pro'),
+                    'desc'  => esc_html__('eg:  Self-Help / Compulsive Behavior / General', 'bookify-pro')
                 ),
                 array(
                     'id'    => 'bop_book_genre',
                     'type'  => 'text',
-                    'title' => __('Genre', 'bookify-pro'),
-                    'desc'  => __('eg: Motivational / Self-help book', 'bookify-pro')
+                    'title' => esc_html__('Genre', 'bookify-pro'),
+                    'desc'  => esc_html__('eg: Motivational / Self-help book', 'bookify-pro')
                 ),
                 array(
                     'id'    => 'bop_country',
                     'type'  => 'text',
-                    'title' => __('Country', 'bookify-pro'),
+                    'title' => esc_html__('Country', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_language',
                     'type'  => 'text',
-                    'title' => __('Book language', 'bookify-pro'),
+                    'title' => esc_html__('Book language', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_translator_name',
                     'type'  => 'text',
-                    'title' => __('Translator Name', 'bookify-pro'),
+                    'title' => esc_html__('Translator Name', 'bookify-pro'),
                 ),
                 array(
                     'id'        => 'book_format',
                     'type'      => 'fieldset',
-                    'title'     => 'Book Format',
+                    'title'     => esc_html__('Book Format', 'bookify-pro'),
                     'fields'    => array(
                         array(
                             'id'    => 'bop_book_format',
                             'type'  => 'select',
-                            'title' => __('Book Format', 'bookify-pro'),
+                            'title' => esc_html__('Book Format', 'bookify-pro'),
                             'options' => array(
-                                'text' => __('Text', 'bookify-pro'),
-                                'ebook' => __('E-book', 'bookify-pro'),
-                                'audio' => __('Audio', 'bookify-pro'),
+                                'text' => esc_html__('Text', 'bookify-pro'),
+                                'ebook' => esc_html__('E-book', 'bookify-pro'),
+                                'audio' => esc_html__('Audio', 'bookify-pro'),
                             ),
                         ),
                         array(
                             'id'    => 'bop_book_page',
                             'type'  => 'text',
-                            'title' => __('Book Pages', 'bookify-pro'),
+                            'title' => esc_html__('Book Pages', 'bookify-pro'),
                             'dependency' => array('bop_book_format', '==', 'text'),
                         ),
                         array(
                             'id'    => 'bop_book_dimension',
                             'type'  => 'text',
-                            'title' => __('Dimension', 'bookify-pro'),
+                            'title' => esc_html__('Dimension', 'bookify-pro'),
                             'dependency' => array('bop_book_format', '==', 'text'),
                         ),
                         array(
                             'id'    => 'bop_book_weight',
                             'type'  => 'text',
-                            'title' => __('Weight', 'bookify-pro'),
+                            'title' => esc_html__('Weight', 'bookify-pro'),
                             'dependency' => array('bop_book_format', '==', 'text'),
                         ),
                         array(
                             'id'    => 'bop_book_file_size',
                             'type'  => 'text',
-                            'title' => __('File size', 'bookify-pro'),
+                            'title' => esc_html__('File size', 'bookify-pro'),
                             'dependency' => array('bop_book_format', '!=', 'text'),
                         ),
                         array(
                             'id'    => 'bop_book_file_format',
                             'type'  => 'text',
-                            'title' => __('File Format', 'bookify-pro'),
+                            'title' => esc_html__('File Format', 'bookify-pro'),
                             'dependency' => array('bop_book_format', '!=', 'text'),
                         ),
                     ),
@@ -144,7 +144,7 @@ class BOP_Postmeta
                 array(
                     'id'    => 'bop_book_rating',
                     'type'  => 'slider',
-                    'title' => __('Ratings', 'bookify-pro'),
+                    'title' => esc_html__('Ratings', 'bookify-pro'),
                     'min'     => 0,
                     'max'     => 5,
                     'step'    => 1,
@@ -154,37 +154,37 @@ class BOP_Postmeta
                 array(
                     'id'    => 'bop_book_regular_price',
                     'type'  => 'text',
-                    'title' => __('Book Regular Prices', 'bookify-pro'),
+                    'title' => esc_html__('Book Regular Prices', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_sale_price',
                     'type'  => 'text',
-                    'title' => __('Book Sale Prices', 'bookify-pro'),
+                    'title' => esc_html__('Book Sale Prices', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_buy_button_text',
                     'type'  => 'text',
-                    'title' => __('Buy Button Text', 'bookify-pro'),
+                    'title' => esc_html__('Buy Button Text', 'bookify-pro'),
                 ),
                 array(
                     'id'    => 'bop_book_buy_button_link',
                     'type'  => 'text',
-                    'title' => __('Buy Button Link', 'bookify-pro'),
+                    'title' => esc_html__('Buy Button Link', 'bookify-pro'),
                 ),
                 array(
                     'id'        => 'bop_book_multiple_purchase_link',
                     'type'      => 'repeater',
-                    'title'     => 'Book Multiple Purchase Link',
+                    'title'     => esc_html__('Book Multiple Purchase Link', 'bookify-pro'),
                     'fields'    => array(
 
 
                         array(
                             'id'    => 'bop_website_icon_or_image',
                             'type'  => 'button_set',
-                            'title' => 'Website Icon/Image',
+                            'title' => esc_html__('Website Icon/Image', 'bookify-pro'),
                             'options'    => array(
-                                'icon'  => __('Icon', 'bookify-pro'),
-                                'image' => __('Image', 'bookify-pro'),
+                                'icon'  => esc_html__('Icon', 'bookify-pro'),
+                                'image' => esc_html__('Image', 'bookify-pro'),
                             ),
                             'default'    => 'icon'
                         ),
@@ -192,25 +192,25 @@ class BOP_Postmeta
                         array(
                             'id'    => 'bop_website_icon',
                             'type'  => 'icon',
-                            'title' => 'Website Icon',
+                            'title' => esc_html__('Website Icon', 'bookify-pro'),
                             'dependency' => array('bop_website_icon_or_image', '==', 'icon')
                         ),
                         array(
                             'id'    => 'bop_website_image',
                             'type'    => 'media',
-                            'title' => 'Website Image Icon',
+                            'title' => esc_html__('Website Image Icon', 'bookify-pro'),
                             'preview' => false,
                             'dependency' => array('bop_website_icon_or_image', '==', 'image')
                         ),
                         array(
                             'id'    => 'bop_website_text',
                             'type'  => 'text',
-                            'title' => 'Website Name',
+                            'title' => esc_html__('Website Name', 'bookify-pro'),
                         ),
                         array(
                             'id'    => 'bop_website_link',
                             'type'  => 'text',
-                            'title' => 'Website Link',
+                            'title' => esc_html__( 'Website Link', 'bookify-pro' ),
                         ),
                     ),
                 ),

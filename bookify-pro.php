@@ -14,11 +14,11 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Bookify Pro
- * Plugin URI:        https://https://https://wp-plugins.themeatelier.net/bookify-pro
+ * Plugin URI:        https://wp-plugins.themeatelier.net/bookify-pro
  * Description:       Book showcase for WordPress
  * Version:           1.0.0
  * Author:            ThemeAtelier
- * Author URI:        https://themeatelier.net//
+ * Author URI:        https://themeatelier.net/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       bookify-pro

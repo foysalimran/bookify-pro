@@ -109,16 +109,16 @@ class Bookify_Pro_Public {
 		$bop_like_css        = isset($bop_settings['bop_like_css']) ? $bop_settings['bop_like_css'] : true;
 		$bop_magnific_css    = isset($bop_settings['bop_magnific_css']) ? $bop_settings['bop_magnific_css'] : true;
 		if ($bop_fontawesome_css) {
-			wp_enqueue_style('bop-font-awesome', BOP_URL . 'public/assets/css/fontawesome.min.css', array(), BOP_VERSION, 'all');
+			wp_enqueue_style('font-awesome', BOP_URL . 'public/assets/css/fontawesome.min.css', array(), BOP_VERSION, 'all');
 		}
 		if ($bop_swiper_css) {
-			wp_enqueue_style('bop_swiper', BOP_URL . 'public/assets/css/swiper-bundle' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
+			wp_enqueue_style('swiper', BOP_URL . 'public/assets/css/swiper-bundle' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
 		}
 		if ($bop_bxslider_css) {
-			wp_enqueue_style('bop-bxslider', BOP_URL . 'public/assets/css/jquery.bxslider' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
+			wp_enqueue_style('bxslider', BOP_URL . 'public/assets/css/jquery.bxslider' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
 		}
 		if ($bop_like_css) {
-			wp_enqueue_style('bop-likes', BOP_URL . 'public/assets/css/bop-likes-public' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
+			wp_enqueue_style('likes', BOP_URL . 'public/assets/css/bop-likes-public' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
 		}
 		wp_enqueue_style('bop-grid', BOP_URL . 'public/assets/css/ta-grid' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
 		wp_enqueue_style('bop-style', BOP_URL . 'public/assets/css/style' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
@@ -198,11 +198,11 @@ class Bookify_Pro_Public {
 	 */
 	public function enqueue_scripts()
 	{
-		wp_register_script('bop-swiper', BOP_URL . 'public/assets/js/swiper-bundle' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
-		wp_register_script('bop-isotope', BOP_URL . 'public/assets/js/isotope' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
-		wp_register_script('bop-bxslider', BOP_URL . 'public/assets/js/jquery.bxslider' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
+		wp_register_script('swiper', BOP_URL . 'public/assets/js/swiper-bundle' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
+		wp_register_script('isotope', BOP_URL . 'public/assets/js/isotope' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
+		wp_register_script('bxslider', BOP_URL . 'public/assets/js/jquery.bxslider' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
 		wp_register_script('bop-lazy', BOP_URL . 'public/assets/js/bop-lazyload' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
-		wp_register_script('bop-script', BOP_URL . 'public/assets/js/scripts' . $this->suffix . '.js', array('bop-swiper', 'bop-bxslider'), BOP_VERSION, true);
+		wp_register_script('bop-script', BOP_URL . 'public/assets/js/scripts' . $this->suffix . '.js', array('swiper', 'bxslider'), BOP_VERSION, true);
 		wp_localize_script(
 			'bop-script',
 			'spbop',
