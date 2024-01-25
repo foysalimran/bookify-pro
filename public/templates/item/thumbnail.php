@@ -60,15 +60,23 @@ if ( 'carousel_layout' !== $layout && $lazy_load && ! is_admin() ) {
 				echo wp_kses( $td['start'], $allow_tag );
 				include BOP_Functions::bop_locate_template( 'item/post-thumb-taxonomy.php' );
 				echo wp_kses( $td['end'], $allow_tag );
-				$item_thumb = apply_filters( 'bop_thumb_taxonomy', ob_get_clean() );
-				echo esc_html($item_thumb);
+				$item_thumb = apply_filters('bop_thumb_taxonomy', ob_get_clean());
+				echo wp_kses($item_thumb, array(
+					'div' => array('class' => true),
+					'li' => array('class' => true),
+					'a' => array('href' => true),
+				));
 			} elseif ( $post_thumb_meta == 'date' ) {
 				ob_start();
 				echo wp_kses( $td['start'], $allow_tag );
 				include BOP_Functions::bop_locate_template( 'item/post-thumb-date.php' );
 				echo wp_kses( $td['end'], $allow_tag );
-				$item_thumb = apply_filters( 'bop_thumb_archive', ob_get_clean() );
-				echo esc_html($item_thumb);
+				$item_thumb = apply_filters('bop_thumb_archive', ob_get_clean());
+				echo wp_kses($item_thumb, array(
+					'div' => array('class' => true),
+					'li' => array(),
+					'time' => array('class' => true),
+				));
 			}
 			?>
 
