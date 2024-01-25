@@ -33,7 +33,7 @@ if ( ! class_exists( 'BOP_Resize' ) ) {
 		 *
 		 * @var bool
 		 */
-		public $throwOnError = false;
+		public $throw_on_error = false;
 
 		/**
 		 * No initialization allowed
@@ -50,7 +50,7 @@ if ( ! class_exists( 'BOP_Resize' ) ) {
 		 *
 		 * @return statement
 		 */
-		public static function getInstance() {
+		public static function get_instance() {
 			if ( self::$instance == null ) {
 				self::$instance = new self();
 			}
@@ -183,7 +183,7 @@ if ( ! class_exists( 'BOP_Resize' ) ) {
 				return $image;
 			} catch ( BOP_Exception $ex ) {
 				error_log( 'BOP_Resize.process() error: ' . $ex->getMessage() );
-				if ( $this->throwOnError ) {
+				if ( $this->throw_on_error ) {
 					// Bubble up exception.
 					throw $ex;
 				} else {
@@ -242,7 +242,7 @@ if ( ! function_exists( 'ta_bop_resize' ) ) {
 	 * @return statement
 	 */
 	function ta_bop_resize( $url, $width = null, $height = null, $crop = null, $single = true, $upscale = false ) {
-		$ta_bop_resize = BOP_Resize::getInstance();
+		$ta_bop_resize = BOP_Resize::get_instance();
 		return $ta_bop_resize->process( $url, $width, $height, $crop, $single, $upscale );
 	}
 }

@@ -14,39 +14,36 @@
  *
  * @since 2.0.0
  */
-class BOP_User_Like
-{
+class BOP_User_Like {
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    2.0
 	 */
-	public function __construct()
-	{
-		add_action('wp_ajax_process_bop_like', array($this, 'process_bop_like'));
-		add_action('wp_ajax_nopriv_process_bop_like', array($this, 'process_bop_like'));
-		add_action('wp_enqueue_scripts', array($this, 'likes_enqueue_scripts'));
+	public function __construct() {
+		add_action( 'wp_ajax_process_bop_like', array( $this, 'process_bop_like' ) );
+		add_action( 'wp_ajax_nopriv_process_bop_like', array( $this, 'process_bop_like' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'likes_enqueue_scripts' ) );
 	}
 
 	/**
 	 * Enqueue Script for like button.
 	 *
 	 * @return void
-	 * 
 	 */
-	public function likes_enqueue_scripts()
-	{
-		wp_register_script('likes-public-js', BOP_URL . 'public/assets/js/bop-likes-public.js', array('jquery'), '2.0.0', true);
+	public function likes_enqueue_scripts() {
+		wp_register_script( 'likes-public-js', BOP_URL . 'public/assets/js/bop-likes-public.js', array( 'jquery' ), '2.0.0', true );
 		wp_localize_script(
 			'likes-public-js',
 			'simpleLikes',
 			array(
-				'ajaxurl' => admin_url('admin-ajax.php'),
-				'like'    => esc_html__('Like', 'bookify-pro'),
-				'unlike'  => esc_html__('Unlike', 'bookify-pro'),
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'like'    => esc_html__( 'Like', 'bookify-pro' ),
+				'unlike'  => esc_html__( 'Unlike', 'bookify-pro' ),
 			)
 		);
-		wp_enqueue_script('likes-public-js');
+		wp_enqueue_script( 'likes-public-js' );
 	}
 	/**
 	 * Process post likes.
@@ -54,56 +51,55 @@ class BOP_User_Like
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function process_bop_like()
-	{
+	public function process_bop_like() {
 
 		// Security.
-		if (isset($_REQUEST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_REQUEST['nonce'])), 'bop-likes-nonce')) {
-			exit(esc_html__('Not permitted', 'bookify-pro'));
+		if ( isset( $_REQUEST['nonce'] ) && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['nonce'] ) ), 'bop-likes-nonce' ) ) {
+			exit( esc_html__( 'Not permitted', 'bookify-pro' ) );
 		}
 		// Test if javascript is disabled.
-		$disabled = (isset($_REQUEST['disabled']) && sanitize_text_field(wp_unslash($_REQUEST['disabled']))) ? true : false;
+		$disabled = ( isset( $_REQUEST['disabled'] ) && sanitize_text_field( wp_unslash( $_REQUEST['disabled'] ) ) ) ? true : false;
 		// Test if this is a comment.
-		$is_comment = (isset($_REQUEST['is_comment']) && 1 === $_REQUEST['is_comment']) ? 1 : 0;
+		$is_comment = ( isset( $_REQUEST['is_comment'] ) && 1 === $_REQUEST['is_comment'] ) ? 1 : 0;
 		// Base variables.
-		$post_id    = (isset($_REQUEST['post_id']) && is_numeric(sanitize_text_field(wp_unslash($_REQUEST['post_id'])))) ? sanitize_text_field(wp_unslash($_REQUEST['post_id'])) : '';
+		$post_id    = ( isset( $_REQUEST['post_id'] ) && is_numeric( sanitize_text_field( wp_unslash( $_REQUEST['post_id'] ) ) ) ) ? sanitize_text_field( wp_unslash( $_REQUEST['post_id'] ) ) : '';
 		$result     = array();
 		$post_users = null;
 		$like_count = 0;
 		// Get plugin options.
-		if ('' !== $post_id) {
-			$count = (1 === $is_comment) ? get_comment_meta($post_id, '_comment_like_count', true) : get_post_meta($post_id, '_post_like_count', true); // like count.
-			$count = (isset($count) && is_numeric($count)) ? $count : 0;
-			if (!self::already_liked($post_id, $is_comment)) { // Like the post.
-				if (is_user_logged_in()) { // user is logged in.
+		if ( '' !== $post_id ) {
+			$count = ( 1 === $is_comment ) ? get_comment_meta( $post_id, '_comment_like_count', true ) : get_post_meta( $post_id, '_post_like_count', true ); // like count.
+			$count = ( isset( $count ) && is_numeric( $count ) ) ? $count : 0;
+			if ( ! self::already_liked( $post_id, $is_comment ) ) { // Like the post.
+				if ( is_user_logged_in() ) { // user is logged in.
 					$user_id    = get_current_user_id();
-					$post_users = self::post_user_likes($user_id, $post_id, $is_comment);
-					if (1 === $is_comment) {
+					$post_users = self::post_user_likes( $user_id, $post_id, $is_comment );
+					if ( 1 === $is_comment ) {
 						// Update User & Comment.
-						$user_like_count = get_user_option('_comment_like_count', $user_id);
-						$user_like_count = (isset($user_like_count) && is_numeric($user_like_count)) ? $user_like_count : 0;
-						update_user_option($user_id, '_comment_like_count', ++$user_like_count);
-						if ($post_users) {
-							update_comment_meta($post_id, '_user_comment_liked', $post_users);
+						$user_like_count = get_user_option( '_comment_like_count', $user_id );
+						$user_like_count = ( isset( $user_like_count ) && is_numeric( $user_like_count ) ) ? $user_like_count : 0;
+						update_user_option( $user_id, '_comment_like_count', ++$user_like_count );
+						if ( $post_users ) {
+							update_comment_meta( $post_id, '_user_comment_liked', $post_users );
 						}
 					} else {
 						// Update User & Post.
-						$user_like_count = get_user_option('_user_like_count', $user_id);
-						$user_like_count = (isset($user_like_count) && is_numeric($user_like_count)) ? $user_like_count : 0;
-						update_user_option($user_id, '_user_like_count', ++$user_like_count);
-						if ($post_users) {
-							update_post_meta($post_id, '_user_liked', $post_users);
+						$user_like_count = get_user_option( '_user_like_count', $user_id );
+						$user_like_count = ( isset( $user_like_count ) && is_numeric( $user_like_count ) ) ? $user_like_count : 0;
+						update_user_option( $user_id, '_user_like_count', ++$user_like_count );
+						if ( $post_users ) {
+							update_post_meta( $post_id, '_user_liked', $post_users );
 						}
 					}
 				} else { // user is anonymous.
 					$user_ip    = self::bopl_get_ip();
-					$post_users = self::post_ip_likes($user_ip, $post_id, $is_comment);
+					$post_users = self::post_ip_likes( $user_ip, $post_id, $is_comment );
 					// Update Post.
-					if ($post_users) {
-						if (1 === $is_comment) {
-							update_comment_meta($post_id, '_user_comment_IP', $post_users);
+					if ( $post_users ) {
+						if ( 1 === $is_comment ) {
+							update_comment_meta( $post_id, '_user_comment_IP', $post_users );
 						} else {
-							update_post_meta($post_id, '_user_IP', $post_users);
+							update_post_meta( $post_id, '_user_IP', $post_users );
 						}
 					}
 				}
@@ -111,70 +107,70 @@ class BOP_User_Like
 				$response['status'] = 'liked';
 				$response['icon']   = self::get_liked_icon();
 			} else { // Unlike the post.
-				if (is_user_logged_in()) { // user is logged in.
+				if ( is_user_logged_in() ) { // user is logged in.
 					$user_id    = get_current_user_id();
-					$post_users = self::post_user_likes($user_id, $post_id, $is_comment);
+					$post_users = self::post_user_likes( $user_id, $post_id, $is_comment );
 					// Update User.
-					if (1 === $is_comment) {
-						$user_like_count = get_user_option('_comment_like_count', $user_id);
-						$user_like_count = (isset($user_like_count) && is_numeric($user_like_count)) ? $user_like_count : 0;
-						if ($user_like_count > 0) {
-							update_user_option($user_id, '_comment_like_count', --$user_like_count);
+					if ( 1 === $is_comment ) {
+						$user_like_count = get_user_option( '_comment_like_count', $user_id );
+						$user_like_count = ( isset( $user_like_count ) && is_numeric( $user_like_count ) ) ? $user_like_count : 0;
+						if ( $user_like_count > 0 ) {
+							update_user_option( $user_id, '_comment_like_count', --$user_like_count );
 						}
 					} else {
-						$user_like_count = get_user_option('_user_like_count', $user_id);
-						$user_like_count = (isset($user_like_count) && is_numeric($user_like_count)) ? $user_like_count : 0;
-						if ($user_like_count > 0) {
-							update_user_option($user_id, '_user_like_count', --$user_like_count);
+						$user_like_count = get_user_option( '_user_like_count', $user_id );
+						$user_like_count = ( isset( $user_like_count ) && is_numeric( $user_like_count ) ) ? $user_like_count : 0;
+						if ( $user_like_count > 0 ) {
+							update_user_option( $user_id, '_user_like_count', --$user_like_count );
 						}
 					}
 					// Update Post.
-					if ($post_users) {
-						$uid_key = array_search($user_id, $post_users, true);
-						unset($post_users[$uid_key]);
-						if (1 === $is_comment) {
-							update_comment_meta($post_id, '_user_comment_liked', $post_users);
+					if ( $post_users ) {
+						$uid_key = array_search( $user_id, $post_users, true );
+						unset( $post_users[ $uid_key ] );
+						if ( 1 === $is_comment ) {
+							update_comment_meta( $post_id, '_user_comment_liked', $post_users );
 						} else {
-							update_post_meta($post_id, '_user_liked', $post_users);
+							update_post_meta( $post_id, '_user_liked', $post_users );
 						}
 					}
 				} else { // user is anonymous.
 					$user_ip    = self::bopl_get_ip();
-					$post_users = self::post_ip_likes($user_ip, $post_id, $is_comment);
+					$post_users = self::post_ip_likes( $user_ip, $post_id, $is_comment );
 					// Update Post.
-					if ($post_users) {
-						$uip_key = array_search($user_ip, $post_users, true);
-						unset($post_users[$uip_key]);
-						if (1 === $is_comment) {
-							update_comment_meta($post_id, '_user_comment_IP', $post_users);
+					if ( $post_users ) {
+						$uip_key = array_search( $user_ip, $post_users, true );
+						unset( $post_users[ $uip_key ] );
+						if ( 1 === $is_comment ) {
+							update_comment_meta( $post_id, '_user_comment_IP', $post_users );
 						} else {
-							update_post_meta($post_id, '_user_IP', $post_users);
+							update_post_meta( $post_id, '_user_IP', $post_users );
 						}
 					}
 				}
-				$like_count         = ($count > 0) ? --$count : 0; // Prevent negative number.
+				$like_count         = ( $count > 0 ) ? --$count : 0; // Prevent negative number.
 				$response['status'] = 'unliked';
 				$response['icon']   = self::get_unliked_icon();
 			}
-			if (1 === $is_comment) {
-				update_comment_meta($post_id, '_comment_like_count', $like_count);
-				update_comment_meta($post_id, '_comment_like_modified', date('Y-m-d H:i:s'));
+			if ( 1 === $is_comment ) {
+				update_comment_meta( $post_id, '_comment_like_count', $like_count );
+				update_comment_meta( $post_id, '_comment_like_modified', date( 'Y-m-d H:i:s' ) );
 			} else {
-				update_post_meta($post_id, '_post_like_count', $like_count);
-				update_post_meta($post_id, '_post_like_modified', date('Y-m-d H:i:s'));
+				update_post_meta( $post_id, '_post_like_count', $like_count );
+				update_post_meta( $post_id, '_post_like_modified', date( 'Y-m-d H:i:s' ) );
 			}
-			$response['count']   = self::get_like_count($like_count);
+			$response['count']   = self::get_like_count( $like_count );
 			$response['testing'] = $is_comment;
-			if ($disabled) {
-				if (1 === $is_comment) {
-					wp_safe_redirect(get_permalink(get_the_ID()));
+			if ( $disabled ) {
+				if ( 1 === $is_comment ) {
+					wp_safe_redirect( get_permalink( get_the_ID() ) );
 					exit();
 				} else {
-					wp_safe_redirect(get_permalink($post_id));
+					wp_safe_redirect( get_permalink( $post_id ) );
 					exit();
 				}
 			} else {
-				wp_send_json($response);
+				wp_send_json( $response );
 			}
 		}
 		wp_die();
@@ -187,24 +183,23 @@ class BOP_User_Like
 	 * @param boolean $is_comment The post comment(like).
 	 * @since    2.0.0
 	 */
-	public static function already_liked($post_id, $is_comment)
-	{
+	public static function already_liked( $post_id, $is_comment ) {
 		$post_users = null;
 		$user_id    = null;
-		if (is_user_logged_in()) { // user is logged in.
+		if ( is_user_logged_in() ) { // user is logged in.
 			$user_id         = get_current_user_id();
-			$post_meta_users = (1 === $is_comment) ? get_comment_meta($post_id, '_user_comment_liked') : get_post_meta($post_id, '_user_liked');
-			if (0 !== count($post_meta_users)) {
+			$post_meta_users = ( 1 === $is_comment ) ? get_comment_meta( $post_id, '_user_comment_liked' ) : get_post_meta( $post_id, '_user_liked' );
+			if ( 0 !== count( $post_meta_users ) ) {
 				$post_users = $post_meta_users[0];
 			}
 		} else { // user is anonymous.
 			$user_id         = self::bopl_get_ip();
-			$post_meta_users = (1 === $is_comment) ? get_comment_meta($post_id, '_user_comment_IP') : get_post_meta($post_id, '_user_IP');
-			if (0 !== count($post_meta_users)) { // meta exists, set up values.
+			$post_meta_users = ( 1 === $is_comment ) ? get_comment_meta( $post_id, '_user_comment_IP' ) : get_post_meta( $post_id, '_user_IP' );
+			if ( 0 !== count( $post_meta_users ) ) { // meta exists, set up values.
 				$post_users = $post_meta_users[0];
 			}
 		}
-		if (is_array($post_users) && in_array($user_id, $post_users, true)) {
+		if ( is_array( $post_users ) && in_array( $user_id, $post_users, true ) ) {
 			return true;
 		} else {
 			return false;
@@ -218,35 +213,34 @@ class BOP_User_Like
 	 * @param  mixed $is_comment comment.
 	 * @return statement
 	 */
-	public static function get_bop_likes_button($post_id, $is_comment = null)
-	{
-		$is_comment = (null === $is_comment) ? 0 : 1;
+	public static function get_bop_likes_button( $post_id, $is_comment = null ) {
+		$is_comment = ( null === $is_comment ) ? 0 : 1;
 		$output     = '';
-		$nonce      = wp_create_nonce('bop-likes-nonce'); // Security.
-		if (1 === $is_comment) {
-			$post_id_class = esc_attr(' bopl-comment-button-' . $post_id);
-			$comment_class = esc_attr(' bopl-comment');
-			$like_count    = get_comment_meta($post_id, '_comment_like_count', true);
-			$like_count    = (isset($like_count) && is_numeric($like_count)) ? $like_count : 0;
+		$nonce      = wp_create_nonce( 'bop-likes-nonce' ); // Security.
+		if ( 1 === $is_comment ) {
+			$post_id_class = esc_attr( ' bopl-comment-button-' . $post_id );
+			$comment_class = esc_attr( ' bopl-comment' );
+			$like_count    = get_comment_meta( $post_id, '_comment_like_count', true );
+			$like_count    = ( isset( $like_count ) && is_numeric( $like_count ) ) ? $like_count : 0;
 		} else {
-			$post_id_class = esc_attr(' bopl-button-' . $post_id);
-			$comment_class = esc_attr('');
-			$like_count    = get_post_meta($post_id, '_post_like_count', true);
-			$like_count    = (isset($like_count) && is_numeric($like_count)) ? $like_count : 0;
+			$post_id_class = esc_attr( ' bopl-button-' . $post_id );
+			$comment_class = esc_attr( '' );
+			$like_count    = get_post_meta( $post_id, '_post_like_count', true );
+			$like_count    = ( isset( $like_count ) && is_numeric( $like_count ) ) ? $like_count : 0;
 		}
-		$count      = self::get_like_count($like_count);
+		$count      = self::get_like_count( $like_count );
 		$icon_empty = self::get_unliked_icon();
 		$icon_full  = self::get_liked_icon();
 		// Loader.
 		$loader = '<span id="bopl-loader"></span>';
 		// Liked/Unliked Variables.
-		if (self::already_liked($post_id, $is_comment)) {
-			$class = esc_attr(' liked');
-			$title = esc_html__('Unlike', 'bookify-pro');
+		if ( self::already_liked( $post_id, $is_comment ) ) {
+			$class = esc_attr( ' liked' );
+			$title = esc_html__( 'Unlike', 'bookify-pro' );
 			$icon  = $icon_full;
 		} else {
 			$class = '';
-			$title = esc_html__('Like', 'bookify-pro');
+			$title = esc_html__( 'Like', 'bookify-pro' );
 			$icon  = $icon_empty;
 		}
 		$output = '<span class="bopl-wrapper"><a href="#" class="bopl-button' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count . '</a>' . $loader . '</span>';
@@ -258,9 +252,8 @@ class BOP_User_Like
 	 *
 	 * @since 1.0.0
 	 */
-	public static function bopl_shortcode()
-	{
-		return self::get_bop_likes_button(get_the_ID(), 0);
+	public static function bopl_shortcode() {
+		return self::get_bop_likes_button( get_the_ID(), 0 );
 	}
 
 	/**
@@ -272,18 +265,17 @@ class BOP_User_Like
 	 * @param boolean $is_comment User comment.
 	 * @return array
 	 */
-	public static function post_user_likes($user_id, $post_id, $is_comment)
-	{
+	public static function post_user_likes( $user_id, $post_id, $is_comment ) {
 		$post_users      = '';
-		$post_meta_users = (1 === $is_comment) ? get_comment_meta($post_id, '_user_comment_liked') : get_post_meta($post_id, '_user_liked');
-		if (0 !== count($post_meta_users)) {
+		$post_meta_users = ( 1 === $is_comment ) ? get_comment_meta( $post_id, '_user_comment_liked' ) : get_post_meta( $post_id, '_user_liked' );
+		if ( 0 !== count( $post_meta_users ) ) {
 			$post_users = $post_meta_users[0];
 		}
-		if (!is_array($post_users)) {
+		if ( ! is_array( $post_users ) ) {
 			$post_users = array();
 		}
-		if (!in_array($user_id, $post_users, true)) {
-			$post_users['user-' . $user_id] = $user_id;
+		if ( ! in_array( $user_id, $post_users, true ) ) {
+			$post_users[ 'user-' . $user_id ] = $user_id;
 		}
 		return $post_users;
 	}
@@ -297,19 +289,18 @@ class BOP_User_Like
 	 * @param boolean $is_comment User comment.
 	 * @return array
 	 */
-	public static function post_ip_likes($user_ip, $post_id, $is_comment)
-	{
+	public static function post_ip_likes( $user_ip, $post_id, $is_comment ) {
 		$post_users      = '';
-		$post_meta_users = (1 === $is_comment) ? get_comment_meta($post_id, '_user_comment_IP') : get_post_meta($post_id, '_user_IP');
+		$post_meta_users = ( 1 === $is_comment ) ? get_comment_meta( $post_id, '_user_comment_IP' ) : get_post_meta( $post_id, '_user_IP' );
 		// Retrieve post information.
-		if (0 !== count($post_meta_users)) {
+		if ( 0 !== count( $post_meta_users ) ) {
 			$post_users = $post_meta_users[0];
 		}
-		if (!is_array($post_users)) {
+		if ( ! is_array( $post_users ) ) {
 			$post_users = array();
 		}
-		if (!in_array($user_ip, $post_users, true)) {
-			$post_users['ip-' . $user_ip] = $user_ip;
+		if ( ! in_array( $user_ip, $post_users, true ) ) {
+			$post_users[ 'ip-' . $user_ip ] = $user_ip;
 		}
 		return $post_users;
 	}
@@ -319,17 +310,16 @@ class BOP_User_Like
 	 *
 	 * @since    2.0.0
 	 */
-	public static function bopl_get_ip()
-	{
-		if (isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
-			$ip = sanitize_text_field(wp_unslash($_SERVER['HTTP_CLIENT_IP']));
-		} elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-			$ip = sanitize_text_field(wp_unslash($_SERVER['HTTP_X_FORWARDED_FOR']));
+	public static function bopl_get_ip() {
+		if ( isset( $_SERVER['HTTP_CLIENT_IP'] ) && ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+			$ip = sanitize_text_field( wp_unslash( $_SERVER['HTTP_CLIENT_IP'] ) );
+		} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) && ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+			$ip = sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_FORWARDED_FOR'] ) );
 		} else {
-			$ip = (isset($_SERVER['REMOTE_ADDR'])) ? sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) : '0.0.0.0';
+			$ip = ( isset( $_SERVER['REMOTE_ADDR'] ) ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '0.0.0.0';
 		}
-		$ip = filter_var($ip, FILTER_VALIDATE_IP);
-		$ip = (!$ip) ? '0.0.0.0' : $ip;
+		$ip = filter_var( $ip, FILTER_VALIDATE_IP );
+		$ip = ( ! $ip ) ? '0.0.0.0' : $ip;
 		return $ip;
 	}
 
@@ -338,8 +328,7 @@ class BOP_User_Like
 	 *
 	 * @since    2.0.0
 	 */
-	public static function get_liked_icon()
-	{
+	public static function get_liked_icon() {
 		$icon = '<i class="fas fa-heart"></i>';
 		return $icon;
 	}
@@ -349,8 +338,7 @@ class BOP_User_Like
 	 *
 	 * @since    2.0.0
 	 */
-	public static function get_unliked_icon()
-	{
+	public static function get_unliked_icon() {
 		$icon = '<i class="fas fa-heart"></i>';
 		return $icon;
 	}
@@ -366,19 +354,18 @@ class BOP_User_Like
 	 *
 	 * @since    2.0.0
 	 */
-	public static function bopl_format_count($number)
-	{
+	public static function bopl_format_count( $number ) {
 		$precision = 2;
-		if ($number >= 1000 && $number < 1000000) {
-			$formatted = number_format($number / 1000, $precision) . 'K';
-		} elseif ($number >= 1000000 && $number < 1000000000) {
-			$formatted = number_format($number / 1000000, $precision) . 'M';
-		} elseif ($number >= 1000000000) {
-			$formatted = number_format($number / 1000000000, $precision) . 'B';
+		if ( $number >= 1000 && $number < 1000000 ) {
+			$formatted = number_format( $number / 1000, $precision ) . 'K';
+		} elseif ( $number >= 1000000 && $number < 1000000000 ) {
+			$formatted = number_format( $number / 1000000, $precision ) . 'M';
+		} elseif ( $number >= 1000000000 ) {
+			$formatted = number_format( $number / 1000000000, $precision ) . 'B';
 		} else {
 			$formatted = $number; // Number is less than 1000.
 		}
-		$formatted = str_replace('.00', '', $formatted);
+		$formatted = str_replace( '.00', '', $formatted );
 		return $formatted;
 	}
 
@@ -389,11 +376,10 @@ class BOP_User_Like
 	 * @param string $like_count The like counter.
 	 * @since    2.0.0
 	 */
-	public static function get_like_count($like_count)
-	{
-		$like_text = esc_html__('Like', 'bookify-pro');
-		if (is_numeric($like_count) && $like_count > 0) {
-			$number = self::bopl_format_count($like_count);
+	public static function get_like_count( $like_count ) {
+		$like_text = esc_html__( 'Like', 'bookify-pro' );
+		if ( is_numeric( $like_count ) && $like_count > 0 ) {
+			$number = self::bopl_format_count( $like_count );
 		} else {
 			$number = $like_text;
 		}
@@ -407,14 +393,14 @@ class BOP_User_Like
 	 * @param object $user User.
 	 * @return void
 	 */
-	public static function show_user_likes($user)
-	{ ?>
+	public static function show_user_likes( $user ) {
+		?>
 		<table class="form-table">
 			<tr>
-				<th><label for="user_likes"><?php esc_html__('You Like:', 'bookify-pro'); ?></label></th>
+				<th><label for="user_likes"><?php esc_html__( 'You Like:', 'bookify-pro' ); ?></label></th>
 				<td>
 					<?php
-					$types      = get_post_types(array('public' => true));
+					$types      = get_post_types( array( 'public' => true ) );
 					$args       = array(
 						'numberposts' => -1,
 						'post_type'   => $types,
@@ -427,30 +413,30 @@ class BOP_User_Like
 						),
 					);
 					$sep        = '';
-					$like_query = new WP_Query($args);
-					if ($like_query->have_posts()) :
-					?>
+					$like_query = new WP_Query( $args );
+					if ( $like_query->have_posts() ) :
+						?>
 						<p>
 							<?php
-							while ($like_query->have_posts()) :
+							while ( $like_query->have_posts() ) :
 								$like_query->the_post();
-								echo wp_kses_post($sep);
-							?>
+								echo wp_kses_post( $sep );
+								?>
 								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-							<?php
+								<?php
 								$sep = ' &middot; ';
 							endwhile;
 							?>
 						</p>
 					<?php else : ?>
-						<p><?php esc_html_e('You do not like anything yet.', 'bookify-pro'); ?></p>
-					<?php
+						<p><?php esc_html_e( 'You do not like anything yet.', 'bookify-pro' ); ?></p>
+						<?php
 					endif;
 					wp_reset_postdata();
 					?>
 				</td>
 			</tr>
 		</table>
-<?php
+		<?php
 	}
 }

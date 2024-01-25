@@ -1,12 +1,12 @@
-<?php if (!defined('ABSPATH')) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
 
 /**
  * The Layout building class.
  */
-class BOP_Layout
-{
+class BOP_Layout {
+
 
 	/**
 	 * Layout metabox section.
@@ -14,8 +14,7 @@ class BOP_Layout
 	 * @param string $prefix The metabox key.
 	 * @return void
 	 */
-	public static function section($prefix)
-	{
+	public static function section( $prefix ) {
 		BOP::createSection(
 			$prefix,
 			array(
@@ -30,20 +29,20 @@ class BOP_Layout
 					array(
 						'id'      => 'bop_layout_preset',
 						'type'    => 'layout_preset',
-						'title'   => esc_html__('Layout Preset', 'bookify-pro'),
+						'title'   => esc_html__( 'Layout Preset', 'bookify-pro' ),
 						'class'   => 'bop-layout-preset',
 						'options' => array(
-							'grid_layout'      => array(
+							'grid_layout'     => array(
 								'image' => BOP_URL . 'admin/assets/img/grid.png',
-								'text'  => esc_html__('Grid', 'bookify-pro'),
+								'text'  => esc_html__( 'Grid', 'bookify-pro' ),
 							),
-							'list_layout'  => array(
+							'list_layout'     => array(
 								'image' => BOP_URL . 'admin/assets/img/list.png',
-								'text'  => esc_html__('List', 'bookify-pro'),
+								'text'  => esc_html__( 'List', 'bookify-pro' ),
 							),
-							'carousel_layout'  => array(
+							'carousel_layout' => array(
 								'image' => BOP_URL . 'admin/assets/img/carousel.png',
-								'text'  => esc_html__('Carousel', 'bookify-pro'),
+								'text'  => esc_html__( 'Carousel', 'bookify-pro' ),
 							),
 						),
 						'default' => 'grid_layout',

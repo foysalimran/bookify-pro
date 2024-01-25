@@ -198,7 +198,6 @@ class BOP_CustomFieldProcess {
 			}
 		}
 	}
-
 } // End of the class.
 
 /**
@@ -209,7 +208,7 @@ class BOP_CustomFieldProcess {
  * @param boolean $is_post Check whether it is a post or not.
  * @param boolean $is_table Check table layout or not.
  */
-function bop_custom_field_html(  $object, $post_content_sorter, $is_post = true, $is_table = false ) {
+function bop_custom_field_html( $object, $post_content_sorter, $is_post = true, $is_table = false ) {
 
 	$bop_custom_fields = $post_content_sorter['bop_custom_fields'];
 
@@ -219,7 +218,7 @@ function bop_custom_field_html(  $object, $post_content_sorter, $is_post = true,
 
 	$cf_by_plugin        = ta_bop_cf_multiple_plugins() && 'auto' !== $plugin_used ? $plugin_used : 'auto';
 	$custom_field_groups = BOP_Functions::bop_metabox_value( 'bop_custom_fields_group', $bop_custom_fields );
-	
+
 	// Get all meta data of this post.
 	$metadata = $is_post ? get_metadata( 'post', $object->ID ) : array();
 
@@ -270,11 +269,10 @@ function bop_custom_field_html(  $object, $post_content_sorter, $is_post = true,
 	$td_after  = $is_table ? '</td>' : '';
 
 	if ( $bop_cf_html ) {
-		echo $td_before;
-		echo $bop_cf_html;
-		echo $td_after;
+		echo wp_kses( $td_before );
+		echo esc_html( $bop_cf_html );
+		echo wp_kses( $td_after );
 	}
-
 }
 
 

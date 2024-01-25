@@ -1,12 +1,12 @@
-<?php if (!defined('ABSPATH')) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
 
 /**
  * The Carousel building class.
  */
-class BOP_Carousel
-{
+class BOP_Carousel {
+
 
 	/**
 	 * Carousel section metabox.
@@ -14,8 +14,7 @@ class BOP_Carousel
 	 * @param string $prefix The metabox key.
 	 * @return void
 	 */
-	public static function section($prefix)
-	{
+	public static function section( $prefix ) {
 		BOP::createSection(
 			$prefix,
 			array(
@@ -371,7 +370,13 @@ class BOP_Carousel
 							'mobile'     => '1',
 						),
 						'dependency' => array( 'bop_carousel_mode', '!=', 'ticker' ),
-						'help'       => wp_kses(esc_html__('<i class="fas fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fas fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fas fa-tablet-alt"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile </b> - size is smaller than 576px.', 'bookify-pro'), array('i' => array('class' => array()), 'br' => array()) ),
+						'help'       => wp_kses(
+							esc_html__( '<i class="fas fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fas fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fas fa-tablet-alt"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile </b> - size is smaller than 576px.', 'bookify-pro' ),
+							array(
+								'i'  => array( 'class' => array() ),
+								'br' => array(),
+							)
+						),
 					),
 					// Miscellaneous Settings.
 					array(

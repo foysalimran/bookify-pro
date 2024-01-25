@@ -9,59 +9,66 @@
  * @subpackage Bookify_Pro/public
  */
 
-$lazy_load = isset($_post_thumb_setting['bop_img_lazy_load']) ? $_post_thumb_setting['bop_img_lazy_load'] : true;
-$lazy_load = apply_filters('bop_img_lazy_load', $lazy_load);
+$lazy_load = isset( $_post_thumb_setting['bop_img_lazy_load'] ) ? $_post_thumb_setting['bop_img_lazy_load'] : true;
+$lazy_load = apply_filters( 'bop_img_lazy_load', $lazy_load );
 
-if ('carousel_layout' !== $layout && $lazy_load && !is_admin()) {
+if ( 'carousel_layout' !== $layout && $lazy_load && ! is_admin() ) {
 
-	wp_enqueue_script('bop-lazy');
-	$image = sprintf('<img data-bop_src="%1$s" %5$s class="bop-lazyload" width="%2$s"  height="%3$s" alt="%4$s">', $thumb_url, $bop_image_attr['width'], $bop_image_attr['height'], $alter_text, $retina_img_attr);
+	wp_enqueue_script( 'bop-lazy' );
+	$image = sprintf( '<img data-bop_src="%1$s" %5$s class="bop-lazyload" width="%2$s"  height="%3$s" alt="%4$s">', $thumb_url, $bop_image_attr['width'], $bop_image_attr['height'], $alter_text, $retina_img_attr );
 
 } else {
 
-	$image = sprintf('<img %5$s src="%1$s" width="%2$s" height="%3$s" alt="%4$s">', $thumb_url, $bop_image_attr['width'], $bop_image_attr['height'], $alter_text, $retina_img_attr);
+	$image = sprintf(
+		'<img %5$s src="%1$s" width="%2$s" height="%3$s" alt="%4$s">',
+		esc_url($thumb_url),
+		esc_attr($bop_image_attr['width']),
+		esc_attr($bop_image_attr['height']),
+		esc_attr($alter_text),
+		esc_attr($retina_img_attr)
+	);
 }
 
 
 
 ?>
 <div class="bookify__item--thumbnail">
-	<?php if ('none' === $bop_page_link_type) { ?>
-		<a class="ta-bop-thumb" aria-label="<?php echo esc_attr($bop_image_attr['aria_label']); ?>" <?php echo esc_attr($bop_link_rel_text); ?>>
+	<?php if ( 'none' === $bop_page_link_type ) { ?>
+		<a class="ta-bop-thumb" aria-label="<?php echo esc_attr( $bop_image_attr['aria_label'] ); ?>" <?php echo esc_attr( $bop_link_rel_text ); ?>>
 		<?php } else { ?>
-			<a class="ta-bop-thumb" aria-label="<?php echo esc_attr($bop_image_attr['aria_label']); ?>" href="<?php the_permalink($post); ?>" target="<?php echo esc_attr($bop_link_target); ?>" <?php echo esc_attr($bop_link_rel_text); ?>>
+			<a class="ta-bop-thumb" aria-label="<?php echo esc_attr( $bop_image_attr['aria_label'] ); ?>" href="<?php the_permalink( $post ); ?>" target="<?php echo esc_attr( $bop_link_target ); ?>" <?php echo esc_attr( $bop_link_rel_text ); ?>>
 			<?php
 		}
-		if (empty($bop_image_attr['video']) && empty($bop_image_attr['audio'])) {
+		if ( empty( $bop_image_attr['video'] ) && empty( $bop_image_attr['audio'] ) ) {
 			echo $image;
-		} elseif ($bop_image_attr['video']) {
+		} elseif ( $bop_image_attr['video'] ) {
 			?>
-				<div class='ta-bop-post-video-thumb-area'><?php echo $bop_image_attr['video']; ?></div>
+				<div class='ta-bop-post-video-thumb-area'><?php echo esc_html($bop_image_attr['video']); ?></div>
 			<?php
-		} elseif ($bop_image_attr['audio']) {
+		} elseif ( $bop_image_attr['audio'] ) {
 			?>
-				<div class='ta-bop-post-audio-thumb-area'><?php echo $bop_image_attr['audio']; ?></div>
+				<div class='ta-bop-post-audio-thumb-area'><?php echo esc_html($bop_image_attr['audio']); ?></div>
 			<?php } ?>
 			</a>
 			<?php
 
 			// Taxonomy terms over thumbnail.
-			self::over_thumb_meta_taxonomy($post_meta_fields, $show_post_meta, $post);
+			self::over_thumb_meta_taxonomy( $post_meta_fields, $show_post_meta, $post );
 
-			if ($post_thumb_meta == 'category') {
+			if ( $post_thumb_meta == 'category' ) {
 				ob_start();
-				echo wp_kses($td['start'], $allow_tag);
-				include BOP_Functions::bop_locate_template('item/post-thumb-taxonomy.php');
-				echo wp_kses($td['end'], $allow_tag);
-				$item_thumb = apply_filters('bop_thumb_taxonomy', ob_get_clean());
-				echo $item_thumb;
-			} elseif ($post_thumb_meta == 'date') {
+				echo wp_kses( $td['start'], $allow_tag );
+				include BOP_Functions::bop_locate_template( 'item/post-thumb-taxonomy.php' );
+				echo wp_kses( $td['end'], $allow_tag );
+				$item_thumb = apply_filters( 'bop_thumb_taxonomy', ob_get_clean() );
+				echo esc_html($item_thumb);
+			} elseif ( $post_thumb_meta == 'date' ) {
 				ob_start();
-				echo wp_kses($td['start'], $allow_tag);
-				include BOP_Functions::bop_locate_template('item/post-thumb-date.php');
-				echo wp_kses($td['end'], $allow_tag);
-				$item_thumb = apply_filters('bop_thumb_archive', ob_get_clean());
-				echo $item_thumb;
+				echo wp_kses( $td['start'], $allow_tag );
+				include BOP_Functions::bop_locate_template( 'item/post-thumb-date.php' );
+				echo wp_kses( $td['end'], $allow_tag );
+				$item_thumb = apply_filters( 'bop_thumb_archive', ob_get_clean() );
+				echo esc_html($item_thumb);
 			}
 			?>
 

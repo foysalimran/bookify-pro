@@ -27,8 +27,8 @@
  * @subpackage Bookify_Pro/includes
  * @author     ThemeAtelier <themeatelierbd@gmail.com>
  */
-class Bookify_Pro
-{
+class Bookify_Pro {
+
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -67,8 +67,7 @@ class Bookify_Pro
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		$this->plugin_name = 'bookify-pro';
 		$this->define_constants();
 		$this->load_dependencies();
@@ -85,10 +84,9 @@ class Bookify_Pro
 	 * @param string      $name Define constant.
 	 * @param string|bool $value Define constant.
 	 */
-	public function define($name, $value)
-	{
-		if (!defined($name)) {
-			define($name, $value);
+	public function define( $name, $value ) {
+		if ( ! defined( $name ) ) {
+			define( $name, $value );
 		}
 	}
 
@@ -97,14 +95,13 @@ class Bookify_Pro
 	 *
 	 * @since 2.2.0
 	 */
-	public function define_constants()
-	{
-		$this->define('BOP_VERSION', $this->version);
-		$this->define('BOP_PLUGIN_NAME', $this->plugin_name);
-		$this->define('BOP_PATH', plugin_dir_path(dirname(__FILE__)));
-		$this->define('BOP_TEMPLATE_PATH', plugin_dir_path(dirname(__FILE__)) . 'public/templates/');
-		$this->define('BOP_URL', plugin_dir_url(dirname(__FILE__)));
-		$this->define('BOOKIFY_PRO_BASENAME', BOOKIFY_PRO_BASENAME);
+	public function define_constants() {
+		$this->define( 'BOP_VERSION', $this->version );
+		$this->define( 'BOP_PLUGIN_NAME', $this->plugin_name );
+		$this->define( 'BOP_PATH', plugin_dir_path( __DIR__ ) );
+		$this->define( 'BOP_TEMPLATE_PATH', plugin_dir_path( __DIR__ ) . 'public/templates/' );
+		$this->define( 'BOP_URL', plugin_dir_url( __DIR__ ) );
+		$this->define( 'BOOKIFY_PRO_BASENAME', BOOKIFY_PRO_BASENAME );
 	}
 
 	/**
@@ -123,14 +120,13 @@ class Bookify_Pro
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies()
-	{
+	private function load_dependencies() {
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-bookify-pro-loader.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-bookify-pro-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
@@ -142,12 +138,12 @@ class Bookify_Pro
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-bookify-pro-i18n.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-bookify-pro-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-bookify-pro-admin.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-bookify-pro-admin.php';
 		require_once BOP_PATH . 'admin/views/ta-framework/classes/setup.class.php';
 
 		/**
@@ -159,7 +155,7 @@ class Bookify_Pro
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-bookify-pro-public.php';
+		require_once plugin_dir_path( __DIR__ ) . 'public/class-bookify-pro-public.php';
 
 		$this->loader = new Bookify_Pro_Loader();
 	}
@@ -173,12 +169,11 @@ class Bookify_Pro
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function set_locale()
-	{
+	private function set_locale() {
 
 		$plugin_i18n = new Bookify_Pro_i18n();
 
-		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
+		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 	}
 
 	/**
@@ -188,16 +183,15 @@ class Bookify_Pro
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_admin_hooks()
-	{
+	private function define_admin_hooks() {
 
-		$plugin_admin = new Bookify_Pro_Admin($this->get_plugin_name(), $this->get_version());
+		$plugin_admin = new Bookify_Pro_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
-		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		$this->loader->add_filter('manage_bookify_shortcode_posts_columns', $plugin_admin, 'filter_bookify_admin_column');
-		$this->loader->add_action('manage_bookify_shortcode_posts_custom_column', $plugin_admin, 'display_bookify_admin_fields', 10, 2);
+		$this->loader->add_filter( 'manage_bookify_shortcode_posts_columns', $plugin_admin, 'filter_bookify_admin_column' );
+		$this->loader->add_action( 'manage_bookify_shortcode_posts_custom_column', $plugin_admin, 'display_bookify_admin_fields', 10, 2 );
 	}
 
 	/**
@@ -207,13 +201,12 @@ class Bookify_Pro
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks()
-	{
+	private function define_public_hooks() {
 
-		$plugin_public = new Bookify_Pro_Public($this->get_plugin_name(), $this->get_version());
+		$plugin_public = new Bookify_Pro_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
-		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 	}
 
 	/**
@@ -221,8 +214,7 @@ class Bookify_Pro
 	 *
 	 * @since    1.0.0
 	 */
-	public function run()
-	{
+	public function run() {
 		$this->loader->run();
 	}
 
@@ -233,8 +225,7 @@ class Bookify_Pro
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_plugin_name()
-	{
+	public function get_plugin_name() {
 		return $this->plugin_name;
 	}
 
@@ -244,8 +235,7 @@ class Bookify_Pro
 	 * @since     1.0.0
 	 * @return    Bookify_Pro_Loader    Orchestrates the hooks of the plugin.
 	 */
-	public function get_loader()
-	{
+	public function get_loader() {
 		return $this->loader;
 	}
 
@@ -255,8 +245,7 @@ class Bookify_Pro
 	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
-	public function get_version()
-	{
+	public function get_version() {
 		return $this->version;
 	}
 }

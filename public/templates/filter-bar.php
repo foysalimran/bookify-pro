@@ -24,11 +24,11 @@ if ( is_array( $advanced_filter ) && ! $bop_query->is_main_query() ) {
 
 	if ( ! empty( $filter_bar ) ) { ?>
 		<div class="bop-filter-bar">
-			<?php echo $filter_bar; ?>
+			<?php echo esc_html( $filter_bar ); ?>
 		</div>
 	<?php } if ( ! empty( $ex_filter_bar ) ) { ?>
 			<div class="bop_ex_filter_bar">
-			<?php echo $ex_filter_bar; ?>
+			<?php echo esc_html( $ex_filter_bar ); ?>
 			</div>
 	<?php }
 } ?>

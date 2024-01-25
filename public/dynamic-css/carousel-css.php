@@ -91,7 +91,7 @@
 			margin-left:{$margin_between_post}px;
 		}
 		";
-		
+
 		if ( 'hide_on_mobile' === $bop_navigation ) {
 			$custom_css .= "@media (max-width: 480px) { #bop_wrapper-{$bop_id} .bop-button-prev, #bop_wrapper-{$bop_id} .bop-button-next { display: none; } }";
 		} $custom_css .= "#bop_wrapper-{$bop_id} .bop-button-prev, #bop_wrapper-{$bop_id} .bop-button-next{ background-image: none; background-size: auto; background-color: {$nav_color_bg}; font-size: {$nav_icon_size}px; height: 33px; width: 33px; margin-top: 8px; border: 1px solid {$nav_color_border}; text-align: center; line-height: 30px; -webkit-transition: 0.3s; border-radius: {$_nav_icon_radius['all']}{$_nav_icon_radius['unit']}; }";
