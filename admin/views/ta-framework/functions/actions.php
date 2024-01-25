@@ -18,7 +18,7 @@ if ( ! function_exists( 'bop_get_icons' ) ) {
 
     ob_start();
 
-    $icon_library = ( apply_filters( 'bop_fa4', false ) ) ? 'fa4' : 'fa5';
+    $icon_library = ( apply_filters( 'fortawesome_fa4', false ) ) ? 'fa4' : 'fa5';
 
     BOP::include_plugin_file( 'fields/icon/'. $icon_library .'-icons.php' );
 

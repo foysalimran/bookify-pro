@@ -586,11 +586,11 @@ if ( ! class_exists( 'BOP_Setup' ) ) {
       wp_enqueue_script( 'wp-color-picker' );
 
       // Font awesome 4 and 5 loader
-      if ( apply_filters( 'bop_fa4', false ) ) {
-        wp_enqueue_style( 'bop-fa', 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css', array(), '4.7.0', 'all' );
+      if ( apply_filters( 'fortawesome_fa4', false ) ) {
+        wp_enqueue_style( 'fortawesome-fa', self::include_plugin_url( 'assets/css/font-awesome-v4.min.css' ), array(), '4.7.0', 'all' );
       } else {
-        wp_enqueue_style( 'bop-fa5', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css', array(), '5.15.5', 'all' );
-        wp_enqueue_style( 'bop-fa5-v4-shims', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/v4-shims.min.css', array(), '5.15.5', 'all' );
+        wp_enqueue_style( 'fortawesome_v5', self::include_plugin_url( 'assets/css/font-awesome-v5.min.css' ), array(), '5.15.5', 'all' );
+        wp_enqueue_style( 'fortawesome_v5-v4-shims', self::include_plugin_url( 'assets/css/font-awesome-v4-shims.min.css' ), array(), '5.15.5', 'all' );
       }
 
       // Check for developer mode
@@ -699,7 +699,7 @@ if ( ! class_exists( 'BOP_Setup' ) ) {
     // Add admin body class
     public static function add_admin_body_class( $classes ) {
 
-      if ( apply_filters( 'bop_fa4', false ) ) {
+      if ( apply_filters( 'fortawesome_fa4', false ) ) {
         $classes .= 'bop-fa5-shims';
       }
 
