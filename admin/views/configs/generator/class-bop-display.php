@@ -775,7 +775,7 @@ class BOP_Display {
 														'title'   => esc_html__( 'Reading Time Postfix', 'bookify-pro' ),
 														'class'   => 'bop_reading_time_postfix',
 														'title_help'   => esc_html__( 'Text after time. Leave empty for nothing.', 'bookify-pro' ),
-														'default' => esc_html( ' Min Read', 'bookify-pro' ),
+														'default' => esc_html__( ' Min Read', 'bookify-pro' ),
 														'dependency' => array( 'select_post_meta', '==', 'reading_time' ),
 													),
 												),
@@ -1283,7 +1283,7 @@ class BOP_Display {
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
-										'title'  => esc_html( 'Read more', 'bookify-pro' ),
+										'title'  => esc_html__( 'Read more', 'bookify-pro' ),
 										'fields' => array(
 											// ReadMore settings.
 											array(
@@ -1402,7 +1402,7 @@ class BOP_Display {
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
-										'title'  => esc_html( 'Buy Now', 'bookify-pro' ),
+										'title'  => esc_html__( 'Buy Now', 'bookify-pro' ),
 										'fields' => array(
 											// Buy Now settings.
 											array(
