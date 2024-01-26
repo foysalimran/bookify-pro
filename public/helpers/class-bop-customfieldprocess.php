@@ -358,7 +358,7 @@ function ta_bop_cf_output_image( $value, $name ) {
  * @return statement
  */
 function ta_bop_cf_output_audio( $value ) {
-	return '<audio controls><source src="' . esc_url( $value ) . '" type="audio/mpeg">The Browser does not support the audio format.</audio>';
+	return '<audio controls><source src="' . esc_url( $value ) . '" type="audio/mpeg">'. esc_html__('The Browser does not support the audio format.', 'bookify-pro') .'</audio>';
 }
 
 /**
@@ -368,5 +368,6 @@ function ta_bop_cf_output_audio( $value ) {
  * @return statement
  */
 function ta_bop_cf_output_video( $value ) {
-	return '<video controls><source src="' . esc_url( $value ) . '" type="video/mp4">The browser does not support HTML5 video.</video>';
+	return '<video controls><source src="' . esc_url($value) . '" type="video/mp4">' . esc_html__('The browser does not support HTML5 video.', 'bookify-pro') . '</video>';
 }
+

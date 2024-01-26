@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bookify Pro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-26 05:57+0000\n"
+"POT-Creation-Date: 2024-01-26 11:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Loco-Version: 2.6.6; wp-6.4.2\n"
 "X-Domain: bookify-pro"
 
-#: public/helpers/class-post-functions.php:669
+#: public/helpers/class-post-functions.php:687
 #: public/templates/item/post-thumb-date.php:24
 msgid " ago"
 msgstr ""
@@ -376,7 +376,7 @@ msgstr ""
 msgid "August"
 msgstr ""
 
-#: public/helpers/class-post-functions.php:945
+#: public/helpers/class-post-functions.php:965
 #: admin/views/configs/generator/class-bop-display.php:649
 #: admin/views/configs/generator/class-bop-filterpost.php:113
 #: admin/views/configs/generator/class-bop-filterpost.php:313
@@ -1103,7 +1103,7 @@ msgid "Dashed"
 msgstr ""
 
 #: admin/class-bookify-pro-admin.php:263
-#: public/helpers/class-post-functions.php:950
+#: public/helpers/class-post-functions.php:970
 #: admin/views/configs/generator/class-bop-display.php:405
 #: admin/views/configs/generator/class-bop-display.php:650
 #: admin/views/configs/generator/class-bop-filterpost.php:116
@@ -1166,7 +1166,7 @@ msgstr ""
 msgid "Description Typography"
 msgstr ""
 
-#: public/templates/single-bookify.php:385
+#: public/templates/single-bookify.php:399
 msgid "Description:"
 msgstr ""
 
@@ -2050,7 +2050,7 @@ msgstr ""
 #: public/helpers/class-bop-user-like.php:42
 #: public/helpers/class-bop-user-like.php:243
 #: public/helpers/class-bop-user-like.php:380
-#: public/helpers/class-post-functions.php:967
+#: public/helpers/class-post-functions.php:987
 #: admin/views/configs/generator/class-bop-display.php:653
 #: admin/views/configs/generator/class-bop-filterpost.php:733
 msgid "Like"
@@ -2364,6 +2364,7 @@ msgstr ""
 msgid "No terms found."
 msgstr ""
 
+#: public/templates/archive.php:99
 #: admin/views/configs/generator/class-bop-display.php:367
 #: admin/views/configs/generator/class-bop-display.php:406
 #: admin/views/configs/generator/class-bop-display.php:1134
@@ -2791,7 +2792,7 @@ msgstr ""
 msgid "Read More Type"
 msgstr ""
 
-#: public/helpers/class-post-functions.php:972
+#: public/helpers/class-post-functions.php:992
 msgid "Reading count"
 msgstr ""
 
@@ -2872,6 +2873,10 @@ msgstr ""
 #: admin/views/ta-framework/classes/admin-options.class.php:506
 #: admin/views/ta-framework/classes/admin-options.class.php:627
 msgid "Reset Section"
+msgstr ""
+
+#: public/templates/single-bookify.php:345
+msgid "reviews"
 msgstr ""
 
 #: admin/views/ta-framework/fields/border/border.php:64
@@ -3552,6 +3557,14 @@ msgstr ""
 msgid "Text Transform"
 msgstr ""
 
+#: public/helpers/class-bop-customfieldprocess.php:371
+msgid "The browser does not support HTML5 video."
+msgstr ""
+
+#: public/helpers/class-bop-customfieldprocess.php:361
+msgid "The Browser does not support the audio format."
+msgstr ""
+
 #: admin/views/configs/generator/class-bop-filterpost.php:948
 msgid "The logical relationship between/among above custom fields."
 msgstr ""
@@ -3828,7 +3841,7 @@ msgstr ""
 msgid "View Count"
 msgstr ""
 
-#: public/helpers/class-post-functions.php:962
+#: public/helpers/class-post-functions.php:982
 msgid "View count"
 msgstr ""
 

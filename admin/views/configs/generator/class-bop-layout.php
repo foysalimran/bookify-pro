@@ -22,7 +22,7 @@ class BOP_Layout {
 					array(
 						'type'  => 'metabox_branding',
 						'image' => BOP_URL . 'admin/assets/img/bookify-logo.svg',
-						'after' => '<i class="fas fa-life-ring"></i> Support',
+						'after' => wp_kses_post('<i class="fas fa-life-ring"></i> Support'),
 						'link'  => 'https://themeatelier.net/',
 						'class' => 'bop-admin-header',
 					),

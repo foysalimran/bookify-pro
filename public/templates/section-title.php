@@ -10,5 +10,5 @@
 
 if ( ! empty( $section_title_text ) ) {
 	?>
-<h2 class="bop-section-title"><?php echo wp_kses_post( $section_title_text ); ?> </h2>
+<h2 class="bop-section-title"><?php echo esc_html( $section_title_text ); ?> </h2>
 <?php } ?>

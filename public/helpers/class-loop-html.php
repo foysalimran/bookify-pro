@@ -339,7 +339,7 @@ class BOP_HTML {
 				include BOP_Functions::bop_locate_template( 'item/thumbnail.php' );
 				echo wp_kses( $td['end'], $allow_tag );
 				$item_thumb = apply_filters( 'bop_item_thumbnail', ob_get_clean() );
-				echo $item_thumb; // phpcs:ignore
+				echo wp_kses_post($item_thumb); // phpcs:ignore
 			}
 		}
 	}

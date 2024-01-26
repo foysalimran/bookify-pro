@@ -602,8 +602,8 @@ class BOP_FilterPost {
 										'type'       => 'select',
 										'title'      => esc_html__( 'Order', 'bookify-pro' ),
 										'options'    => array(
-											'ASC'  => esc_html__( 'Ascending', 'bookify-pro' ),
-											'DESC' => esc_html__( 'Descending', 'bookify-pro' ),
+											'ASC'  		=> esc_html__( 'Ascending', 'bookify-pro' ),
+											'DESC' 		=> esc_html__( 'Descending', 'bookify-pro' ),
 										),
 										'default'    => 'DESC',
 										'dependency' => array( 'bop_select_filter_orderby', '!=', 'post__in' ),
@@ -1058,10 +1058,10 @@ class BOP_FilterPost {
 										'sanitize'        => 'bop_sanitize_number_array_field',
 										'all'             => true,
 										'all_icon'        => false,
-										'all_placeholder' => '2019',
+										'all_placeholder' => esc_html('2019', 'bookify-pro'),
 										'show_units'      => false,
 										'default'         => array(
-											'all' => '2019',
+											'all' => esc_html('2019', 'bookify-pro'),
 										),
 										'min'             => '1990',
 										'dependency'      => array( 'bop_select_post_date_type', '==', 'specific_year' ),

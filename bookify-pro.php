@@ -81,18 +81,3 @@ function bookify_pro_run() {
 }
 bookify_pro_run();
 
-
-function load_bookify_template( $template ) {
-	global $post;
-
-	if ( $post->post_type == 'bookify' ) {
-		if ( is_single() ) {
-			$template = plugin_dir_path( __FILE__ ) . 'public/templates/single-bookify.php';
-		} elseif ( is_archive() ) {
-			$template = plugin_dir_path( __FILE__ ) . 'public/templates/archive.php';
-		}
-	}
-
-	return $template;
-}
-add_filter( 'template_include', 'load_bookify_template' );

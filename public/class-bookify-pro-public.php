@@ -42,6 +42,8 @@ class Bookify_Pro_Public {
 	{
 		$this->load_public_dependencies();
 		$this->bop_public_action();
+
+		add_filter('template_include', array($this, 'load_bookify_template'));
 	}
 
 	private function load_public_dependencies()
@@ -52,8 +54,6 @@ class Bookify_Pro_Public {
 		require_once BOP_PATH . 'public/helpers/class-bop-queryinside.php';
 		require_once BOP_PATH . 'public/helpers/class-bop-customfieldprocess.php';
 		require_once BOP_PATH . 'public/helpers/class-bop-shuffle-filter.php';
-		require_once BOP_PATH . 'public/helpers/class-bop-live-filter.php';
-		new BOP_Live_Filter();
 		require_once BOP_PATH . 'public/helpers/class-loop-html.php';
 	}
 
@@ -433,6 +433,21 @@ class Bookify_Pro_Public {
 		ob_start();
 		BOP_HTML::bop_html_show($view_options, $layout, $bop_gl_id, $section_title);
 		return ob_get_clean();
+	}
+
+
+	public function load_bookify_template( $template ) {
+		global $post;
+	
+		if ( $post->post_type == 'bookify' ) {
+			if ( is_single() ) {
+				$template = plugin_dir_path( __FILE__ ) . 'templates/single-bookify.php';
+			} elseif ( is_archive() ) {
+				$template = plugin_dir_path( __FILE__ ) . 'templates/archive.php';
+			}
+		}
+	
+		return $template;
 	}
 
 }

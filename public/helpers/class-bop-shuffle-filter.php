@@ -119,7 +119,7 @@ class Bookify_Pro_Shuffle_Filter {
 				}
 			}
 
-			echo $output;
+			echo wp_kses_post($output);
 		}
 	}
 }
