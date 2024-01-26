@@ -30,7 +30,7 @@ if ( ! class_exists( 'BOP_Field_layout_preset' ) ) {
 
 			if ( ! empty( $args['options'] ) ) {
 
-				echo '<div class="bop-siblings bop--image-group" data-multiple="' . $args['multiple'] . '">';
+				echo '<div class="bop-siblings bop--image-group" data-multiple="' . esc_attr($args['multiple']) . '">';
 
 				$num = 1;
 
@@ -42,9 +42,9 @@ if ( ! class_exists( 'BOP_Field_layout_preset' ) ) {
 					$checked            = ( in_array( $key, $value ) ) ? ' checked' : '';
 					$bop_pro_only_class = isset( $option['pro_only'] ) ? ' bop-pro-only' : '';
 
-					echo '<div class="bop--sibling bop--image' . $active . $bop_pro_only_class . '">';
-					echo '<img src="' . esc_url( $option['image'] ) . '" alt="' . $option['text'] . '" />';
-					echo '<input type="' . $type . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . $key . '"' . $this->field_attributes() . $checked . '/>';
+					echo '<div class="bop--sibling bop--image' . esc_attr($active . $bop_pro_only_class) . '">';
+					echo '<img src="' . esc_url( $option['image'] ) . '" alt="' . esc_html($option['text']) . '" />';
+					echo '<input type="' . esc_attr($type) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr($key) . '"' . wp_kses_post($this->field_attributes()) . esc_attr($checked) . '/>';
 					echo '<span class="ta-carousel-type">' . esc_html( $option['text'] ) . '</span>';
 					echo '</div>';
 

@@ -198,7 +198,6 @@ class BOP_CustomFieldProcess {
 			}
 		}
 	}
-
 } // End of the class.
 
 /**
@@ -209,7 +208,7 @@ class BOP_CustomFieldProcess {
  * @param boolean $is_post Check whether it is a post or not.
  * @param boolean $is_table Check table layout or not.
  */
-function bop_custom_field_html(  $object, $post_content_sorter, $is_post = true, $is_table = false ) {
+function bop_custom_field_html( $object, $post_content_sorter, $is_post = true, $is_table = false ) {
 
 	$bop_custom_fields = $post_content_sorter['bop_custom_fields'];
 
@@ -219,7 +218,7 @@ function bop_custom_field_html(  $object, $post_content_sorter, $is_post = true,
 
 	$cf_by_plugin        = ta_bop_cf_multiple_plugins() && 'auto' !== $plugin_used ? $plugin_used : 'auto';
 	$custom_field_groups = BOP_Functions::bop_metabox_value( 'bop_custom_fields_group', $bop_custom_fields );
-	
+
 	// Get all meta data of this post.
 	$metadata = $is_post ? get_metadata( 'post', $object->ID ) : array();
 
@@ -270,11 +269,10 @@ function bop_custom_field_html(  $object, $post_content_sorter, $is_post = true,
 	$td_after  = $is_table ? '</td>' : '';
 
 	if ( $bop_cf_html ) {
-		echo $td_before;
-		echo $bop_cf_html;
-		echo $td_after;
+		echo wp_kses( $td_before );
+		echo esc_html( $bop_cf_html );
+		echo wp_kses( $td_after );
 	}
-
 }
 
 
@@ -360,7 +358,7 @@ function ta_bop_cf_output_image( $value, $name ) {
  * @return statement
  */
 function ta_bop_cf_output_audio( $value ) {
-	return '<audio controls><source src="' . esc_url( $value ) . '" type="audio/mpeg">The Browser does not support the audio format.</audio>';
+	return '<audio controls><source src="' . esc_url( $value ) . '" type="audio/mpeg">'. esc_html__('The Browser does not support the audio format.', 'bookify-pro') .'</audio>';
 }
 
 /**
@@ -370,5 +368,6 @@ function ta_bop_cf_output_audio( $value ) {
  * @return statement
  */
 function ta_bop_cf_output_video( $value ) {
-	return '<video controls><source src="' . esc_url( $value ) . '" type="video/mp4">The browser does not support HTML5 video.</video>';
+	return '<video controls><source src="' . esc_url($value) . '" type="video/mp4">' . esc_html__('The browser does not support HTML5 video.', 'bookify-pro') . '</video>';
 }
+

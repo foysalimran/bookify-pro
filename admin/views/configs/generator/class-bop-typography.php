@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
 
@@ -46,12 +46,12 @@ class BOP_Typography {
 						'dependency' => array( 'section_title', '==', 'true', 'all' ),
 					),
 					array(
-						'id'         => 'thumb_archive_typography',
-						'type'       => 'typography',
-						'title'      => esc_html__( 'Thumb Archive', 'bookify-pro' ),
-						'subtitle'   => esc_html__( 'Set thumb archive font properties.', 'bookify-pro' ),
+						'id'          => 'thumb_archive_typography',
+						'type'        => 'typography',
+						'title'       => esc_html__( 'Thumb Archive', 'bookify-pro' ),
+						'subtitle'    => esc_html__( 'Set thumb archive font properties.', 'bookify-pro' ),
 						'hover_color' => true,
-						'default'    => array(
+						'default'     => array(
 							'color'              => '#111111',
 							'hover_color'        => '#c27b7f',
 							'font-family'        => '',
@@ -69,7 +69,7 @@ class BOP_Typography {
 							'type'               => '',
 							'unit'               => 'px',
 						),
-						'dependency' => array( 'post_thumb_show|post_thumb_meta', '==|!=', 'true|none', 'all' ),
+						'dependency'  => array( 'post_thumb_show|post_thumb_meta', '==|!=', 'true|none', 'all' ),
 					),
 					array(
 						'id'          => 'post_title_typography',

@@ -9,5 +9,3 @@
  */
 
 BOP_Functions::bop_get_book_fildes( $sorter, $layout, $book_fildes_fields, $visitor_count, $_event_meta_separator, $bookify_postmeta );
-
-

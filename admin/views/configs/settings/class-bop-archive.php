@@ -7,15 +7,15 @@
  * @subpackage Bookify_pro/admin
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access pages directly.
 
 /**
  * The single page class.
  */
-class BOP_Archive
-{
+class BOP_Archive {
+
 
 	/**
 	 * Single page setting section.
@@ -23,35 +23,33 @@ class BOP_Archive
 	 * @param string $prefix The settings.
 	 * @return void
 	 */
-	public static function section($prefix)
-	{
+	public static function section( $prefix ) {
 		BOP::createSection(
 			$prefix,
 			array(
-				'title'  => esc_html__('Slug', 'bookify-pro'),
+				'title'  => esc_html__( 'Slug', 'bookify-pro' ),
 				'icon'   => 'far fa-file-code',
 				'fields' => array(
 					array(
-						'type'    		=> 'subheading',
-						'content' 		=> esc_html__('Book Archive', 'bookify-pro'),
+						'type'    => 'subheading',
+						'content' => esc_html__( 'Book Archive', 'bookify-pro' ),
 					),
 					array(
-						'id'         	=> 'bop_post_slug',
-						'type'       	=> 'text',
-						'title'      	=> esc_html__('Post Slug', 'bookify-pro'),
-						'desc'			=> esc_html__('After changing the slug go to settings->reading then click save changes button to flash your permalink.', 'bookify-pro'),
-						'default'    	=> 'books',
+						'id'      => 'bop_post_slug',
+						'type'    => 'text',
+						'title'   => esc_html__( 'Post Slug', 'bookify-pro' ),
+						'desc'    => esc_html__( 'After changing the slug go to settings->reading then click save changes button to flash your permalink.', 'bookify-pro' ),
+						'default' => 'books',
 					),
 					array(
-						'id'         	=> 'bop_archive_slug',
-						'type'       	=> 'text',
-						'title'      	=> esc_html__('Archive Slug', 'bookify-pro'),
-						'desc'			=> esc_html__('After changing the slug go to settings->reading then click save changes button to flash your permalink.', 'bookify-pro'),
-						'default'    	=> 'book_category',
+						'id'      => 'bop_archive_slug',
+						'type'    => 'text',
+						'title'   => esc_html__( 'Archive Slug', 'bookify-pro' ),
+						'desc'    => esc_html__( 'After changing the slug go to settings->reading then click save changes button to flash your permalink.', 'bookify-pro' ),
+						'default' => 'book_category',
 					),
 				),
 			),
-			
 		);
 	}
 }

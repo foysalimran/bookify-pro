@@ -16,6 +16,7 @@
  */
 class BOP_Functions
 {
+
 	/**
 	 * WP Version compare
 	 *
@@ -148,7 +149,6 @@ class BOP_Functions
 		if ('excerpt' === $type) {
 			$bop_post_content = get_the_excerpt($post);
 		} elseif ('full_content' === $type) {
-
 
 			if ($is_page_content) {
 				$post_content = apply_filters('ta_bop_the_content', strip_shortcodes($post->post_content));
@@ -342,10 +342,8 @@ class BOP_Functions
 		} elseif (!has_post_thumbnail($slide_id) && 'no_featured_img_found' === $post_featured_thumb_found) {
 			$replace_thumb = self::bop_thumb_replace($post_thumb_setting, $slide_id);
 			$thumb_id      = $replace_thumb['id'];
-		} else {
-			if (has_post_thumbnail($slide_id)) {
-				$thumb_id = get_post_thumbnail_id($slide_id);
-			}
+		} elseif (has_post_thumbnail($slide_id)) {
+			$thumb_id = get_post_thumbnail_id($slide_id);
 		}
 
 		$placeholder_img = BOP_URL . 'public/assets/img/placeholder.png';
@@ -614,7 +612,6 @@ class BOP_Functions
 	public static function bop_get_post_meta($post, $post_meta_fields, $visitor_count, $meta_separator, $is_table)
 	{
 
-
 		$meta_wrapper_start_tag = !$is_table ? apply_filters('bop_post_meta_wrapper_start', '<ul>') : '';
 		$meta_wrapper_end_tag   = !$is_table ? apply_filters('bop_post_meta_wrapper_end', '</ul>') : '';
 		echo wp_kses_post($meta_wrapper_start_tag);
@@ -734,7 +731,23 @@ class BOP_Functions
 					}
 					echo wp_kses_post($meta_tag_start);
 					?>
-					<?php echo BOP_User_Like::get_bop_likes_button($post->ID); ?>
+					<?php
+					echo wp_kses(
+						BOP_User_Like::get_bop_likes_button($post->ID),
+						array(
+							'a'    => array(
+								'href'           => true,
+								'class'          => true,
+								'data-nonce'     => true,
+								'data-post-id'   => true,
+								'data-iscomment' => true,
+								'title'          => true,
+							),
+							'i'    => array('class' => true),
+							'span' => array('class' => true),
+						)
+					);
+					?>
 					<?php
 					echo wp_kses_post($meta_tag_end);
 					break;
@@ -769,9 +782,9 @@ class BOP_Functions
 	{
 		$is_meta_not_empty = !empty($bookify_postmeta['bop_author']) || !empty($bookify_postmeta['bop_publisher']) || !empty($bookify_postmeta['bop_publish_date']) || !empty($bookify_postmeta['bop_book_isbn']) || !empty($bookify_postmeta['bop_book_isbn_10']) || !empty($bookify_postmeta['bop_book_isbn_13']) || !empty($bookify_postmeta['bop_book_asin']) || !empty($bookify_postmeta['bop_book_subject']) || !empty($bookify_postmeta['bop_book_genre']);
 
-		$show_book_column = isset($sorter['bop_book_fildes']['show_book_column']) ? $sorter['bop_book_fildes']['show_book_column'] : "1";
+		$show_book_column = isset($sorter['bop_book_fildes']['show_book_column']) ? $sorter['bop_book_fildes']['show_book_column'] : '1';
 
-		$meta_wrapper_start_tag = "<div class='bookify__book_fildes'><div class='book_fildes ". esc_attr($layout != 'list_layout' ? "ta-fields-row column-$show_book_column" : "") ."'>";
+		$meta_wrapper_start_tag = "<div class='bookify__book_fildes'><div class='book_fildes " . esc_attr($layout != 'list_layout' ? "ta-fields-row column-$show_book_column" : '') . "'>";
 		$meta_wrapper_end_tag   = apply_filters('bop_book_fildes_wrapper_end', '</div></div>');
 		if ($is_meta_not_empty) {
 			echo wp_kses_post($meta_wrapper_start_tag);
@@ -779,10 +792,10 @@ class BOP_Functions
 
 		$i = 0;
 		foreach ($book_fildes_fields as $each_meta) {
-			$selected_meta        = isset($each_meta['select_book_fildes']) ? $each_meta['select_book_fildes'] : '';
-			$custom_date_format   = isset($each_meta['bop_custom_event_date_format']) ? $each_meta['bop_custom_event_date_format'] : 'j F, Y g:i A';
+			$selected_meta      = isset($each_meta['select_book_fildes']) ? $each_meta['select_book_fildes'] : '';
+			$custom_date_format = isset($each_meta['bop_custom_event_date_format']) ? $each_meta['bop_custom_event_date_format'] : 'j F, Y g:i A';
 
-			$meta_icon      = !empty($each_meta['select_book_fildes_icon']) ? sprintf('<i class="' . $each_meta['select_book_fildes_icon'] . '"></i>') : '';
+			$meta_icon      = !empty($each_meta['select_book_fildes_icon']) ? sprintf('<i class="' . esc_attr($each_meta['select_book_fildes_icon']) . '"></i>') : '';
 			$start_tag      = "<div class='book_filde'>";
 			$end_tag        = '</div>';
 			$meta_tag_start = apply_filters('bop_book_fildes_html_tag_start', $start_tag);
@@ -806,102 +819,88 @@ class BOP_Functions
 				),
 			);
 
-
-
 			switch ($selected_meta) {
 
 				case 'book_author':
-
 					if ($bookify_postmeta['bop_author']) {
 						echo wp_kses_post($meta_tag_start);
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($each_meta['show_before_text']) {
-							echo '<span>' . esc_html($each_meta['bop_before_text']) . '</span>';
+							echo wp_kses_post('<span>' . $each_meta['bop_before_text'] . '</span>');
 						}
-						echo '<span>' . esc_html($bookify_postmeta['bop_author']) . '</span>';
+						echo wp_kses_post('<span>' . $bookify_postmeta['bop_author'] . '</span>');
 						echo wp_kses_post($meta_tag_end);
 					}
 
 					break;
 				case 'publisher':
-
 					if ($bookify_postmeta['bop_publisher']) {
 						echo wp_kses_post($meta_tag_start);
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($each_meta['show_before_text']) {
-							echo '<span>' . esc_html($each_meta['bop_before_text']) . '</span>';
+							echo wp_kses_post('<span>' . $each_meta['bop_before_text'] . '</span>');
 						}
-						echo '<span>' . $bookify_postmeta['bop_publisher'] . '</span>';
+						echo wp_kses_post('<span>' . $bookify_postmeta['bop_publisher'] . '</span>');
 						echo wp_kses_post($meta_tag_end);
 					}
 
-
 					break;
 				case 'publish_date':
-
 					if ($bookify_postmeta['bop_publish_date']) {
 						echo wp_kses_post($meta_tag_start);
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($each_meta['show_before_text']) {
-							echo '<span>' . esc_html($each_meta['bop_before_text']) . '</span>';
+							echo wp_kses_post('<span>' . $each_meta['bop_before_text'] . '</span>');
 						}
-						echo '<span>' . $bookify_postmeta['bop_publish_date'] . '</span>';
+						echo wp_kses_post('<span>' . $bookify_postmeta['bop_publish_date'] . '</span>');
 						echo wp_kses_post($meta_tag_end);
 					}
 
-
 					break;
 				case 'price':
-
 					if ($bookify_postmeta['bop_book_sale_price']) {
 						echo wp_kses_post($meta_tag_start);
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($each_meta['show_before_text']) {
-							echo '<span>' . esc_html($each_meta['bop_before_text']) . '</span>';
+							echo wp_kses_post('<span>' . $each_meta['bop_before_text'] . '</span>');
 						}
-						echo '<span>' . $bookify_postmeta['bop_book_sale_price'] . '</span>';
+						echo wp_kses_post('<span>' . $bookify_postmeta['bop_book_sale_price'] . '</span>');
 						echo wp_kses_post($meta_tag_end);
 					}
 
-
 					break;
 				case 'isbn':
-
 					if ($bookify_postmeta['bop_book_isbn']) {
 						echo wp_kses_post($meta_tag_start);
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($each_meta['show_before_text']) {
-							echo '<span>' . esc_html($each_meta['bop_before_text']) . '</span>';
+							echo wp_kses_post('<span>' . $each_meta['bop_before_text'] . '</span>');
 						}
-						echo '<span>' . $bookify_postmeta['bop_book_isbn'] . '</span>';
+						echo wp_kses_post('<span>' . $bookify_postmeta['bop_book_isbn'] . '</span>');
 						echo wp_kses_post($meta_tag_end);
 					}
 
-
 					break;
 				case 'isbn_10':
-
 					if ($bookify_postmeta['bop_book_isbn_10']) {
 						echo wp_kses_post($meta_tag_start);
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($each_meta['show_before_text']) {
-							echo '<span>' . esc_html($each_meta['bop_before_text']) . '</span>';
+							echo wp_kses_post('<span>' . $each_meta['bop_before_text'] . '</span>');
 						}
-						echo '<span>' . $bookify_postmeta['bop_book_isbn_10'] . '</span>';
+						echo wp_kses_post('<span>' . $bookify_postmeta['bop_book_isbn_10'] . '</span>');
 						echo wp_kses_post($meta_tag_end);
 					}
 
-
 					break;
 				case 'isbn_13':
-
 					if ($bookify_postmeta['bop_book_isbn_13']) {
 						echo wp_kses_post($meta_tag_start);
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($each_meta['show_before_text']) {
-							echo '<span>' . esc_html($each_meta['bop_before_text']) . '</span>';
+							echo wp_kses_post('<span>' . $each_meta['bop_before_text'] . '</span>');
 						}
-						echo '<span>' . $bookify_postmeta['bop_book_isbn_13'] . '</span>';
+						echo wp_kses_post('<span>' . $bookify_postmeta['bop_book_isbn_13'] . '</span>');
 						echo wp_kses_post($meta_tag_end);
 					}
 
@@ -911,9 +910,9 @@ class BOP_Functions
 						echo wp_kses_post($meta_tag_start);
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($each_meta['show_before_text']) {
-							echo '<span>' . esc_html($each_meta['bop_before_text']) . '</span>';
+							echo wp_kses_post('<span>' . $each_meta['bop_before_text'] . '</span>');
 						}
-						echo '<span>' . $bookify_postmeta['bop_book_asin'] . '</span>';
+						echo wp_kses_post('<span>' . $bookify_postmeta['bop_book_asin'] . '</span>');
 						echo wp_kses_post($meta_tag_end);
 					}
 
@@ -923,9 +922,9 @@ class BOP_Functions
 						echo wp_kses_post($meta_tag_start);
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($each_meta['show_before_text']) {
-							echo '<span>' . esc_html($each_meta['bop_before_text']) . '</span>';
+							echo wp_kses_post('<span>' . $each_meta['bop_before_text'] . '</span>');
 						}
-						echo '<span>' . $bookify_postmeta['bop_book_subject'] . '</span>';
+						echo wp_kses_post('<span>' . $bookify_postmeta['bop_book_subject'] . '</span>');
 						echo wp_kses_post($meta_tag_end);
 					}
 
@@ -935,9 +934,9 @@ class BOP_Functions
 						echo wp_kses_post($meta_tag_start);
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($each_meta['show_before_text']) {
-							echo '<span>' . esc_html($each_meta['bop_before_text']) . '</span>';
+							echo wp_kses_post('<span>' . $each_meta['bop_before_text'] . '</span>');
 						}
-						echo '<span>' . $bookify_postmeta['bop_book_genre'] . '</span>';
+						echo wp_kses_post('<span>' . $bookify_postmeta['bop_book_genre'] . '</span>');
 						echo wp_kses_post($meta_tag_end);
 					}
 					break;
@@ -974,7 +973,7 @@ class BOP_Functions
 				case 'taxonomy':
 					if ('beside_meta' === $each_meta['bop_meta_position']) {
 					?>
-						<th><?php echo $taxonomy_name; ?></th>
+						<th><?php echo esc_html($taxonomy_name); ?></th>
 					<?php
 					}
 					break;
@@ -1029,7 +1028,7 @@ class BOP_Functions
 	{
 		$terms = get_the_term_list($id, $taxonomy, '', ', ');
 		if (!empty($terms) && !is_wp_error($terms)) {
-			return $meta_icon . $terms;
+			return wp_kses_post($meta_icon . $terms);
 		}
 	}
 
@@ -1046,10 +1045,14 @@ class BOP_Functions
 			$first_term = reset($terms); // Get the first term
 
 			if ($first_term) {
-				return '<a href="' . get_tag_link($first_term->term_id) . '">' . $first_term->name . '</a>';
+				$term_link =  get_tag_link($first_term->term_id);
+				$term_name =  $first_term->name;
+
+				return '<a href="' . esc_url($term_link) . '">' . esc_html($term_name) . '</a>';
 			}
 		}
 	}
+
 	/**
 	 * Show category.
 	 *
@@ -1058,35 +1061,18 @@ class BOP_Functions
 	 */
 	public static function bop_taxonomy($taxonomy, $id, $meta_icon = null)
 	{
-		$terms = get_the_terms($id, $taxonomy);
+		$terms  = get_the_terms($id, $taxonomy);
 		$result = '';
 
 		if (!empty($terms) && !is_wp_error($terms)) {
 			foreach ($terms as $term) {
-				$result .= '<a href="' . get_term_link($term->term_id) . '">' . $term->name . '</a> ';
+				$term_link = esc_url(get_term_link($term->term_id));
+				$term_name = esc_html($term->name);
+				$result .= '<a href="' . $term_link . '">' . $term_name . '</a> ';
 			}
 		}
 
-		return $result;
-	}
-
-	/**
-	 * Show post tags with separator.
-	 *
-	 * @param integer $post_id The post ID.
-	 * @return statement.
-	 */
-	public static function bop_post_tags($post_id)
-	{
-		$post_tags = get_the_tags($post_id);
-		$separator = ', ';
-		$output    = '';
-		if (!empty($post_tags)) {
-			foreach ($post_tags as $tag) {
-				$output .= '<a href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a>' . $separator;
-			}
-			return trim($output, $separator);
-		}
+		return wp_kses_post($result);
 	}
 
 	/**
@@ -1103,7 +1089,7 @@ class BOP_Functions
 			return;
 		}
 		$max_num_pages = ceil($total_post / $post_per_page);
-		return (int) $max_num_pages;
+		return wp_kses_post($max_num_pages);
 	}
 
 	/**
@@ -1123,7 +1109,7 @@ class BOP_Functions
 		if (intval($post_per_page) > $limit - $offset) {
 			$final_post_per_page = $limit - $offset;
 		}
-		return $final_post_per_page;
+		return wp_kses_post($final_post_per_page);
 	}
 
 	/**
@@ -1140,7 +1126,7 @@ class BOP_Functions
 		$limit              = (empty($limit) || '-1' === $limit) ? 10000000 : $limit;
 		$offset             = $post_per_page * ($total_page - 1);
 		$bop_last_page_post = $limit - $offset;
-		return $bop_last_page_post;
+		return wp_kses_post($bop_last_page_post);
 	}
 
 	/**
@@ -1156,7 +1142,7 @@ class BOP_Functions
 			return;
 		}
 		$view_options = get_post_meta($bop_gl_id, 'ta_bookify_options', true);
-		return $view_options;
+		return wp_kses_post($view_options);
 	}
 
 	/**
@@ -1211,6 +1197,6 @@ class BOP_Functions
 			$template = $default_path . $template_name;
 		}
 		// Return what we found.
-		return $template;
+		return wp_kses_post($template);
 	}
 }

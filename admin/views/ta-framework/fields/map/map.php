@@ -1,98 +1,104 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: map
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_map' ) ) {
-  class BOP_Field_map extends BOP_Fields {
+	class BOP_Field_map extends BOP_Fields {
 
-    public $version = '1.9.2';
-    public $cdn_url = 'https://cdn.jsdelivr.net/npm/leaflet@';
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
+		public $version = '1.9.2';
+		public $cdn_url = 'https://cdn.jsdelivr.net/npm/leaflet@';
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      $args              = wp_parse_args( $this->field, array(
-        'placeholder'    => esc_html__( 'Search...', 'bookify-pro' ),
-        'latitude_text'  => esc_html__( 'Latitude', 'bookify-pro' ),
-        'longitude_text' => esc_html__( 'Longitude', 'bookify-pro' ),
-        'address_field'  => '',
-        'height'         => '',
-      ) );
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      $value             = wp_parse_args( $this->value, array(
-        'address'        => '',
-        'latitude'       => '15',
-        'longitude'      => '0',
-        'zoom'           => '2',
-      ) );
+		public function render() {
 
-      $default_settings   = array(
-        'center'          => array( $value['latitude'], $value['longitude'] ),
-        'zoom'            => $value['zoom'],
-        'scrollWheelZoom' => false,
-      );
+			$args = wp_parse_args(
+				$this->field,
+				array(
+					'placeholder'    => esc_html__( 'Search...', 'bookify-pro' ),
+					'latitude_text'  => esc_html__( 'Latitude', 'bookify-pro' ),
+					'longitude_text' => esc_html__( 'Longitude', 'bookify-pro' ),
+					'address_field'  => '',
+					'height'         => '',
+				)
+			);
 
-      $settings = ( ! empty( $this->field['settings'] ) ) ? $this->field['settings'] : array();
-      $settings = wp_parse_args( $settings, $default_settings );
+			$value = wp_parse_args(
+				$this->value,
+				array(
+					'address'   => '',
+					'latitude'  => '15',
+					'longitude' => '0',
+					'zoom'      => '2',
+				)
+			);
 
-      $style_attr  = ( ! empty( $args['height'] ) ) ? ' style="min-height:'. esc_attr( $args['height'] ) .';"' : '';
-      $placeholder = ( ! empty( $args['placeholder'] ) ) ? array( 'placeholder' => $args['placeholder'] ) : '';
+			$default_settings = array(
+				'center'          => array( $value['latitude'], $value['longitude'] ),
+				'zoom'            => $value['zoom'],
+				'scrollWheelZoom' => false,
+			);
 
-      echo wp_kses_post( $this->field_before() );
+			$settings = ( ! empty( $this->field['settings'] ) ) ? $this->field['settings'] : array();
+			$settings = wp_parse_args( $settings, $default_settings );
 
-      if ( empty( $args['address_field'] ) ) {
-        echo '<div class="bop--map-search">';
-        echo '<input type="text" name="'. esc_attr( $this->field_name( '[address]' ) ) .'" value="'. esc_attr( $value['address'] ) .'"'. $this->field_attributes( $placeholder ) .' />';
-        echo '</div>';
-      } else {
-        echo '<div class="bop--address-field" data-address-field="'. esc_attr( $args['address_field'] ) .'"></div>';
-      }
+			$style_attr  = ( ! empty( $args['height'] ) ) ? ' style="min-height:' . esc_attr( $args['height'] ) . ';"' : '';
+			$placeholder = ( ! empty( $args['placeholder'] ) ) ? array( 'placeholder' => $args['placeholder'] ) : '';
 
-      echo '<div class="bop--map-osm-wrap"><div class="bop--map-osm" data-map="'. esc_attr( json_encode( $settings ) ) .'"'. $style_attr .'></div></div>';
+			echo wp_kses_post( $this->field_before() );
 
-      echo '<div class="bop--map-inputs">';
+			if ( empty( $args['address_field'] ) ) {
+				echo '<div class="bop--map-search">';
+				echo '<input type="text" name="' . esc_attr( $this->field_name( '[address]' ) ) . '" value="' . esc_attr( $value['address'] ) . '"' . wp_kses_post($this->field_attributes( $placeholder )) . ' />';
+				echo '</div>';
+			} else {
+				echo '<div class="bop--address-field" data-address-field="' . esc_attr( $args['address_field'] ) . '"></div>';
+			}
 
-        echo '<div class="bop--map-input">';
-        echo '<label>'. esc_attr( $args['latitude_text'] ) .'</label>';
-        echo '<input type="text" name="'. esc_attr( $this->field_name( '[latitude]' ) ) .'" value="'. esc_attr( $value['latitude'] ) .'" class="bop--latitude" />';
-        echo '</div>';
+			echo '<div class="bop--map-osm-wrap"><div class="bop--map-osm" data-map="' . esc_attr( json_encode( $settings ) ) . '"' . wp_kses_post($style_attr) . '></div></div>';
 
-        echo '<div class="bop--map-input">';
-        echo '<label>'. esc_attr( $args['longitude_text'] ) .'</label>';
-        echo '<input type="text" name="'. esc_attr( $this->field_name( '[longitude]' ) ) .'" value="'. esc_attr( $value['longitude'] ) .'" class="bop--longitude" />';
-        echo '</div>';
+			echo '<div class="bop--map-inputs">';
 
-      echo '</div>';
+			echo '<div class="bop--map-input">';
+			echo '<label>' . esc_attr( $args['latitude_text'] ) . '</label>';
+			echo '<input type="text" name="' . esc_attr( $this->field_name( '[latitude]' ) ) . '" value="' . esc_attr( $value['latitude'] ) . '" class="bop--latitude" />';
+			echo '</div>';
 
-      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[zoom]' ) ) .'" value="'. esc_attr( $value['zoom'] ) .'" class="bop--zoom" />';
+			echo '<div class="bop--map-input">';
+			echo '<label>' . esc_attr( $args['longitude_text'] ) . '</label>';
+			echo '<input type="text" name="' . esc_attr( $this->field_name( '[longitude]' ) ) . '" value="' . esc_attr( $value['longitude'] ) . '" class="bop--longitude" />';
+			echo '</div>';
 
-      echo wp_kses_post( $this->field_after() );
+			echo '</div>';
 
-    }
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[zoom]' ) ) . '" value="' . esc_attr( $value['zoom'] ) . '" class="bop--zoom" />';
 
-    public function enqueue() {
+			echo wp_kses_post( $this->field_after() );
+		}
 
-      if ( ! wp_script_is( 'bop-leaflet' ) ) {
-        wp_enqueue_script( 'bop-leaflet', esc_url( $this->cdn_url . $this->version .'/dist/leaflet.js' ), array( 'bookify-pro' ), $this->version, true );
-      }
+		public function enqueue() {
 
-      if ( ! wp_style_is( 'bop-leaflet' ) ) {
-        wp_enqueue_style( 'bop-leaflet', esc_url( $this->cdn_url . $this->version .'/dist/leaflet.css' ), array(), $this->version );
-      }
+			if ( ! wp_script_is( 'bop-leaflet' ) ) {
+				wp_enqueue_script( 'bop-leaflet', esc_url( $this->cdn_url . $this->version . '/dist/leaflet.js' ), array( 'bookify-pro' ), $this->version, true );
+			}
 
-      if ( ! wp_script_is( 'jquery-ui-autocomplete' ) ) {
-        wp_enqueue_script( 'jquery-ui-autocomplete' );
-      }
+			if ( ! wp_style_is( 'bop-leaflet' ) ) {
+				wp_enqueue_style( 'bop-leaflet', esc_url( $this->cdn_url . $this->version . '/dist/leaflet.css' ), array(), $this->version );
+			}
 
-    }
-
-  }
+			if ( ! wp_script_is( 'jquery-ui-autocomplete' ) ) {
+				wp_enqueue_script( 'jquery-ui-autocomplete' );
+			}
+		}
+	}
 }

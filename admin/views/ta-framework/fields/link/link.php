@@ -1,82 +1,84 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: link
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_link' ) ) {
-  class BOP_Field_link extends BOP_Fields {
+	class BOP_Field_link extends BOP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      $args = wp_parse_args( $this->field, array(
-        'add_title'    => esc_html__( 'Add Link', 'bookify-pro' ),
-        'edit_title'   => esc_html__( 'Edit Link', 'bookify-pro' ),
-        'remove_title' => esc_html__( 'Remove Link', 'bookify-pro' ),
-      ) );
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      $default_values = array(
-        'url'    => '',
-        'text'  => '',
-        'target' => '',
-      );
+		public function render() {
 
-      $value = wp_parse_args( $this->value, $default_values );
+			$args = wp_parse_args(
+				$this->field,
+				array(
+					'add_title'    => esc_html__( 'Add Link', 'bookify-pro' ),
+					'edit_title'   => esc_html__( 'Edit Link', 'bookify-pro' ),
+					'remove_title' => esc_html__( 'Remove Link', 'bookify-pro' ),
+				)
+			);
 
-      $hidden = ( ! empty( $value['url'] ) || ! empty( $value['url'] ) || ! empty( $value['url'] ) ) ? ' hidden' : '';
+			$default_values = array(
+				'url'    => '',
+				'text'   => '',
+				'target' => '',
+			);
 
-      $maybe_hidden = ( empty( $hidden ) ) ? ' hidden' : '';
+			$value = wp_parse_args( $this->value, $default_values );
 
-      echo wp_kses_post( $this->field_before() );
+			$hidden = ( ! empty( $value['url'] ) || ! empty( $value['url'] ) || ! empty( $value['url'] ) ) ? ' hidden' : '';
 
-      echo '<textarea readonly="readonly" class="bop--link hidden"></textarea>';
+			$maybe_hidden = ( empty( $hidden ) ) ? ' hidden' : '';
 
-      echo '<div class="'. esc_attr( $maybe_hidden ) .'"><div class="bop--result">'. sprintf( '{url:"%s", text:"%s", target:"%s"}', $value['url'], $value['text'], $value['target'] ) .'</div></div>';
+			echo wp_kses_post( $this->field_before() );
 
-      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[url]' ) ) .'" value="'. esc_attr( $value['url'] ) .'"'. $this->field_attributes( array( 'class' => 'bop--url' ) ) .' />';
-      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[text]' ) ) .'" value="'. esc_attr( $value['text'] ) .'" class="bop--text" />';
-      echo '<input type="hidden" name="'. esc_attr( $this->field_name( '[target]' ) ) .'" value="'. esc_attr( $value['target'] ) .'" class="bop--target" />';
+			echo '<textarea readonly="readonly" class="bop--link hidden"></textarea>';
 
-      echo '<a href="#" class="button button-primary bop--add'. esc_attr( $hidden ) .'">'. $args['add_title'] .'</a> ';
-      echo '<a href="#" class="button bop--edit'. esc_attr( $maybe_hidden ) .'">'. $args['edit_title'] .'</a> ';
-      echo '<a href="#" class="button bop-warning-primary bop--remove'. esc_attr( $maybe_hidden ) .'">'. $args['remove_title'] .'</a>';
+			echo '<div class="' . esc_attr( $maybe_hidden ) . '"><div class="bop--result">' . sprintf( '{url:"%s", text:"%s", target:"%s"}', esc_url($value['url']), esc_html($value['text']), esc_attr($value['target']) ) . '</div></div>';
 
-      echo wp_kses_post( $this->field_after() );
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[url]' ) ) . '" value="' . esc_attr( $value['url'] ) . '"' . wp_kses_post($this->field_attributes( array( 'class' => 'bop--url' ) )) . ' />';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[text]' ) ) . '" value="' . esc_html( $value['text'] ) . '" class="bop--text" />';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[target]' ) ) . '" value="' . esc_attr( $value['target'] ) . '" class="bop--target" />';
 
-    }
+			echo '<a href="#" class="button button-primary bop--add' . esc_attr( $hidden ) . '">' . esc_html($args['add_title']) . '</a> ';
+			echo '<a href="#" class="button bop--edit' . esc_attr( $maybe_hidden ) . '">' . esc_html($args['edit_title']) . '</a> ';
+			echo '<a href="#" class="button bop-warning-primary bop--remove' . esc_attr( $maybe_hidden ) . '">' . esc_html($args['remove_title']) . '</a>';
 
-    public function enqueue() {
+			echo wp_kses_post( $this->field_after() );
+		}
 
-      if ( ! wp_script_is( 'wplink' ) ) {
-        wp_enqueue_script( 'wplink' );
-      }
+		public function enqueue() {
 
-      if ( ! wp_script_is( 'jquery-ui-autocomplete' ) ) {
-        wp_enqueue_script( 'jquery-ui-autocomplete' );
-      }
+			if ( ! wp_script_is( 'wplink' ) ) {
+					wp_enqueue_script( 'wplink' );
+			}
 
-      add_action( 'admin_print_footer_scripts', array( $this, 'add_wp_link_dialog' ) );
+			if ( ! wp_script_is( 'jquery-ui-autocomplete' ) ) {
+				wp_enqueue_script( 'jquery-ui-autocomplete' );
+			}
 
-    }
+			add_action( 'admin_print_footer_scripts', array( $this, 'add_wp_link_dialog' ) );
+		}
 
-    public function add_wp_link_dialog() {
+		public function add_wp_link_dialog() {
 
-      if ( ! class_exists( '_WP_Editors' ) ) {
-        require_once ABSPATH . WPINC .'/class-wp-editor.php';
-      }
+			if ( ! class_exists( '_WP_Editors' ) ) {
+				require_once ABSPATH . WPINC . '/class-wp-editor.php';
+			}
 
-      wp_print_styles( 'editor-buttons' );
+			wp_print_styles( 'editor-buttons' );
 
-      _WP_Editors::wp_link_dialog();
-
-    }
-
-  }
+			_WP_Editors::wp_link_dialog();
+		}
+	}
 }

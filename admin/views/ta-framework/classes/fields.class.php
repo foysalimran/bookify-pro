@@ -1,23 +1,25 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Fields Class
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Fields' ) ) {
-  /**
+	/**
 	 *
 	 * Fields Class
 	 *
 	 * @since 1.0.0
 	 * @version 1.0.0
 	 */
-  abstract class BOP_Fields extends BOP_Abstract {
+	abstract class BOP_Fields extends BOP_Abstract {
 
-    /**
+
+		/**
 		 * __Construct
 		 *
 		 * @param  mixed $field fields.
@@ -27,98 +29,97 @@ if ( ! class_exists( 'BOP_Fields' ) ) {
 		 * @param  mixed $parent parent.
 		 * @return void
 		 */
-    public function __construct( $field = array(), $value = '', $unique = '', $where = '', $parent = '' ) {
-      $this->field  = $field;
-      $this->value  = $value;
-      $this->unique = $unique;
-      $this->where  = $where;
-      $this->parent = $parent;
-    }
+		public function __construct( $field = array(), $value = '', $unique = '', $where = '', $parent = '' ) {
 
-    /**
+			$this->field  = $field;
+			$this->value  = $value;
+			$this->unique = $unique;
+			$this->where  = $where;
+			$this->parent = $parent;
+		}
+
+		/**
 		 * Field name method.
 		 *
 		 * @param string $nested_name Nested field name.
 		 * @return string
 		 */
-    public function field_name( $nested_name = '' ) {
+		public function field_name( $nested_name = '' ) {
 
-      $field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
-      $unique_id  = ( ! empty( $this->unique ) ) ? $this->unique .'['. $field_id .']' : $field_id;
-      $field_name = ( ! empty( $this->field['name'] ) ) ? $this->field['name'] : $unique_id;
-      $tag_prefix = ( ! empty( $this->field['tag_prefix'] ) ) ? $this->field['tag_prefix'] : '';
+			$field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
+			$unique_id  = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $field_id . ']' : $field_id;
+			$field_name = ( ! empty( $this->field['name'] ) ) ? $this->field['name'] : $unique_id;
+			$tag_prefix = ( ! empty( $this->field['tag_prefix'] ) ) ? $this->field['tag_prefix'] : '';
 
-      if ( ! empty( $tag_prefix ) ) {
-        $nested_name = str_replace( '[', '['. $tag_prefix, $nested_name );
-      }
+			if ( ! empty( $tag_prefix ) ) {
+				$nested_name = str_replace( '[', '[' . $tag_prefix, $nested_name );
+			}
 
-      return $field_name . $nested_name;
+			return $field_name . $nested_name;
+		}
 
-    }
-
-    /**
+		/**
 		 * Field attributes.
 		 *
 		 * @param array $custom_atts Custom attributes.
 		 * @return mixed
 		 */
-    public function field_attributes( $custom_atts = array() ) {
+		public function field_attributes( $custom_atts = array() ) {
 
-      $field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
-      $attributes = ( ! empty( $this->field['attributes'] ) ) ? $this->field['attributes'] : array();
+			$field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
+			$attributes = ( ! empty( $this->field['attributes'] ) ) ? $this->field['attributes'] : array();
 
-      if ( ! empty( $field_id ) && empty( $attributes['data-depend-id'] ) ) {
-        $attributes['data-depend-id'] = $field_id;
-      }
+			if ( ! empty( $field_id ) && empty( $attributes['data-depend-id'] ) ) {
+				$attributes['data-depend-id'] = $field_id;
+			}
 
-      if ( ! empty( $this->field['placeholder'] ) ) {
-        $attributes['placeholder'] = $this->field['placeholder'];
-      }
+			if ( ! empty( $this->field['placeholder'] ) ) {
+				$attributes['placeholder'] = $this->field['placeholder'];
+			}
 
-      $attributes = wp_parse_args( $attributes, $custom_atts );
+			$attributes = wp_parse_args( $attributes, $custom_atts );
 
-      $atts = '';
+			$atts = '';
 
-      if ( ! empty( $attributes ) ) {
-        foreach ( $attributes as $key => $value ) {
-          if ( $value === 'only-key' ) {
-            $atts .= ' '. esc_attr( $key );
-          } else {
-            $atts .= ' '. esc_attr( $key ) . '="'. esc_attr( $value ) .'"';
-          }
-        }
-      }
+			if ( ! empty( $attributes ) ) {
+				foreach ( $attributes as $key => $value ) {
+					if ( $value === 'only-key' ) {
+						$atts .= ' ' . esc_attr( $key );
+					} else {
+						$atts .= ' ' . esc_attr( $key ) . '="' . esc_attr( $value ) . '"';
+					}
+				}
+			}
 
-      return $atts;
+			return $atts;
+		}
 
-    }
-
-    /**
+		/**
 		 * Field before.
 		 *
 		 * @return mixed
 		 */
-    public function field_before() {
-      return ( ! empty( $this->field['before'] ) ) ? '<div class="bop-before-text">'. $this->field['before'] .'</div>' : '';
-    }
+		public function field_before() {
 
-    /**
+			return ( ! empty( $this->field['before'] ) ) ? '<div class="bop-before-text">' . $this->field['before'] . '</div>' : '';
+		}
+
+		/**
 		 * Field after.
 		 *
 		 * @return mixed
 		 */
-    public function field_after() {
+		public function field_after() {
 
-      $output  = ( ! empty( $this->field['after'] ) ) ? '<div class="bop-after-text">'. $this->field['after'] .'</div>' : '';
-      $output .= ( ! empty( $this->field['desc'] ) ) ? '<div class="clear"></div><div class="bop-desc-text">'. $this->field['desc'] .'</div>' : '';
-      $output .= ( ! empty( $this->field['help'] ) ) ? '<div class="bop-help"><span class="bop-help-text">'. $this->field['help'] .'</span><i class="fas fa-question-circle"></i></div>' : '';
-      $output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="bop-error-text">'. $this->field['_error'] .'</div>' : '';
+			$output  = ( ! empty( $this->field['after'] ) ) ? '<div class="bop-after-text">' . $this->field['after'] . '</div>' : '';
+			$output .= ( ! empty( $this->field['desc'] ) ) ? '<div class="clear"></div><div class="bop-desc-text">' . $this->field['desc'] . '</div>' : '';
+			$output .= ( ! empty( $this->field['help'] ) ) ? '<div class="bop-help"><span class="bop-help-text">' . $this->field['help'] . '</span><i class="fas fa-question-circle"></i></div>' : '';
+			$output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="bop-error-text">' . $this->field['_error'] . '</div>' : '';
 
-      return $output;
+			return $output;
+		}
 
-    }
 
-    
 		/**
 		 * Field Data.
 		 *
@@ -129,398 +130,403 @@ if ( ! class_exists( 'BOP_Fields' ) ) {
 		 *
 		 * @return array
 		 */
-    public static function field_data( $type = '', $term = false, $query_args = array(), $field_unique = null ) {
+		public static function field_data( $type = '', $term = false, $query_args = array(), $field_unique = null ) {
 
-      $options = array();
-      $array_search = false;
+			$options      = array();
+			$array_search = false;
 
-      // sanitize type name
-      if ( in_array( $type, array( 'page', 'pages' ) ) ) {
-        $option = 'page';
-      } else if ( in_array( $type, array( 'post', 'posts' ) ) ) {
-        $option = 'post';
-      } else if ( in_array( $type, array( 'category', 'categories' ) ) ) {
-        $option = 'category';
-      } else if ( in_array( $type, array( 'tag', 'tags' ) ) ) {
-        $option = 'post_tag';
-      } else if ( in_array( $type, array( 'menu', 'menus' ) ) ) {
-        $option = 'nav_menu';
-      } else {
-        $option  = '';
-      }
+			// sanitize type name
+			if ( in_array( $type, array( 'page', 'pages' ) ) ) {
+				$option = 'page';
+			} elseif ( in_array( $type, array( 'post', 'posts' ) ) ) {
+				$option = 'post';
+			} elseif ( in_array( $type, array( 'category', 'categories' ) ) ) {
+				$option = 'category';
+			} elseif ( in_array( $type, array( 'tag', 'tags' ) ) ) {
+				$option = 'post_tag';
+			} elseif ( in_array( $type, array( 'menu', 'menus' ) ) ) {
+				$option = 'nav_menu';
+			} else {
+				$option = '';
+			}
 
-      // switch type
-      switch( $type ) {
+			// switch type
+			switch ( $type ) {
 
-        case 'page':
-        case 'pages':
-        case 'post':
-        case 'posts':
+				case 'page':
+				case 'pages':
+				case 'post':
+				case 'posts':
+					// term query required for ajax select
 
-          // term query required for ajax select
-          if ( ! empty( $term ) ) {
+					if ( ! empty( $term ) ) {
 
-            $query             = new WP_Query( wp_parse_args( $query_args, array(
-              's'              => $term,
-              'post_type'      => $option,
-              'post_status'    => 'publish',
-              'posts_per_page' => 25,
-            ) ) );
+						$query = new WP_Query(
+							wp_parse_args(
+								$query_args,
+								array(
+									's'              => $term,
+									'post_type'      => $option,
+									'post_status'    => 'publish',
+									'posts_per_page' => 25,
+								)
+							)
+						);
 
-          } else {
+					} else {
 
-            $query          = new WP_Query( wp_parse_args( $query_args, array(
-              'post_type'   => $option,
-              'post_status' => 'publish',
-            ) ) );
+						$query = new WP_Query(
+							wp_parse_args(
+								$query_args,
+								array(
+									'post_type'   => $option,
+									'post_status' => 'publish',
+								)
+							)
+						);
 
-          }
+					}
 
-          if ( ! is_wp_error( $query ) && ! empty( $query->posts ) ) {
-            foreach ( $query->posts as $item ) {
-              $options[$item->ID] = $item->post_title;
-            }
-          }
+					if ( ! is_wp_error( $query ) && ! empty( $query->posts ) ) {
+						foreach ( $query->posts as $item ) {
+							$options[ $item->ID ] = $item->post_title;
+						}
+					}
 
-        break;
+					break;
 
-        case 'category':
-        case 'categories':
-        case 'tag':
-        case 'tags':
-        case 'menu':
-        case 'menus':
+				case 'category':
+				case 'categories':
+				case 'tag':
+				case 'tags':
+				case 'menu':
+				case 'menus':
+					if ( ! empty( $term ) ) {
 
-          if ( ! empty( $term ) ) {
+						$query = new WP_Term_Query(
+							wp_parse_args(
+								$query_args,
+								array(
+									'search'     => $term,
+									'taxonomy'   => $option,
+									'hide_empty' => false,
+									'number'     => 25,
+								)
+							)
+						);
 
-            $query         = new WP_Term_Query( wp_parse_args( $query_args, array(
-              'search'     => $term,
-              'taxonomy'   => $option,
-              'hide_empty' => false,
-              'number'     => 25,
-            ) ) );
+					} else {
 
-          } else {
+						$query = new WP_Term_Query(
+							wp_parse_args(
+								$query_args,
+								array(
+									'taxonomy'   => $option,
+									'hide_empty' => false,
+								)
+							)
+						);
 
-            $query         = new WP_Term_Query( wp_parse_args( $query_args, array(
-              'taxonomy'   => $option,
-              'hide_empty' => false,
-            ) ) );
+					}
 
-          }
+					if ( ! is_wp_error( $query ) && ! empty( $query->terms ) ) {
+						foreach ( $query->terms as $item ) {
+							$options[ $item->term_id ] = $item->name;
+						}
+					}
 
-          if ( ! is_wp_error( $query ) && ! empty( $query->terms ) ) {
-            foreach ( $query->terms as $item ) {
-              $options[$item->term_id] = $item->name;
-            }
-          }
+					break;
 
-        break;
+				case 'user':
+				case 'users':
+					if ( ! empty( $term ) ) {
 
-        case 'user':
-        case 'users':
+								$query = new WP_User_Query(
+									array(
+										'search'  => '*' . $term . '*',
+										'number'  => 25,
+										'orderby' => 'title',
+										'order'   => 'ASC',
+										'fields'  => array( 'display_name', 'ID' ),
+									)
+								);
 
-          if ( ! empty( $term ) ) {
+					} else {
 
-            $query      = new WP_User_Query( array(
-              'search'  => '*'. $term .'*',
-              'number'  => 25,
-              'orderby' => 'title',
-              'order'   => 'ASC',
-              'fields'  => array( 'display_name', 'ID' )
-            ) );
+						$query = new WP_User_Query( array( 'fields' => array( 'display_name', 'ID' ) ) );
 
-          } else {
+					}
 
-            $query = new WP_User_Query( array( 'fields' => array( 'display_name', 'ID' ) ) );
+					if ( ! is_wp_error( $query ) && ! empty( $query->get_results() ) ) {
+						foreach ( $query->get_results() as $item ) {
+							$options[ $item->ID ] = $item->display_name;
+						}
+					}
 
-          }
+					break;
 
-          if ( ! is_wp_error( $query ) && ! empty( $query->get_results() ) ) {
-            foreach ( $query->get_results() as $item ) {
-              $options[$item->ID] = $item->display_name;
-            }
-          }
+				case 'sidebar':
+				case 'sidebars':
+					global $wp_registered_sidebars;
 
-        break;
+					if ( ! empty( $wp_registered_sidebars ) ) {
+						foreach ( $wp_registered_sidebars as $sidebar ) {
+							$options[ $sidebar['id'] ] = $sidebar['name'];
+						}
+					}
 
-        case 'sidebar':
-        case 'sidebars':
+																																																																																																																																																																																																																																																																							$array_search = true;
 
-          global $wp_registered_sidebars;
+					break;
 
-          if ( ! empty( $wp_registered_sidebars ) ) {
-            foreach ( $wp_registered_sidebars as $sidebar ) {
-              $options[$sidebar['id']] = $sidebar['name'];
-            }
-          }
+				case 'role':
+				case 'roles':
+					global $wp_roles;
 
-          $array_search = true;
+					if ( ! empty( $wp_roles ) ) {
+						if ( ! empty( $wp_roles->roles ) ) {
+							foreach ( $wp_roles->roles as $role_key => $role_value ) {
+								$options[ $role_key ] = $role_value['name'];
+							}
+						}
+					}
 
-        break;
+																																																																																																																																																																																																																																																																							$array_search = true;
 
-        case 'role':
-        case 'roles':
+					break;
 
-          global $wp_roles;
+				case 'post_type':
+				case 'post_types':
+					$post_types = get_post_types( array( 'show_in_nav_menus' => true ), 'objects' );
 
-          if ( ! empty( $wp_roles ) ) {
-            if ( ! empty( $wp_roles->roles ) ) {
-              foreach ( $wp_roles->roles as $role_key => $role_value ) {
-                $options[$role_key] = $role_value['name'];
-              }
-            }
-          }
+					if ( ! is_wp_error( $post_types ) && ! empty( $post_types ) ) {
+						foreach ( $post_types as $post_type ) {
+							$options[ $post_type->name ] = $post_type->labels->name;
+						}
+					}
 
-          $array_search = true;
+																																																																																																																																																																																																																																																																							$array_search = true;
 
-        break;
+					break;
 
-        case 'post_type':
-        case 'post_types':
+				case 'taxonomies':
+				case 'taxonomy':
+					global $post;
+					$view_options   = get_post_meta( $post->ID, 'ta_bookify_options', true );
+					$bop_post_types = 'bookify';
+					$taxonomy_names = get_object_taxonomies( $bop_post_types, 'names' );
+					if ( ! is_wp_error( $taxonomy_names ) && ! empty( $taxonomy_names ) ) {
+							$options[''] = esc_html__( 'Select Taxonomy', 'bookify-pro' );
+						foreach ( $taxonomy_names as $taxonomy => $label ) {
+							$options[ $label ] = $label;
+						}
+					}
+					break;
 
-          $post_types = get_post_types( array( 'show_in_nav_menus' => true ), 'objects' );
+				case 'terms':
+				case 'term':
+					global $post;
+					$view_options   = get_post_meta( $post->ID, 'ta_bookify_options', true );
+					$bop_post_types = 'bookify';
 
-          if ( ! is_wp_error( $post_types ) && ! empty( $post_types ) ) {
-            foreach ( $post_types as $post_type ) {
-              $options[$post_type->name] = $post_type->labels->name;
-            }
-          }
+					$field_index  = preg_replace( '/[^0-9]/', '', $field_unique );
+					$bop_taxonomy = isset( $view_options['bop_filter_by_taxonomy']['bop_taxonomy_and_terms'][ $field_index ]['bop_select_taxonomy'] ) ? $view_options['bop_filter_by_taxonomy']['bop_taxonomy_and_terms'][ $field_index ]['bop_select_taxonomy'] : get_object_taxonomies( $bop_post_types, 'names' );
+					if ( version_compare( get_bloginfo( 'version' ), '4.5', '>=' ) ) {
+							$terms = get_terms( array( 'taxonomy' => $bop_taxonomy ) );
+					} else {
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												$terms = get_terms( array( $bop_taxonomy ) );
+					}
 
-          $array_search = true;
+					if ( ! is_wp_error( $terms ) && ! empty( $terms ) && ! isset( $terms['errors'] ) ) {
+						foreach ( $terms as $key => $value ) {
+							$options[ $value->term_id ] = $value->name;
+						}
+					}
 
-        break;
+					break;
 
-        case 'taxonomies':
-          case 'taxonomy':
-            global $post;
-            $view_options       = get_post_meta( $post->ID, 'ta_bookify_options', true );
-            $bop_post_types     = 'bookify';
-              $taxonomy_names = get_object_taxonomies( $bop_post_types, 'names' );
-            if ( ! is_wp_error( $taxonomy_names ) && ! empty( $taxonomy_names ) ) {
-              $options[''] =esc_html__( 'Select Taxonomy', 'bookify-pro' );
-              foreach ( $taxonomy_names as $taxonomy => $label ) {
-                $options[ $label ] = $label;
-              }
-            }
-            break;
-  
-          case 'terms':
-          case 'term':
-            global $post;
-            $view_options   = get_post_meta( $post->ID, 'ta_bookify_options', true );
-            $bop_post_types = 'bookify';
-  
-            $field_index = preg_replace( '/[^0-9]/', '', $field_unique );
-            $bop_taxonomy = isset( $view_options['bop_filter_by_taxonomy']['bop_taxonomy_and_terms'][ $field_index ]['bop_select_taxonomy'] ) ? $view_options['bop_filter_by_taxonomy']['bop_taxonomy_and_terms'][ $field_index ]['bop_select_taxonomy'] : get_object_taxonomies( $bop_post_types, 'names' );
-            if ( version_compare( get_bloginfo( 'version' ), '4.5', '>=' ) ) {
-              $terms = get_terms( array( 'taxonomy' => $bop_taxonomy ) );
-            } else {
-              $terms = get_terms( array( $bop_taxonomy ) );
-            }
-  
-            if ( ! is_wp_error( $terms ) && ! empty( $terms ) && ! isset( $terms['errors'] ) ) {
-              foreach ( $terms as $key => $value ) {
-                $options[ $value->term_id ] = $value->name;
-              }
-            }
-  
-            break;
-  
-          case 'post_status':
-          case 'post_statuses':
-            $statuses = get_post_stati( null, 'objects' );
-            foreach ( $statuses as $status => $object ) {
-              $options[ $status ] = ucfirst( $object->label );
-            }
-  
-            break;
-          case 'custom_field':
-          case 'custom_fields':
-            global $wpdb;
-            $keys = $wpdb->get_col(
-              "SELECT meta_key
+				case 'post_status':
+				case 'post_statuses':
+					$statuses = get_post_stati( null, 'objects' );
+					foreach ( $statuses as $status => $object ) {
+							$options[ $status ] = ucfirst( $object->label );
+					}
+
+					break;
+				case 'custom_field':
+				case 'custom_fields':
+					global $wpdb;
+					$keys = $wpdb->get_col(
+						"SELECT meta_key
             FROM $wpdb->postmeta
             GROUP BY meta_key
             ORDER BY meta_key"
-            );
-            if ( $keys ) {
-              natcasesort( $keys );
-            }
-            // Remove empty custom field.
-            $keys = array_filter( $keys );
-            foreach ( $keys as $key ) {
-              /**
-               * Don't hide protected meta fields, to able to select data of The Events Calendar...
-               *
-               * @since 2.0.0
-               * if ( is_protected_meta( $key, 'post' ) ) {
-               * continue;
-               * }
-               */
-              $options[ esc_attr( $key ) ] = esc_html( $key );
-            }
-  
-            break;
-        case 'location':
-        case 'locations':
+					);
+					if ( $keys ) {
+											natcasesort( $keys );
+					}
+					// Remove empty custom field.
+					$keys = array_filter( $keys );
+					foreach ( $keys as $key ) {
+							/**
+							* Don't hide protected meta fields, to able to select data of The Events Calendar...
+						 *
+						* @since 2.0.0
+							* if ( is_protected_meta( $key, 'post' ) ) {
+						 * continue;
+						 * }
+						 */
+							$options[ esc_attr( $key ) ] = esc_html( $key );
+					}
 
-          $nav_menus = get_registered_nav_menus();
+					break;
+				case 'location':
+				case 'locations':
+					$nav_menus = get_registered_nav_menus();
 
-          if ( ! is_wp_error( $nav_menus ) && ! empty( $nav_menus ) ) {
-            foreach ( $nav_menus as $nav_menu_key => $nav_menu_name ) {
-              $options[$nav_menu_key] = $nav_menu_name;
-            }
-          }
+					if ( ! is_wp_error( $nav_menus ) && ! empty( $nav_menus ) ) {
+						foreach ( $nav_menus as $nav_menu_key => $nav_menu_name ) {
+							$options[ $nav_menu_key ] = $nav_menu_name;
+						}
+					}
 
-          $array_search = true;
+																																																																																																																																																																																																																																																																							$array_search = true;
 
-        break;
+					break;
 
-        default:
+				default:
+					if ( is_callable( $type ) ) {
+						if ( ! empty( $term ) ) {
+								$options = call_user_func( $type, $query_args );
+						} else {
+							$options = call_user_func( $type, $term, $query_args );
+						}
+					}
 
-          if ( is_callable( $type ) ) {
-            if ( ! empty( $term ) ) {
-              $options = call_user_func( $type, $query_args );
-            } else {
-              $options = call_user_func( $type, $term, $query_args );
-            }
-          }
+					break;
 
-        break;
+			}
 
-      }
+			// Array search by "term"
+			if ( ! empty( $term ) && ! empty( $options ) && ! empty( $array_search ) ) {
+				$options = preg_grep( '/' . $term . '/i', $options );
+			}
 
-      // Array search by "term"
-      if ( ! empty( $term ) && ! empty( $options ) && ! empty( $array_search ) ) {
-        $options = preg_grep( '/'. $term .'/i', $options );
-      }
+			// Make multidimensional array for ajax search
+			if ( ! empty( $term ) && ! empty( $options ) ) {
+				$arr = array();
+				foreach ( $options as $option_key => $option_value ) {
+					$arr[] = array(
+						'value' => $option_key,
+						'text'  => $option_value,
+					);
+				}
+				$options = $arr;
+			}
 
-      // Make multidimensional array for ajax search
-      if ( ! empty( $term ) && ! empty( $options ) ) {
-        $arr = array();
-        foreach ( $options as $option_key => $option_value ) {
-          $arr[] = array( 'value' => $option_key, 'text' => $option_value );
-        }
-        $options = $arr;
-      }
+			return $options;
+		}
 
-      return $options;
+		public function field_wp_query_data_title( $type, $values ) {
 
-    }
+			$options = array();
 
-    public function field_wp_query_data_title( $type, $values ) {
+			if ( ! empty( $values ) && is_array( $values ) ) {
 
-      $options = array();
+				foreach ( $values as $value ) {
 
-      if ( ! empty( $values ) && is_array( $values ) ) {
+					$options[ $value ] = ucfirst( $value );
 
-        foreach ( $values as $value ) {
+					switch ( $type ) {
 
-          $options[$value] = ucfirst( $value );
+						case 'post':
+						case 'posts':
+						case 'page':
+						case 'pages':
+							$title = get_the_title( $value );
 
-          switch( $type ) {
+							if ( ! is_wp_error( $title ) && ! empty( $title ) ) {
+								$options[ $value ] = $title;
+							}
 
-            case 'post':
-            case 'posts':
-            case 'page':
-            case 'pages':
+							break;
 
-              $title = get_the_title( $value );
+						case 'category':
+						case 'categories':
+						case 'tag':
+						case 'tags':
+						case 'menu':
+						case 'menus':
+							$term = get_term( $value );
 
-              if ( ! is_wp_error( $title ) && ! empty( $title ) ) {
-                $options[$value] = $title;
-              }
+							if ( ! is_wp_error( $term ) && ! empty( $term ) ) {
+									$options[ $value ] = $term->name;
+							}
 
-            break;
+							break;
 
-            case 'category':
-            case 'categories':
-            case 'tag':
-            case 'tags':
-            case 'menu':
-            case 'menus':
+						case 'user':
+						case 'users':
+							$user = get_user_by( 'id', $value );
 
-              $term = get_term( $value );
+							if ( ! is_wp_error( $user ) && ! empty( $user ) ) {
+								$options[ $value ] = $user->display_name;
+							}
 
-              if ( ! is_wp_error( $term ) && ! empty( $term ) ) {
-                $options[$value] = $term->name;
-              }
+							break;
 
-            break;
+						case 'sidebar':
+						case 'sidebars':
+							global $wp_registered_sidebars;
 
-            case 'user':
-            case 'users':
+							if ( ! empty( $wp_registered_sidebars[ $value ] ) ) {
+								$options[ $value ] = $wp_registered_sidebars[ $value ]['name'];
+							}
 
-              $user = get_user_by( 'id', $value );
+							break;
 
-              if ( ! is_wp_error( $user ) && ! empty( $user ) ) {
-                $options[$value] = $user->display_name;
-              }
+						case 'role':
+						case 'roles':
+							global $wp_roles;
 
-            break;
+							if ( ! empty( $wp_roles ) && ! empty( $wp_roles->roles ) && ! empty( $wp_roles->roles[ $value ] ) ) {
+										$options[ $value ] = $wp_roles->roles[ $value ]['name'];
+							}
 
-            case 'sidebar':
-            case 'sidebars':
+							break;
 
-              global $wp_registered_sidebars;
+						case 'post_type':
+						case 'post_types':
+							$post_types = get_post_types( array( 'show_in_nav_menus' => true ) );
 
-              if ( ! empty( $wp_registered_sidebars[$value] ) ) {
-                $options[$value] = $wp_registered_sidebars[$value]['name'];
-              }
+							if ( ! is_wp_error( $post_types ) && ! empty( $post_types ) && ! empty( $post_types[ $value ] ) ) {
+										$options[ $value ] = ucfirst( $value );
+							}
 
-            break;
+							break;
 
-            case 'role':
-            case 'roles':
+						case 'location':
+						case 'locations':
+							$nav_menus = get_registered_nav_menus();
 
-              global $wp_roles;
+							if ( ! is_wp_error( $nav_menus ) && ! empty( $nav_menus ) && ! empty( $nav_menus[ $value ] ) ) {
+									$options[ $value ] = $nav_menus[ $value ];
+							}
 
-              if ( ! empty( $wp_roles ) && ! empty( $wp_roles->roles ) && ! empty( $wp_roles->roles[$value] ) ) {
-                $options[$value] = $wp_roles->roles[$value]['name'];
-              }
+							break;
 
-            break;
+						default:
+							if ( is_callable( $type . '_title' ) ) {
+								$options[ $value ] = call_user_func( $type . '_title', $value );
+							}
 
-            case 'post_type':
-            case 'post_types':
+							break;
 
-              $post_types = get_post_types( array( 'show_in_nav_menus' => true ) );
+					}
+				}
+			}
 
-              if ( ! is_wp_error( $post_types ) && ! empty( $post_types ) && ! empty( $post_types[$value] ) ) {
-                $options[$value] = ucfirst( $value );
-              }
-
-            break;
-
-            case 'location':
-            case 'locations':
-
-              $nav_menus = get_registered_nav_menus();
-
-              if ( ! is_wp_error( $nav_menus ) && ! empty( $nav_menus ) && ! empty( $nav_menus[$value] ) ) {
-                $options[$value] = $nav_menus[$value];
-              }
-
-            break;
-
-            default:
-
-              if ( is_callable( $type .'_title' ) ) {
-                $options[$value] = call_user_func( $type .'_title', $value );
-              }
-
-            break;
-
-          }
-
-        }
-
-      }
-
-      return $options;
-
-    }
-
-  }
+			return $options;
+		}
+	}
 }

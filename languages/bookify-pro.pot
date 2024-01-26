@@ -1,0 +1,3984 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Bookify Pro\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-26 11:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.6; wp-6.4.2\n"
+"X-Domain: bookify-pro"
+
+#: public/helpers/class-post-functions.php:687
+#: public/templates/item/post-thumb-date.php:24
+msgid " ago"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:777
+msgid " Min Read"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:132
+msgid "&#8658; left to right"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:131
+msgid "&#8659; top to bottom"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:133
+msgid "&#8664; corner top to right"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:134
+msgid "&#8665; corner top to left"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:994
+msgid "1 Column"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:998
+msgid "1 month ago to today"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:997
+msgid "1 Week ago to today"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:999
+msgid "1 year ago to today"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:995
+msgid "2 Column"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:996
+msgid "3 Column"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:822
+#: admin/views/configs/generator/class-bop-display.php:920
+#: admin/views/configs/generator/class-bop-display.php:1081
+#: admin/views/configs/generator/class-bop-display.php:1153
+#: admin/views/configs/generator/class-bop-display.php:1538
+#: admin/views/configs/generator/class-bop-display.php:1868
+#: admin/views/configs/generator/class-bop-filterpost.php:279
+#: admin/views/configs/generator/class-bop-filterpost.php:416
+#: admin/views/configs/generator/class-bop-filterpost.php:592
+#: admin/views/configs/generator/class-bop-filterpost.php:671
+#: admin/views/configs/generator/class-bop-filterpost.php:929
+#: admin/views/configs/generator/class-bop-filterpost.php:1115
+msgid "<i class=\"fas fa-align-center\" title=\"Center\"></i>"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:821
+#: admin/views/configs/generator/class-bop-display.php:919
+#: admin/views/configs/generator/class-bop-display.php:1080
+#: admin/views/configs/generator/class-bop-display.php:1152
+#: admin/views/configs/generator/class-bop-display.php:1537
+#: admin/views/configs/generator/class-bop-display.php:1867
+#: admin/views/configs/generator/class-bop-filterpost.php:278
+#: admin/views/configs/generator/class-bop-filterpost.php:415
+#: admin/views/configs/generator/class-bop-filterpost.php:591
+#: admin/views/configs/generator/class-bop-filterpost.php:670
+#: admin/views/configs/generator/class-bop-filterpost.php:928
+#: admin/views/configs/generator/class-bop-filterpost.php:1114
+msgid "<i class=\"fas fa-align-left\" title=\"Left\"></i>"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:823
+#: admin/views/configs/generator/class-bop-display.php:921
+#: admin/views/configs/generator/class-bop-display.php:1082
+#: admin/views/configs/generator/class-bop-display.php:1154
+#: admin/views/configs/generator/class-bop-display.php:1539
+#: admin/views/configs/generator/class-bop-display.php:1869
+#: admin/views/configs/generator/class-bop-filterpost.php:280
+#: admin/views/configs/generator/class-bop-filterpost.php:417
+#: admin/views/configs/generator/class-bop-filterpost.php:593
+#: admin/views/configs/generator/class-bop-filterpost.php:672
+#: admin/views/configs/generator/class-bop-filterpost.php:930
+#: admin/views/configs/generator/class-bop-filterpost.php:1116
+msgid "<i class=\"fas fa-align-right\" title=\"Right\"></i>"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:374
+msgid ""
+"<i class=\"fas fa-television\"></i> <b> Large Desktop </b> - is larger than "
+"1200px,<br><i class=\"fas fa-desktop\"></i> <b>Desktop</b> - size is larger "
+"than 992px,<br> <i class=\"fas fa-tablet-alt\"></i> <b>Tablet</b> - Size is "
+"larger than 768,<br> <i class=\"fas fa-mobile-alt\"></i> <b> Mobile "
+"Landscape </b> - size is larger than 576px.,<br> <i class=\"fas fa-mobile-"
+"alt\"></i> <b> Mobile </b> - size is smaller than 576px."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:72
+msgid ""
+"<i class=\"fas fa-tv\"></i> <b> Large Desktop </b> - is larger than 1200px,"
+"<br><i class=\"fas fa-desktop\"></i> <b>Desktop</b> - size is larger than "
+"992px,<br> <i class=\"fas fa-tablet-alt\"></i> <b>Tablet</b> - Size is "
+"larger than 768,<br> <i class=\"fas fa-mobile-alt\"></i> <b> Mobile "
+"Landscape </b> - size is larger than 576px.,<br> <i class=\"fas fa-mobile-"
+"alt\"></i> <b> Mobile </b> - size is smaller than 576px."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:718
+msgid "Above Title"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:21
+msgid "Accessibility"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link_color/link_color.php:44
+msgid "Active"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1806
+msgid "Active BG"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:323
+msgid "Active Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:219
+#: admin/views/configs/generator/class-bop-filterpost.php:358
+#: admin/views/configs/generator/class-bop-filterpost.php:531
+#: admin/views/configs/generator/class-bop-filterpost.php:647
+#: admin/views/configs/generator/class-bop-filterpost.php:883
+msgid "Active/Hover BG"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:390
+msgid "Adaptive Carousel Height"
+msgstr ""
+
+#: admin/views/ta-framework/fields/gallery/gallery.php:25
+msgid "Add Gallery"
+msgstr ""
+
+#: admin/views/ta-framework/fields/icon/icon.php:25
+#: admin/views/ta-framework/fields/icon/icon.php:60
+msgid "Add Icon"
+msgstr ""
+
+#: includes/class-bookify-pro-post-types.php:67
+msgid "Add Layout"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link/link.php:25
+msgid "Add Link"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:66
+#: admin/views/ta-framework/classes/shortcode-options.class.php:216
+#: admin/views/ta-framework/fields/group/group.php:28
+msgid "Add New"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:156 admin/class-bookify-pro-admin.php:157
+msgid "Add New Book"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:234
+msgid "Add New Book Categories"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1642
+msgid "Add New Custom Field"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:639
+#: admin/views/configs/generator/class-bop-display.php:1005
+#: admin/views/configs/settings/class-bop-singlepage.php:59
+msgid "Add New Meta"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:185 admin/class-bookify-pro-admin.php:186
+#: admin/class-bookify-pro-admin.php:187
+msgid "Add New Shortcode"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:53
+msgid "Add rel=\"nofollow\" to item links"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:186
+#: admin/views/configs/generator/class-bop-filterpost.php:325
+#: admin/views/configs/generator/class-bop-filterpost.php:499
+#: admin/views/configs/generator/class-bop-filterpost.php:614
+#: admin/views/configs/generator/class-bop-filterpost.php:849
+#: admin/views/configs/generator/class-bop-filterpost.php:1093
+msgid "Add to Ajax Live Filters"
+msgstr ""
+
+#: public/helpers/class-bop-customfieldprocess.php:339
+#: admin/views/configs/generator/class-bop-display.php:1696
+msgid "Advanced Custom Fields"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:103
+msgid "Advanced Filtering"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-archive.php:41
+#: admin/views/configs/settings/class-bop-archive.php:48
+msgid ""
+"After changing the slug go to settings->reading then click save changes "
+"button to flash your permalink."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:192
+#: admin/views/configs/generator/class-bop-filterpost.php:332
+#: admin/views/configs/generator/class-bop-filterpost.php:506
+#: admin/views/configs/generator/class-bop-filterpost.php:621
+#: admin/views/configs/generator/class-bop-filterpost.php:855
+#: admin/views/configs/generator/class-bop-filterpost.php:1100
+msgid "Ajax Live Filters"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1746
+msgid "Ajax Number Pagination"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1772
+msgid "Ajax Pagination"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:819
+#: admin/views/configs/generator/class-bop-display.php:917
+#: admin/views/configs/generator/class-bop-display.php:1078
+#: admin/views/configs/generator/class-bop-display.php:1150
+#: admin/views/configs/generator/class-bop-display.php:1535
+#: admin/views/configs/generator/class-bop-display.php:1864
+#: admin/views/configs/generator/class-bop-filterpost.php:276
+#: admin/views/configs/generator/class-bop-filterpost.php:413
+#: admin/views/configs/generator/class-bop-filterpost.php:589
+#: admin/views/configs/generator/class-bop-filterpost.php:668
+#: admin/views/configs/generator/class-bop-filterpost.php:926
+#: admin/views/configs/generator/class-bop-filterpost.php:1112
+msgid "Alignment"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:257
+#: admin/views/configs/generator/class-bop-filterpost.php:396
+#: admin/views/configs/generator/class-bop-filterpost.php:905
+msgid "All"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:34
+#: admin/views/ta-framework/fields/column/column.php:51
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:55
+#: admin/views/ta-framework/fields/spacing/spacing.php:34
+msgid "all"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:229
+msgid "All Book Categoriess"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:160
+msgid "All Books"
+msgstr ""
+
+#: includes/class-bookify-pro-post-types.php:66
+msgid "All Layouts"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:238
+msgid "All Small Caps"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1255
+msgid "Allow All"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1265
+msgid "Allow HTML Tags Names"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1257
+msgid "Allow Some"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:382
+msgid "Always grayscale"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:177
+#: admin/views/configs/generator/class-bop-filterpost.php:295
+#: admin/views/configs/generator/class-bop-filterpost.php:944
+msgid "AND"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1042
+msgid "April"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-archive.php:47
+msgid "Archive Slug"
+msgstr ""
+
+#: admin/views/ta-framework/fields/group/group.php:58
+#: admin/views/ta-framework/fields/group/group.php:113
+#: admin/views/ta-framework/fields/repeater/repeater.php:54
+#: admin/views/ta-framework/fields/repeater/repeater.php:82
+msgid "Are you sure to delete this item?"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:506
+#: admin/views/ta-framework/classes/admin-options.class.php:627
+msgid "Are you sure to reset this section options?"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:507
+#: admin/views/ta-framework/classes/admin-options.class.php:628
+msgid "Are you sure you want to reset all settings to default values?"
+msgstr ""
+
+#: admin/views/ta-framework/classes/setup.class.php:633
+msgid "Are you sure?"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:232
+msgid "Arrow Icon Size"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:605
+msgid "Ascending"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1022
+#: admin/views/configs/generator/class-bop-postmeta.php:67
+#: admin/views/configs/settings/class-bop-singlepage.php:76
+msgid "ASIN"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:155
+msgid "ASIN:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:319
+#: admin/views/configs/generator/class-bop-postmeta.php:108
+msgid "Audio"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1046
+msgid "August"
+msgstr ""
+
+#: public/helpers/class-post-functions.php:965
+#: admin/views/configs/generator/class-bop-display.php:649
+#: admin/views/configs/generator/class-bop-filterpost.php:113
+#: admin/views/configs/generator/class-bop-filterpost.php:313
+#: admin/views/configs/generator/class-bop-filterpost.php:456
+#: admin/views/configs/generator/class-bop-filterpost.php:574
+#: admin/views/configs/generator/class-bop-postmeta.php:37
+msgid "Author"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:665
+msgid "Author name & gravatar"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:666
+msgid "Author name with an icon"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:115
+msgid "Author:"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:260
+msgid "Auto"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1695
+msgid "Auto Detect"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:66
+msgid "AutoPlay"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:77
+msgid "AutoPlay Speed"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:660
+msgid "Avatar"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:804
+msgid "Back Slash( \\ )"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:264
+#: admin/views/configs/generator/class-bop-carousel.php:337
+#: admin/views/configs/generator/class-bop-display.php:189
+#: admin/views/configs/generator/class-bop-display.php:197
+#: admin/views/configs/generator/class-bop-display.php:460
+#: admin/views/configs/generator/class-bop-display.php:744
+#: admin/views/configs/generator/class-bop-display.php:899
+#: admin/views/configs/generator/class-bop-display.php:1322
+#: admin/views/configs/generator/class-bop-display.php:1423
+#: admin/views/configs/generator/class-bop-display.php:1599
+#: admin/views/configs/generator/class-bop-display.php:1805
+#: admin/views/configs/generator/class-bop-display.php:1850
+#: admin/views/configs/generator/class-bop-filterpost.php:218
+#: admin/views/configs/generator/class-bop-filterpost.php:357
+#: admin/views/configs/generator/class-bop-filterpost.php:530
+#: admin/views/configs/generator/class-bop-filterpost.php:646
+#: admin/views/configs/generator/class-bop-filterpost.php:882
+#: admin/views/configs/settings/class-bop-singlepage.php:268
+msgid "Background"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:236
+msgid "Background Attachment"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:323
+msgid "Background Blend Mode"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:301
+msgid "Background Clip"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1600
+msgid "Background Hover"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:279
+msgid "Background Origin"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:185
+msgid "Background Position"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:213
+msgid "Background Repeat"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:257
+msgid "Background Size"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:140
+msgid "Backup Font Family"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1047
+#: admin/views/configs/settings/class-bop-singlepage.php:107
+msgid "Before Text"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:717
+msgid "Beside Other Meta"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:757
+#: admin/views/configs/generator/class-bop-filterpost.php:781
+msgid "Between"
+msgstr ""
+
+#: admin/views/ta-framework/fields/box_shadow/box_shadow.php:49
+msgid "Blur"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-archive.php:35
+msgid "Book Archive"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1015
+#: admin/views/configs/settings/class-bop-singlepage.php:68
+msgid "Book Author"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:226 admin/class-bookify-pro-admin.php:227
+#: admin/class-bookify-pro-admin.php:236
+msgid "Book Categories"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:872
+#: admin/views/configs/generator/class-bop-typography.php:155
+msgid "Book Category"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:979
+#: admin/views/configs/generator/class-bop-display.php:984
+#: admin/views/configs/generator/class-bop-typography.php:181
+msgid "Book Fields"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:99
+#: admin/views/configs/generator/class-bop-postmeta.php:104
+#: admin/views/configs/settings/class-bop-singlepage.php:82
+msgid "Book Format"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:89
+#: admin/views/configs/settings/class-bop-singlepage.php:80
+msgid "Book language"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:201
+msgid "Book Meta Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:176
+#: admin/views/configs/settings/class-bop-singlepage.php:84
+msgid "Book Multiple Purchase Link"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:114
+msgid "Book Pages"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1127
+msgid "Book Price"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:248
+msgid "Book Rating Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:156
+msgid "Book Regular Prices"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:161
+msgid "Book Sale Prices"
+msgstr ""
+
+#. Description of the plugin
+msgid "Book showcase for WordPress"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:154 admin/class-bookify-pro-admin.php:155
+#: admin/class-bookify-pro-admin.php:166
+#: includes/class-bookify-pro-post-types.php:65
+#: admin/views/class-bop-metaboxes.php:35
+#: admin/views/class-bop-metaboxes.php:80 admin/views/class-bop-settings.php:40
+msgid "Bookify"
+msgstr ""
+
+#: includes/class-bookify-pro-post-types.php:72
+msgid "Bookify Generator"
+msgstr ""
+
+#: admin/views/class-bop-metaboxes.php:16
+msgid "Bookify Information"
+msgstr ""
+
+#. Name of the plugin
+msgid "Bookify Pro"
+msgstr ""
+
+#: includes/class-bookify-pro-post-types.php:63
+#: includes/class-bookify-pro-post-types.php:83
+#: includes/class-bookify-pro-post-types.php:84
+msgid "Bookify Shortcode"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:266
+#: admin/views/configs/generator/class-bop-display.php:145
+#: admin/views/configs/generator/class-bop-display.php:338
+#: admin/views/configs/generator/class-bop-display.php:462
+#: admin/views/configs/generator/class-bop-display.php:901
+#: admin/views/configs/generator/class-bop-display.php:1324
+#: admin/views/configs/generator/class-bop-display.php:1425
+#: admin/views/configs/settings/class-bop-singlepage.php:270
+msgid "Border"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1804
+msgid "Border Active Color"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:281
+#: admin/views/ta-framework/fields/background/background.php:302
+msgid "Border Box"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1803
+#: admin/views/configs/generator/class-bop-filterpost.php:216
+#: admin/views/configs/generator/class-bop-filterpost.php:355
+#: admin/views/configs/generator/class-bop-filterpost.php:528
+#: admin/views/configs/generator/class-bop-filterpost.php:644
+#: admin/views/configs/generator/class-bop-filterpost.php:880
+msgid "Border Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1601
+#: admin/views/configs/generator/class-bop-filterpost.php:217
+#: admin/views/configs/generator/class-bop-filterpost.php:356
+#: admin/views/configs/generator/class-bop-filterpost.php:529
+#: admin/views/configs/generator/class-bop-filterpost.php:645
+#: admin/views/configs/generator/class-bop-filterpost.php:881
+msgid "Border Hover"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:157
+#: admin/views/configs/generator/class-bop-display.php:350
+#: admin/views/configs/generator/class-bop-display.php:959
+#: admin/views/configs/generator/class-bop-display.php:1370
+#: admin/views/configs/generator/class-bop-display.php:1471
+#: admin/views/configs/settings/class-bop-singlepage.php:300
+msgid "Border Radius"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:32
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:53
+#: admin/views/ta-framework/fields/spacing/spacing.php:32
+msgid "bottom"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:205
+#: admin/views/configs/generator/class-bop-display.php:447
+msgid "Bottom center"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:732
+msgid "Bottom Left"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:204
+#: admin/views/configs/generator/class-bop-display.php:446
+msgid "Bottom left"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:733
+msgid "Bottom Right"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:206
+#: admin/views/configs/generator/class-bop-display.php:448
+msgid "Bottom right"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:168
+msgid "Box-Shadow"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:175
+msgid "Box-Shadow Values"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1302
+#: admin/views/configs/generator/class-bop-filterpost.php:204
+#: admin/views/configs/generator/class-bop-filterpost.php:343
+#: admin/views/configs/generator/class-bop-filterpost.php:516
+#: admin/views/configs/generator/class-bop-filterpost.php:632
+#: admin/views/configs/generator/class-bop-filterpost.php:867
+#: admin/views/configs/settings/class-bop-singlepage.php:259
+msgid "Button"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:211
+#: admin/views/configs/generator/class-bop-filterpost.php:350
+#: admin/views/configs/generator/class-bop-filterpost.php:523
+#: admin/views/configs/generator/class-bop-filterpost.php:639
+#: admin/views/configs/generator/class-bop-filterpost.php:875
+#: admin/views/configs/settings/class-bop-singlepage.php:264
+msgid "Button Color"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:285
+msgid "Button Padding"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:312
+msgid "Button Typography"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:171
+msgid "Buy Button Link"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:166
+msgid "Buy Button Text"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1404
+#: admin/views/configs/generator/class-bop-display.php:1410
+#: admin/views/configs/generator/class-bop-typography.php:255
+msgid "Buy Now"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1419
+#: admin/views/configs/generator/class-bop-display.php:1484
+msgid "Buy Now Color"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:49
+msgid "bxSlider JS"
+msgstr ""
+
+#: admin/views/ta-framework/classes/comment-options.class.php:197
+#: admin/views/ta-framework/classes/metabox-options.class.php:267
+msgid "Cancel"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:255
+msgid "Capitalize"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-layout.php:45
+msgid "Carousel"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:27
+msgid "Carousel Accessibility"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:21
+msgid "Carousel Controls"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:136
+msgid "Carousel Direction"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:27
+msgid "Carousel Mode"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:39
+#: admin/views/configs/generator/class-bop-carousel.php:90
+msgid "Carousel Speed"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:404
+#: admin/views/configs/generator/class-bop-display.php:867
+#: admin/views/configs/settings/class-bop-singlepage.php:72
+msgid "Category"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:895
+msgid "Category Color"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:135
+msgid "Category:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:31
+#: admin/views/ta-framework/fields/typography/typography.php:217
+msgid "Center"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:191
+msgid "Center Bottom"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:190
+msgid "Center Center"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:189
+msgid "Center Top"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1212
+msgid "Characters"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1229
+msgid "Characters Length"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:526
+#: admin/views/configs/generator/class-bop-display.php:595
+msgid "chars"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:110
+msgid "Check the option(s) to filter by."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:500
+msgid "Check to add ajax live filter for Order by."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:615
+msgid "Check to add ajax live filter for order."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1094
+msgid "Check to add ajax live filter."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:187
+#: admin/views/configs/generator/class-bop-filterpost.php:326
+#: admin/views/configs/generator/class-bop-filterpost.php:850
+msgid "Check to add ajax live filters."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:402
+msgid "Check to hide empty author."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:264
+#: admin/views/configs/generator/class-bop-filterpost.php:912
+msgid "Check to hide empty terms."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:119
+msgid "Check to make all items/slides the same height as the tallest one."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:355
+msgid "Check to show dynamic pagination."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:270
+#: admin/views/configs/generator/class-bop-filterpost.php:408
+#: admin/views/configs/generator/class-bop-filterpost.php:919
+msgid "Check to show post count."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:203
+#: admin/views/configs/generator/class-bop-filterpost.php:866
+msgid "Checkbox"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:79
+msgid "Children Posts"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:137
+msgid "Choose a carousel direction."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:218
+msgid "Choose a carousel navigation icon."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:28
+msgid "Choose a link type for the (item) detail page."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:28
+msgid "Choose a mode for the carousel."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1769
+msgid "Choose a pagination type for mobile view."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1743
+#: admin/views/configs/generator/class-bop-display.php:1757
+msgid "Choose a pagination type."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:303
+msgid "Choose a type for pagination."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:217
+msgid "Choose an Icon"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1515
+msgid "Choose an option"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:562
+msgid "Choose order by options to show to the visitors."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1865
+msgid "Choose pagination alignment."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:42
+msgid "Choose posts"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:64
+msgid "Choose posts to exclude"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:53
+msgid "Choose posts to exclude by title."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:35
+msgid "Choose posts to include by title."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:160
+msgid "Choose Term(s)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:161
+msgid ""
+"Choose the taxonomy term(s) to show the posts from. Leave empty to show all "
+"found taxonomy term(s)."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1567
+msgid "Circle"
+msgstr ""
+
+#: admin/views/ta-framework/fields/gallery/gallery.php:27
+msgid "Clear"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:262
+#: admin/views/configs/generator/class-bop-carousel.php:322
+#: admin/views/configs/generator/class-bop-carousel.php:335
+#: admin/views/ta-framework/fields/background/background.php:332
+msgid "Color"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:330
+msgid "Color Dodge"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:53
+msgid "Column Width"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:60
+msgid "Column(s)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:728
+#: admin/views/configs/generator/class-bop-filterpost.php:746
+#: admin/views/configs/generator/class-bop-filterpost.php:768
+#: admin/views/configs/generator/class-bop-filterpost.php:792
+msgid "Compare Operator"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:806
+#: admin/views/configs/generator/class-bop-filterpost.php:813
+#: admin/views/configs/generator/class-bop-filterpost.php:827
+#: admin/views/configs/generator/class-bop-filterpost.php:838
+msgid "Compare Value"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:259
+msgid "Contain"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1183
+#: admin/views/configs/generator/class-bop-display.php:1188
+#: admin/views/configs/generator/class-bop-typography.php:207
+msgid "Content"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:282
+#: admin/views/ta-framework/fields/background/background.php:304
+msgid "Content Box"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1197
+msgid "Content Display Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:231
+msgid "Content Fields"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1209
+msgid "Content Length Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:97
+#: admin/views/configs/generator/class-bop-display.php:127
+msgid "Content Orientation "
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1200
+msgid "Content with Limit"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:84
+#: admin/views/configs/settings/class-bop-singlepage.php:79
+msgid "Country"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:170
+msgid "Country:"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:258
+msgid "Cover"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:153
+msgid "Coverflow"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:154
+msgid "Cube"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:77
+msgid "Current Post"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:42
+msgid "Current Tab"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:432
+#: admin/views/configs/generator/class-bop-display.php:681
+msgid "Custom"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1588
+msgid "Custom Color"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-customcss.php:23
+msgid "Custom CSS"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-customcss.php:17
+msgid "Custom CSS & JS"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:459
+msgid "Custom Field"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1664
+msgid "Custom Field Name"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1633
+#: admin/views/configs/generator/class-bop-display.php:1647
+#: admin/views/configs/generator/class-bop-filterpost.php:690
+#: admin/views/configs/generator/class-bop-typography.php:279
+msgid "Custom Fields"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:472
+#: admin/views/configs/generator/class-bop-filterpost.php:703
+msgid "Custom Fields Keys"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-customcss.php:33
+msgid "Custom JS"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:261
+msgid "Custom Size"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:405
+msgid "Custom Style"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:486
+msgid "Custom Web Fonts"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1673
+msgid "Customize Field Name"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:328
+msgid "Darken"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:58
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:83
+#: admin/views/ta-framework/fields/typography/typography.php:277
+msgid "Dashed"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:263
+#: public/helpers/class-post-functions.php:970
+#: admin/views/configs/generator/class-bop-display.php:405
+#: admin/views/configs/generator/class-bop-display.php:650
+#: admin/views/configs/generator/class-bop-filterpost.php:116
+#: admin/views/configs/generator/class-bop-filterpost.php:450
+#: admin/views/configs/generator/class-bop-filterpost.php:489
+#: admin/views/configs/generator/class-bop-filterpost.php:569
+#: admin/views/configs/generator/class-bop-filterpost.php:720
+msgid "Date"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:428
+#: admin/views/configs/generator/class-bop-display.php:676
+msgid "Date Format"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1050
+msgid "December"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:104
+#: admin/views/configs/generator/class-bop-display.php:430
+#: admin/views/configs/generator/class-bop-display.php:679
+#: admin/views/ta-framework/fields/typography/typography.php:161
+#: admin/views/ta-framework/fields/typography/typography.php:175
+#: admin/views/ta-framework/fields/typography/typography.php:188
+#: admin/views/ta-framework/fields/typography/typography.php:203
+#: admin/views/ta-framework/fields/typography/typography.php:223
+#: admin/views/ta-framework/fields/typography/typography.php:241
+#: admin/views/ta-framework/fields/typography/typography.php:260
+#: admin/views/ta-framework/fields/typography/typography.php:283
+msgid "Default"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:757
+msgid "Default 300 words, the average reading speed for adults."
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:244
+#: admin/views/ta-framework/classes/admin-options.class.php:259
+msgid "Default settings restored."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:392
+msgid "Defer image loading to improve performance."
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:42
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:51
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:64
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:73
+msgid "Dequeued"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:606
+msgid "Descending"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:333
+#: admin/views/configs/settings/class-bop-singlepage.php:338
+msgid "Description Typography"
+msgstr ""
+
+#: public/templates/single-bookify.php:399
+msgid "Description:"
+msgstr ""
+
+#: admin/views/ta-framework/fields/column/column.php:47
+msgid "Desktop"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:27
+msgid "Detail Page Link Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:20
+msgid "Detail page Settings"
+msgstr ""
+
+#: public/templates/item/social-share.php:64
+#: admin/views/configs/generator/class-bop-display.php:1524
+msgid "digg"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:120
+msgid "Dimension"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:123
+msgid "Direction"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:69
+#: admin/views/configs/generator/class-bop-carousel.php:106
+#: admin/views/configs/generator/class-bop-carousel.php:117
+#: admin/views/configs/generator/class-bop-carousel.php:128
+#: admin/views/configs/generator/class-bop-carousel.php:394
+#: admin/views/configs/generator/class-bop-carousel.php:405
+#: admin/views/configs/generator/class-bop-carousel.php:416
+#: admin/views/configs/generator/class-bop-carousel.php:427
+#: admin/views/configs/generator/class-bop-carousel.php:438
+#: admin/views/configs/generator/class-bop-display.php:290
+#: admin/views/configs/generator/class-bop-display.php:395
+#: admin/views/configs/generator/class-bop-display.php:1732
+#: admin/views/configs/generator/class-bop-display.php:1890
+#: admin/views/configs/settings/class-bop-accessibility.php:29
+#: admin/views/configs/settings/class-bop-singlepage.php:42
+#: admin/views/configs/settings/class-bop-singlepage.php:51
+#: admin/views/ta-framework/fields/sorter/sorter.php:27
+msgid "Disabled"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:21
+msgid "DISPLAY OPTIONS"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:507
+#: admin/views/configs/generator/class-bop-display.php:576
+msgid "div"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:305
+msgid "Dots"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:59
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:84
+#: admin/views/ta-framework/fields/typography/typography.php:276
+msgid "Dotted"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:60
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:85
+#: admin/views/ta-framework/fields/typography/typography.php:275
+msgid "Double"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:201
+#: admin/views/configs/generator/class-bop-filterpost.php:341
+#: admin/views/configs/generator/class-bop-filterpost.php:514
+#: admin/views/configs/generator/class-bop-filterpost.php:630
+#: admin/views/configs/generator/class-bop-filterpost.php:864
+msgid "Dropdown"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:354
+msgid "Dynamic Pagination"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:391
+msgid "Dynamically adjust post carousel height based on each slide's height."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:107
+msgid "E-book"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:158
+msgid "Edit Book"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:232
+msgid "Edit Book Categories"
+msgstr ""
+
+#: admin/views/ta-framework/fields/gallery/gallery.php:26
+msgid "Edit Gallery"
+msgstr ""
+
+#: includes/class-bookify-pro-post-types.php:70
+msgid "Edit Generated Shortcode"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link/link.php:26
+msgid "Edit Link"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:188
+msgid "Edit Shortcode"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:73
+msgid "eg:  Self-Help / Compulsive Behavior / General"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:79
+msgid "eg: Motivational / Self-help book"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1272
+msgid "Ellipsis Points Ending Excerpt"
+msgstr ""
+
+#: public/templates/item/social-share.php:39
+#: admin/views/configs/generator/class-bop-display.php:1521
+msgid "Email"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1705
+msgid "Embed Audio, Video or Image etc."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1706
+msgid ""
+"Embed the content if it is audio, video, or tweets etc. <a target=\"_blank\" "
+"href=\"https://wordpress.org/support/article/embeds/#okay-so-what-sites-can-"
+"i-embed-from\">See embed supported content list.</a>"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:67
+msgid "Enable/Disable carousel autoplay."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:115
+msgid "Enable/Disable carousel infinite loop."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:402
+msgid "Enable/Disable carousel scroll with tab and keyboard."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:104
+msgid "Enable/Disable carousel stop on hover."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:126
+msgid "Enable/Disable lazy load."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:425
+msgid "Enable/Disable mouse draggable mode."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:436
+msgid "Enable/Disable mouse wheel mode."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:414
+msgid "Enable/Disable touch swipe mode."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:68
+#: admin/views/configs/generator/class-bop-carousel.php:105
+#: admin/views/configs/generator/class-bop-carousel.php:116
+#: admin/views/configs/generator/class-bop-carousel.php:127
+#: admin/views/configs/generator/class-bop-carousel.php:393
+#: admin/views/configs/generator/class-bop-carousel.php:404
+#: admin/views/configs/generator/class-bop-carousel.php:415
+#: admin/views/configs/generator/class-bop-carousel.php:426
+#: admin/views/configs/generator/class-bop-carousel.php:437
+#: admin/views/configs/generator/class-bop-display.php:289
+#: admin/views/configs/generator/class-bop-display.php:394
+#: admin/views/configs/generator/class-bop-display.php:1731
+#: admin/views/configs/generator/class-bop-display.php:1889
+#: admin/views/configs/settings/class-bop-accessibility.php:28
+#: admin/views/configs/settings/class-bop-singlepage.php:41
+#: admin/views/configs/settings/class-bop-singlepage.php:50
+#: admin/views/ta-framework/fields/sorter/sorter.php:26
+msgid "Enabled"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1735
+msgid "Enabled/Disabled item pagination."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1790
+msgid "Ending Message"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:57
+msgid "Enqueue or Dequeue CSS"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:35
+msgid "Enqueue or Dequeue JS"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:41
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:50
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:63
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:72
+msgid "Enqueued"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1087
+msgid "Enter keyword(s) for searching the posts."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:731
+#: admin/views/configs/generator/class-bop-filterpost.php:749
+msgid "Equal (=)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:775
+#: admin/views/configs/generator/class-bop-filterpost.php:795
+msgid "Equal(=)"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:170
+msgid "Error while saving the changes."
+msgstr ""
+
+#: admin/views/ta-framework/fields/group/group.php:47
+#: admin/views/ta-framework/fields/repeater/repeater.php:33
+msgid "Error: Field ID conflict."
+msgstr ""
+
+#: admin/views/ta-framework/functions/actions.php:72
+#: admin/views/ta-framework/functions/actions.php:110
+msgid "Error: Invalid key."
+msgstr ""
+
+#: admin/views/ta-framework/classes/shortcode-options.class.php:253
+#: admin/views/ta-framework/functions/actions.php:16
+#: admin/views/ta-framework/functions/actions.php:68
+#: admin/views/ta-framework/functions/actions.php:106
+#: admin/views/ta-framework/functions/actions.php:141
+#: admin/views/ta-framework/functions/actions.php:170
+msgid "Error: Invalid nonce verification."
+msgstr ""
+
+#: admin/views/ta-framework/functions/actions.php:174
+msgid "Error: Invalid term ID."
+msgstr ""
+
+#: admin/views/ta-framework/functions/actions.php:114
+msgid "Error: The response is not a valid JSON response."
+msgstr ""
+
+#: admin/views/ta-framework/functions/actions.php:180
+msgid "Error: You do not have permission to do that."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:329
+msgid "Even featured image was found"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1199
+msgid "Excerpt"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:52
+msgid "Exclude"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:737
+#: admin/views/configs/generator/class-bop-filterpost.php:759
+#: admin/views/configs/generator/class-bop-filterpost.php:783
+#: admin/views/configs/generator/class-bop-filterpost.php:797
+msgid "Exists"
+msgstr ""
+
+#: admin/views/ta-framework/fields/backup/backup.php:39
+msgid "Export & Download"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:691
+#: admin/views/configs/generator/class-bop-display.php:692
+#: admin/views/configs/generator/class-bop-display.php:1039
+#: admin/views/configs/generator/class-bop-display.php:1040
+#: admin/views/configs/settings/class-bop-singlepage.php:99
+#: admin/views/configs/settings/class-bop-singlepage.php:100
+msgid "F j, Y"
+msgstr ""
+
+#: public/templates/item/social-share.php:19
+#: admin/views/configs/generator/class-bop-display.php:1517
+msgid "Facebook"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:152
+msgid "Fade"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:149
+msgid ""
+"Fade, cube, and flip transition effects work only for the single column view."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:842
+msgid "False"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1040
+msgid "February"
+msgstr ""
+
+#: admin/views/ta-framework/classes/setup.class.php:802
+#: admin/views/ta-framework/classes/setup.class.php:805
+msgid "Field not found!"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:138
+msgid "File Format"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:132
+msgid "File size"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:109
+msgid "Filter by"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:27
+msgid "Filter Content"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1756
+msgid "Filter Pagination Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:198
+#: admin/views/configs/generator/class-bop-filterpost.php:338
+#: admin/views/configs/generator/class-bop-filterpost.php:511
+#: admin/views/configs/generator/class-bop-filterpost.php:627
+#: admin/views/configs/generator/class-bop-filterpost.php:861
+msgid "Filter Type"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:50
+msgid "First Slide Message"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:238
+msgid "Fixed"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:155
+msgid "Flip"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link_color/link_color.php:46
+msgid "Focus"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:71
+msgid "Font Awesome CSS"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:381
+msgid "Font Color"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:131
+msgid "Font Family"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:296
+msgid "Font Size"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:332
+msgid "Font Size (Mobile)"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:314
+msgid "Font Size (Tablet)"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:173
+msgid "Font Style"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:232
+msgid "Font Variant"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:185
+msgid "Format:"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:77
+#: admin/views/ta-framework/fields/date/date.php:36
+#: admin/views/ta-framework/fields/datetime/datetime.php:41
+msgid "From"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1012
+msgid "From:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1201
+msgid "Full Content"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:801
+msgid "Full Stop ( . ) "
+msgstr ""
+
+#: includes/class-bookify-pro-post-types.php:68
+#: includes/class-bookify-pro-post-types.php:69
+msgid "Generate New Shortcode"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:182 admin/class-bookify-pro-admin.php:183
+#: admin/class-bookify-pro-admin.php:190
+msgid "Generate Shortcode"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:181 admin/class-bookify-pro-admin.php:184
+msgid "Generate Shortcodes"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1024
+#: admin/views/configs/generator/class-bop-postmeta.php:78
+#: admin/views/configs/settings/class-bop-singlepage.php:78
+msgid "Genre"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:165
+msgid "Genre:"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:65
+msgid "Go to slide {{index}}"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:515
+msgid "Google Web Fonts"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:130
+msgid "Gradient Direction"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:380
+msgid "Grayscale and normal on hover"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:381
+msgid "Grayscale on hover"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:751
+msgid "Greater (>)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:752
+msgid "Greater or Equal (>=)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:778
+msgid "Greater or Equel (>=)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:777
+msgid "Greater(>)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-layout.php:37
+msgid "Grid"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:63
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:88
+msgid "Groove"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:500
+#: admin/views/configs/generator/class-bop-display.php:569
+msgid "h1"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:501
+#: admin/views/configs/generator/class-bop-display.php:570
+msgid "h2"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:502
+#: admin/views/configs/generator/class-bop-display.php:571
+msgid "h3"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:503
+#: admin/views/configs/generator/class-bop-display.php:572
+msgid "h4"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:504
+#: admin/views/configs/generator/class-bop-display.php:573
+msgid "h5"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:505
+#: admin/views/configs/generator/class-bop-display.php:574
+msgid "h6"
+msgstr ""
+
+#: admin/views/ta-framework/fields/dimensions/dimensions.php:28
+msgid "height"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:189
+#: admin/views/configs/generator/class-bop-carousel.php:293
+#: admin/views/configs/generator/class-bop-display.php:31
+#: admin/views/configs/generator/class-bop-display.php:247
+#: admin/views/configs/generator/class-bop-display.php:491
+#: admin/views/configs/generator/class-bop-display.php:560
+#: admin/views/configs/generator/class-bop-display.php:631
+#: admin/views/configs/generator/class-bop-display.php:874
+#: admin/views/configs/generator/class-bop-display.php:986
+#: admin/views/configs/generator/class-bop-display.php:1049
+#: admin/views/configs/generator/class-bop-display.php:1190
+#: admin/views/configs/generator/class-bop-display.php:1293
+#: admin/views/configs/generator/class-bop-display.php:1412
+#: admin/views/configs/generator/class-bop-display.php:1666
+#: admin/views/configs/generator/class-bop-display.php:1682
+msgid "Hide"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:401
+msgid "Hide Empty author"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:263
+#: admin/views/configs/generator/class-bop-filterpost.php:911
+msgid "Hide Empty Term(s)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:190
+#: admin/views/configs/generator/class-bop-carousel.php:294
+msgid "Hide on Mobile"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:153
+msgid "Hide Taxonomy Name"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link_color/link_color.php:43
+msgid "Hover"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:265
+#: admin/views/configs/generator/class-bop-carousel.php:338
+#: admin/views/configs/generator/class-bop-display.php:461
+#: admin/views/configs/generator/class-bop-display.php:900
+#: admin/views/configs/generator/class-bop-display.php:1323
+#: admin/views/configs/generator/class-bop-display.php:1424
+#: admin/views/configs/generator/class-bop-display.php:1851
+#: admin/views/configs/settings/class-bop-singlepage.php:269
+msgid "Hover Background"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:267
+#: admin/views/configs/generator/class-bop-display.php:463
+#: admin/views/configs/generator/class-bop-display.php:902
+#: admin/views/configs/generator/class-bop-display.php:1325
+#: admin/views/configs/generator/class-bop-display.php:1426
+#: admin/views/configs/settings/class-bop-singlepage.php:271
+msgid "Hover Border"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:263
+#: admin/views/configs/generator/class-bop-carousel.php:336
+#: admin/views/ta-framework/fields/typography/typography.php:392
+msgid "Hover Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1253
+msgid "HTML Tags"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://themeatelier.net/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wp-plugins.themeatelier.net/bookify-pro"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1597
+#: admin/views/configs/generator/class-bop-postmeta.php:184
+msgid "Icon"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1658
+msgid "Icon Before Name"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1615
+msgid "Icon Border"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1595
+#: admin/views/configs/settings/class-bop-singlepage.php:206
+#: admin/views/configs/settings/class-bop-singlepage.php:253
+msgid "Icon Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1598
+msgid "Icon Hover"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1579
+msgid "Icon only"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1563
+msgid "Icon Shape"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:448
+#: admin/views/configs/generator/class-bop-filterpost.php:567
+msgid "ID"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:328
+msgid "If no featured image found"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:317
+#: admin/views/configs/generator/class-bop-postmeta.php:185
+msgid "Image"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:377
+msgid "Image Mode"
+msgstr ""
+
+#: admin/views/ta-framework/fields/backup/backup.php:36
+msgid "Import"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:176
+msgid "IN"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:735
+#: admin/views/configs/generator/class-bop-filterpost.php:755
+msgid "In"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:181
+msgid ""
+"IN - Show posts which associate with one or more terms<br>AND - Show posts "
+"which match all terms<br>NOT IN - Show posts which don't match the terms"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:774
+msgid "In the past"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:34
+msgid "Include Only"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:114
+msgid "Infinite Loop"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1747
+#: admin/views/configs/generator/class-bop-display.php:1760
+#: admin/views/configs/generator/class-bop-display.php:1773
+msgid "Infinite Scroll (Ajax)"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:215
+msgid "Inherit"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:220
+msgid "Initial"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:217
+msgid "Inner Padding"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:61
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:86
+msgid "Inset"
+msgstr ""
+
+#: public/templates/item/social-share.php:44
+#: admin/views/configs/generator/class-bop-display.php:1522
+msgid "Instagram"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1019
+#: admin/views/configs/generator/class-bop-postmeta.php:52
+#: admin/views/configs/settings/class-bop-singlepage.php:73
+msgid "ISBN"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:145
+msgid "ISBN 10:"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:150
+msgid "ISBN 13:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1020
+#: admin/views/configs/generator/class-bop-postmeta.php:57
+#: admin/views/configs/settings/class-bop-singlepage.php:74
+msgid "ISBN-10"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1021
+#: admin/views/configs/generator/class-bop-postmeta.php:62
+#: admin/views/configs/settings/class-bop-singlepage.php:75
+msgid "ISBN-13"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:140
+msgid "ISBN:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:232
+msgid ""
+"Item content fields which are draggable to change display order and it's "
+"settings."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1877
+msgid "Items Per Page"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1888
+msgid "Items will be hidden until page load completed."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1039
+msgid "January"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1045
+msgid "July"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1044
+msgid "June"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:219
+msgid "Justify"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:117
+#: admin/views/configs/generator/class-bop-filterpost.php:1080
+msgid "Keyword"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:249
+#: admin/views/configs/generator/class-bop-filterpost.php:388
+#: admin/views/configs/generator/class-bop-filterpost.php:582
+#: admin/views/configs/generator/class-bop-filterpost.php:661
+#: admin/views/configs/generator/class-bop-filterpost.php:897
+#: admin/views/configs/generator/class-bop-filterpost.php:1106
+msgid "Label"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:213
+msgid "Label Color"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:175
+msgid "Language:"
+msgstr ""
+
+#: admin/views/ta-framework/fields/column/column.php:46
+msgid "Large Desktop"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:57
+msgid "Last Slide Message"
+msgstr ""
+
+#: admin/views/ta-framework/fields/map/map.php:29
+msgid "Latitude"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:262
+msgid "Layout"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-layout.php:32
+msgid "Layout Preset"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:125
+#: admin/views/configs/generator/class-bop-display.php:391
+msgid "Lazy Load"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:256
+#: admin/views/configs/generator/class-bop-filterpost.php:904
+msgid "Leave it empty to hide \"All\" text."
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:216
+msgid "Left"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:33
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:54
+#: admin/views/ta-framework/fields/spacing/spacing.php:33
+msgid "left"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:188
+msgid "Left Bottom"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:187
+msgid "Left Center"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:132
+msgid "Left Image"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:140
+msgid "Left to Right"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:186
+msgid "Left Top"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:523
+#: admin/views/configs/generator/class-bop-display.php:592
+msgid "Length"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:753
+#: admin/views/configs/generator/class-bop-filterpost.php:779
+msgid "Less (<)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:754
+#: admin/views/configs/generator/class-bop-filterpost.php:780
+msgid "Less or Equal (<=)"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:353
+msgid "Letter Spacing"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:329
+msgid "Lighten"
+msgstr ""
+
+#: public/helpers/class-bop-user-like.php:42
+#: public/helpers/class-bop-user-like.php:243
+#: public/helpers/class-bop-user-like.php:380
+#: public/helpers/class-post-functions.php:987
+#: admin/views/configs/generator/class-bop-display.php:653
+#: admin/views/configs/generator/class-bop-filterpost.php:733
+msgid "Like"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:86
+msgid "Limit"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:516
+#: admin/views/configs/generator/class-bop-display.php:585
+msgid "Limit Character"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:305
+msgid "Line Height"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:341
+msgid "Line Height (Mobile)"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:323
+msgid "Line Height (Tablet)"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:280
+msgid "Line-through"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1519
+msgid "LinkedIn"
+msgstr ""
+
+#: public/templates/item/social-share.php:29
+msgid "linkedIn"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-layout.php:41
+msgid "List"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1897
+msgid "Live Filter Button"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:288
+msgid "Load 2x Resolution Image in Retina Display"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:187
+#: admin/views/ta-framework/fields/typography/typography.php:188
+msgid "Load Extra Styles"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1784
+msgid "Load More"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1745
+#: admin/views/configs/generator/class-bop-display.php:1759
+#: admin/views/configs/generator/class-bop-display.php:1771
+msgid "Load More Button (Ajax)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1845
+msgid "Load More Button Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1782
+msgid "Load More Button Label"
+msgstr ""
+
+#: admin/views/ta-framework/fields/map/map.php:30
+msgid "Longitude"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:257
+msgid "Lowercase"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:333
+msgid "Luminosity"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1041
+msgid "March"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:298
+#: admin/views/configs/generator/class-bop-display.php:532
+#: admin/views/configs/generator/class-bop-display.php:601
+#: admin/views/configs/generator/class-bop-display.php:831
+#: admin/views/configs/generator/class-bop-display.php:944
+#: admin/views/configs/generator/class-bop-display.php:1105
+#: admin/views/configs/generator/class-bop-display.php:1162
+#: admin/views/configs/generator/class-bop-display.php:1238
+#: admin/views/configs/generator/class-bop-display.php:1355
+#: admin/views/configs/generator/class-bop-display.php:1456
+#: admin/views/configs/generator/class-bop-display.php:1547
+#: admin/views/configs/generator/class-bop-display.php:1711
+msgid "Margin"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:233
+#: admin/views/configs/generator/class-bop-filterpost.php:372
+#: admin/views/configs/generator/class-bop-filterpost.php:545
+msgid "Margin Between Buttons"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:82
+msgid "Margin Between Columns"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:846
+msgid "Margin Between Post Meta"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1043
+msgid "May"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:455
+#: admin/views/configs/generator/class-bop-filterpost.php:573
+msgid "Menu order"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:741
+msgid "Meta Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:624
+#: admin/views/configs/generator/class-bop-display.php:629
+#: admin/views/configs/generator/class-bop-typography.php:129
+msgid "Meta Fields"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:767
+#: admin/views/configs/generator/class-bop-display.php:1031
+#: admin/views/configs/settings/class-bop-singlepage.php:91
+msgid "Meta Icon"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:798
+msgid "Meta Separator"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:812
+msgid "Meta Separator Color"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:227
+msgid "Meta Typography"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:384
+msgid "Miscellaneous"
+msgstr ""
+
+#: admin/views/ta-framework/fields/column/column.php:50
+msgid "Mobile"
+msgstr ""
+
+#: admin/views/ta-framework/fields/column/column.php:49
+msgid "Mobile Landscape"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:451
+#: admin/views/configs/generator/class-bop-filterpost.php:570
+msgid "Modified date"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:99
+msgid "More amazing Content Orientation and Layout"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:29
+msgid "More amazing Popup Settings"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:457
+#: admin/views/configs/generator/class-bop-filterpost.php:575
+msgid "Most Liked"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:458
+#: admin/views/configs/generator/class-bop-filterpost.php:576
+msgid "Most Viewed"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:424
+msgid "Mouse Draggable"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:435
+msgid "Mouse Wheel"
+msgstr ""
+
+#: admin/views/ta-framework/fields/select/select.php:100
+msgid "Multiple Post Types"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:195
+msgid "Multiple Purchase Link:"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:325
+msgid "Multiply"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:178
+#: admin/views/configs/generator/class-bop-carousel.php:185
+msgid "Navigation"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:244
+msgid "Navigation Border Radius"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:259
+msgid "Navigation Color"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:159
+msgid "New Book"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:235
+msgid "New Book Categories Name"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:43
+msgid "New Tab"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:44
+msgid "Next slide"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:43
+msgid "Next Slide Message"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1748
+#: admin/views/configs/generator/class-bop-display.php:1774
+msgid "No Ajax (Normal Pagination)"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:163
+msgid "No Book Found"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:164
+msgid "No Book Found in Trash"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1653
+msgid "No custom field found."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:479
+#: admin/views/configs/generator/class-bop-filterpost.php:710
+msgid "No custom field keys found."
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:603
+#: admin/views/ta-framework/classes/comment-options.class.php:179
+#: admin/views/ta-framework/classes/metabox-options.class.php:251
+#: admin/views/ta-framework/functions/actions.php:41
+#: admin/views/ta-framework/fields/button_set/button_set.php:62
+#: admin/views/ta-framework/fields/checkbox/checkbox.php:86
+#: admin/views/ta-framework/fields/radio/radio.php:80
+#: admin/views/ta-framework/fields/select/select.php:127
+msgid "No data available."
+msgstr ""
+
+#: admin/views/ta-framework/fields/image_sizes/image_sizes.php:130
+msgid "No image sizes found."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1792
+msgid "No more books available"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:215
+msgid "No Repeat"
+msgstr ""
+
+#: admin/views/ta-framework/classes/setup.class.php:636
+msgid "No results found."
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:194
+#: includes/class-bookify-pro-post-types.php:76
+msgid "No Shortcode found in Trash."
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:193
+#: includes/class-bookify-pro-post-types.php:75
+msgid "No Shortcode found."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:422
+#: admin/views/configs/generator/class-bop-display.php:708
+#: admin/views/configs/generator/class-bop-display.php:889
+#: admin/views/configs/generator/class-bop-filterpost.php:148
+msgid "No taxonomies found."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:167
+msgid "No terms found."
+msgstr ""
+
+#: public/templates/archive.php:99
+#: admin/views/configs/generator/class-bop-display.php:367
+#: admin/views/configs/generator/class-bop-display.php:406
+#: admin/views/configs/generator/class-bop-display.php:1134
+#: admin/views/ta-framework/fields/border/border.php:65
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:90
+#: admin/views/ta-framework/fields/typography/typography.php:254
+#: admin/views/ta-framework/fields/typography/typography.php:273
+msgid "None"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:32
+msgid "None (no link action)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:379
+#: admin/views/ta-framework/fields/background/background.php:324
+#: admin/views/ta-framework/fields/link_color/link_color.php:42
+#: admin/views/ta-framework/fields/typography/typography.php:236
+msgid "Normal"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:800
+msgid "Normal Space "
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:758
+#: admin/views/configs/generator/class-bop-filterpost.php:782
+msgid "Not Between"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:732
+#: admin/views/configs/generator/class-bop-filterpost.php:750
+msgid "Not Equal (!=)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:776
+#: admin/views/configs/generator/class-bop-filterpost.php:796
+msgid "Not Equal(!=)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:738
+#: admin/views/configs/generator/class-bop-filterpost.php:760
+#: admin/views/configs/generator/class-bop-filterpost.php:784
+#: admin/views/configs/generator/class-bop-filterpost.php:798
+msgid "Not Exists"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:178
+msgid "NOT IN"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:736
+#: admin/views/configs/generator/class-bop-filterpost.php:756
+msgid "Not In"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:734
+msgid "Not Like"
+msgstr ""
+
+#: public/helpers/class-bop-user-like.php:58
+msgid "Not permitted"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:41
+#: admin/views/ta-framework/fields/media/media.php:65
+msgid "Not selected"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1049
+msgid "November"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:773
+msgid "Now and Future"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:772
+msgid "Now and Past"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:306
+#: admin/views/configs/generator/class-bop-filterpost.php:488
+#: admin/views/configs/generator/class-bop-filterpost.php:719
+msgid "Number"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:97
+msgid "Number of items to skip."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:363
+msgid "Number of post(s) to scroll at a time."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:88
+msgid ""
+"Number of total items to display. Leave it empty to show all found items."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1048
+msgid "October"
+msgstr ""
+
+#: admin/views/ta-framework/fields/switcher/switcher.php:24
+msgid "Off"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:96
+msgid "Offset"
+msgstr ""
+
+#: admin/views/ta-framework/fields/switcher/switcher.php:23
+msgid "On"
+msgstr ""
+
+#: admin/views/ta-framework/classes/setup.class.php:734
+msgid "Oops! Not allowed."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:174
+msgid "Operator"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:296
+#: admin/views/configs/generator/class-bop-filterpost.php:945
+msgid "OR"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:603
+#: admin/views/configs/generator/class-bop-filterpost.php:663
+msgid "Order"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:446
+#: admin/views/configs/generator/class-bop-filterpost.php:561
+#: admin/views/configs/generator/class-bop-filterpost.php:584
+msgid "Order by"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:466
+msgid "Order by Custom Field"
+msgstr ""
+
+#: admin/views/ta-framework/fields/image_sizes/image_sizes.php:82
+msgid "Original uploaded image"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:62
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:87
+msgid "Outset"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:719
+msgid "Over Thumbnail"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:728
+msgid "Over Thumbnail Position"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:108
+#: admin/views/ta-framework/fields/background/background.php:327
+msgid "Overlay"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:279
+msgid "Overline"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:506
+#: admin/views/configs/generator/class-bop-display.php:575
+msgid "p"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:929
+#: admin/views/configs/generator/class-bop-display.php:1340
+#: admin/views/configs/generator/class-bop-display.php:1441
+msgid "Padding"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1090
+msgid "Padding Between Book Meta"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:280
+#: admin/views/ta-framework/fields/background/background.php:303
+msgid "Padding Box"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:283
+#: admin/views/configs/generator/class-bop-carousel.php:289
+#: admin/views/configs/generator/class-bop-display.php:1734
+msgid "Pagination"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1798
+msgid "Pagination  Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1821
+msgid "Pagination Border Radius"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:64
+msgid "Pagination Bullet Message"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:315
+msgid "Pagination Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1833
+msgid "Pagination Margin Between"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:302
+#: admin/views/configs/generator/class-bop-display.php:1742
+msgid "Pagination Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1768
+msgid "Pagination Type for Mobile"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:44
+msgid "Parent"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:230
+msgid "Parent Book Categories"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:231
+msgid "Parent Book Categories:"
+msgstr ""
+
+#: includes/class-bookify-pro-post-types.php:74
+msgid "Parent Generated Shortcode:"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:192
+msgid "Parent Shortcode:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:78
+msgid "Password Protected Posts"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:103
+msgid "Pause on Hover"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:755
+msgid "Per Minute"
+msgstr ""
+
+#: public/templates/item/social-share.php:34
+#: admin/views/configs/generator/class-bop-display.php:1520
+msgid "Pinterest"
+msgstr ""
+
+#: admin/views/ta-framework/classes/setup.class.php:634
+#, php-format
+msgid "Please enter %s or more characters"
+msgstr ""
+
+#: admin/views/ta-framework/functions/validate.php:14
+#: admin/views/ta-framework/functions/validate.php:86
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: admin/views/ta-framework/functions/validate.php:32
+#: admin/views/ta-framework/functions/validate.php:106
+msgid "Please enter a valid number."
+msgstr ""
+
+#: admin/views/ta-framework/functions/validate.php:68
+#: admin/views/ta-framework/functions/validate.php:146
+msgid "Please enter a valid URL."
+msgstr ""
+
+#: public/templates/item/social-share.php:79
+#: admin/views/configs/generator/class-bop-display.php:1528
+msgid "Pocket"
+msgstr ""
+
+#: public/helpers/class-bop-customfieldprocess.php:337
+#: admin/views/configs/generator/class-bop-display.php:1697
+msgid "Pods"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:715
+msgid "Position"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:319
+msgid "Post by Author"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:426
+msgid "Post Not by Author "
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-archive.php:40
+msgid "Post Slug"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:452
+msgid "Post slug"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:967
+msgid "Post Status"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:453
+#: admin/views/configs/generator/class-bop-filterpost.php:571
+msgid "Post type"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1887
+msgid "Preloader"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:37
+msgid "Previous slide"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:36
+msgid "Previous Slide Message"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1018
+#: admin/views/configs/generator/class-bop-display.php:1132
+#: admin/views/configs/generator/class-bop-display.php:1135
+msgid "Price"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1143
+msgid "Price Before Text"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1144
+#: admin/views/configs/settings/class-bop-singlepage.php:130
+msgid "Price:"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:71
+msgid "Prices"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1017
+#: admin/views/configs/generator/class-bop-postmeta.php:47
+#: admin/views/configs/settings/class-bop-singlepage.php:70
+msgid "Publish Date"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:983
+msgid "Published Date"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:125
+msgid "Published:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1016
+#: admin/views/configs/generator/class-bop-postmeta.php:42
+#: admin/views/configs/settings/class-bop-singlepage.php:69
+msgid "Publisher"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:120
+msgid "Publisher:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:202
+#: admin/views/configs/generator/class-bop-filterpost.php:342
+#: admin/views/configs/generator/class-bop-filterpost.php:515
+#: admin/views/configs/generator/class-bop-filterpost.php:631
+#: admin/views/configs/generator/class-bop-filterpost.php:865
+msgid "Radio"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:454
+#: admin/views/configs/generator/class-bop-filterpost.php:572
+msgid "Random"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:868
+msgid "Ranger Slider (number only)"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:190
+msgid "Rating:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:146
+#: admin/views/configs/settings/class-bop-singlepage.php:83
+msgid "Ratings"
+msgstr ""
+
+#: public/templates/archive.php:91
+#: admin/views/configs/generator/class-bop-display.php:1291
+#: admin/views/configs/generator/class-bop-display.php:1312
+#: admin/views/configs/generator/class-bop-typography.php:231
+msgid "Read More"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1285
+msgid "Read more"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:456
+#: admin/views/configs/generator/class-bop-display.php:1318
+#: admin/views/configs/generator/class-bop-display.php:1383
+msgid "Read More Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1311
+msgid "Read More Label"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1300
+msgid "Read More Type"
+msgstr ""
+
+#: public/helpers/class-post-functions.php:992
+msgid "Reading count"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:654
+msgid "Reading Time"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:774
+msgid "Reading Time Postfix"
+msgstr ""
+
+#: public/templates/item/social-share.php:54
+#: admin/views/configs/generator/class-bop-display.php:1526
+msgid "Reddit"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1136
+msgid "Regular and Sale Price"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:292
+#: admin/views/configs/generator/class-bop-filterpost.php:941
+msgid "Relation"
+msgstr ""
+
+#: admin/views/ta-framework/fields/media/media.php:31
+#: admin/views/ta-framework/fields/upload/upload.php:25
+msgid "Remove"
+msgstr ""
+
+#: admin/views/ta-framework/fields/icon/icon.php:26
+msgid "Remove Icon"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link/link.php:27
+msgid "Remove Link"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:255
+#: admin/views/configs/generator/class-bop-filterpost.php:394
+#: admin/views/configs/generator/class-bop-filterpost.php:903
+msgid "Rename \"All\" Text"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:395
+msgid "Rename \"All\" text."
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:214
+msgid "Repeat"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:216
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:217
+msgid "Repeat Vertically"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:313
+msgid "Replace With"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:507
+#: admin/views/ta-framework/classes/admin-options.class.php:628
+#: admin/views/ta-framework/classes/comment-options.class.php:196
+#: admin/views/ta-framework/classes/metabox-options.class.php:266
+#: admin/views/ta-framework/fields/backup/backup.php:41
+msgid "Reset"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:507
+#: admin/views/ta-framework/classes/admin-options.class.php:628
+msgid "Reset All"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:506
+#: admin/views/ta-framework/classes/admin-options.class.php:627
+msgid "Reset Section"
+msgstr ""
+
+#: public/templates/single-bookify.php:345
+msgid "reviews"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:64
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:89
+msgid "ridge"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:218
+msgid "Right"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:31
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:52
+#: admin/views/ta-framework/fields/spacing/spacing.php:31
+msgid "right"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:194
+msgid "Right Bottom"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:193
+msgid "Right Center"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:136
+msgid "Right Image"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:139
+msgid "Right to Left"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:192
+msgid "Right Top"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1571
+msgid "Rounded"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:163
+msgid "Row"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:492
+msgid "Safe Web Fonts"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:118
+msgid "Same Height"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:331
+msgid "Saturation"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:505
+#: admin/views/ta-framework/classes/admin-options.class.php:626
+msgid "Save"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:505
+#: admin/views/ta-framework/classes/admin-options.class.php:626
+msgid "Saving..."
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:326
+msgid "Screen"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:30
+msgid "Scripts & Styles"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:237
+msgid "Scroll"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:162
+msgid "Search Book"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:228
+msgid "Search Book Categoriess"
+msgstr ""
+
+#: includes/class-bookify-pro-post-types.php:73
+msgid "Search Generated Shortcode"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:191
+msgid "Search Shortcode"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:502
+#: admin/views/ta-framework/fields/icon/icon.php:64
+#: admin/views/ta-framework/fields/map/map.php:28
+msgid "Search..."
+msgstr ""
+
+#: admin/views/ta-framework/classes/setup.class.php:635
+msgid "Searching..."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:27
+msgid "Section Title"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:27
+msgid "Section Title "
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:37
+msgid "Section Title Margin"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:132
+msgid "Select a font"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:647
+#: admin/views/configs/generator/class-bop-display.php:1013
+#: admin/views/configs/settings/class-bop-singlepage.php:66
+msgid "Select a meta"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:199
+#: admin/views/configs/generator/class-bop-display.php:441
+msgid "Select a position for the navigation arrows."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:148
+msgid "Select a slide transition effect."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:199
+#: admin/views/configs/generator/class-bop-filterpost.php:339
+#: admin/views/configs/generator/class-bop-filterpost.php:512
+#: admin/views/configs/generator/class-bop-filterpost.php:628
+#: admin/views/configs/generator/class-bop-filterpost.php:862
+msgid "Select a type for live filter."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:485
+#: admin/views/configs/generator/class-bop-filterpost.php:716
+msgid "Select a value type."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:729
+#: admin/views/configs/generator/class-bop-filterpost.php:747
+#: admin/views/configs/generator/class-bop-filterpost.php:769
+#: admin/views/configs/generator/class-bop-filterpost.php:793
+msgid "Select compare operator."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:473
+#: admin/views/configs/generator/class-bop-filterpost.php:704
+msgid "Select custom fields key."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1025
+msgid "Select Date"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:646
+#: admin/views/configs/generator/class-bop-display.php:1012
+#: admin/views/configs/settings/class-bop-singlepage.php:65
+msgid "Select Meta"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1037
+msgid "Select Month"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1692
+msgid "Select Plugin"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1693
+msgid "Select plugin which is used to make the above custom fields."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:198
+msgid "Select Position"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:414
+#: admin/views/configs/generator/class-bop-display.php:699
+#: admin/views/configs/generator/class-bop-display.php:881
+#: admin/views/configs/generator/class-bop-filterpost.php:139
+#: admin/views/ta-framework/classes/fields.class.php:319
+msgid "Select Taxonomy"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:168
+msgid "Select Term(s)"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1266
+msgid "Separate multiple tags by comma, e.g. h1,h2"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1047
+msgid "September"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:98
+msgid "Set a position for the item content."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:128
+msgid "Set a position for the post content."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:233
+msgid "Set a size for arrow icon."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:40
+msgid "Set a target for the item link."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:54
+msgid "Set a width for the column."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:78
+msgid "Set autoplay speed in millisecond."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:190
+msgid "Set background color for the item."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:198
+msgid "Set background color for the item. test"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:146
+msgid "Set border for the item."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:158
+msgid "Set border radius for item."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:245
+msgid "Set border radius for the navigation icons."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:176
+msgid "Set box-shadow property values for the item."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:256
+msgid "Set buy now font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:40
+#: admin/views/configs/generator/class-bop-carousel.php:91
+msgid "Set carousel speed in millisecond."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:260
+msgid "Set color for the carousel navigation."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:316
+msgid "Set color for the carousel pagination."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:208
+msgid "Set content font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:280
+msgid "Set custom fields font properties."
+msgstr ""
+
+#: admin/views/ta-framework/fields/image_sizes/image_sizes.php:83
+msgid "Set custom size"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1791
+msgid "Set ending message for load more/infinite scroll."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:182
+msgid "Set event fields font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:218
+msgid "Set inner padding for  item."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:28
+msgid "Set item showcase section title font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1846
+msgid "Set load more button color."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:235
+#: admin/views/configs/generator/class-bop-filterpost.php:374
+#: admin/views/configs/generator/class-bop-filterpost.php:547
+msgid "Set margin between buttons."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:83
+msgid "Set margin between columns (items)."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:38
+msgid "Set margin for the section title."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:130
+#: admin/views/configs/generator/class-bop-typography.php:156
+msgid "Set meta fields font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:61
+msgid "Set number of column(s) in different devices for responsive view."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1878
+msgid "Set number of items to show per page."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:164
+msgid "Set number of row in different devices for responsive view."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1822
+#: admin/views/configs/generator/class-bop-display.php:1834
+msgid "Set pagination border radius for item."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1799
+msgid "Set Pagination color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1010
+msgid "Set Period"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:232
+msgid "Set read more font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:104
+msgid "Set subtitle font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1783
+msgid "Set the label for load more button."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:52
+msgid "Set thumb archive font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:78
+msgid "Set title font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1057
+msgid "Set Year"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:67 admin/views/class-bop-settings.php:30
+msgid "Settings"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:325
+msgid "Settings saved."
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:232
+msgid "Settings successfully imported."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1511
+msgid "Sharing Media"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:261
+#: includes/class-bookify-pro-post-types.php:64
+msgid "Shortcode"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:188
+#: admin/views/configs/generator/class-bop-carousel.php:292
+#: admin/views/configs/generator/class-bop-display.php:30
+#: admin/views/configs/generator/class-bop-display.php:246
+#: admin/views/configs/generator/class-bop-display.php:490
+#: admin/views/configs/generator/class-bop-display.php:559
+#: admin/views/configs/generator/class-bop-display.php:630
+#: admin/views/configs/generator/class-bop-display.php:873
+#: admin/views/configs/generator/class-bop-display.php:985
+#: admin/views/configs/generator/class-bop-display.php:1048
+#: admin/views/configs/generator/class-bop-display.php:1189
+#: admin/views/configs/generator/class-bop-display.php:1292
+#: admin/views/configs/generator/class-bop-display.php:1411
+#: admin/views/configs/generator/class-bop-display.php:1665
+#: admin/views/configs/generator/class-bop-display.php:1681
+msgid "Show"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:500
+msgid "show all settings"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:169
+msgid "Show box-shadow for the item."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1679
+msgid "Show Colon ':'"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1680
+msgid "Show colon after field name."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:664
+msgid "Show gravatar"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:663
+msgid "Show name"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:269
+#: admin/views/configs/generator/class-bop-filterpost.php:407
+#: admin/views/configs/generator/class-bop-filterpost.php:918
+msgid "Show Post Count"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:402
+msgid "Show Post Thumb Meta"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:186
+msgid "Show/Hide carousel navigation."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:290
+msgid "Show/Hide carousel pagination."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:28
+msgid "Show/Hide item showcase section title."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:31
+#: admin/views/configs/settings/class-bop-singlepage.php:30
+msgid "Single Page"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:35
+msgid "Single Page Settings"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:254
+msgid "Size"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:803
+msgid "Slash ( / )"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:151
+msgid "Slide"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:362
+msgid "Slide To Scroll"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:205
+msgid "Slider"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-archive.php:30
+msgid "Slug"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:237
+msgid "Small Caps"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1506
+msgid "Social Share"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:277
+msgid "Soft-crop"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:57
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:82
+#: admin/views/ta-framework/fields/typography/typography.php:274
+msgid "Solid"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:114
+#: admin/views/configs/generator/class-bop-filterpost.php:440
+msgid "Sort By"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1000
+msgid "Specific Date"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1001
+msgid "Specific Month"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1003
+msgid "Specific Period ( From & To )"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1002
+msgid "Specific Year"
+msgstr ""
+
+#: admin/views/ta-framework/fields/box_shadow/box_shadow.php:50
+msgid "Spread"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1575
+msgid "Square"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:30
+msgid "Standard"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:115
+#: admin/views/configs/generator/class-bop-filterpost.php:961
+msgid "Status"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:802
+msgid "Straight Line ( | )"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1256
+msgid "Strip All"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1023
+#: admin/views/configs/generator/class-bop-postmeta.php:72
+#: admin/views/configs/settings/class-bop-singlepage.php:77
+msgid "Subject"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:160
+msgid "Subject:"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:201
+msgid "Subset"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:553
+#: admin/views/configs/generator/class-bop-display.php:558
+#: admin/views/configs/generator/class-bop-postmeta.php:32
+#: admin/views/configs/generator/class-bop-typography.php:103
+#: admin/views/configs/settings/class-bop-singlepage.php:49
+msgid "Subtitle"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:567
+msgid "Subtitle HTML Tag"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:62
+msgid "Swiper CSS"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-scriptsandstyles.php:40
+msgid "Swiper JS"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:401
+msgid "Tab and Key Navigation"
+msgstr ""
+
+#: admin/views/ta-framework/fields/column/column.php:48
+msgid "Tablet"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:39
+msgid "Target"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:651
+#: admin/views/configs/generator/class-bop-filterpost.php:112
+#: admin/views/configs/generator/class-bop-filterpost.php:126
+msgid "Taxonomy"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:440
+msgid "Taxonomy Position"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:743
+#: admin/views/configs/generator/class-bop-filterpost.php:487
+#: admin/views/configs/generator/class-bop-filterpost.php:718
+#: admin/views/configs/generator/class-bop-postmeta.php:106
+msgid "Text"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1802
+msgid "Text Active Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:776
+msgid "Text after time. Leave empty for nothing."
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:211
+msgid "Text Align"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:458
+#: admin/views/configs/generator/class-bop-display.php:897
+#: admin/views/configs/generator/class-bop-display.php:1320
+#: admin/views/configs/generator/class-bop-display.php:1385
+#: admin/views/configs/generator/class-bop-display.php:1421
+#: admin/views/configs/generator/class-bop-display.php:1486
+#: admin/views/configs/generator/class-bop-display.php:1801
+#: admin/views/configs/generator/class-bop-display.php:1848
+#: admin/views/configs/generator/class-bop-filterpost.php:214
+#: admin/views/configs/generator/class-bop-filterpost.php:353
+#: admin/views/configs/generator/class-bop-filterpost.php:526
+#: admin/views/configs/generator/class-bop-filterpost.php:642
+#: admin/views/configs/generator/class-bop-filterpost.php:878
+#: admin/views/configs/settings/class-bop-singlepage.php:266
+msgid "Text Color"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:269
+msgid "Text Decoration"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:215
+#: admin/views/configs/generator/class-bop-filterpost.php:354
+#: admin/views/configs/generator/class-bop-filterpost.php:527
+#: admin/views/configs/generator/class-bop-filterpost.php:643
+#: admin/views/configs/generator/class-bop-filterpost.php:879
+msgid "Text Hover"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:459
+#: admin/views/configs/generator/class-bop-display.php:898
+#: admin/views/configs/generator/class-bop-display.php:1321
+#: admin/views/configs/generator/class-bop-display.php:1386
+#: admin/views/configs/generator/class-bop-display.php:1422
+#: admin/views/configs/generator/class-bop-display.php:1487
+#: admin/views/configs/settings/class-bop-singlepage.php:267
+msgid "Text Hover Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1849
+msgid "Text hover Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1303
+msgid "Text Link"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:250
+msgid "Text Transform"
+msgstr ""
+
+#: public/helpers/class-bop-customfieldprocess.php:371
+msgid "The browser does not support HTML5 video."
+msgstr ""
+
+#: public/helpers/class-bop-customfieldprocess.php:361
+msgid "The Browser does not support the audio format."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:948
+msgid "The logical relationship between/among above custom fields."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:299
+msgid "The logical relationship between/among above taxonomies."
+msgstr ""
+
+#. Author of the plugin
+msgid "ThemeAtelier"
+msgstr ""
+
+#: admin/views/ta-framework/functions/validate.php:50
+#: admin/views/ta-framework/functions/validate.php:126
+msgid "This field is required."
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:51
+msgid "This is the first slide"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-accessibility.php:58
+msgid "This is the last slide"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:995
+msgid "This Month"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:315
+msgid ""
+"This option will replace your default/featured post image with first "
+"resource ( image/video/audio ) from the content."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1879
+msgid ""
+"This value should be lesser than that <strong> Limit </strong> from <strong>"
+"Filter Content  </strong> tab."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:994
+msgid "This Week"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:996
+msgid "This Year"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:51
+msgid "Thumb Archive"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:240
+#: admin/views/configs/generator/class-bop-display.php:245
+msgid "Thumbnail"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:32
+msgid "Ticker"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:431
+#: admin/views/configs/generator/class-bop-display.php:680
+msgid "Time ago(human time)"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:260
+#: admin/views/configs/generator/class-bop-display.php:484
+#: admin/views/configs/generator/class-bop-display.php:489
+#: admin/views/configs/generator/class-bop-filterpost.php:449
+#: admin/views/configs/generator/class-bop-filterpost.php:568
+#: admin/views/configs/generator/class-bop-typography.php:77
+#: admin/views/configs/settings/class-bop-singlepage.php:40
+msgid "Title"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:498
+msgid "Title HTML Tag"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:100
+#: admin/views/ta-framework/fields/date/date.php:37
+#: admin/views/ta-framework/fields/datetime/datetime.php:42
+msgid "To"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:693
+#: admin/views/configs/generator/class-bop-display.php:1041
+#: admin/views/configs/settings/class-bop-singlepage.php:101
+msgid ""
+"To define format, check <a href=\"https://wordpress."
+"org/support/article/formatting-date-and-time/\" target=\"_blank\" "
+"rel=\"noopener noreferrer nofollow\"><em>this doc</em></a>."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:669
+msgid ""
+"To show gravatar, you must <a href=\"https://wordpress."
+"org/support/article/how-to-use-gravatars/\" target=\"_blank\" rel=\"noopener "
+"noreferrer nofollow\"><em>enable it</em></a>."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1013
+msgid "To:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:771
+msgid "Today"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:993
+msgid "Today and Onwards"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:992
+msgid "Today Only"
+msgstr ""
+
+#: public/helpers/class-bop-customfieldprocess.php:338
+#: admin/views/configs/generator/class-bop-display.php:1698
+msgid "Toolset"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-detailsettings.php:45
+msgid "Top"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:30
+#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:51
+#: admin/views/ta-framework/fields/spacing/spacing.php:30
+msgid "top"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:202
+#: admin/views/configs/generator/class-bop-display.php:444
+msgid "Top center"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:730
+msgid "Top Left"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:203
+#: admin/views/configs/generator/class-bop-display.php:445
+msgid "Top left"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:731
+msgid "Top Right"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:201
+#: admin/views/configs/generator/class-bop-display.php:443
+msgid "Top right"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:413
+msgid "Touch Swipe"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:147
+msgid "Transition Effect"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:94
+#: admin/views/configs/settings/class-bop-singlepage.php:81
+msgid "Translator Name"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:180
+msgid "Translator Name:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:841
+msgid "True"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:490
+#: admin/views/configs/generator/class-bop-filterpost.php:721
+msgid "True/False"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1525
+msgid "Tumblr"
+msgstr ""
+
+#: public/templates/item/social-share.php:59
+msgid "tumblr"
+msgstr ""
+
+#: public/templates/item/social-share.php:24
+#: admin/views/configs/generator/class-bop-display.php:1518
+msgid "Twitter"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:807
+#: admin/views/configs/generator/class-bop-filterpost.php:814
+#: admin/views/configs/generator/class-bop-filterpost.php:828
+#: admin/views/configs/generator/class-bop-filterpost.php:839
+msgid "Type compare value."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:1086
+msgid "Type Keyword"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:250
+#: admin/views/configs/generator/class-bop-filterpost.php:389
+#: admin/views/configs/generator/class-bop-filterpost.php:583
+#: admin/views/configs/generator/class-bop-filterpost.php:662
+#: admin/views/configs/generator/class-bop-filterpost.php:898
+#: admin/views/configs/generator/class-bop-filterpost.php:1107
+msgid "Type live filter label."
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-typography.php:20
+msgid "Typography"
+msgstr ""
+
+#: public/helpers/class-bop-user-like.php:43
+#: public/helpers/class-bop-user-like.php:239
+msgid "Unlike"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:233
+msgid "Update Book Categories"
+msgstr ""
+
+#: admin/views/ta-framework/classes/comment-options.class.php:197
+#: admin/views/ta-framework/classes/metabox-options.class.php:267
+msgid "update post"
+msgstr ""
+
+#: admin/views/ta-framework/fields/media/media.php:30
+#: admin/views/ta-framework/fields/upload/upload.php:24
+msgid "Upload"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:256
+msgid "Uppercase"
+msgstr ""
+
+#: admin/views/configs/settings/class-bop-singlepage.php:220
+msgid "Value Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:484
+#: admin/views/configs/generator/class-bop-filterpost.php:715
+msgid "Value Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:208
+msgid "Vertically center inner"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:209
+msgid "Vertically center inner on hover"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:207
+msgid "Vertically center outer"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:318
+msgid "Video"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:161
+msgid "View Book"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:652
+msgid "View Count"
+msgstr ""
+
+#: public/helpers/class-post-functions.php:982
+msgid "View count"
+msgstr ""
+
+#: includes/class-bookify-pro-post-types.php:71
+msgid "View Generated Shortcode"
+msgstr ""
+
+#: admin/views/class-bop-metaboxes.php:56
+msgid "View Options"
+msgstr ""
+
+#: admin/class-bookify-pro-admin.php:189
+msgid "View Shortcode"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link_color/link_color.php:45
+msgid "Visited"
+msgstr ""
+
+#: public/templates/item/social-share.php:69
+#: admin/views/configs/generator/class-bop-display.php:1523
+msgid "VK"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:278
+msgid "Wavy"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:193
+msgid "Website Icon"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:182
+msgid "Website Icon/Image"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:199
+msgid "Website Image Icon"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:211
+msgid "Website Link"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:206
+msgid "Website Name"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-postmeta.php:126
+msgid "Weight"
+msgstr ""
+
+#: public/templates/item/social-share.php:49
+#: admin/views/configs/generator/class-bop-display.php:1527
+msgid "WhatsApp"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-carousel.php:174
+msgid ""
+"When multiple <b>Row</b> is set, the above two options <b>Infinite Loop</b> "
+"and <b>Auto Height</b> won't work properly."
+msgstr ""
+
+#: admin/views/ta-framework/fields/dimensions/dimensions.php:27
+msgid "width"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:365
+msgid "Word Spacing"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1211
+msgid "Words"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:759
+msgid "words"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:1220
+msgid "Words Length"
+msgstr ""
+
+#: admin/views/ta-framework/fields/box_shadow/box_shadow.php:47
+msgid "X offset"
+msgstr ""
+
+#: public/templates/item/social-share.php:74
+#: admin/views/configs/generator/class-bop-display.php:1529
+msgid "Xing"
+msgstr ""
+
+#: admin/views/ta-framework/fields/box_shadow/box_shadow.php:48
+msgid "Y offset"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:991
+msgid "Yesterday"
+msgstr ""
+
+#: admin/views/ta-framework/fields/group/group.php:146
+#: admin/views/ta-framework/fields/repeater/repeater.php:94
+msgid "You cannot add more."
+msgstr ""
+
+#: admin/views/ta-framework/fields/group/group.php:147
+#: admin/views/ta-framework/fields/repeater/repeater.php:95
+msgid "You cannot remove more."
+msgstr ""
+
+#: public/helpers/class-bop-user-like.php:432
+msgid "You do not like anything yet."
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:498
+msgid "You have unsaved changes, save your changes!"
+msgstr ""
+
+#: public/helpers/class-bop-user-like.php:400
+msgid "You Like:"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-filterpost.php:821
+#: admin/views/configs/generator/class-bop-filterpost.php:832
+#: admin/views/configs/generator/class-bop-filterpost.php:1019
+#: admin/views/configs/generator/class-bop-filterpost.php:1031
+msgid "yy-mm-dd"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:365
+msgid "Zoom Effect"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:368
+msgid "Zoom In"
+msgstr ""
+
+#: admin/views/configs/generator/class-bop-display.php:369
+msgid "Zoom Out"
+msgstr ""

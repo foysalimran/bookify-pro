@@ -16,10 +16,16 @@ if ('carousel_layout' !== $layout && $lazy_load && !is_admin()) {
 
 	wp_enqueue_script('bop-lazy');
 	$image = sprintf('<img data-bop_src="%1$s" %5$s class="bop-lazyload" width="%2$s"  height="%3$s" alt="%4$s">', $thumb_url, $bop_image_attr['width'], $bop_image_attr['height'], $alter_text, $retina_img_attr);
-
 } else {
 
-	$image = sprintf('<img %5$s src="%1$s" width="%2$s" height="%3$s" alt="%4$s">', $thumb_url, $bop_image_attr['width'], $bop_image_attr['height'], $alter_text, $retina_img_attr);
+	$image = sprintf(
+		'<img %5$s src="%1$s" width="%2$s" height="%3$s" alt="%4$s">',
+		$thumb_url,
+		$bop_image_attr['width'],
+		$bop_image_attr['height'],
+		$alter_text,
+		$retina_img_attr
+	);
 }
 
 
@@ -33,14 +39,14 @@ if ('carousel_layout' !== $layout && $lazy_load && !is_admin()) {
 			<?php
 		}
 		if (empty($bop_image_attr['video']) && empty($bop_image_attr['audio'])) {
-			echo $image;
+			echo wp_kses_post($image);
 		} elseif ($bop_image_attr['video']) {
 			?>
-				<div class='ta-bop-post-video-thumb-area'><?php echo $bop_image_attr['video']; ?></div>
+				<div class='ta-bop-post-video-thumb-area'><?php echo wp_kses_post($bop_image_attr['video']); ?></div>
 			<?php
 		} elseif ($bop_image_attr['audio']) {
 			?>
-				<div class='ta-bop-post-audio-thumb-area'><?php echo $bop_image_attr['audio']; ?></div>
+				<div class='ta-bop-post-audio-thumb-area'><?php echo wp_kses_post($bop_image_attr['audio']); ?></div>
 			<?php } ?>
 			</a>
 			<?php
@@ -54,14 +60,22 @@ if ('carousel_layout' !== $layout && $lazy_load && !is_admin()) {
 				include BOP_Functions::bop_locate_template('item/post-thumb-taxonomy.php');
 				echo wp_kses($td['end'], $allow_tag);
 				$item_thumb = apply_filters('bop_thumb_taxonomy', ob_get_clean());
-				echo $item_thumb;
+				echo wp_kses($item_thumb, array(
+					'div' => array('class' => true),
+					'li' => array('class' => true),
+					'a' => array('href' => true),
+				));
 			} elseif ($post_thumb_meta == 'date') {
 				ob_start();
 				echo wp_kses($td['start'], $allow_tag);
 				include BOP_Functions::bop_locate_template('item/post-thumb-date.php');
 				echo wp_kses($td['end'], $allow_tag);
 				$item_thumb = apply_filters('bop_thumb_archive', ob_get_clean());
-				echo $item_thumb;
+				echo wp_kses($item_thumb, array(
+					'div' => array('class' => true),
+					'li' => array(),
+					'time' => array('class' => true),
+				));
 			}
 			?>
 

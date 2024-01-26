@@ -42,6 +42,8 @@ class Bookify_Pro_Public {
 	{
 		$this->load_public_dependencies();
 		$this->bop_public_action();
+
+		add_filter('template_include', array($this, 'load_bookify_template'));
 	}
 
 	private function load_public_dependencies()
@@ -109,13 +111,13 @@ class Bookify_Pro_Public {
 		$bop_like_css        = isset($bop_settings['bop_like_css']) ? $bop_settings['bop_like_css'] : true;
 		$bop_magnific_css    = isset($bop_settings['bop_magnific_css']) ? $bop_settings['bop_magnific_css'] : true;
 		if ($bop_fontawesome_css) {
-			wp_enqueue_style('bop-font-awesome', BOP_URL . 'public/assets/css/fontawesome.min.css', array(), BOP_VERSION, 'all');
+			wp_enqueue_style('fontawesome', BOP_URL . 'public/assets/css/fontawesome.min.css', array(), BOP_VERSION, 'all');
 		}
 		if ($bop_swiper_css) {
-			wp_enqueue_style('bop_swiper', BOP_URL . 'public/assets/css/swiper-bundle' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
+			wp_enqueue_style('swiperslider', BOP_URL . 'public/assets/css/swiper-bundle' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
 		}
 		if ($bop_bxslider_css) {
-			wp_enqueue_style('bop-bxslider', BOP_URL . 'public/assets/css/jquery.bxslider' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
+			wp_enqueue_style('bxslider', BOP_URL . 'public/assets/css/jquery.bxslider' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
 		}
 		if ($bop_like_css) {
 			wp_enqueue_style('bop-likes', BOP_URL . 'public/assets/css/bop-likes-public' . $this->suffix . '.css', array(), BOP_VERSION, 'all');
@@ -181,7 +183,7 @@ class Bookify_Pro_Public {
 		}
 		// Enqueue Google fonts.
 		if ($bop_enqueue_google_font && !empty($enqueue_fonts)) {
-			wp_enqueue_style('bop-google-fonts', esc_url(add_query_arg('family', rawurlencode(implode('|', array_merge(...$enqueue_fonts))), '//fonts.googleapis.com/css')), array(), BOP_VERSION, false);
+			wp_enqueue_style('google-fonts', esc_url(add_query_arg('family', rawurlencode(implode('|', array_merge(...$enqueue_fonts))), '//fonts.googleapis.com/css')), array(), BOP_VERSION, false);
 		}
 		include 'dynamic-css/responsive-css.php';
 		if (!empty($bop_custom_css)) {
@@ -198,11 +200,11 @@ class Bookify_Pro_Public {
 	 */
 	public function enqueue_scripts()
 	{
-		wp_register_script('bop-swiper', BOP_URL . 'public/assets/js/swiper-bundle' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
-		wp_register_script('bop-isotope', BOP_URL . 'public/assets/js/isotope' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
-		wp_register_script('bop-bxslider', BOP_URL . 'public/assets/js/jquery.bxslider' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
+		wp_register_script('swiper', BOP_URL . 'public/assets/js/swiper-bundle' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
+		wp_register_script('isotope', BOP_URL . 'public/assets/js/isotope' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
+		wp_register_script('bxslider', BOP_URL . 'public/assets/js/jquery.bxslider' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
 		wp_register_script('bop-lazy', BOP_URL . 'public/assets/js/bop-lazyload' . $this->suffix . '.js', array('jquery'), BOP_VERSION, true);
-		wp_register_script('bop-script', BOP_URL . 'public/assets/js/scripts' . $this->suffix . '.js', array('bop-swiper', 'bop-bxslider'), BOP_VERSION, true);
+		wp_register_script('bop-script', BOP_URL . 'public/assets/js/scripts' . $this->suffix . '.js', array('swiper', 'bxslider'), BOP_VERSION, true);
 		wp_localize_script(
 			'bop-script',
 			'spbop',
@@ -433,6 +435,21 @@ class Bookify_Pro_Public {
 		ob_start();
 		BOP_HTML::bop_html_show($view_options, $layout, $bop_gl_id, $section_title);
 		return ob_get_clean();
+	}
+
+
+	public function load_bookify_template( $template ) {
+		global $post;
+	
+		if ( $post->post_type == 'bookify' ) {
+			if ( is_single() ) {
+				$template = plugin_dir_path( __FILE__ ) . 'templates/single-bookify.php';
+			} elseif ( is_archive() ) {
+				$template = plugin_dir_path( __FILE__ ) . 'templates/archive.php';
+			}
+		}
+	
+		return $template;
 	}
 
 }

@@ -28,8 +28,6 @@ class BOP_FilterPost {
 				'icon'   => 'fas fa-filter',
 				'fields' => array(
 
-
-
 					array(
 						'id'          => 'bop_include_only_posts',
 						'type'        => 'select',
@@ -43,7 +41,7 @@ class BOP_FilterPost {
 						'multiple'    => true,
 						'placeholder' => esc_html__( 'Choose posts', 'bookify-pro' ),
 						'query_args'  => array(
-							'post_type' => 'bookify',
+							'post_type'     => 'bookify',
 							'cache_results' => false,
 							'no_found_rows' => true,
 						),
@@ -65,7 +63,7 @@ class BOP_FilterPost {
 								'ajax'        => true,
 								'placeholder' => esc_html__( 'Choose posts to exclude', 'bookify-pro' ),
 								'query_args'  => array(
-									'post_type' => 'bookify',
+									'post_type'     => 'bookify',
 									'cache_results' => false,
 									'no_found_rows' => true,
 								),
@@ -111,12 +109,12 @@ class BOP_FilterPost {
 						'title'    => esc_html__( 'Filter by', 'bookify-pro' ),
 						'subtitle' => esc_html__( 'Check the option(s) to filter by.', 'bookify-pro' ),
 						'options'  => array(
-							'taxonomy'     => esc_html__( 'Taxonomy', 'bookify-pro' ),
-							'author'       => esc_html__( 'Author', 'bookify-pro' ),
-							'sortby'       => esc_html__( 'Sort By', 'bookify-pro' ),
-							'status'       => esc_html__( 'Status', 'bookify-pro' ),
-							'date'         => esc_html__( 'Date', 'bookify-pro' ),
-							'keyword'      => esc_html__( 'Keyword', 'bookify-pro' ),
+							'taxonomy' => esc_html__( 'Taxonomy', 'bookify-pro' ),
+							'author'   => esc_html__( 'Author', 'bookify-pro' ),
+							'sortby'   => esc_html__( 'Sort By', 'bookify-pro' ),
+							'status'   => esc_html__( 'Status', 'bookify-pro' ),
+							'date'     => esc_html__( 'Date', 'bookify-pro' ),
+							'keyword'  => esc_html__( 'Keyword', 'bookify-pro' ),
 						),
 					),
 					array(
@@ -152,7 +150,7 @@ class BOP_FilterPost {
 											array(
 												'id'      => 'hide_taxonomy_name',
 												'type'    => 'checkbox',
-												'title'   => esc_html__('Hide Taxonomy Name', 'bookify-pro'),
+												'title'   => esc_html__( 'Hide Taxonomy Name', 'bookify-pro' ),
 												'class'   => 'hide_taxonomy_name',
 												'default' => false,
 											),
@@ -195,24 +193,24 @@ class BOP_FilterPost {
 												'dependency' => array( 'add_filter_post', '==', 'true' ),
 												'fields' => array(
 													array(
-														'id'       => 'ajax_filter_style',
-														'type'     => 'select',
-														'title'    => esc_html__( 'Filter Type', 'bookify-pro' ),
-														'title_help' => esc_html__( 'Select a type for live filter.', 'bookify-pro' ),
-														'options'  => array(
-															'fl_dropdown' => esc_html__( 'Dropdown', 'bookify-pro' ),
-															'fl_radio'    => esc_html__( 'Radio', 'bookify-pro' ),
-															'fl_checkbox'      => esc_html__( 'Checkbox', 'bookify-pro' ),
-															'fl_btn'      => esc_html__( 'Button', 'bookify-pro' ),
+														'id'            => 'ajax_filter_style',
+														'type'          => 'select',
+														'title'         => esc_html__( 'Filter Type', 'bookify-pro' ),
+														'title_help'    => esc_html__( 'Select a type for live filter.', 'bookify-pro' ),
+														'options'       => array(
+															'fl_dropdown'   => esc_html__( 'Dropdown', 'bookify-pro' ),
+															'fl_radio'      => esc_html__( 'Radio', 'bookify-pro' ),
+															'fl_checkbox'    => esc_html__( 'Checkbox', 'bookify-pro' ),
+															'fl_btn'        => esc_html__( 'Button', 'bookify-pro' ),
 														),
 														'default'  => 'fl_btn',
 													),
 													array(
-														'id'       => 'bop_filter_btn_color',
-														'type'     => 'color_group',
-														'title'    => esc_html__( 'Button Color', 'bookify-pro' ),
-														'dependency' => array( 'ajax_filter_style', '==', 'fl_btn' ),
-														'options'  => array(
+														'id'            => 'bop_filter_btn_color',
+														'type'          => 'color_group',
+														'title'         => esc_html__( 'Button Color', 'bookify-pro' ),
+														'dependency'    => array( 'ajax_filter_style', '==', 'fl_btn' ),
+														'options'       => array(
 															'text_color'        => esc_html__( 'Text Color', 'bookify-pro' ),
 															'text_acolor'       => esc_html__( 'Text Hover', 'bookify-pro' ),
 															'border_color'      => esc_html__( 'Border Color', 'bookify-pro' ),
@@ -252,34 +250,34 @@ class BOP_FilterPost {
 														'title_help' => esc_html__( 'Type live filter label.', 'bookify-pro' ),
 													),
 													array(
-														'id'       => 'ajax_rename_all_text',
-														'type'     => 'text',
-														'title'    => esc_html__( 'Rename "All" Text', 'bookify-pro' ),
-														'title_help' => esc_html__( 'Leave it empty to hide "All" text.', 'bookify-pro' ),
-														'default'  => esc_html__( 'All', 'bookify-pro' ),
-														'dependency' => array( 'ajax_filter_style', '!=', 'fl_checkbox' ),
+														'id'            => 'ajax_rename_all_text',
+														'type'          => 'text',
+														'title'         => esc_html__( 'Rename "All" Text', 'bookify-pro' ),
+														'title_help'    => esc_html__( 'Leave it empty to hide "All" text.', 'bookify-pro' ),
+														'default'       => esc_html__( 'All', 'bookify-pro' ),
+														'dependency'    => array( 'ajax_filter_style', '!=', 'fl_checkbox' ),
 													),
 													array(
-														'id'       => 'ajax_hide_empty',
-														'type'     => 'checkbox',
-														'title'    => esc_html__( 'Hide Empty Term(s)', 'bookify-pro' ),
-														'title_help' => esc_html__( 'Check to hide empty terms.', 'bookify-pro' ),
+														'id'            => 'ajax_hide_empty',
+														'type'          => 'checkbox',
+														'title'         => esc_html__( 'Hide Empty Term(s)', 'bookify-pro' ),
+														'title_help'    => esc_html__( 'Check to hide empty terms.', 'bookify-pro' ),
 													),
 													array(
-														'id'       => 'ajax_show_count',
-														'type'     => 'checkbox',
-														'title'    => esc_html__( 'Show Post Count', 'bookify-pro' ),
-														'title_help' => esc_html__( 'Check to show post count.', 'bookify-pro' ),
-														'default'  => false,
+														'id'            => 'ajax_show_count',
+														'type'          => 'checkbox',
+														'title'         => esc_html__( 'Show Post Count', 'bookify-pro' ),
+														'title_help'    => esc_html__( 'Check to show post count.', 'bookify-pro' ),
+														'default'       => false,
 													),
 													array(
-														'id'       => 'bop_live_filter_align',
-														'type'     => 'button_set',
-														'title'    => esc_html__( 'Alignment', 'bookify-pro' ),
-														'options'    => array(
-															'left'   => wp_kses( __('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-															'center' => wp_kses( __('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-															'right'  => wp_kses( __('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+														'id'            => 'bop_live_filter_align',
+														'type'          => 'button_set',
+														'title'         => esc_html__( 'Alignment', 'bookify-pro' ),
+														'options'       => array(
+															'left'      => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+															'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+															'right'  => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
 														),
 														'default'  => 'center',
 													),
@@ -347,11 +345,11 @@ class BOP_FilterPost {
 												'default' => 'fl_btn',
 											),
 											array(
-												'id'       => 'bop_author_btn_color',
-												'type'     => 'color_group',
-												'title'    => esc_html__( 'Button Color', 'bookify-pro' ),
+												'id'      => 'bop_author_btn_color',
+												'type'    => 'color_group',
+												'title'   => esc_html__( 'Button Color', 'bookify-pro' ),
 												'dependency' => array( 'ajax_filter_style', '==', 'fl_btn' ),
-												'options'  => array(
+												'options' => array(
 													'text_color'        => esc_html__( 'Text Color', 'bookify-pro' ),
 													'text_acolor'       => esc_html__( 'Text Hover', 'bookify-pro' ),
 													'border_color'      => esc_html__( 'Border Color', 'bookify-pro' ),
@@ -359,7 +357,7 @@ class BOP_FilterPost {
 													'background'        => esc_html__( 'Background', 'bookify-pro' ),
 													'active_background' => esc_html__( 'Active/Hover BG', 'bookify-pro' ),
 												),
-												'default'  => array(
+												'default' => array(
 													'text_color'        => '#5e5e5e',
 													'text_acolor'       => '#ffffff',
 													'border_color'      => '#bbbbbb',
@@ -369,18 +367,18 @@ class BOP_FilterPost {
 												),
 											),
 											array(
-												'id'         => 'author_margin_between_button',
-												'type'       => 'spacing',
-												'title'      => esc_html__( 'Margin Between Buttons', 'bookify-pro' ),
-												'sanitize'   => 'bop_sanitize_number_array_field',
-												'subtitle'   => esc_html__( 'Set margin between buttons.', 'bookify-pro' ),
-												'units'      => array( 'px' ),
-												'default'    => array(
-													'top'    => '0',
-													'right'  => '8',
+												'id'       => 'author_margin_between_button',
+												'type'     => 'spacing',
+												'title'    => esc_html__( 'Margin Between Buttons', 'bookify-pro' ),
+												'sanitize' => 'bop_sanitize_number_array_field',
+												'subtitle' => esc_html__( 'Set margin between buttons.', 'bookify-pro' ),
+												'units'    => array( 'px' ),
+												'default'  => array(
+													'top'  => '0',
+													'right' => '8',
 													'bottom' => '8',
-													'left'   => '0',
-													'unit'   => 'px',
+													'left' => '0',
+													'unit' => 'px',
 												),
 												'dependency' => array( 'ajax_filter_style', '==', 'fl_btn' ),
 											),
@@ -413,10 +411,10 @@ class BOP_FilterPost {
 												'id'      => 'bop_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'bookify-pro' ),
-												'options'    => array(
-													'left'   => wp_kses( __('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-													'center' => wp_kses( __('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-													'right'  => wp_kses( __('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+												'options' => array(
+													'left' => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+													'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+													'right' => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
 												),
 												'default' => 'center',
 											),
@@ -439,7 +437,7 @@ class BOP_FilterPost {
 						'class'      => 'padding-t-0 bop-opened-accordion',
 						'accordions' => array(
 							array(
-								'title'  => esc_html__('Sort By', 'bookify-pro'),
+								'title'  => esc_html__( 'Sort By', 'bookify-pro' ),
 								'icon'   => 'fas fa-sort',
 								'fields' => array(
 									array(
@@ -542,18 +540,18 @@ class BOP_FilterPost {
 												),
 											),
 											array(
-												'id'         => 'order_margin_between_button',
-												'type'       => 'spacing',
-												'title'      => esc_html__( 'Margin Between Buttons', 'bookify-pro' ),
-												'sanitize'   => 'bop_sanitize_number_array_field',
-												'subtitle'   => esc_html__( 'Set margin between buttons.', 'bookify-pro' ),
-												'units'      => array( 'px' ),
-												'default'    => array(
-													'top'    => '0',
-													'right'  => '8',
+												'id'       => 'order_margin_between_button',
+												'type'     => 'spacing',
+												'title'    => esc_html__( 'Margin Between Buttons', 'bookify-pro' ),
+												'sanitize' => 'bop_sanitize_number_array_field',
+												'subtitle' => esc_html__( 'Set margin between buttons.', 'bookify-pro' ),
+												'units'    => array( 'px' ),
+												'default'  => array(
+													'top'  => '0',
+													'right' => '8',
 													'bottom' => '8',
-													'left'   => '0',
-													'unit'   => 'px',
+													'left' => '0',
+													'unit' => 'px',
 												),
 												'dependency' => array( 'orderby_filter_style', '==', 'fl_btn' ),
 											),
@@ -589,10 +587,10 @@ class BOP_FilterPost {
 												'id'      => 'bop_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'bookify-pro' ),
-												'options'    => array(
-													'left'   => wp_kses( __('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-													'center' => wp_kses( __('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-													'right'  => wp_kses( __('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+												'options' => array(
+													'left' => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+													'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+													'right' => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
 												),
 												'default' => 'center',
 											),
@@ -604,8 +602,8 @@ class BOP_FilterPost {
 										'type'       => 'select',
 										'title'      => esc_html__( 'Order', 'bookify-pro' ),
 										'options'    => array(
-											'ASC'  => esc_html__( 'Ascending', 'bookify-pro' ),
-											'DESC' => esc_html__( 'Descending', 'bookify-pro' ),
+											'ASC'  		=> esc_html__( 'Ascending', 'bookify-pro' ),
+											'DESC' 		=> esc_html__( 'Descending', 'bookify-pro' ),
 										),
 										'default'    => 'DESC',
 										'dependency' => array( 'bop_select_filter_orderby', '!=', 'post__in' ),
@@ -668,10 +666,10 @@ class BOP_FilterPost {
 												'id'      => 'bop_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'bookify-pro' ),
-												'options'    => array(
-													'left'   => wp_kses( __('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-													'center' => wp_kses( __('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-													'right'  => wp_kses( __('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+												'options' => array(
+													'left' => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+													'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+													'right' => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
 												),
 												'default' => 'center',
 											),
@@ -927,9 +925,9 @@ class BOP_FilterPost {
 														'type'     => 'button_set',
 														'title'    => esc_html__( 'Alignment', 'bookify-pro' ),
 														'options'    => array(
-															'left'   => wp_kses( __('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-															'center' => wp_kses( __('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-															'right'  => wp_kses( __('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+															'left'   => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+															'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+															'right'  => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
 														),
 														'default'  => 'center',
 													),
@@ -1060,10 +1058,10 @@ class BOP_FilterPost {
 										'sanitize'        => 'bop_sanitize_number_array_field',
 										'all'             => true,
 										'all_icon'        => false,
-										'all_placeholder' => '2019',
+										'all_placeholder' => esc_html('2019', 'bookify-pro'),
 										'show_units'      => false,
 										'default'         => array(
-											'all' => '2019',
+											'all' => esc_html('2019', 'bookify-pro'),
 										),
 										'min'             => '1990',
 										'dependency'      => array( 'bop_select_post_date_type', '==', 'specific_year' ),
@@ -1112,10 +1110,10 @@ class BOP_FilterPost {
 												'id'      => 'bop_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'bookify-pro' ),
-												'options'    => array(
-													'left'   => wp_kses( __('<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-													'center' => wp_kses( __('<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
-													'right'  => wp_kses( __('<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro'), array('i' => array('class' => array()))),
+												'options' => array(
+													'left' => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+													'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+													'right' => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'bookify-pro' ), array( 'i' => array( 'class' => array() ) ) ),
 												),
 												'default' => 'center',
 											),

@@ -1,12 +1,12 @@
-<?php if (!defined('ABSPATH')) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
 
 /**
  * The Shortcode display class.
  */
-class BOP_Shortcode
-{
+class BOP_Shortcode {
+
 
 	/**
 	 * Shortcode display metabox section.
@@ -14,9 +14,8 @@ class BOP_Shortcode
 	 * @param string $prefix The metabox key.
 	 * @return void
 	 */
-	public static function section($prefix)
-	{
-		if (isset($_GET['post'])) {
+	public static function section( $prefix ) {
+		if ( isset( $_GET['post'] ) ) {
 			BOP::createSection(
 				$prefix,
 				array(

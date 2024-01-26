@@ -87,8 +87,8 @@ if ( ! class_exists( 'BOP_Field_column' ) ) {
 				$placeholder = ( ! empty( $args['all_placeholder'] ) ) ? ' placeholder="' . $args['all_placeholder'] . '"' : '';
 
 				echo '<div class="bop--input">';
-				echo ( ! empty( $args['all_icon'] ) ) ? '<span class="bop--label bop--icon">' . $args['all_icon'] . '</span>' : '';
-				echo '<input type="number" name="' . $this->field_name( '[all]' ) . '" value="' . $value['all'] . '"' . $placeholder . $min . ' class="bop-number" />';
+				echo ( ! empty( $args['all_icon'] ) ) ? '<span class="bop--label bop--icon">' . wp_kses_post($args['all_icon']) . '</span>' : '';
+				echo '<input type="number" name="' . $this->field_name( '[all]' ) . '" value="' . $value['all'] . '"' . wp_kses_post($placeholder) . $min . ' class="bop-number" />';
 				echo ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? '<span class="bop--label bop--unit">' . $args['units'][0] . '</span>' : '';
 				echo '</div>';
 
@@ -109,8 +109,8 @@ if ( ! class_exists( 'BOP_Field_column' ) ) {
 					$placeholder = ( ! empty( $args[ $property . '_placeholder' ] ) ) ? ' placeholder="' . $args[ $property . '_placeholder' ] . '"' : '';
 
 					echo '<div class="bop--input">';
-					echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="bop--label bop--icon">' . $args[ $property . '_icon' ] . '</span>' : '';
-					echo '<input type="number" name="' . $this->field_name( '[' . $property . ']' ) . '" value="' . $value[ $property ] . '"' . $placeholder . $min . ' class="bop-number" />';
+					echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="bop--label bop--icon">' . wp_kses_post($args[ $property . '_icon' ]) . '</span>' : '';
+					echo '<input type="number" name="' . $this->field_name( '[' . $property . ']' ) . '" value="' . $value[ $property ] . '"' . wp_kses_post($placeholder) . $min . ' class="bop-number" />';
 					echo ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? '<span class="bop--label bop--unit">' . $args['units'][0] . '</span>' : '';
 					echo '</div>';
 
@@ -132,7 +132,6 @@ if ( ! class_exists( 'BOP_Field_column' ) ) {
 			echo '</div>';
 
 			echo wp_kses_post( $this->field_after() );
-
 		}
 
 		/**
@@ -163,8 +162,8 @@ if ( ! class_exists( 'BOP_Field_column' ) ) {
 
 			} else {
 
-				$lg_desktop = ( isset( $this->value['lg_desktop'] ) && $this->value['lg_desktop'] !== '' ) ? $mode . 'lg_desktop:' . $this->value['lg_desktop'] . $unit . $important . ';' : '';
-				$desktop    = ( isset( $this->value['desktop'] ) && $this->value['desktop'] !== '' ) ? $mode . 'desktop:' . $this->value['desktop'] . $unit . $important . ';' : '';
+				$lg_desktop       = ( isset( $this->value['lg_desktop'] ) && $this->value['lg_desktop'] !== '' ) ? $mode . 'lg_desktop:' . $this->value['lg_desktop'] . $unit . $important . ';' : '';
+				$desktop          = ( isset( $this->value['desktop'] ) && $this->value['desktop'] !== '' ) ? $mode . 'desktop:' . $this->value['desktop'] . $unit . $important . ';' : '';
 				$tablet           = ( isset( $this->value['tablet'] ) && $this->value['tablet'] !== '' ) ? $mode . 'tablet:' . $this->value['tablet'] . $unit . $important . ';' : '';
 				$mobile_landscape = ( isset( $this->value['mobile_landscape'] ) && $this->value['mobile_landscape'] !== '' ) ? $mode . 'mobile_landscape:' . $this->value['mobile_landscape'] . $unit . $important . ';' : '';
 				$mobile           = ( isset( $this->value['mobile'] ) && $this->value['mobile'] !== '' ) ? $mode . 'mobile:' . $this->value['mobile'] . $unit . $important . ';' : '';
@@ -177,8 +176,6 @@ if ( ! class_exists( 'BOP_Field_column' ) ) {
 			$this->parent->output_css .= $output;
 
 			return $output;
-
 		}
-
 	}
 }

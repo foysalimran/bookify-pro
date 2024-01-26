@@ -1,194 +1,186 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Abstract Class
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Abstract' ) ) {
-  abstract class BOP_Abstract {
-
-    public $abstract   = '';
-    public $output_css = '';
-
-    public function __construct() {
-
-      // Collect output css and typography
-      if ( ! empty( $this->args['output_css'] ) || ! empty( $this->args['enqueue_webfont'] ) ) {
-        add_action( 'wp_enqueue_scripts', array( $this, 'collect_output_css_and_typography' ), 10 );
-        BOP::$css = apply_filters( "bop_{$this->unique}_output_css", BOP::$css, $this );
-      }
-
-    }
-
-    public function collect_output_css_and_typography() {
-      $this->recursive_output_css( $this->pre_fields );
-    }
-
-    public function recursive_output_css( $fields = array(), $combine_field = array() ) {
-
-      if ( ! empty( $fields ) ) {
-
-        foreach ( $fields as $field ) {
-
-          $field_id     = ( ! empty( $field['id'] ) ) ? $field['id'] : '';
-          $field_type   = ( ! empty( $field['type'] ) ) ? $field['type'] : '';
-          $field_output = ( ! empty( $field['output'] ) ) ? $field['output'] : '';
-          $field_check  = ( $field_type === 'typography' || $field_output ) ? true : false;
-          $field_class  = 'BOP_Field_' . $field_type;
-
-          if ( $field_type && $field_id ) {
+	abstract class BOP_Abstract {
 
 
-            if( $field_type === 'fieldset' ) {
-              if ( ! empty( $field['fields'] ) ) {
-                $this->recursive_output_css( $field['fields'], $field );
-              }
-            }
+		public $abstract   = '';
+		public $output_css = '';
 
-            if( $field_type === 'accordion' ) {
-              if ( ! empty( $field['accordions'] ) ) {
-                foreach ( $field['accordions'] as $accordion ) {
-                  $this->recursive_output_css( $accordion['fields'], $field );
-                }
-              }
-            }
+		public function __construct() {
 
-            if( $field_type === 'tabbed' ) {
-              if ( ! empty( $field['tabs'] ) ) {
-                foreach ( $field['tabs'] as $accordion ) {
-                  $this->recursive_output_css( $accordion['fields'], $field );
-                }
-              }
-            }
+			// Collect output css and typography
+			if ( ! empty( $this->args['output_css'] ) || ! empty( $this->args['enqueue_webfont'] ) ) {
+				add_action( 'wp_enqueue_scripts', array( $this, 'collect_output_css_and_typography' ), 10 );
+					BOP::$css = apply_filters( "bop_{$this->unique}_output_css", BOP::$css, $this );
+			}
+		}
 
-            if ( class_exists( $field_class ) ) {
+		public function collect_output_css_and_typography() {
 
-              if ( method_exists( $field_class, 'output' ) || method_exists( $field_class, 'enqueue_google_fonts' ) ) {
+			$this->recursive_output_css( $this->pre_fields );
+		}
 
-                $field_value = '';
+		public function recursive_output_css( $fields = array(), $combine_field = array() ) {
 
-                if ( $field_check && ( $this->abstract === 'options' || $this->abstract === 'customize' ) ) {
+			if ( ! empty( $fields ) ) {
 
-                  if( ! empty( $combine_field ) ) {
+				foreach ( $fields as $field ) {
 
-                    $field_value = ( isset( $this->options[$combine_field['id']][$field_id] ) ) ? $this->options[$combine_field['id']][$field_id] : '';
+					$field_id     = ( ! empty( $field['id'] ) ) ? $field['id'] : '';
+					$field_type   = ( ! empty( $field['type'] ) ) ? $field['type'] : '';
+					$field_output = ( ! empty( $field['output'] ) ) ? $field['output'] : '';
+					$field_check  = ( $field_type === 'typography' || $field_output ) ? true : false;
+					$field_class  = 'BOP_Field_' . $field_type;
 
-                  } else {
+					if ( $field_type && $field_id ) {
 
-                    $field_value = ( isset( $this->options[$field_id] ) ) ? $this->options[$field_id] : '';
+						if ( $field_type === 'fieldset' ) {
+							if ( ! empty( $field['fields'] ) ) {
+								$this->recursive_output_css( $field['fields'], $field );
+							}
+						}
 
-                  }
+						if ( $field_type === 'accordion' ) {
+							if ( ! empty( $field['accordions'] ) ) {
+								foreach ( $field['accordions'] as $accordion ) {
+									$this->recursive_output_css( $accordion['fields'], $field );
+								}
+							}
+						}
 
-                } else if ( $field_check && ( $this->abstract === 'metabox' && is_singular() || $this->abstract === 'taxonomy' && is_archive() ) ) {
+						if ( $field_type === 'tabbed' ) {
+							if ( ! empty( $field['tabs'] ) ) {
+								foreach ( $field['tabs'] as $accordion ) {
+									$this->recursive_output_css( $accordion['fields'], $field );
+								}
+							}
+						}
 
-                  if( ! empty( $combine_field ) ) {
+						if ( class_exists( $field_class ) ) {
 
-                    $meta_value  = $this->get_meta_value( $combine_field );
-                    $field_value = ( isset( $meta_value[$field_id] ) ) ? $meta_value[$field_id] : '';
+							if ( method_exists( $field_class, 'output' ) || method_exists( $field_class, 'enqueue_google_fonts' ) ) {
 
-                  } else {
+								$field_value = '';
 
-                    $meta_value  = $this->get_meta_value( $field );
-                    $field_value = ( isset( $meta_value ) ) ? $meta_value : '';
+								if ( $field_check && ( $this->abstract === 'options' || $this->abstract === 'customize' ) ) {
 
-                  }
+									if ( ! empty( $combine_field ) ) {
 
-                }
+												$field_value = ( isset( $this->options[ $combine_field['id'] ][ $field_id ] ) ) ? $this->options[ $combine_field['id'] ][ $field_id ] : '';
 
-                $instance = new $field_class( $field, $field_value, $this->unique, 'wp/enqueue', $this );
+									} else {
 
-                // typography enqueue and embed google web fonts
-                if ( $field_type === 'typography' && $this->args['enqueue_webfont'] && ! empty( $field_value['font-family'] ) ) {
+											$field_value = ( isset( $this->options[ $field_id ] ) ) ? $this->options[ $field_id ] : '';
 
-                  $method = ( ! empty( $this->args['async_webfont'] ) ) ? 'async' : 'enqueue';
+									}
+								} elseif ( $field_check && ( $this->abstract === 'metabox' && is_singular() || $this->abstract === 'taxonomy' && is_archive() ) ) {
 
-                  $instance->enqueue_google_fonts( $method );
+									if ( ! empty( $combine_field ) ) {
 
-                }
+										$meta_value  = $this->get_meta_value( $combine_field );
+										$field_value = ( isset( $meta_value[ $field_id ] ) ) ? $meta_value[ $field_id ] : '';
 
-                // output css
-                if ( $field_output && $this->args['output_css'] ) {
-                  BOP::$css .= $instance->output();
-                }
+									} else {
 
-                unset( $instance );
+										$meta_value  = $this->get_meta_value( $field );
+										$field_value = ( isset( $meta_value ) ) ? $meta_value : '';
 
-              }
+									}
+								}
 
-            }
+								$instance = new $field_class( $field, $field_value, $this->unique, 'wp/enqueue', $this );
 
-          }
+								// typography enqueue and embed google web fonts
+								if ( $field_type === 'typography' && $this->args['enqueue_webfont'] && ! empty( $field_value['font-family'] ) ) {
 
-        }
+									$method = ( ! empty( $this->args['async_webfont'] ) ) ? 'async' : 'enqueue';
 
-      }
+									$instance->enqueue_google_fonts( $method );
 
-    }
+								}
 
-    public function pre_tabs( $sections ) {
+								// output css
+								if ( $field_output && $this->args['output_css'] ) {
+									BOP::$css .= $instance->output();
+								}
 
-      $count   = 100;
-      $result  = array();
-      $parents = array();
+								unset( $instance );
 
-      foreach ( $sections as $key => $section ) {
-        if ( ! empty( $section['parent'] ) ) {
-          $section['priority'] = ( isset( $section['priority'] ) ) ? $section['priority'] : $count;
-          $parents[$section['parent']][] = $section;
-          unset( $sections[$key] );
-        }
-        $count++;
-      }
+							}
+						}
+					}
+				}
+			}
+		}
 
-      foreach ( $sections as $key => $section ) {
-        $section['priority'] = ( isset( $section['priority'] ) ) ? $section['priority'] : $count;
-        if ( ! empty( $section['id'] ) && ! empty( $parents[$section['id']] ) ) {
-          $section['subs'] = wp_list_sort( $parents[$section['id']], array( 'priority' => 'ASC' ), 'ASC', true );
-        }
-        $result[] = $section;
-        $count++;
-      }
+		public function pre_tabs( $sections ) {
 
-      return wp_list_sort( $result, array( 'priority' => 'ASC' ), 'ASC', true );
+			$count   = 100;
+			$result  = array();
+			$parents = array();
 
-    }
+			foreach ( $sections as $key => $section ) {
+				if ( ! empty( $section['parent'] ) ) {
+					$section['priority']             = ( isset( $section['priority'] ) ) ? $section['priority'] : $count;
+					$parents[ $section['parent'] ][] = $section;
+					unset( $sections[ $key ] );
+				}
+				++$count;
+			}
 
-    public function pre_sections( $sections ) {
+			foreach ( $sections as $key => $section ) {
+					$section['priority'] = ( isset( $section['priority'] ) ) ? $section['priority'] : $count;
+				if ( ! empty( $section['id'] ) && ! empty( $parents[ $section['id'] ] ) ) {
+					$section['subs'] = wp_list_sort( $parents[ $section['id'] ], array( 'priority' => 'ASC' ), 'ASC', true );
+				}
+				$result[] = $section;
+				++$count;
+			}
 
-      $result = array();
+			return wp_list_sort( $result, array( 'priority' => 'ASC' ), 'ASC', true );
+		}
 
-      foreach ( $this->pre_tabs( $sections ) as $section ) {
-        if ( ! empty( $section['subs'] ) ) {
-          foreach ( $section['subs'] as $sub ) {
-            $sub['ptitle'] = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
-            $result[] = $sub;
-          }
-        }
-        if ( empty( $section['subs'] ) ) {
-          $result[] = $section;
-        }
-      }
+		public function pre_sections( $sections ) {
 
-      return $result;
-    }
+			$result = array();
 
-    public function pre_fields( $sections ) {
+			foreach ( $this->pre_tabs( $sections ) as $section ) {
+				if ( ! empty( $section['subs'] ) ) {
+					foreach ( $section['subs'] as $sub ) {
+						$sub['ptitle'] = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
+						$result[]      = $sub;
+					}
+				}
+				if ( empty( $section['subs'] ) ) {
+					$result[] = $section;
+				}
+			}
 
-      $result = array();
+			return $result;
+		}
 
-      foreach ( $sections as $key => $section ) {
-        if ( ! empty( $section['fields'] ) ) {
-          foreach ( $section['fields'] as $field ) {
-            $result[] = $field;
-          }
-        }
-      }
+		public function pre_fields( $sections ) {
 
-      return $result;
-    }
+			$result = array();
 
-  }
+			foreach ( $sections as $key => $section ) {
+				if ( ! empty( $section['fields'] ) ) {
+					foreach ( $section['fields'] as $field ) {
+						$result[] = $field;
+					}
+				}
+			}
+
+			return $result;
+		}
+	}
 }
