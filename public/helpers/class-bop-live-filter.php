@@ -367,7 +367,31 @@ class BOP_Live_Filter {
 					}
 					++$index;
 				}
-				echo wp_kses_post($output); //phpcs:ignore
+				$allowed_tags = array(
+					'form' => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'p' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+					'label' => array(),
+					'input' => array(
+						'checked' => array(),
+						'type' => array(),
+						'name' => array(),
+						'data-taxonomy' => array(),
+						'value' => array(),
+					),
+				);
+				
+
+
+				echo wp_kses(
+					$output,
+					$allowed_tags
+				);
 			}
 		}
 	}
@@ -497,7 +521,31 @@ class BOP_Live_Filter {
 				$tax_html = implode( '', $newterm_array );
 				$output   = '';
 				$output   = $output . force_balance_tags( $tax_html );
-				echo wp_kses_post($output);
+				$allowed_tags = array(
+					'form' => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'p' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+					'label' => array(),
+					'input' => array(
+						'checked' => array(),
+						'type' => array(),
+						'name' => array(),
+						'data-taxonomy' => array(),
+						'value' => array(),
+					),
+				);
+				
+
+
+				echo wp_kses(
+					$output,
+					$allowed_tags
+				);
 			}
 		}
 	}
@@ -635,7 +683,31 @@ class BOP_Live_Filter {
 					}
 					++$index;
 				}
-				echo wp_kses_post($output); //phpcs:ignore
+				$allowed_tags = array(
+					'form' => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'p' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+					'label' => array(),
+					'input' => array(
+						'checked' => array(),
+						'type' => array(),
+						'name' => array(),
+						'data-taxonomy' => array(),
+						'value' => array(),
+					),
+				);
+				
+
+
+				echo wp_kses(
+					$output,
+					$allowed_tags
+				);
 			}
 		}
 	}
@@ -668,7 +740,31 @@ class BOP_Live_Filter {
 				$tax_html = implode( '', $newterm_array );
 				$output   = '';
 				$output   = $output . force_balance_tags( $tax_html );
-				echo wp_kses_post($output); //phpcs:ignore
+				$allowed_tags = array(
+					'form' => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'p' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+					'label' => array(),
+					'input' => array(
+						'checked' => array(),
+						'type' => array(),
+						'name' => array(),
+						'data-taxonomy' => array(),
+						'value' => array(),
+					),
+				);
+				
+
+
+				echo wp_kses(
+					$output,
+					$allowed_tags
+				);
 			}
 		}
 	}
@@ -701,7 +797,31 @@ class BOP_Live_Filter {
 				$tax_html = implode( '', $newterm_array );
 				$output   = '';
 				$output   = $output . force_balance_tags( $tax_html );
-				echo wp_kses_post($output);
+				$allowed_tags = array(
+					'form' => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'p' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+					'label' => array(),
+					'input' => array(
+						'checked' => array(),
+						'type' => array(),
+						'name' => array(),
+						'data-taxonomy' => array(),
+						'value' => array(),
+					),
+				);
+				
+
+
+				echo wp_kses(
+					$output,
+					$allowed_tags
+				);
 			}
 		}
 	}
