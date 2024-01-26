@@ -54,6 +54,8 @@ class Bookify_Pro_Public {
 		require_once BOP_PATH . 'public/helpers/class-bop-queryinside.php';
 		require_once BOP_PATH . 'public/helpers/class-bop-customfieldprocess.php';
 		require_once BOP_PATH . 'public/helpers/class-bop-shuffle-filter.php';
+		require_once BOP_PATH . 'public/helpers/class-bop-live-filter.php';
+		new BOP_Live_Filter();
 		require_once BOP_PATH . 'public/helpers/class-loop-html.php';
 	}
 
