@@ -382,7 +382,7 @@ $bop_single_book_fildes = $options['bop_single_book_fildes']; // Title
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<div class="bookify__description">
 						<div class="bookify__description__title">
-							<b><i class="fa-solid fa-pencil"></i><?php echo __( 'Description:', 'bookify-pro' ); ?></b>
+							<b><i class="fa-solid fa-pencil"></i><?php echo esc_html__( 'Description:', 'bookify-pro' ); ?></b>
 						</div>
 						<hr />
 						<div class="bookify__description__content">
