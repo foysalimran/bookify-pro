@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <!-- Swiper CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <ul class="swiper-container">
+      <li>
+        Hello world 01
+      </li>
+      <li>
+        Hello world 02
+      </li>
+      <li>
+        Hello world 03
+      </li>
+      <li>
+        Hello world 04
+      </li>
+      <li>
+        Hello world 05
+      </li>
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      $(".swiper-container").bxSlider({
+        minSlides: 4,
+        maxSlides: 4,
+        slideWidth: 170,
+        slideMargin: 10,
+        ticker: true,
+        speed: 9000,
+      });
+    </script>
+  </body>
+</html>

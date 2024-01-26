@@ -1,79 +1,82 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: image_select
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_image_select' ) ) {
-  class BOP_Field_image_select extends BOP_Fields {
+	class BOP_Field_image_select extends BOP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      $args = wp_parse_args( $this->field, array(
-        'multiple' => false,
-        'inline'   => false,
-        'options'  => array(),
-      ) );
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      $inline = ( $args['inline'] ) ? ' bop--inline-list' : '';
+		public function render() {
 
-      $value = ( is_array( $this->value ) ) ? $this->value : array_filter( (array) $this->value );
+			$args = wp_parse_args(
+				$this->field,
+				array(
+					'multiple' => false,
+					'inline'   => false,
+					'options'  => array(),
+				)
+			);
 
-      echo wp_kses_post( $this->field_before() );
+			$inline = ( $args['inline'] ) ? ' bop--inline-list' : '';
 
-      if ( ! empty( $args['options'] ) ) {
+			$value = ( is_array( $this->value ) ) ? $this->value : array_filter( (array) $this->value );
 
-        echo '<div class="bop-siblings bop--image-group'. esc_attr( $inline ) .'" data-multiple="'. esc_attr( $args['multiple'] ) .'">';
+			echo wp_kses_post( $this->field_before() );
 
-        $num = 1;
+			if ( ! empty( $args['options'] ) ) {
 
-        foreach ( $args['options'] as $key => $option ) {
+				echo '<div class="bop-siblings bop--image-group' . esc_attr( $inline ) . '" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
 
-          $type    = ( $args['multiple'] ) ? 'checkbox' : 'radio';
-          $extra   = ( $args['multiple'] ) ? '[]' : '';
-          $active  = ( in_array( $key, $value ) ) ? ' bop--active' : '';
-          $checked = ( in_array( $key, $value ) ) ? ' checked' : '';
+				$num = 1;
 
-          echo '<div class="bop--sibling bop--image'. esc_attr( $active ) .'">';
-            echo '<figure>';
-              echo '<img src="'. esc_url( $option ) .'" alt="img-'. esc_attr( $num++ ) .'" />';
-              echo '<input type="'. esc_attr( $type ) .'" name="'. esc_attr( $this->field_name( $extra ) ) .'" value="'. esc_attr( $key ) .'"'. $this->field_attributes() . esc_attr( $checked ) .'/>';
-            echo '</figure>';
-          echo '</div>';
+				foreach ( $args['options'] as $key => $option ) {
 
-        }
+					$type       = ( $args['multiple'] ) ? 'checkbox' : 'radio';
+						$extra  = ( $args['multiple'] ) ? '[]' : '';
+						$active = ( in_array( $key, $value ) ) ? ' bop--active' : '';
+					$checked    = ( in_array( $key, $value ) ) ? ' checked' : '';
 
-        echo '</div>';
+					echo '<div class="bop--sibling bop--image' . esc_attr( $active ) . '">';
+					echo '<figure>';
+						echo '<img src="' . esc_url( $option ) . '" alt="img-' . esc_attr( $num++ ) . '" />';
+						echo '<input type="' . esc_attr( $type ) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr( $key ) . '"' . wp_kses_post($this->field_attributes()) . esc_attr( $checked ) . '/>';
+					echo '</figure>';
+					echo '</div>';
 
-      }
+				}
 
-      echo wp_kses_post( $this->field_after() );
+				echo '</div>';
 
-    }
+			}
 
-    public function output() {
+			echo wp_kses_post( $this->field_after() );
+		}
 
-      $output    = '';
-      $bg_image  = array();
-      $important = ( ! empty( $this->field['output_important'] ) ) ? '!important' : '';
-      $elements  = ( is_array( $this->field['output'] ) ) ? join( ',', $this->field['output'] ) : $this->field['output'];
+		public function output() {
 
-      if ( ! empty( $elements ) && isset( $this->value ) && $this->value !== '' ) {
-        $output = $elements .'{background-image:url('. $this->value .')'. $important .';}';
-      }
+			$output    = '';
+			$bg_image  = array();
+			$important = ( ! empty( $this->field['output_important'] ) ) ? '!important' : '';
+			$elements  = ( is_array( $this->field['output'] ) ) ? join( ',', $this->field['output'] ) : $this->field['output'];
 
-      $this->parent->output_css .= $output;
+			if ( ! empty( $elements ) && isset( $this->value ) && $this->value !== '' ) {
+				$output = $elements . '{background-image:url(' . $this->value . ')' . $important . ';}';
+			}
 
-      return $output;
+			$this->parent->output_css .= $output;
 
-    }
-
-  }
+			return $output;
+		}
+	}
 }

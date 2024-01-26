@@ -45,7 +45,7 @@ class BOP_Display {
 							'top'    => '0',
 							'right'  => '0',
 							'bottom' => '30',
-							'top'    => '0',
+							'left'    => '0',
 						),
 						'dependency'      => array(
 							'section_title',
@@ -759,7 +759,6 @@ class BOP_Display {
 														'unit'   => esc_html__( 'words', 'bookify-pro' ),
 														'default' => '300',
 														'dependency' => array( 'select_post_meta', '==', 'reading_time' ),
-														'default' => 300,
 													),
 													array(
 														'id'      => 'select_meta_icon',
@@ -1681,7 +1680,6 @@ class BOP_Display {
 														'title_help' => esc_html__( 'Show colon after field name.', 'bookify-pro' ),
 														'text_on' => esc_html__( 'Show', 'bookify-pro' ),
 														'text_off' => esc_html__( 'Hide', 'bookify-pro' ),
-														'default' => true,
 														'text_width' => 80,
 														'default' => false,
 														'dependency' => array( 'show_custom_field_name', '==', 'true' ),

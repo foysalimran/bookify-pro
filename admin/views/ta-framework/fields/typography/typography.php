@@ -442,7 +442,7 @@ if ( ! class_exists( 'BOP_Field_typography' ) ) {
 			$multiple_attr = ( $is_multiple ) ? ' multiple data-multiple="true"' : '';
 			$chosen_rtl    = ( $this->chosen && is_rtl() ) ? ' chosen-rtl' : '';
 
-			$output  = '<select name="' . $this->field_name( '[' . $name . ']' . $multiple_name ) . '" class="bop--' . $name . $chosen_rtl . '" data-placeholder="' . $placeholder . '"' . $multiple_attr . '>';
+			$output  = '<select name="' . $this->field_name( '[' . $name . ']' . $multiple_name ) . '" class="bop--' . $name . $chosen_rtl . '" data-placeholder="' . wp_kses_post($placeholder) . '"' . $multiple_attr . '>';
 			$output .= ( ! empty( $placeholder ) ) ? '<option value="">' . ( ( ! $this->chosen ) ? $placeholder : '' ) . '</option>' : '';
 
 			if ( ! empty( $options ) ) {

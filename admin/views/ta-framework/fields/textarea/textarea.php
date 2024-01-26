@@ -1,58 +1,55 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: textarea
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_textarea' ) ) {
-  class BOP_Field_textarea extends BOP_Fields {
+	class BOP_Field_textarea extends BOP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      echo wp_kses_post( $this->field_before() );
-      echo $this->shortcoder();
-      echo '<textarea name="'. esc_attr( $this->field_name() ) .'"'. $this->field_attributes() .'>'. $this->value .'</textarea>';
-      echo wp_kses_post( $this->field_after() );
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-    }
+		public function render() {
 
-    public function shortcoder() {
+			echo wp_kses_post( $this->field_before() );
+			echo wp_kses_post($this->shortcoder());
+			echo '<textarea name="' . esc_attr( $this->field_name() ) . '"' . wp_kses_post($this->field_attributes()) . '>' . esc_html($this->value) . '</textarea>';
+			echo wp_kses_post( $this->field_after() );
+		}
 
-      if ( ! empty( $this->field['shortcoder'] ) ) {
+		public function shortcoder() {
 
-        $shortcodes = ( is_array( $this->field['shortcoder'] ) ) ? $this->field['shortcoder'] : array_filter( (array) $this->field['shortcoder'] );
-        $instances  = ( ! empty( BOP::$shortcode_instances ) ) ? BOP::$shortcode_instances : array();
+			if ( ! empty( $this->field['shortcoder'] ) ) {
 
-        if ( ! empty( $shortcodes ) && ! empty( $instances ) ) {
+				$shortcodes = ( is_array( $this->field['shortcoder'] ) ) ? $this->field['shortcoder'] : array_filter( (array) $this->field['shortcoder'] );
+				$instances  = ( ! empty( BOP::$shortcode_instances ) ) ? BOP::$shortcode_instances : array();
 
-          foreach ( $shortcodes as $shortcode ) {
+				if ( ! empty( $shortcodes ) && ! empty( $instances ) ) {
 
-            foreach ( $instances as $instance ) {
+					foreach ( $shortcodes as $shortcode ) {
 
-              if ( $instance['modal_id'] === $shortcode ) {
+						foreach ( $instances as $instance ) {
 
-                $id    = $instance['modal_id'];
-                $title = $instance['button_title'];
+							if ( $instance['modal_id'] === $shortcode ) {
 
-                echo '<a href="#" class="button button-primary bop-shortcode-button" data-modal-id="'. esc_attr( $id ) .'">'. esc_html( $title ) .'</a>';
+								$id    = $instance['modal_id'];
+								$title = $instance['button_title'];
 
-              }
+								echo '<a href="#" class="button button-primary bop-shortcode-button" data-modal-id="' . esc_attr( $id ) . '">' . esc_html( $title ) . '</a>';
 
-            }
-
-          }
-
-        }
-
-      }
-
-    }
-  }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

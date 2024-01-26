@@ -1,164 +1,166 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: group
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_group' ) ) {
-  class BOP_Field_group extends BOP_Fields {
+	class BOP_Field_group extends BOP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      $args = wp_parse_args( $this->field, array(
-        'max'                       => 0,
-        'min'                       => 0,
-        'fields'                    => array(),
-        'button_title'              => esc_html__( 'Add New', 'bookify-pro' ),
-        'accordion_title_prefix'    => '',
-        'accordion_title_number'    => false,
-        'accordion_title_auto'      => true,
-        'accordion_title_by'        => array(),
-        'accordion_title_by_prefix' => ' ',
-      ) );
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      $title_prefix    = ( ! empty( $args['accordion_title_prefix'] ) ) ? $args['accordion_title_prefix'] : '';
-      $title_number    = ( ! empty( $args['accordion_title_number'] ) ) ? true : false;
-      $title_auto      = ( ! empty( $args['accordion_title_auto'] ) ) ? true : false;
-      $title_first     = ( isset( $this->field['fields'][0]['id'] ) ) ? $this->field['fields'][0]['id'] : $this->field['fields'][1]['id'];
-      $title_by        = ( is_array( $args['accordion_title_by'] ) ) ? $args['accordion_title_by'] : (array) $args['accordion_title_by'];
-      $title_by        = ( empty( $title_by ) ) ? array( $title_first ) : $title_by;
-      $title_by_prefix = ( ! empty( $args['accordion_title_by_prefix'] ) ) ? $args['accordion_title_by_prefix'] : '';
+		public function render() {
 
-      if ( preg_match( '/'. preg_quote( '['. $this->field['id'] .']' ) .'/', $this->unique ) ) {
+			$args = wp_parse_args(
+				$this->field,
+				array(
+					'max'                       => 0,
+					'min'                       => 0,
+					'fields'                    => array(),
+					'button_title'              => esc_html__( 'Add New', 'bookify-pro' ),
+					'accordion_title_prefix'    => '',
+					'accordion_title_number'    => false,
+					'accordion_title_auto'      => true,
+					'accordion_title_by'        => array(),
+					'accordion_title_by_prefix' => ' ',
+				)
+			);
 
-        echo '<div class="bop-notice bop-notice-danger">'. esc_html__( 'Error: Field ID conflict.', 'bookify-pro' ) .'</div>';
+			$title_prefix    = ( ! empty( $args['accordion_title_prefix'] ) ) ? $args['accordion_title_prefix'] : '';
+			$title_number    = ( ! empty( $args['accordion_title_number'] ) ) ? true : false;
+			$title_auto      = ( ! empty( $args['accordion_title_auto'] ) ) ? true : false;
+			$title_first     = ( isset( $this->field['fields'][0]['id'] ) ) ? $this->field['fields'][0]['id'] : $this->field['fields'][1]['id'];
+			$title_by        = ( is_array( $args['accordion_title_by'] ) ) ? $args['accordion_title_by'] : (array) $args['accordion_title_by'];
+			$title_by        = ( empty( $title_by ) ) ? array( $title_first ) : $title_by;
+			$title_by_prefix = ( ! empty( $args['accordion_title_by_prefix'] ) ) ? $args['accordion_title_by_prefix'] : '';
 
-      } else {
+			if ( preg_match( '/' . preg_quote( '[' . $this->field['id'] . ']' ) . '/', $this->unique ) ) {
 
-        echo wp_kses_post( $this->field_before() );
+				echo '<div class="bop-notice bop-notice-danger">' . esc_html__( 'Error: Field ID conflict.', 'bookify-pro' ) . '</div>';
 
-        echo '<div class="bop-cloneable-item bop-cloneable-hidden" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
+			} else {
 
-          echo '<div class="bop-cloneable-helper">';
-          echo '<i class="bop-cloneable-sort fas fa-arrows-alt"></i>';
-          echo '<i class="bop-cloneable-clone far fa-clone"></i>';
-          echo '<i class="bop-cloneable-remove bop-confirm fas fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'bookify-pro' ) .'"></i>';
-          echo '</div>';
+				echo wp_kses_post( $this->field_before() );
 
-          echo '<h4 class="bop-cloneable-title">';
-          echo '<span class="bop-cloneable-text">';
-          echo ( $title_number ) ? '<span class="bop-cloneable-title-number"></span>' : '';
-          echo ( $title_prefix ) ? '<span class="bop-cloneable-title-prefix">'. esc_attr( $title_prefix ) .'</span>' : '';
-          echo ( $title_auto ) ? '<span class="bop-cloneable-value"><span class="bop-cloneable-placeholder"></span></span>' : '';
-          echo '</span>';
-          echo '</h4>';
+				echo '<div class="bop-cloneable-item bop-cloneable-hidden" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 
-          echo '<div class="bop-cloneable-content">';
-          foreach ( $this->field['fields'] as $field ) {
+				echo '<div class="bop-cloneable-helper">';
+				echo '<i class="bop-cloneable-sort fas fa-arrows-alt"></i>';
+				echo '<i class="bop-cloneable-clone far fa-clone"></i>';
+				echo '<i class="bop-cloneable-remove bop-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'bookify-pro' ) . '"></i>';
+				echo '</div>';
 
-            $field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
-            $field_unique  = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .'][0]' : $this->field['id'] .'[0]';
+				echo '<h4 class="bop-cloneable-title">';
+				echo '<span class="bop-cloneable-text">';
+				echo ( $title_number ) ? '<span class="bop-cloneable-title-number"></span>' : '';
+				echo ( $title_prefix ) ? '<span class="bop-cloneable-title-prefix">' . esc_attr( $title_prefix ) . '</span>' : '';
+				echo ( $title_auto ) ? '<span class="bop-cloneable-value"><span class="bop-cloneable-placeholder"></span></span>' : '';
+				echo '</span>';
+				echo '</h4>';
 
-            BOP::field( $field, $field_default, '___'. $field_unique, 'field/group' );
+				echo '<div class="bop-cloneable-content">';
+				foreach ( $this->field['fields'] as $field ) {
 
-          }
-          echo '</div>';
+					$field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
+					$field_unique  = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $this->field['id'] . '][0]' : $this->field['id'] . '[0]';
 
-        echo '</div>';
+					BOP::field( $field, $field_default, '___' . $field_unique, 'field/group' );
 
-        echo '<div class="bop-cloneable-wrapper bop-data-wrapper" data-title-by="'. esc_attr( json_encode( $title_by ) ) .'" data-title-by-prefix="'. esc_attr( $title_by_prefix ) .'" data-title-number="'. esc_attr( $title_number ) .'" data-field-id="['. esc_attr( $this->field['id'] ) .']" data-max="'. esc_attr( $args['max'] ) .'" data-min="'. esc_attr( $args['min'] ) .'">';
+				}
+				echo '</div>';
 
-        if ( ! empty( $this->value ) ) {
+				echo '</div>';
 
-          $num = 0;
+				echo '<div class="bop-cloneable-wrapper bop-data-wrapper" data-title-by="' . esc_attr( json_encode( $title_by ) ) . '" data-title-by-prefix="' . esc_attr( $title_by_prefix ) . '" data-title-number="' . esc_attr( $title_number ) . '" data-field-id="[' . esc_attr( $this->field['id'] ) . ']" data-max="' . esc_attr( $args['max'] ) . '" data-min="' . esc_attr( $args['min'] ) . '">';
 
-          foreach ( $this->value as $value ) {
+				if ( ! empty( $this->value ) ) {
 
-            $title = '';
+					$num = 0;
 
-            if ( ! empty( $title_by ) ) {
+					foreach ( $this->value as $value ) {
 
-              $titles = array();
+							$title = '';
 
-              foreach ( $title_by as $title_key ) {
-                if ( isset( $value[ $title_key ] ) ) {
-                  $titles[] = $value[ $title_key ];
-                }
-              }
+						if ( ! empty( $title_by ) ) {
 
-              $title = join( $title_by_prefix, $titles );
+							$titles = array();
 
-            }
+							foreach ( $title_by as $title_key ) {
+								if ( isset( $value[ $title_key ] ) ) {
+									$titles[] = $value[ $title_key ];
+								}
+							}
 
-            $title = ( is_array( $title ) ) ? reset( $title ) : $title;
+								$title = join( $title_by_prefix, $titles );
 
-            echo '<div class="bop-cloneable-item">';
+						}
 
-              echo '<div class="bop-cloneable-helper">';
-              echo '<i class="bop-cloneable-sort fas fa-arrows-alt"></i>';
-              echo '<i class="bop-cloneable-clone far fa-clone"></i>';
-              echo '<i class="bop-cloneable-remove bop-confirm fas fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'bookify-pro' ) .'"></i>';
-              echo '</div>';
+							$title = ( is_array( $title ) ) ? reset( $title ) : $title;
 
-              echo '<h4 class="bop-cloneable-title">';
-              echo '<span class="bop-cloneable-text">';
-              echo ( $title_number ) ? '<span class="bop-cloneable-title-number">'. esc_attr( $num+1 ) .'.</span>' : '';
-              echo ( $title_prefix ) ? '<span class="bop-cloneable-title-prefix">'. esc_attr( $title_prefix ) .'</span>' : '';
-              echo ( $title_auto ) ? '<span class="bop-cloneable-value">' . esc_attr( $title ) .'</span>' : '';
-              echo '</span>';
-              echo '</h4>';
+						echo '<div class="bop-cloneable-item">';
 
-              echo '<div class="bop-cloneable-content">';
+						echo '<div class="bop-cloneable-helper">';
+						echo '<i class="bop-cloneable-sort fas fa-arrows-alt"></i>';
+						echo '<i class="bop-cloneable-clone far fa-clone"></i>';
+						echo '<i class="bop-cloneable-remove bop-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'bookify-pro' ) . '"></i>';
+						echo '</div>';
 
-              foreach ( $this->field['fields'] as $field ) {
+						echo '<h4 class="bop-cloneable-title">';
+						echo '<span class="bop-cloneable-text">';
+						echo ( $title_number ) ? '<span class="bop-cloneable-title-number">' . esc_attr( $num + 1 ) . '.</span>' : '';
+						echo ( $title_prefix ) ? '<span class="bop-cloneable-title-prefix">' . esc_attr( $title_prefix ) . '</span>' : '';
+						echo ( $title_auto ) ? '<span class="bop-cloneable-value">' . esc_attr( $title ) . '</span>' : '';
+						echo '</span>';
+						echo '</h4>';
 
-                $field_unique = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .']['. $num .']' : $this->field['id'] .'['. $num .']';
-                $field_value  = ( isset( $field['id'] ) && isset( $value[$field['id']] ) ) ? $value[$field['id']] : '';
+						echo '<div class="bop-cloneable-content">';
 
-                BOP::field( $field, $field_value, $field_unique, 'field/group' );
+						foreach ( $this->field['fields'] as $field ) {
 
-              }
+							$field_unique = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $this->field['id'] . '][' . $num . ']' : $this->field['id'] . '[' . $num . ']';
+							$field_value  = ( isset( $field['id'] ) && isset( $value[ $field['id'] ] ) ) ? $value[ $field['id'] ] : '';
 
-              echo '</div>';
+							BOP::field( $field, $field_value, $field_unique, 'field/group' );
 
-            echo '</div>';
+						}
 
-            $num++;
+						echo '</div>';
 
-          }
+						echo '</div>';
 
-        }
+						++$num;
 
-        echo '</div>';
+					}
+				}
 
-        echo '<div class="bop-cloneable-alert bop-cloneable-max">'. esc_html__( 'You cannot add more.', 'bookify-pro' ) .'</div>';
-        echo '<div class="bop-cloneable-alert bop-cloneable-min">'. esc_html__( 'You cannot remove more.', 'bookify-pro' ) .'</div>';
-        echo '<a href="#" class="button button-primary bop-cloneable-add">'. $args['button_title'] .'</a>';
+				echo '</div>';
 
-        echo wp_kses_post( $this->field_after() );
+				echo '<div class="bop-cloneable-alert bop-cloneable-max">' . esc_html__( 'You cannot add more.', 'bookify-pro' ) . '</div>';
+				echo '<div class="bop-cloneable-alert bop-cloneable-min">' . esc_html__( 'You cannot remove more.', 'bookify-pro' ) . '</div>';
+				echo '<a href="#" class="button button-primary bop-cloneable-add">' . esc_html($args['button_title']) . '</a>';
 
-      }
+				echo wp_kses_post( $this->field_after() );
 
-    }
+			}
+		}
 
-    public function enqueue() {
+		public function enqueue() {
 
-      if ( ! wp_script_is( 'jquery-ui-accordion' ) ) {
-        wp_enqueue_script( 'jquery-ui-accordion' );
-      }
+			if ( ! wp_script_is( 'jquery-ui-accordion' ) ) {
+				wp_enqueue_script( 'jquery-ui-accordion' );
+			}
 
-      if ( ! wp_script_is( 'jquery-ui-sortable' ) ) {
-        wp_enqueue_script( 'jquery-ui-sortable' );
-      }
-
-    }
-
-  }
+			if ( ! wp_script_is( 'jquery-ui-sortable' ) ) {
+				wp_enqueue_script( 'jquery-ui-sortable' );
+			}
+		}
+	}
 }

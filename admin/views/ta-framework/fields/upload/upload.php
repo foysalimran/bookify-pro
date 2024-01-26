@@ -41,7 +41,7 @@ if ( ! class_exists( 'BOP_Field_upload' ) ) {
         $preview_hidden = ( empty( $preview_src ) ) ? ' hidden' : '';
 
         echo '<div class="bop--preview'. esc_attr( $preview_hidden ) .'">';
-        echo '<div class="bop-image-preview"'. $preview_style .'>';
+        echo '<div class="bop-image-preview"'. wp_kses_post($preview_style) .'>';
         echo '<i class="bop--remove fas fa-times"></i><span><img src="'. esc_url( $preview_src ) .'" class="bop--src" /></span>';
         echo '</div>';
         echo '</div>';
@@ -49,9 +49,9 @@ if ( ! class_exists( 'BOP_Field_upload' ) ) {
       }
 
       echo '<div class="bop--wrap">';
-      echo '<input type="text" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. $this->field_attributes() .'/>';
-      echo '<a href="#" class="button button-primary bop--button" data-library="'. esc_attr( $library ) .'">'. $args['button_title'] .'</a>';
-      echo '<a href="#" class="button button-secondary bop-warning-primary bop--remove'. esc_attr( $hidden ) .'">'. $args['remove_title'] .'</a>';
+      echo '<input type="text" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. wp_kses_post($this->field_attributes()) .'/>';
+      echo '<a href="#" class="button button-primary bop--button" data-library="'. esc_attr( $library ) .'">'. esc_html($args['button_title']) .'</a>';
+      echo '<a href="#" class="button button-secondary bop-warning-primary bop--remove'. esc_attr( $hidden ) .'">'. esc_html($args['remove_title']) .'</a>';
       echo '</div>';
 
       echo wp_kses_post( $this->field_after() );

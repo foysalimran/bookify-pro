@@ -43,7 +43,7 @@ if ( ! class_exists( 'BOP_Field_wp_editor' ) ) {
 
       echo ( bop_wp_editor_api() ) ? '<div class="bop-wp-editor" data-editor-settings="'. esc_attr( json_encode( $editor_settings ) ) .'">' : '';
 
-      echo '<textarea name="'. esc_attr( $this->field_name() ) .'"'. $this->field_attributes( $attributes ) . $editor_height .'>'. $this->value .'</textarea>';
+      echo '<textarea name="'. esc_attr( $this->field_name() ) .'"'. wp_kses_post($this->field_attributes( $attributes ) . $editor_height ) .'>'. wp_kses_post($this->value) .'</textarea>';
 
       echo ( bop_wp_editor_api() ) ? '</div>' : '';
 

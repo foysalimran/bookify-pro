@@ -1,64 +1,67 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: accordion
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_accordion' ) ) {
-  class BOP_Field_accordion extends BOP_Fields {
+	class BOP_Field_accordion extends BOP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      $unallows = array( 'accordion' );
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      echo wp_kses_post( $this->field_before() );
+		public function render() {
 
-      echo '<div class="bop-accordion-items" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
+			$unallows = array( 'accordion' );
 
-      foreach ( $this->field['accordions'] as $key => $accordion ) {
+			echo wp_kses_post( $this->field_before() );
 
-        echo '<div class="bop-accordion-item">';
+			echo '<div class="bop-accordion-items" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 
-          $icon = ( ! empty( $accordion['icon'] ) ) ? 'bop--icon '. $accordion['icon'] : 'bop-accordion-icon fas fa-angle-right';
+			foreach ( $this->field['accordions'] as $key => $accordion ) {
 
-          echo '<h4 class="bop-accordion-title">';
-          echo '<i class="'. esc_attr( $icon ) .'"></i>';
-          echo esc_html( $accordion['title'] );
-          echo '</h4>';
+				echo '<div class="bop-accordion-item">';
 
-          echo '<div class="bop-accordion-content">';
+					$icon = ( ! empty( $accordion['icon'] ) ) ? 'bop--icon ' . $accordion['icon'] : 'bop-accordion-icon fas fa-angle-right';
 
-          foreach ( $accordion['fields'] as $field ) {
+				echo '<h4 class="bop-accordion-title">';
+				echo '<i class="' . esc_attr( $icon ) . '"></i>';
+				echo esc_html( $accordion['title'] );
+				echo '</h4>';
 
-            if ( in_array( $field['type'], $unallows ) ) { $field['_notice'] = true; }
+					echo '<div class="bop-accordion-content">';
 
-            $field_id      = ( isset( $field['id'] ) ) ? $field['id'] : '';
-            $field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
-            $field_value   = ( isset( $this->value[$field_id] ) ) ? $this->value[$field_id] : $field_default;
-            $unique_id     = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .']' : $this->field['id'];
+				foreach ( $accordion['fields'] as $field ) {
 
-            BOP::field( $field, $field_value, $unique_id, 'field/accordion' );
+					if ( in_array( $field['type'], $unallows ) ) {
+						$field['_notice'] = true;
+					}
 
-          }
+					$field_id      = ( isset( $field['id'] ) ) ? $field['id'] : '';
+					$field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
+					$field_value   = ( isset( $this->value[ $field_id ] ) ) ? $this->value[ $field_id ] : $field_default;
+					$unique_id     = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $this->field['id'] . ']' : $this->field['id'];
 
-          echo '</div>';
+					BOP::field( $field, $field_value, $unique_id, 'field/accordion' );
 
-        echo '</div>';
+				}
 
-      }
+					echo '</div>';
 
-      echo '</div>';
+				echo '</div>';
 
-      echo wp_kses_post( $this->field_after() );
+			}
 
-    }
+			echo '</div>';
 
-  }
+			echo wp_kses_post( $this->field_after() );
+		}
+	}
 }

@@ -157,7 +157,6 @@ if ( ! class_exists( 'BOP_Field_dimensions_advanced' ) ) {
 			echo '</div>';
 
 			echo wp_kses_post( $this->field_after() );
-
 		}
 	}
 }

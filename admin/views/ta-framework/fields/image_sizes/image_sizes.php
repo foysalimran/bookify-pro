@@ -94,7 +94,7 @@ if ( ! class_exists( 'BOP_Field_image_sizes' ) ) {
 
 				if ( ! empty( $sizes ) ) {
 
-					echo '<select name="' . esc_attr( $this->field_name( $multiple_name ) ) . '"' . esc_attr( $multiple_attr . $chosen_attr ) . wp_kses_post( $placeholder_attr ) . $this->field_attributes() . '>';// phpcs:ignore
+					echo '<select name="' . esc_attr( $this->field_name( $multiple_name ) ) . '"' . esc_attr( $multiple_attr . $chosen_attr ) . wp_kses_post( $placeholder_attr ) . wp_kses_post($this->field_attributes()) . '>';// phpcs:ignore
 
 					if ( $args['placeholder'] && empty( $args['multiple'] ) ) {
 						if ( ! empty( $args['chosen'] ) ) {
@@ -133,8 +133,6 @@ if ( ! class_exists( 'BOP_Field_image_sizes' ) ) {
 			}
 
 			echo wp_kses_post( $this->field_after() );
-
 		}
-
 	}
 }

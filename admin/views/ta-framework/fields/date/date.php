@@ -1,64 +1,70 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: date
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_date' ) ) {
-  class BOP_Field_date extends BOP_Fields {
+	class BOP_Field_date extends BOP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      $default_settings = array(
-        'dateFormat' => 'mm/dd/yy',
-      );
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      $settings = ( ! empty( $this->field['settings'] ) ) ? $this->field['settings'] : array();
-      $settings = wp_parse_args( $settings, $default_settings );
+		public function render() {
 
-      echo wp_kses_post( $this->field_before() );
+			$default_settings = array(
+				'dateFormat' => 'mm/dd/yy',
+			);
 
-      if ( ! empty( $this->field['from_to'] ) ) {
+			$settings = ( ! empty( $this->field['settings'] ) ) ? $this->field['settings'] : array();
+			$settings = wp_parse_args( $settings, $default_settings );
 
-        $args = wp_parse_args( $this->field, array(
-          'text_from' => esc_html__( 'From', 'bookify-pro' ),
-          'text_to'   => esc_html__( 'To', 'bookify-pro' ),
-        ) );
+			echo wp_kses_post( $this->field_before() );
 
-        $value = wp_parse_args( $this->value, array(
-          'from' => '',
-          'to'   => '',
-        ) );
+			if ( ! empty( $this->field['from_to'] ) ) {
 
-        echo '<label class="bop--from">'. esc_attr( $args['text_from'] ) .' <input type="text" name="'. esc_attr( $this->field_name( '[from]' ) ) .'" value="'. esc_attr( $value['from'] ) .'"'. $this->field_attributes() .'/></label>';
-        echo '<label class="bop--to">'. esc_attr( $args['text_to'] ) .' <input type="text" name="'. esc_attr( $this->field_name( '[to]' ) ) .'" value="'. esc_attr( $value['to'] ) .'"'. $this->field_attributes() .'/></label>';
+				$args = wp_parse_args(
+					$this->field,
+					array(
+						'text_from' => esc_html__( 'From', 'bookify-pro' ),
+						'text_to'   => esc_html__( 'To', 'bookify-pro' ),
+					)
+				);
 
-      } else {
+				$value = wp_parse_args(
+					$this->value,
+					array(
+						'from' => '',
+						'to'   => '',
+					)
+				);
 
-        echo '<input type="text" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. $this->field_attributes() .'/>';
+				echo '<label class="bop--from">' . esc_attr( $args['text_from'] ) . ' <input type="text" name="' . esc_attr( $this->field_name( '[from]' ) ) . '" value="' . esc_attr( $value['from'] ) . '"' . wp_kses_post($this->field_attributes()) . '/></label>';
+				echo '<label class="bop--to">' . esc_attr( $args['text_to'] ) . ' <input type="text" name="' . esc_attr( $this->field_name( '[to]' ) ) . '" value="' . esc_attr( $value['to'] ) . '"' . wp_kses_post($this->field_attributes()) . '/></label>';
 
-      }
+			} else {
 
-      echo '<div class="bop-date-settings" data-settings="'. esc_attr( json_encode( $settings ) ) .'"></div>';
+				echo '<input type="text" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $this->value ) . '"' . wp_kses_post($this->field_attributes()) . '/>';
 
-      echo wp_kses_post( $this->field_after() );
+			}
 
-    }
+			echo '<div class="bop-date-settings" data-settings="' . esc_attr( json_encode( $settings ) ) . '"></div>';
 
-    public function enqueue() {
+			echo wp_kses_post( $this->field_after() );
+		}
 
-      if ( ! wp_script_is( 'jquery-ui-datepicker' ) ) {
-        wp_enqueue_script( 'jquery-ui-datepicker' );
-      }
+		public function enqueue() {
 
-    }
-
-  }
+			if ( ! wp_script_is( 'jquery-ui-datepicker' ) ) {
+				wp_enqueue_script( 'jquery-ui-datepicker' );
+			}
+		}
+	}
 }

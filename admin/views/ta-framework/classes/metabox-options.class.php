@@ -1,5 +1,5 @@
-<?php if (!defined('ABSPATH')) {
-  die;
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
 } // Cannot access directly.
 /**
  *
@@ -7,387 +7,378 @@
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
-if (!class_exists('BOP_Metabox')) {
-  class BOP_Metabox extends BOP_Abstract
-  {
-
-    // constans
-    public $unique         = '';
-    public $abstract       = 'metabox';
-    public $sections       = array();
-    public $pre_fields     = array();
-    public $post_type      = array();
-    public $args           = array(
-      'title'              => '',
-      'post_type'          => 'bookify',
-      'data_type'          => 'serialize',
-      'context'            => 'advanced',
-      'priority'           => 'default',
-      'exclude_post_types' => array(),
-      'page_templates'     => '',
-      'post_formats'       => '',
-      'show_reset'         => false,
-      'show_restore'       => false,
-      'enqueue_webfont'    => true,
-      'async_webfont'      => false,
-      'output_css'         => true,
-      'nav'                => 'normal',
-      'theme'              => 'dark',
-      'class'              => '',
-      'defaults'           => array(),
-    );
-
-    // run metabox construct
-    public function __construct($key, $params = array())
-    {
-
-      $this->unique         = $key;
-      $this->args           = apply_filters("bop_{$this->unique}_args", wp_parse_args($params['args'], $this->args), $this);
-      $this->sections       = apply_filters("bop_{$this->unique}_sections", $params['sections'], $this);
-      $this->post_type      = (is_array($this->args['post_type'])) ? $this->args['post_type'] : array_filter((array) $this->args['post_type']);
-      $this->post_formats   = (is_array($this->args['post_formats'])) ? $this->args['post_formats'] : array_filter((array) $this->args['post_formats']);
-      $this->page_templates = (is_array($this->args['page_templates'])) ? $this->args['page_templates'] : array_filter((array) $this->args['page_templates']);
-      $this->pre_fields     = $this->pre_fields($this->sections);
-
-      add_action('add_meta_boxes', array($this, 'add_meta_box'));
-      add_action('save_post', array($this, 'save_meta_box'));
-      add_action('edit_attachment', array($this, 'save_meta_box'));
-
-      if (!empty($this->page_templates) || !empty($this->post_formats) || !empty($this->args['class'])) {
-        foreach ($this->post_type as $post_type) {
-          add_filter('postbox_classes_' . $post_type . '_' . $this->unique, array($this, 'add_metabox_classes'));
-        }
-      }
-
-      // wp enqeueu for typography and output css
-      parent::__construct();
-    }
-
-    // instance
-    public static function instance($key, $params = array())
-    {
-      return new self($key, $params);
-    }
-
-    public function add_metabox_classes($classes)
-    {
-
-      global $post;
-
-      if (!empty($this->post_formats)) {
-
-        $saved_post_format = (is_object($post)) ? get_post_format($post) : false;
-        $saved_post_format = (!empty($saved_post_format)) ? $saved_post_format : 'default';
-
-        $classes[] = 'bop-post-formats';
-
-        // Sanitize post format for standard to default
-        if (($key = array_search('standard', $this->post_formats)) !== false) {
-          $this->post_formats[$key] = 'default';
-        }
-
-        foreach ($this->post_formats as $format) {
-          $classes[] = 'bop-post-format-' . $format;
-        }
-
-        if (!in_array($saved_post_format, $this->post_formats)) {
-          $classes[] = 'bop-metabox-hide';
-        } else {
-          $classes[] = 'bop-metabox-show';
-        }
-      }
-
-      if (!empty($this->page_templates)) {
-
-        $saved_template = (is_object($post) && !empty($post->page_template)) ? $post->page_template : 'default';
-
-        $classes[] = 'bop-page-templates';
-
-        foreach ($this->page_templates as $template) {
-          $classes[] = 'bop-page-' . preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($template));
-        }
-
-        if (!in_array($saved_template, $this->page_templates)) {
-          $classes[] = 'bop-metabox-hide';
-        } else {
-          $classes[] = 'bop-metabox-show';
-        }
-      }
+if ( ! class_exists( 'BOP_Metabox' ) ) {
+	class BOP_Metabox extends BOP_Abstract {
+
+
+		// constans
+		public $unique     = '';
+		public $abstract   = 'metabox';
+		public $sections   = array();
+		public $pre_fields = array();
+		public $post_type  = array();
+		public $args       = array(
+			'title'              => '',
+			'post_type'          => 'bookify',
+			'data_type'          => 'serialize',
+			'context'            => 'advanced',
+			'priority'           => 'default',
+			'exclude_post_types' => array(),
+			'page_templates'     => '',
+			'post_formats'       => '',
+			'show_reset'         => false,
+			'show_restore'       => false,
+			'enqueue_webfont'    => true,
+			'async_webfont'      => false,
+			'output_css'         => true,
+			'nav'                => 'normal',
+			'theme'              => 'dark',
+			'class'              => '',
+			'defaults'           => array(),
+		);
+
+		// run metabox construct
+		public function __construct( $key, $params = array() ) {
+
+			$this->unique         = $key;
+			$this->args           = apply_filters( "bop_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+			$this->sections       = apply_filters( "bop_{$this->unique}_sections", $params['sections'], $this );
+			$this->post_type      = ( is_array( $this->args['post_type'] ) ) ? $this->args['post_type'] : array_filter( (array) $this->args['post_type'] );
+			$this->post_formats   = ( is_array( $this->args['post_formats'] ) ) ? $this->args['post_formats'] : array_filter( (array) $this->args['post_formats'] );
+			$this->page_templates = ( is_array( $this->args['page_templates'] ) ) ? $this->args['page_templates'] : array_filter( (array) $this->args['page_templates'] );
+			$this->pre_fields     = $this->pre_fields( $this->sections );
+
+			add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+			add_action( 'save_post', array( $this, 'save_meta_box' ) );
+			add_action( 'edit_attachment', array( $this, 'save_meta_box' ) );
+
+			if ( ! empty( $this->page_templates ) || ! empty( $this->post_formats ) || ! empty( $this->args['class'] ) ) {
+				foreach ( $this->post_type as $post_type ) {
+					add_filter( 'postbox_classes_' . $post_type . '_' . $this->unique, array( $this, 'add_metabox_classes' ) );
+				}
+			}
+
+			// wp enqeueu for typography and output css
+			parent::__construct();
+		}
+
+		// instance
+		public static function instance( $key, $params = array() ) {
+			return new self( $key, $params );
+		}
+
+		public function add_metabox_classes( $classes ) {
+
+			global $post;
+
+			if ( ! empty( $this->post_formats ) ) {
+
+				$saved_post_format = ( is_object( $post ) ) ? get_post_format( $post ) : false;
+				$saved_post_format = ( ! empty( $saved_post_format ) ) ? $saved_post_format : 'default';
+
+				$classes[] = 'bop-post-formats';
+
+				// Sanitize post format for standard to default
+				if ( ( $key = array_search( 'standard', $this->post_formats ) ) !== false ) {
+					$this->post_formats[ $key ] = 'default';
+				}
+
+				foreach ( $this->post_formats as $format ) {
+					$classes[] = 'bop-post-format-' . $format;
+				}
 
-      if (!empty($this->args['class'])) {
-        $classes[] = $this->args['class'];
-      }
+				if ( ! in_array( $saved_post_format, $this->post_formats ) ) {
+					$classes[] = 'bop-metabox-hide';
+				} else {
+					$classes[] = 'bop-metabox-show';
+				}
+			}
 
-      return $classes;
-    }
+			if ( ! empty( $this->page_templates ) ) {
 
-    // add metabox
-    public function add_meta_box($post_type)
-    {
+				$saved_template = ( is_object( $post ) && ! empty( $post->page_template ) ) ? $post->page_template : 'default';
 
-      if (!in_array($post_type, $this->args['exclude_post_types'])) {
-        add_meta_box($this->unique, $this->args['title'], array($this, 'add_meta_box_content'), $this->post_type, $this->args['context'], $this->args['priority'], $this->args);
-      }
-    }
+				$classes[] = 'bop-page-templates';
 
-    // get default value
-    public function get_default($field)
-    {
+				foreach ( $this->page_templates as $template ) {
+					$classes[] = 'bop-page-' . preg_replace( '/[^a-zA-Z0-9]+/', '-', strtolower( $template ) );
+				}
 
-      $default = (isset($field['default'])) ? $field['default'] : '';
-      $default = (isset($this->args['defaults'][$field['id']])) ? $this->args['defaults'][$field['id']] : $default;
+				if ( ! in_array( $saved_template, $this->page_templates ) ) {
+					$classes[] = 'bop-metabox-hide';
+				} else {
+					$classes[] = 'bop-metabox-show';
+				}
+			}
 
-      return $default;
-    }
+			if ( ! empty( $this->args['class'] ) ) {
+				$classes[] = $this->args['class'];
+			}
 
-    // get meta value
-    public function get_meta_value($field)
-    {
+			return $classes;
+		}
 
-      global $post;
+		// add metabox
+		public function add_meta_box( $post_type ) {
 
-      $value = null;
+			if ( ! in_array( $post_type, $this->args['exclude_post_types'] ) ) {
+				add_meta_box( $this->unique, $this->args['title'], array( $this, 'add_meta_box_content' ), $this->post_type, $this->args['context'], $this->args['priority'], $this->args );
+			}
+		}
 
-      if (is_object($post) && !empty($field['id'])) {
+		// get default value
+		public function get_default( $field ) {
 
-        if ($this->args['data_type'] !== 'serialize') {
-          $meta  = get_post_meta($post->ID, $field['id']);
-          $value = (isset($meta[0])) ? $meta[0] : null;
-        } else {
-          $meta  = get_post_meta($post->ID, $this->unique, true);
-          $value = (isset($meta[$field['id']])) ? $meta[$field['id']] : null;
-        }
-      }
+			$default = ( isset( $field['default'] ) ) ? $field['default'] : '';
+			$default = ( isset( $this->args['defaults'][ $field['id'] ] ) ) ? $this->args['defaults'][ $field['id'] ] : $default;
 
-      $default = (isset($field['id'])) ? $this->get_default($field) : '';
-      $value   = (isset($value)) ? $value : $default;
+			return $default;
+		}
 
-      return $value;
-    }
+		// get meta value
+		public function get_meta_value( $field ) {
 
-    // add metabox content
-    public function add_meta_box_content($post, $callback)
-    {
+			global $post;
 
-      global $post;
+			$value = null;
 
-      $has_nav   = (count($this->sections) > 1 && $this->args['context'] !== 'side') ? true : false;
-      $show_all  = (!$has_nav) ? ' bop-show-all' : '';
-      $post_type = (is_object($post)) ? $post->post_type : '';
-      $errors    = (is_object($post)) ? get_post_meta($post->ID, '_bop_errors_' . $this->unique, true) : array();
-      $errors    = (!empty($errors)) ? $errors : array();
-      $theme     = ($this->args['theme']) ? ' bop-theme-' . $this->args['theme'] : '';
-      $nav_type  = ($this->args['nav'] === 'inline') ? 'inline' : 'normal';
+			if ( is_object( $post ) && ! empty( $field['id'] ) ) {
 
-      if (is_object($post) && !empty($errors)) {
-        delete_post_meta($post->ID, '_bop_errors_' . $this->unique);
-      }
+				if ( $this->args['data_type'] !== 'serialize' ) {
+					$meta  = get_post_meta( $post->ID, $field['id'] );
+					$value = ( isset( $meta[0] ) ) ? $meta[0] : null;
+				} else {
+					$meta  = get_post_meta( $post->ID, $this->unique, true );
+					$value = ( isset( $meta[ $field['id'] ] ) ) ? $meta[ $field['id'] ] : null;
+				}
+			}
 
-      wp_nonce_field('bop_metabox_nonce', 'bop_metabox_nonce' . $this->unique);
+			$default = ( isset( $field['id'] ) ) ? $this->get_default( $field ) : '';
+			$value   = ( isset( $value ) ) ? $value : $default;
 
-      echo '<div class="bop bop-metabox' . esc_attr($theme) . '">';
+			return $value;
+		}
 
-      echo '<div class="bop-wrapper' . esc_attr($show_all) . '">';
+		// add metabox content
+		public function add_meta_box_content( $post, $callback ) {
 
-      if ($has_nav) {
+			global $post;
 
-        echo '<div class="bop-nav bop-nav-' . esc_attr($nav_type) . ' bop-nav-metabox">';
+			$has_nav   = ( count( $this->sections ) > 1 && $this->args['context'] !== 'side' ) ? true : false;
+			$show_all  = ( ! $has_nav ) ? ' bop-show-all' : '';
+			$post_type = ( is_object( $post ) ) ? $post->post_type : '';
+			$errors    = ( is_object( $post ) ) ? get_post_meta( $post->ID, '_bop_errors_' . $this->unique, true ) : array();
+			$errors    = ( ! empty( $errors ) ) ? $errors : array();
+			$theme     = ( $this->args['theme'] ) ? ' bop-theme-' . $this->args['theme'] : '';
+			$nav_type  = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 
-        echo '<ul>';
+			if ( is_object( $post ) && ! empty( $errors ) ) {
+				delete_post_meta( $post->ID, '_bop_errors_' . $this->unique );
+			}
 
-        $tab_key = 1;
+			wp_nonce_field( 'bop_metabox_nonce', 'bop_metabox_nonce' . $this->unique );
 
-        foreach ($this->sections as $section) {
+			echo '<div class="bop bop-metabox' . esc_attr( $theme ) . '">';
 
-          if (!empty($section['post_type']) && !in_array($post_type, array_filter((array) $section['post_type']))) {
-            continue;
-          }
+			echo '<div class="bop-wrapper' . esc_attr( $show_all ) . '">';
 
-          $tab_error = (!empty($errors['sections'][$tab_key])) ? '<i class="bop-label-error bop-error">!</i>' : '';
-          $tab_icon  = (!empty($section['icon'])) ? '<i class="bop-tab-icon ' . esc_attr($section['icon']) . '"></i>' : '';
+			if ( $has_nav ) {
 
-          echo '<li class="menu-item_' . $this->unique . '_' . $tab_key . '"><a href="#" data-section="' . $this->unique . '_' . $tab_key . '">' . $tab_icon . $section['title'] . $tab_error . '</a></li>';
+				echo '<div class="bop-nav bop-nav-' . esc_attr( $nav_type ) . ' bop-nav-metabox">';
 
-          $tab_key++;
-        }
+				echo '<ul>';
 
-        echo '</ul>';
+				$tab_key = 1;
 
-        echo '</div>';
-      }
+				foreach ( $this->sections as $section ) {
 
-      echo '<div class="bop-content">';
+					if ( ! empty( $section['post_type'] ) && ! in_array( $post_type, array_filter( (array) $section['post_type'] ) ) ) {
+						continue;
+					}
 
-      echo '<div class="bop-sections">';
+					$tab_error = ( ! empty( $errors['sections'][ $tab_key ] ) ) ? '<i class="bop-label-error bop-error">!</i>' : '';
+					$tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="bop-tab-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
 
-      $section_key = 1;
+					echo '<li class="menu-item_' . esc_attr($this->unique) . '_' . esc_attr($tab_key) . '"><a href="#" data-section="' . esc_attr($this->unique) . '_' . esc_attr($tab_key) . '">' . wp_kses_post($tab_icon) . esc_html($section['title']) . esc_html($tab_error) . '</a></li>';
 
-      foreach ($this->sections as $section) {
+					++$tab_key;
+				}
 
-        if (!empty($section['post_type']) && !in_array($post_type, array_filter((array) $section['post_type']))) {
-          continue;
-        }
+				echo '</ul>';
 
-        $section_onload = (!$has_nav) ? ' bop-onload' : '';
-        $section_class  = (!empty($section['class'])) ? ' ' . $section['class'] : '';
-        $section_title  = (!empty($section['title'])) ? $section['title'] : '';
-        $section_icon   = (!empty($section['icon'])) ? '<i class="bop-section-icon ' . esc_attr($section['icon']) . '"></i>' : '';
+				echo '</div>';
+			}
 
-        echo '<div id="bop-section-' . $this->unique . '_' . $section_key . '" class="bop-section hidden' . esc_attr($section_onload . $section_class) . '">';
+			echo '<div class="bop-content">';
 
-        echo ($section_title || $section_icon) ? '<div class="bop-section-title"><h3>' . $section_icon . $section_title . '</h3></div>' : '';
-        echo (!empty($section['description'])) ? '<div class="bop-field bop-section-description">' . $section['description'] . '</div>' : '';
+			echo '<div class="bop-sections">';
 
-        if (!empty($section['fields'])) {
+			$section_key = 1;
 
-          foreach ($section['fields'] as $field) {
+			foreach ( $this->sections as $section ) {
 
-            if (!empty($field['id']) && !empty($errors['fields'][$field['id']])) {
-              $field['_error'] = $errors['fields'][$field['id']];
-            }
+				if ( ! empty( $section['post_type'] ) && ! in_array( $post_type, array_filter( (array) $section['post_type'] ) ) ) {
+					continue;
+				}
 
-            if (!empty($field['id'])) {
-              $field['default'] = $this->get_default($field);
-            }
+				$section_onload = ( ! $has_nav ) ? ' bop-onload' : '';
+				$section_class  = ( ! empty( $section['class'] ) ) ? ' ' . $section['class'] : '';
+				$section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
+				$section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="bop-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
 
-            BOP::field($field, $this->get_meta_value($field), $this->unique, 'metabox');
-          }
-        } else {
+				echo '<div id="bop-section-' . esc_attr($this->unique) . '_' . esc_attr($section_key) . '" class="bop-section hidden' . esc_attr( $section_onload . $section_class ) . '">';
 
-          echo '<div class="bop-no-option">' . esc_html__('No data available.', 'bookify-pro') . '</div>';
-        }
+				echo ( $section_title || $section_icon ) ? '<div class="bop-section-title"><h3>' . wp_kses_post($section_icon) . esc_html($section_title) . '</h3></div>' : '';
+				echo ( ! empty( $section['description'] ) ) ? '<div class="bop-field bop-section-description">' . esc_html($section['description']) . '</div>' : '';
 
-        echo '</div>';
+				if ( ! empty( $section['fields'] ) ) {
 
-        $section_key++;
-      }
+					foreach ( $section['fields'] as $field ) {
 
-      echo '</div>';
+						if ( ! empty( $field['id'] ) && ! empty( $errors['fields'][ $field['id'] ] ) ) {
+								$field['_error'] = $errors['fields'][ $field['id'] ];
+						}
 
-      if (!empty($this->args['show_restore']) || !empty($this->args['show_reset'])) {
+						if ( ! empty( $field['id'] ) ) {
+							$field['default'] = $this->get_default( $field );
+						}
 
-        echo '<div class="bop-sections-reset">';
-        echo '<label>';
-        echo '<input type="checkbox" name="' . esc_attr($this->unique) . '[_reset]" />';
-        echo '<span class="button bop-button-reset">' . esc_html__('Reset', 'bookify-pro') . '</span>';
-        echo '<span class="button bop-button-cancel">' . sprintf('<small>( %s )</small> %s', esc_html__('update post', 'bookify-pro'), esc_html__('Cancel', 'bookify-pro')) . '</span>';
-        echo '</label>';
-        echo '</div>';
-      }
+						BOP::field( $field, $this->get_meta_value( $field ), $this->unique, 'metabox' );
+					}
+				} else {
 
-      echo '</div>';
+					echo '<div class="bop-no-option">' . esc_html__( 'No data available.', 'bookify-pro' ) . '</div>';
+				}
 
-      echo ($has_nav && $nav_type === 'normal') ? '<div class="bop-nav-background"></div>' : '';
+				echo '</div>';
 
-      echo '<div class="clear"></div>';
+				++$section_key;
+			}
 
-      echo '</div>';
+			echo '</div>';
 
-      echo '</div>';
-    }
+			if ( ! empty( $this->args['show_restore'] ) || ! empty( $this->args['show_reset'] ) ) {
 
-    // save metabox
-    public function save_meta_box($post_id)
-    {
+				echo '<div class="bop-sections-reset">';
+				echo '<label>';
+				echo '<input type="checkbox" name="' . esc_attr( $this->unique ) . '[_reset]" />';
+				echo '<span class="button bop-button-reset">' . esc_html__( 'Reset', 'bookify-pro' ) . '</span>';
+				echo '<span class="button bop-button-cancel">' . sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'bookify-pro' ), esc_html__( 'Cancel', 'bookify-pro' ) ) . '</span>';
+				echo '</label>';
+				echo '</div>';
+			}
 
-      $count    = 1;
-      $data     = array();
-      $errors   = array();
-      $noncekey = 'bop_metabox_nonce' . $this->unique;
-      $nonce    = (!empty($_POST[$noncekey])) ? sanitize_text_field(wp_unslash($_POST[$noncekey])) : '';
+			echo '</div>';
 
-      if ((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) || !wp_verify_nonce($nonce, 'bop_metabox_nonce')) {
-        return $post_id;
-      }
+			echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="bop-nav-background"></div>' : '';
 
-      // XSS ok.
-      // No worries, This "POST" requests is sanitizing in the below foreach.
-      $request = (!empty($_POST[$this->unique])) ? $_POST[$this->unique] : array();
+			echo '<div class="clear"></div>';
 
-      if (!empty($request)) {
+			echo '</div>';
 
-        foreach ($this->sections as $section) {
+			echo '</div>';
+		}
 
-          if (!empty($section['fields'])) {
+		// save metabox
+		public function save_meta_box( $post_id ) {
 
-            foreach ($section['fields'] as $field) {
+			$count    = 1;
+			$data     = array();
+			$errors   = array();
+			$noncekey = 'bop_metabox_nonce' . $this->unique;
+			$nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
 
-              if (!empty($field['id'])) {
+			if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'bop_metabox_nonce' ) ) {
+				return $post_id;
+			}
 
-                $field_id    = $field['id'];
-                $field_value = isset($request[$field_id]) ? $request[$field_id] : '';
+			// XSS ok.
+			// No worries, This "POST" requests is sanitizing in the below foreach.
+			$request = ( ! empty( $_POST[ $this->unique ] ) ) ? $_POST[ $this->unique ] : array();
 
-                // Sanitize "post" request of field.
-                if (!isset($field['sanitize'])) {
+			if ( ! empty( $request ) ) {
 
-                  if (is_array($field_value)) {
-                    $data[$field_id] = wp_kses_post_deep($field_value);
-                  } else {
-                    $data[$field_id] = wp_kses_post($field_value);
-                  }
-                } else if (isset($field['sanitize']) && is_callable($field['sanitize'])) {
+				foreach ( $this->sections as $section ) {
 
-                  $data[$field_id] = call_user_func($field['sanitize'], $field_value);
-                } else {
+					if ( ! empty( $section['fields'] ) ) {
 
-                  $data[$field_id] = $field_value;
-                }
+						foreach ( $section['fields'] as $field ) {
 
-                // Validate "post" request of field.
-                if (isset($field['validate']) && is_callable($field['validate'])) {
+							if ( ! empty( $field['id'] ) ) {
 
-                  $has_validated = call_user_func($field['validate'], $field_value);
+								$field_id    = $field['id'];
+								$field_value = isset( $request[ $field_id ] ) ? $request[ $field_id ] : '';
 
-                  if (!empty($has_validated)) {
+								// Sanitize "post" request of field.
+								if ( ! isset( $field['sanitize'] ) ) {
 
-                    $errors['sections'][$count] = true;
-                    $errors['fields'][$field_id] = $has_validated;
-                    $data[$field_id] = $this->get_meta_value($field);
-                  }
-                }
-              }
-            }
-          }
+									if ( is_array( $field_value ) ) {
+											$data[ $field_id ] = wp_kses_post_deep( $field_value );
+									} else {
+										$data[ $field_id ] = wp_kses_post( $field_value );
+									}
+								} elseif ( isset( $field['sanitize'] ) && is_callable( $field['sanitize'] ) ) {
 
-          $count++;
-        }
-      }
+									$data[ $field_id ] = call_user_func( $field['sanitize'], $field_value );
+								} else {
 
-      $data = apply_filters("bop_{$this->unique}_save", $data, $post_id, $this);
+									$data[ $field_id ] = $field_value;
+								}
 
-      do_action("bop_{$this->unique}_save_before", $data, $post_id, $this);
+								// Validate "post" request of field.
+								if ( isset( $field['validate'] ) && is_callable( $field['validate'] ) ) {
 
-      if (empty($data) || !empty($request['_reset'])) {
+											$has_validated = call_user_func( $field['validate'], $field_value );
 
-        if ($this->args['data_type'] !== 'serialize') {
-          foreach ($this->pre_fields as $field) {
-            if (!empty($field['id'])) {
-              delete_post_meta($post_id, $field['id']);
-            }
-          }
-        } else {
-          delete_post_meta($post_id, $this->unique);
-        }
-      } else {
+									if ( ! empty( $has_validated ) ) {
 
-        if ($this->args['data_type'] !== 'serialize') {
-          foreach ($data as $key => $value) {
-            update_post_meta($post_id, $key, $value);
-          }
-        } else {
-          update_post_meta($post_id, $this->unique, $data);
-        }
+										$errors['sections'][ $count ]  = true;
+										$errors['fields'][ $field_id ] = $has_validated;
+										$data[ $field_id ]             = $this->get_meta_value( $field );
+									}
+								}
+							}
+						}
+					}
 
-        if (!empty($errors)) {
-          update_post_meta($post_id, '_bop_errors_' . $this->unique, $errors);
-        }
-      }
+					++$count;
+				}
+			}
 
-      do_action("bop_{$this->unique}_saved", $data, $post_id, $this);
+			$data = apply_filters( "bop_{$this->unique}_save", $data, $post_id, $this );
 
-      do_action("bop_{$this->unique}_save_after", $data, $post_id, $this);
-    }
-  }
+			do_action( "bop_{$this->unique}_save_before", $data, $post_id, $this );
+
+			if ( empty( $data ) || ! empty( $request['_reset'] ) ) {
+
+				if ( $this->args['data_type'] !== 'serialize' ) {
+					foreach ( $this->pre_fields as $field ) {
+						if ( ! empty( $field['id'] ) ) {
+							delete_post_meta( $post_id, $field['id'] );
+						}
+					}
+				} else {
+					delete_post_meta( $post_id, $this->unique );
+				}
+			} else {
+
+				if ( $this->args['data_type'] !== 'serialize' ) {
+					foreach ( $data as $key => $value ) {
+						update_post_meta( $post_id, $key, $value );
+					}
+				} else {
+					update_post_meta( $post_id, $this->unique, $data );
+				}
+
+				if ( ! empty( $errors ) ) {
+					update_post_meta( $post_id, '_bop_errors_' . $this->unique, $errors );
+				}
+			}
+
+			do_action( "bop_{$this->unique}_saved", $data, $post_id, $this );
+
+			do_action( "bop_{$this->unique}_save_after", $data, $post_id, $this );
+		}
+	}
 }

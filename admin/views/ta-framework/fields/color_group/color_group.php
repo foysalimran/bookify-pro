@@ -1,42 +1,43 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: color_group
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_color_group' ) ) {
-  class BOP_Field_color_group extends BOP_Fields {
+	class BOP_Field_color_group extends BOP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      $options = ( ! empty( $this->field['options'] ) ) ? $this->field['options'] : array();
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      echo wp_kses_post( $this->field_before() );
+		public function render() {
 
-      if ( ! empty( $options ) ) {
-        foreach ( $options as $key => $option ) {
+			$options = ( ! empty( $this->field['options'] ) ) ? $this->field['options'] : array();
 
-          $color_value  = ( ! empty( $this->value[$key] ) ) ? $this->value[$key] : '';
-          $default_attr = ( ! empty( $this->field['default'][$key] ) ) ? ' data-default-color="'. esc_attr( $this->field['default'][$key] ) .'"' : '';
+			echo wp_kses_post( $this->field_before() );
 
-          echo '<div class="bop--left bop-field-color">';
-          echo '<div class="bop--title">'. $option .'</div>';
-          echo '<input type="text" name="'. esc_attr( $this->field_name( '['. $key .']' ) ) .'" value="'. esc_attr( $color_value ) .'" class="bop-color"'. $default_attr . $this->field_attributes() .'/>';
-          echo '</div>';
+			if ( ! empty( $options ) ) {
+				foreach ( $options as $key => $option ) {
 
-        }
-      }
+					$color_value  = ( ! empty( $this->value[ $key ] ) ) ? $this->value[ $key ] : '';
+					$default_attr = ( ! empty( $this->field['default'][ $key ] ) ) ? ' data-default-color="' . esc_attr( $this->field['default'][ $key ] ) . '"' : '';
 
-      echo wp_kses_post( $this->field_after() );
+					echo '<div class="bop--left bop-field-color">';
+					echo '<div class="bop--title">' . wp_kses_post($option) . '</div>';
+					echo '<input type="text" name="' . esc_attr( $this->field_name( '[' . $key . ']' ) ) . '" value="' . esc_attr( $color_value ) . '" class="bop-color"' . wp_kses_post($default_attr) . wp_kses_post($this->field_attributes()) . '/>';
+					echo '</div>';
 
-    }
+				}
+			}
 
-  }
+			echo wp_kses_post( $this->field_after() );
+		}
+	}
 }

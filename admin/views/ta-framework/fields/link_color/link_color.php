@@ -1,91 +1,98 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: link_color
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_link_color' ) ) {
-  class BOP_Field_link_color extends BOP_Fields {
+	class BOP_Field_link_color extends BOP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      $args = wp_parse_args( $this->field, array(
-        'color'   => true,
-        'hover'   => true,
-        'active'  => false,
-        'visited' => false,
-        'focus'   => false,
-      ) );
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      $default_values = array(
-        'color'   => '',
-        'hover'   => '',
-        'active'  => '',
-        'visited' => '',
-        'focus'   => '',
-      );
+		public function render() {
 
-      $color_props = array(
-        'color'    => esc_html__( 'Normal', 'bookify-pro' ),
-        'hover'    => esc_html__( 'Hover', 'bookify-pro' ),
-        'active'   => esc_html__( 'Active', 'bookify-pro' ),
-        'visited'  => esc_html__( 'Visited', 'bookify-pro' ),
-        'focus'    => esc_html__( 'Focus', 'bookify-pro' )
-      );
+			$args = wp_parse_args(
+				$this->field,
+				array(
+					'color'   => true,
+					'hover'   => true,
+					'active'  => false,
+					'visited' => false,
+					'focus'   => false,
+				)
+			);
 
-      $value = wp_parse_args( $this->value, $default_values );
+			$default_values = array(
+				'color'   => '',
+				'hover'   => '',
+				'active'  => '',
+				'visited' => '',
+				'focus'   => '',
+			);
 
-      echo wp_kses_post( $this->field_before() );
+			$color_props = array(
+				'color'   => esc_html__( 'Normal', 'bookify-pro' ),
+				'hover'   => esc_html__( 'Hover', 'bookify-pro' ),
+				'active'  => esc_html__( 'Active', 'bookify-pro' ),
+				'visited' => esc_html__( 'Visited', 'bookify-pro' ),
+				'focus'   => esc_html__( 'Focus', 'bookify-pro' ),
+			);
 
-      foreach ( $color_props as $color_prop_key => $color_prop_value ) {
+			$value = wp_parse_args( $this->value, $default_values );
 
-        if ( ! empty( $args[$color_prop_key] ) ) {
+			echo wp_kses_post( $this->field_before() );
 
-          $default_attr = ( ! empty( $this->field['default'][$color_prop_key] ) ) ? ' data-default-color="'. esc_attr( $this->field['default'][$color_prop_key] ) .'"' : '';
+			foreach ( $color_props as $color_prop_key => $color_prop_value ) {
 
-          echo '<div class="bop--left bop-field-color">';
-          echo '<div class="bop--title">'. esc_attr( $color_prop_value ) .'</div>';
-          echo '<input type="text" name="'. esc_attr( $this->field_name( '['. $color_prop_key .']' ) ) .'" value="'. esc_attr( $value[$color_prop_key] ) .'" class="bop-color"'. $default_attr . $this->field_attributes() .'/>';
-          echo '</div>';
+				if ( ! empty( $args[ $color_prop_key ] ) ) {
 
-        }
+						$default_attr = ( ! empty( $this->field['default'][ $color_prop_key ] ) ) ? ' data-default-color="' . esc_attr( $this->field['default'][ $color_prop_key ] ) . '"' : '';
 
-      }
+					echo '<div class="bop--left bop-field-color">';
+						echo '<div class="bop--title">' . esc_attr( $color_prop_value ) . '</div>';
+						echo '<input type="text" name="' . esc_attr( $this->field_name( '[' . $color_prop_key . ']' ) ) . '" value="' . esc_attr( $value[ $color_prop_key ] ) . '" class="bop-color"' . wp_kses_post($default_attr) . wp_kses_post($this->field_attributes()) . '/>';
+					echo '</div>';
 
-      echo wp_kses_post( $this->field_after() );
+				}
+			}
 
-    }
+			echo wp_kses_post( $this->field_after() );
+		}
 
-    public function output() {
+		public function output() {
 
-      $output    = '';
-      $elements  = ( is_array( $this->field['output'] ) ) ? $this->field['output'] : array_filter( (array) $this->field['output'] );
-      $important = ( ! empty( $this->field['output_important'] ) ) ? '!important' : '';
+			$output    = '';
+			$elements  = ( is_array( $this->field['output'] ) ) ? $this->field['output'] : array_filter( (array) $this->field['output'] );
+			$important = ( ! empty( $this->field['output_important'] ) ) ? '!important' : '';
 
-      if ( ! empty( $elements ) && isset( $this->value ) && $this->value !== '' ) {
-        foreach ( $elements as $element ) {
+			if ( ! empty( $elements ) && isset( $this->value ) && $this->value !== '' ) {
+				foreach ( $elements as $element ) {
 
-          if ( isset( $this->value['color']   ) && $this->value['color']   !== '' ) { $output .= $element .'{color:'.         $this->value['color']   . $important .';}'; }
-          if ( isset( $this->value['hover']   ) && $this->value['hover']   !== '' ) { $output .= $element .':hover{color:'.   $this->value['hover']   . $important .';}'; }
-          if ( isset( $this->value['active']  ) && $this->value['active']  !== '' ) { $output .= $element .':active{color:'.  $this->value['active']  . $important .';}'; }
-          if ( isset( $this->value['visited'] ) && $this->value['visited'] !== '' ) { $output .= $element .':visited{color:'. $this->value['visited'] . $important .';}'; }
-          if ( isset( $this->value['focus']   ) && $this->value['focus']   !== '' ) { $output .= $element .':focus{color:'.   $this->value['focus']   . $important .';}'; }
+					if ( isset( $this->value['color'] ) && $this->value['color'] !== '' ) {
+						$output .= $element . '{color:' . $this->value['color'] . $important . ';}'; }
+					if ( isset( $this->value['hover'] ) && $this->value['hover'] !== '' ) {
+						$output .= $element . ':hover{color:' . $this->value['hover'] . $important . ';}'; }
+					if ( isset( $this->value['active'] ) && $this->value['active'] !== '' ) {
+						$output .= $element . ':active{color:' . $this->value['active'] . $important . ';}'; }
+					if ( isset( $this->value['visited'] ) && $this->value['visited'] !== '' ) {
+						$output .= $element . ':visited{color:' . $this->value['visited'] . $important . ';}'; }
+					if ( isset( $this->value['focus'] ) && $this->value['focus'] !== '' ) {
+						$output .= $element . ':focus{color:' . $this->value['focus'] . $important . ';}';
+					}
+				}
+			}
 
-        }
-      }
+			$this->parent->output_css .= $output;
 
-      $this->parent->output_css .= $output;
-
-      return $output;
-
-    }
-
-  }
+			return $output;
+		}
+	}
 }

@@ -1,41 +1,42 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: fieldset
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_fieldset' ) ) {
-  class BOP_Field_fieldset extends BOP_Fields {
+	class BOP_Field_fieldset extends BOP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      echo wp_kses_post( $this->field_before() );
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      echo '<div class="bop-fieldset-content" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
+		public function render() {
 
-      foreach ( $this->field['fields'] as $field ) {
+			echo wp_kses_post( $this->field_before() );
 
-        $field_id      = ( isset( $field['id'] ) ) ? $field['id'] : '';
-        $field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
-        $field_value   = ( isset( $this->value[$field_id] ) ) ? $this->value[$field_id] : $field_default;
-        $unique_id     = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .']' : $this->field['id'];
+			echo '<div class="bop-fieldset-content" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 
-        BOP::field( $field, $field_value, $unique_id, 'field/fieldset' );
+			foreach ( $this->field['fields'] as $field ) {
 
-      }
+				$field_id      = ( isset( $field['id'] ) ) ? $field['id'] : '';
+				$field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
+				$field_value   = ( isset( $this->value[ $field_id ] ) ) ? $this->value[ $field_id ] : $field_default;
+				$unique_id     = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $this->field['id'] . ']' : $this->field['id'];
 
-      echo '</div>';
+				BOP::field( $field, $field_value, $unique_id, 'field/fieldset' );
 
-      echo wp_kses_post( $this->field_after() );
+			}
 
-    }
+			echo '</div>';
 
-  }
+			echo wp_kses_post( $this->field_after() );
+		}
+	}
 }

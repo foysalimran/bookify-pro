@@ -1,15 +1,15 @@
 <?php
-// Do not allow directly accessing this file.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 'Direct script access denied.' );
-}
 /**
  * @package    Bookify_Pro
  * @author     ThemeAtelier
  *
  * Websites: http://www.themeatelier.net
  */
-// Control core classes for avoid errors
+// Do not allow directly accessing this file.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'Direct script access denied.' );
+}
+// Control core classes for avoid errors.
 class BOP_Postmeta {
 
 

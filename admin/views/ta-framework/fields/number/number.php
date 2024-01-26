@@ -1,63 +1,66 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Field: number
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Field_number' ) ) {
-  class BOP_Field_number extends BOP_Fields {
+	class BOP_Field_number extends BOP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
 
-    public function render() {
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
-      $args = wp_parse_args( $this->field, array(
-        'min'  => 'any',
-        'max'  => 'any',
-        'step' => 'any',
-        'unit' => '',
-      ) );
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      echo wp_kses_post( $this->field_before() );
-      echo '<div class="bop--wrap">';
-      echo '<input type="number" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $this->value ) .'"'. $this->field_attributes() .' min="'. esc_attr( $args['min'] ) .'" max="'. esc_attr( $args['max'] ) .'" step="'. esc_attr( $args['step'] ) .'"/>';
-      echo ( ! empty( $args['unit'] ) ) ? '<span class="bop--unit">'. esc_attr( $args['unit'] ) .'</span>' : '';
-      echo '</div>';
-      echo wp_kses_post( $this->field_after() );
+		public function render() {
 
-    }
+			$args = wp_parse_args(
+				$this->field,
+				array(
+					'min'  => 'any',
+					'max'  => 'any',
+					'step' => 'any',
+					'unit' => '',
+				)
+			);
 
-    public function output() {
+			echo wp_kses_post( $this->field_before() );
+			echo '<div class="bop--wrap">';
+			echo '<input type="number" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $this->value ) . '"' . wp_kses_post($this->field_attributes()) . ' min="' . esc_attr( $args['min'] ) . '" max="' . esc_attr( $args['max'] ) . '" step="' . esc_attr( $args['step'] ) . '"/>';
+			echo ( ! empty( $args['unit'] ) ) ? '<span class="bop--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
+			echo '</div>';
+			echo wp_kses_post( $this->field_after() );
+		}
 
-      $output    = '';
-      $elements  = ( is_array( $this->field['output'] ) ) ? $this->field['output'] : array_filter( (array) $this->field['output'] );
-      $important = ( ! empty( $this->field['output_important'] ) ) ? '!important' : '';
-      $mode      = ( ! empty( $this->field['output_mode'] ) ) ? $this->field['output_mode'] : 'width';
-      $unit      = ( ! empty( $this->field['unit'] ) ) ? $this->field['unit'] : 'px';
+		public function output() {
 
-      if ( ! empty( $elements ) && isset( $this->value ) && $this->value !== '' ) {
-        foreach ( $elements as $key_property => $element ) {
-          if ( is_numeric( $key_property ) ) {
-            if ( $mode ) {
-              $output = implode( ',', $elements ) .'{'. $mode .':'. $this->value . $unit . $important .';}';
-            }
-            break;
-          } else {
-            $output .= $element .'{'. $key_property .':'. $this->value . $unit . $important .'}';
-          }
-        }
-      }
+			$output    = '';
+			$elements  = ( is_array( $this->field['output'] ) ) ? $this->field['output'] : array_filter( (array) $this->field['output'] );
+			$important = ( ! empty( $this->field['output_important'] ) ) ? '!important' : '';
+			$mode      = ( ! empty( $this->field['output_mode'] ) ) ? $this->field['output_mode'] : 'width';
+			$unit      = ( ! empty( $this->field['unit'] ) ) ? $this->field['unit'] : 'px';
 
-      $this->parent->output_css .= $output;
+			if ( ! empty( $elements ) && isset( $this->value ) && $this->value !== '' ) {
+				foreach ( $elements as $key_property => $element ) {
+					if ( is_numeric( $key_property ) ) {
+						if ( $mode ) {
+								$output = implode( ',', $elements ) . '{' . $mode . ':' . $this->value . $unit . $important . ';}';
+						}
+						break;
+					} else {
+						$output .= $element . '{' . $key_property . ':' . $this->value . $unit . $important . '}';
+					}
+				}
+			}
 
-      return $output;
+			$this->parent->output_css .= $output;
 
-    }
-
-  }
+			return $output;
+		}
+	}
 }

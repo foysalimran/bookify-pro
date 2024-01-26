@@ -1,268 +1,255 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Taxonomy Options Class
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Taxonomy_Options' ) ) {
-  class BOP_Taxonomy_Options extends BOP_Abstract{
+	class BOP_Taxonomy_Options extends BOP_Abstract {
+
+
+		// constans
+		public $unique     = '';
+		public $taxonomy   = '';
+		public $abstract   = 'taxonomy';
+		public $sections   = array();
+		public $pre_fields = array();
+		public $taxonomies = array();
+		public $args       = array(
+			'taxonomy'        => 'category',
+			'data_type'       => 'serialize',
+			'class'           => '',
+			'enqueue_webfont' => true,
+			'async_webfont'   => false,
+			'output_css'      => true,
+			'defaults'        => array(),
+		);
 
-    // constans
-    public $unique      = '';
-    public $taxonomy    = '';
-    public $abstract    = 'taxonomy';
-    public $sections    = array();
-    public $pre_fields  = array();
-    public $taxonomies  = array();
-    public $args        = array(
-      'taxonomy'        => 'category',
-      'data_type'       => 'serialize',
-      'class'           => '',
-      'enqueue_webfont' => true,
-      'async_webfont'   => false,
-      'output_css'      => true,
-      'defaults'        => array(),
-    );
+		// run taxonomy construct
+		public function __construct( $key, $params ) {
 
-    // run taxonomy construct
-    public function __construct( $key, $params ) {
+			$this->unique     = $key;
+			$this->args       = apply_filters( "bop_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+			$this->sections   = apply_filters( "bop_{$this->unique}_sections", $params['sections'], $this );
+			$this->taxonomies = ( is_array( $this->args['taxonomy'] ) ) ? $this->args['taxonomy'] : array_filter( (array) $this->args['taxonomy'] );
+			$this->taxonomy   = ( ! empty( $_REQUEST['taxonomy'] ) ) ? sanitize_text_field( wp_unslash( $_REQUEST['taxonomy'] ) ) : '';
+			$this->pre_fields = $this->pre_fields( $this->sections );
 
-      $this->unique     = $key;
-      $this->args       = apply_filters( "bop_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections   = apply_filters( "bop_{$this->unique}_sections", $params['sections'], $this );
-      $this->taxonomies = ( is_array( $this->args['taxonomy'] ) ) ? $this->args['taxonomy'] : array_filter( (array) $this->args['taxonomy'] );
-      $this->taxonomy   = ( ! empty( $_REQUEST[ 'taxonomy' ] ) ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'taxonomy' ] ) ) : '';
-      $this->pre_fields = $this->pre_fields( $this->sections );
+			if ( ! empty( $this->taxonomies ) && in_array( $this->taxonomy, $this->taxonomies ) ) {
+					add_action( 'admin_init', array( $this, 'add_taxonomy_options' ) );
+			}
 
-      if ( ! empty( $this->taxonomies ) && in_array( $this->taxonomy, $this->taxonomies ) ) {
-        add_action( 'admin_init', array( $this, 'add_taxonomy_options' ) );
-      }
+			// wp enqeueu for typography and output css
+			parent::__construct();
+		}
 
-      // wp enqeueu for typography and output css
-      parent::__construct();
+		// instance
+		public static function instance( $key, $params ) {
 
-    }
+			return new self( $key, $params );
+		}
 
-    // instance
-    public static function instance( $key, $params ) {
-      return new self( $key, $params );
-    }
+		// add taxonomy add/edit fields
+		public function add_taxonomy_options() {
 
-    // add taxonomy add/edit fields
-    public function add_taxonomy_options() {
+			add_action( $this->taxonomy . '_add_form_fields', array( $this, 'render_taxonomy_form_fields' ) );
+			add_action( $this->taxonomy . '_edit_form', array( $this, 'render_taxonomy_form_fields' ) );
 
-      add_action( $this->taxonomy .'_add_form_fields', array( $this, 'render_taxonomy_form_fields' ) );
-      add_action( $this->taxonomy .'_edit_form', array( $this, 'render_taxonomy_form_fields' ) );
+			add_action( 'created_' . $this->taxonomy, array( $this, 'save_taxonomy' ) );
+			add_action( 'edited_' . $this->taxonomy, array( $this, 'save_taxonomy' ) );
+		}
 
-      add_action( 'created_'. $this->taxonomy, array( $this, 'save_taxonomy' ) );
-      add_action( 'edited_'. $this->taxonomy, array( $this, 'save_taxonomy' ) );
+		// get default value
+		public function get_default( $field ) {
 
-    }
+			$default = ( isset( $field['default'] ) ) ? $field['default'] : '';
+			$default = ( isset( $this->args['defaults'][ $field['id'] ] ) ) ? $this->args['defaults'][ $field['id'] ] : $default;
 
-    // get default value
-    public function get_default( $field ) {
+			return $default;
+		}
 
-      $default = ( isset( $field['default'] ) ) ? $field['default'] : '';
-      $default = ( isset( $this->args['defaults'][$field['id']] ) ) ? $this->args['defaults'][$field['id']] : $default;
+		// get meta value
+		public function get_meta_value( $field, $term_id = null ) {
 
-      return $default;
+			$value = null;
 
-    }
+			$term_id = ( ! isset( $term_id ) ) ? get_queried_object_id() : $term_id;
 
-    // get meta value
-    public function get_meta_value( $field, $term_id = null ) {
+			if ( ! empty( $term_id ) && ! empty( $field['id'] ) ) {
 
-      $value = null;
+				if ( $this->args['data_type'] !== 'serialize' ) {
+					$meta  = get_term_meta( $term_id, $field['id'] );
+					$value = ( isset( $meta[0] ) ) ? $meta[0] : null;
+				} else {
+					$meta  = get_term_meta( $term_id, $this->unique, true );
+					$value = ( isset( $meta[ $field['id'] ] ) ) ? $meta[ $field['id'] ] : null;
+				}
+			}
 
-      $term_id = ( ! isset( $term_id ) ) ? get_queried_object_id() : $term_id;
+			$default = ( isset( $field['id'] ) ) ? $this->get_default( $field ) : '';
+			$value   = ( isset( $value ) ) ? $value : $default;
 
-      if ( ! empty( $term_id ) && ! empty( $field['id'] ) ) {
+			return $value;
+		}
 
-        if ( $this->args['data_type'] !== 'serialize' ) {
-          $meta  = get_term_meta( $term_id, $field['id'] );
-          $value = ( isset( $meta[0] ) ) ? $meta[0] : null;
-        } else {
-          $meta  = get_term_meta( $term_id, $this->unique, true );
-          $value = ( isset( $meta[$field['id']] ) ) ? $meta[$field['id']] : null;
-        }
+		// render taxonomy add/edit form fields
+		public function render_taxonomy_form_fields( $term ) {
 
-      }
+			$is_term   = ( is_object( $term ) && isset( $term->taxonomy ) ) ? true : false;
+			$term_id   = ( $is_term ) ? $term->term_id : 0;
+			$taxonomy  = ( $is_term ) ? $term->taxonomy : $term;
+			$classname = ( $is_term ) ? 'edit' : 'add';
+			$errors    = ( ! empty( $term_id ) ) ? get_term_meta( $term_id, '_bop_errors_' . $this->unique, true ) : array();
+			$errors    = ( ! empty( $errors ) ) ? $errors : array();
+			$class     = ( $this->args['class'] ) ? ' ' . $this->args['class'] : '';
 
-      $default = ( isset( $field['id'] ) ) ? $this->get_default( $field ) : '';
-      $value   = ( isset( $value ) ) ? $value : $default;
+			if ( ! empty( $errors ) ) {
+				delete_term_meta( $term_id, '_bop_errors_' . $this->unique );
+			}
 
-      return $value;
+			wp_nonce_field( 'bop_taxonomy_nonce', 'bop_taxonomy_nonce' . $this->unique );
 
-    }
+			echo '<div class="bop bop-taxonomy bop-show-all bop-onload bop-taxonomy-' . esc_attr( $classname ) . '-fields ' . esc_attr( $class ) . '">';
 
-    // render taxonomy add/edit form fields
-    public function render_taxonomy_form_fields( $term ) {
+			foreach ( $this->sections as $section ) {
 
-      $is_term   = ( is_object( $term ) && isset( $term->taxonomy ) ) ? true : false;
-      $term_id   = ( $is_term ) ? $term->term_id : 0;
-      $taxonomy  = ( $is_term ) ? $term->taxonomy : $term;
-      $classname = ( $is_term ) ? 'edit' : 'add';
-      $errors    = ( ! empty( $term_id ) ) ? get_term_meta( $term_id, '_bop_errors_'. $this->unique, true ) : array();
-      $errors    = ( ! empty( $errors ) ) ? $errors : array();
-      $class     = ( $this->args['class'] ) ? ' '. $this->args['class'] : '';
+				if ( $taxonomy === $this->taxonomy ) {
 
-      if ( ! empty( $errors ) ) {
-        delete_term_meta( $term_id, '_bop_errors_'. $this->unique );
-      }
+					$section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="bop-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
+					$section_title = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
 
-      wp_nonce_field( 'bop_taxonomy_nonce', 'bop_taxonomy_nonce'. $this->unique );
+					echo ( $section_title || $section_icon ) ? '<div class="bop-section-title"><h3>' . wp_kses_post($section_icon) . esc_html($section_title) . '</h3></div>' : '';
+					echo ( ! empty( $section['description'] ) ) ? '<div class="bop-field bop-section-description">' . esc_html($section['description']) . '</div>' : '';
 
-      echo '<div class="bop bop-taxonomy bop-show-all bop-onload bop-taxonomy-'. esc_attr( $classname ) .'-fields '. esc_attr( $class ) .'">';
+					if ( ! empty( $section['fields'] ) ) {
+						foreach ( $section['fields'] as $field ) {
 
-      foreach ( $this->sections as $section ) {
+							if ( ! empty( $field['id'] ) && ! empty( $errors['fields'][ $field['id'] ] ) ) {
+								$field['_error'] = $errors['fields'][ $field['id'] ];
+							}
 
-        if ( $taxonomy === $this->taxonomy ) {
+							if ( ! empty( $field['id'] ) ) {
+								$field['default'] = $this->get_default( $field );
+							}
 
-          $section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="bop-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
-          $section_title = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
+								BOP::field( $field, $this->get_meta_value( $field, $term_id ), $this->unique, 'taxonomy' );
 
-          echo ( $section_title || $section_icon ) ? '<div class="bop-section-title"><h3>'. $section_icon . $section_title .'</h3></div>' : '';
-          echo ( ! empty( $section['description'] ) ) ? '<div class="bop-field bop-section-description">'. $section['description'] .'</div>' : '';
+						}
+					}
+				}
+			}
 
-          if ( ! empty( $section['fields'] ) ) {
-            foreach ( $section['fields'] as $field ) {
+			echo '</div>';
+		}
 
-              if ( ! empty( $field['id'] ) && ! empty( $errors['fields'][$field['id']] ) ) {
-                $field['_error'] = $errors['fields'][$field['id']];
-              }
+		// save taxonomy form fields
+		public function save_taxonomy( $term_id ) {
 
-              if ( ! empty( $field['id'] ) ) {
-                $field['default'] = $this->get_default( $field );
-              }
+			$count    = 1;
+			$data     = array();
+			$errors   = array();
+			$noncekey = 'bop_taxonomy_nonce' . $this->unique;
+			$nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
+			$taxonomy = ( ! empty( $_POST['taxonomy'] ) ) ? sanitize_text_field( wp_unslash( $_POST['taxonomy'] ) ) : '';
 
-              BOP::field( $field, $this->get_meta_value( $field, $term_id ), $this->unique, 'taxonomy' );
+			if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'bop_taxonomy_nonce' ) ) {
+				return $term_id;
+			}
 
-            }
-          }
-        }
+			// XSS ok.
+			// No worries, This "POST" requests is sanitizing in the below foreach.
+			$request = ( ! empty( $_POST[ $this->unique ] ) ) ? $_POST[ $this->unique ] : array();
 
-      }
+			if ( ! empty( $request ) ) {
 
-      echo '</div>';
+				foreach ( $this->sections as $section ) {
 
-    }
+					if ( ! empty( $section['fields'] ) ) {
 
-    // save taxonomy form fields
-    public function save_taxonomy( $term_id ) {
+						foreach ( $section['fields'] as $field ) {
 
-      $count    = 1;
-      $data     = array();
-      $errors   = array();
-      $noncekey = 'bop_taxonomy_nonce'. $this->unique;
-      $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
-      $taxonomy = ( ! empty( $_POST[ 'taxonomy' ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ 'taxonomy' ] ) ) : '';
+							if ( ! empty( $field['id'] ) ) {
 
-      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'bop_taxonomy_nonce' ) ) {
-        return $term_id;
-      }
+								$field_id    = $field['id'];
+								$field_value = isset( $request[ $field_id ] ) ? $request[ $field_id ] : '';
 
-      // XSS ok.
-      // No worries, This "POST" requests is sanitizing in the below foreach.
-      $request = ( ! empty( $_POST[ $this->unique ] ) ) ? $_POST[ $this->unique ] : array();
+								// Sanitize "post" request of field.
+								if ( ! isset( $field['sanitize'] ) ) {
 
-      if ( ! empty( $request ) ) {
+									if ( is_array( $field_value ) ) {
+										$data[ $field_id ] = wp_kses_post_deep( $field_value );
+									} else {
+										$data[ $field_id ] = wp_kses_post( $field_value );
+									}
+								} elseif ( isset( $field['sanitize'] ) && is_callable( $field['sanitize'] ) ) {
 
-        foreach ( $this->sections as $section ) {
+											$data[ $field_id ] = call_user_func( $field['sanitize'], $field_value );
 
-          if ( ! empty( $section['fields'] ) ) {
+								} else {
 
-            foreach ( $section['fields'] as $field ) {
+									$data[ $field_id ] = $field_value;
 
-              if ( ! empty( $field['id'] ) ) {
+								}
 
-                $field_id    = $field['id'];
-                $field_value = isset( $request[$field_id] ) ? $request[$field_id] : '';
+								// Validate "post" request of field.
+								if ( isset( $field['validate'] ) && is_callable( $field['validate'] ) ) {
 
-                // Sanitize "post" request of field.
-                if ( ! isset( $field['sanitize'] ) ) {
+										$has_validated = call_user_func( $field['validate'], $field_value );
 
-                  if( is_array( $field_value ) ) {
-                    $data[$field_id] = wp_kses_post_deep( $field_value );
-                  } else {
-                    $data[$field_id] = wp_kses_post( $field_value );
-                  }
+									if ( ! empty( $has_validated ) ) {
 
-                } else if( isset( $field['sanitize'] ) && is_callable( $field['sanitize'] ) ) {
+										$errors['sections'][ $count ]  = true;
+										$errors['fields'][ $field_id ] = $has_validated;
+										$data[ $field_id ]             = $this->get_meta_value( $field, $term_id );
 
-                  $data[$field_id] = call_user_func( $field['sanitize'], $field_value );
+									}
+								}
+							}
+						}
+					}
 
-                } else {
+					++$count;
 
-                  $data[$field_id] = $field_value;
+				}
+			}
 
-                }
+			$data = apply_filters( "bop_{$this->unique}_save", $data, $term_id, $this );
 
-                // Validate "post" request of field.
-                if ( isset( $field['validate'] ) && is_callable( $field['validate'] ) ) {
+			do_action( "bop_{$this->unique}_save_before", $data, $term_id, $this );
 
-                  $has_validated = call_user_func( $field['validate'], $field_value );
+			if ( empty( $data ) ) {
 
-                  if ( ! empty( $has_validated ) ) {
+				if ( $this->args['data_type'] !== 'serialize' ) {
+					foreach ( $this->pre_fields as $field ) {
+						if ( ! empty( $field['id'] ) ) {
+								delete_term_meta( $term_id, $field['id'] );
+						}
+					}
+				} else {
+						delete_term_meta( $term_id, $this->unique );
+				}
+			} else {
 
-                    $errors['sections'][$count] = true;
-                    $errors['fields'][$field_id] = $has_validated;
-                    $data[$field_id] = $this->get_meta_value( $field, $term_id );
+				if ( $this->args['data_type'] !== 'serialize' ) {
+					foreach ( $data as $key => $value ) {
+						update_term_meta( $term_id, $key, $value );
+					}
+				} else {
+					update_term_meta( $term_id, $this->unique, $data );
+				}
 
-                  }
+				if ( ! empty( $errors ) ) {
+					update_term_meta( $term_id, '_bop_errors_' . $this->unique, $errors );
+				}
+			}
 
-                }
+			do_action( "bop_{$this->unique}_saved", $data, $term_id, $this );
 
-              }
-
-            }
-
-          }
-
-          $count++;
-
-        }
-
-      }
-
-      $data = apply_filters( "bop_{$this->unique}_save", $data, $term_id, $this );
-
-      do_action( "bop_{$this->unique}_save_before", $data, $term_id, $this );
-
-      if ( empty( $data ) ) {
-
-        if ( $this->args['data_type'] !== 'serialize' ) {
-          foreach ( $this->pre_fields as $field ) {
-            if ( ! empty( $field['id'] ) ) {
-              delete_term_meta( $term_id, $field['id'] );
-            }
-          }
-        } else {
-          delete_term_meta( $term_id, $this->unique );
-        }
-
-      } else {
-
-        if ( $this->args['data_type'] !== 'serialize' ) {
-          foreach ( $data as $key => $value ) {
-            update_term_meta( $term_id, $key, $value );
-          }
-        } else {
-          update_term_meta( $term_id, $this->unique, $data );
-        }
-
-        if ( ! empty( $errors ) ) {
-          update_term_meta( $term_id, '_bop_errors_'. $this->unique, $errors );
-        }
-
-      }
-
-      do_action( "bop_{$this->unique}_saved", $data, $term_id, $this );
-
-      do_action( "bop_{$this->unique}_save_after", $data, $term_id, $this );
-
-    }
-  }
+			do_action( "bop_{$this->unique}_save_after", $data, $term_id, $this );
+		}
+	}
 }

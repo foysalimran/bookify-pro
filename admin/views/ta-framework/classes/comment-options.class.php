@@ -1,334 +1,319 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Comment Metabox Class
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'BOP_Comment_Metabox' ) ) {
-  class BOP_Comment_Metabox extends BOP_Abstract{
+	class BOP_Comment_Metabox extends BOP_Abstract {
+
+
+		// constans
+		public $unique     = '';
+		public $abstract   = 'comment_metabox';
+		public $sections   = array();
+		public $pre_fields = array();
+		public $args       = array(
+			'title'        => '',
+			'data_type'    => 'serialize',
+			'priority'     => 'default',
+			'show_reset'   => false,
+			'show_restore' => false,
+			'nav'          => 'normal',
+			'theme'        => 'dark',
+			'class'        => '',
+			'defaults'     => array(),
+		);
+		// run comment metabox construct
+		public function __construct( $key, $params = array() ) {
 
-    // constans
-    public $unique     = '';
-    public $abstract   = 'comment_metabox';
-    public $sections   = array();
-    public $pre_fields = array();
-    public $args       = array(
-      'title'          => '',
-      'data_type'      => 'serialize',
-      'priority'       => 'default',
-      'show_reset'     => false,
-      'show_restore'   => false,
-      'nav'            => 'normal',
-      'theme'          => 'dark',
-      'class'          => '',
-      'defaults'       => array(),
-    );
+			$this->unique     = $key;
+			$this->args       = apply_filters( "bop_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+			$this->sections   = apply_filters( "bop_{$this->unique}_sections", $params['sections'], $this );
+			$this->pre_fields = $this->pre_fields( $this->sections );
 
-    // run comment metabox construct
-    public function __construct( $key, $params = array() ) {
+			add_action( 'add_meta_boxes_comment', array( $this, 'add_comment_meta_box' ) );
+			add_action( 'edit_comment', array( $this, 'save_comment_meta_box' ) );
 
-      $this->unique     = $key;
-      $this->args       = apply_filters( "bop_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections   = apply_filters( "bop_{$this->unique}_sections", $params['sections'], $this );
-      $this->pre_fields = $this->pre_fields( $this->sections );
+			if ( ! empty( $this->args['class'] ) ) {
+					add_filter( 'postbox_classes_comment_' . $this->unique, array( $this, 'add_comment_metabox_classes' ) );
+			}
+		}
 
-      add_action( 'add_meta_boxes_comment', array( $this, 'add_comment_meta_box' ) );
-      add_action( 'edit_comment', array( $this, 'save_comment_meta_box' ) );
+		// instance
+		public static function instance( $key, $params = array() ) {
 
-      if ( ! empty( $this->args['class'] ) ) {
-        add_filter( 'postbox_classes_comment_'. $this->unique, array( $this, 'add_comment_metabox_classes' ) );
-      }
+			return new self( $key, $params );
+		}
 
-    }
+		public function add_comment_metabox_classes( $classes ) {
 
-    // instance
-    public static function instance( $key, $params = array() ) {
-      return new self( $key, $params );
-    }
+			if ( ! empty( $this->args['class'] ) ) {
+				$classes[] = $this->args['class'];
+			}
 
-    public function add_comment_metabox_classes( $classes ) {
+			return $classes;
+		}
 
-      if ( ! empty( $this->args['class'] ) ) {
-        $classes[] = $this->args['class'];
-      }
+		// add comment metabox
+		public function add_comment_meta_box( $post_type ) {
 
-      return $classes;
+			add_meta_box( $this->unique, $this->args['title'], array( $this, 'add_comment_meta_box_content' ), 'comment', 'normal', $this->args['priority'], $this->args );
+		}
 
-    }
+		// get default value
+		public function get_default( $field ) {
 
-    // add comment metabox
-    public function add_comment_meta_box( $post_type ) {
+			$default = ( isset( $field['default'] ) ) ? $field['default'] : '';
+			$default = ( isset( $this->args['defaults'][ $field['id'] ] ) ) ? $this->args['defaults'][ $field['id'] ] : $default;
 
-      add_meta_box( $this->unique, $this->args['title'], array( $this, 'add_comment_meta_box_content' ), 'comment', 'normal', $this->args['priority'], $this->args );
+			return $default;
+		}
 
-    }
+		// get meta value
+		public function get_meta_value( $comment_id, $field ) {
 
-    // get default value
-    public function get_default( $field ) {
+			$value = null;
 
-      $default = ( isset( $field['default'] ) ) ? $field['default'] : '';
-      $default = ( isset( $this->args['defaults'][$field['id']] ) ) ? $this->args['defaults'][$field['id']] : $default;
+			if ( ! empty( $comment_id ) && ! empty( $field['id'] ) ) {
 
-      return $default;
+				if ( $this->args['data_type'] !== 'serialize' ) {
+					$meta  = get_comment_meta( $comment_id, $field['id'] );
+					$value = ( isset( $meta[0] ) ) ? $meta[0] : null;
+				} else {
+					$meta  = get_comment_meta( $comment_id, $this->unique, true );
+					$value = ( isset( $meta[ $field['id'] ] ) ) ? $meta[ $field['id'] ] : null;
+				}
+			}
 
-    }
+			$default = ( isset( $field['id'] ) ) ? $this->get_default( $field ) : '';
+			$value   = ( isset( $value ) ) ? $value : $default;
 
-    // get meta value
-    public function get_meta_value( $comment_id, $field ) {
+			return $value;
+		}
 
-      $value = null;
+		// add comment metabox content
+		public function add_comment_meta_box_content( $comment, $callback ) {
 
-      if ( ! empty( $comment_id ) && ! empty( $field['id'] ) ) {
+			$has_nav  = ( count( $this->sections ) > 1 ) ? true : false;
+			$show_all = ( ! $has_nav ) ? ' bop-show-all' : '';
+			$errors   = ( is_object( $comment ) ) ? get_comment_meta( $comment->comment_ID, '_bop_errors_' . $this->unique, true ) : array();
+			$errors   = ( ! empty( $errors ) ) ? $errors : array();
+			$theme    = ( $this->args['theme'] ) ? ' bop-theme-' . $this->args['theme'] : '';
+			$nav_type = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 
-        if ( $this->args['data_type'] !== 'serialize' ) {
-          $meta  = get_comment_meta( $comment_id, $field['id'] );
-          $value = ( isset( $meta[0] ) ) ? $meta[0] : null;
-        } else {
-          $meta  = get_comment_meta( $comment_id, $this->unique, true );
-          $value = ( isset( $meta[$field['id']] ) ) ? $meta[$field['id']] : null;
-        }
+			if ( is_object( $comment ) && ! empty( $errors ) ) {
+				delete_comment_meta( $comment->comment_ID, '_bop_errors_' . $this->unique );
+			}
 
-      }
+			wp_nonce_field( 'bop_comment_metabox_nonce', 'bop_comment_metabox_nonce' . $this->unique );
 
-      $default = ( isset( $field['id'] ) ) ? $this->get_default( $field ) : '';
-      $value   = ( isset( $value ) ) ? $value : $default;
+			echo '<div class="bop bop-comment-metabox' . esc_attr( $theme ) . '">';
 
-      return $value;
+			echo '<div class="bop-wrapper' . esc_attr( $show_all ) . '">';
 
-    }
+			if ( $has_nav ) {
 
-    // add comment metabox content
-    public function add_comment_meta_box_content( $comment, $callback ) {
+				echo '<div class="bop-nav bop-nav-' . esc_attr( $nav_type ) . ' bop-nav-metabox">';
 
-      $has_nav  = ( count( $this->sections ) > 1 ) ? true : false;
-      $show_all = ( ! $has_nav ) ? ' bop-show-all' : '';
-      $errors   = ( is_object ( $comment ) ) ? get_comment_meta( $comment->comment_ID, '_bop_errors_'. $this->unique, true ) : array();
-      $errors   = ( ! empty( $errors ) ) ? $errors : array();
-      $theme    = ( $this->args['theme'] ) ? ' bop-theme-'. $this->args['theme'] : '';
-      $nav_type = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
+				echo '<ul>';
 
-      if ( is_object( $comment ) && ! empty( $errors ) ) {
-        delete_comment_meta( $comment->comment_ID, '_bop_errors_'. $this->unique );
-      }
+				$tab_key = 1;
 
-      wp_nonce_field( 'bop_comment_metabox_nonce', 'bop_comment_metabox_nonce'. $this->unique );
+				foreach ( $this->sections as $section ) {
 
-      echo '<div class="bop bop-comment-metabox'. esc_attr( $theme ) .'">';
+						$tab_icon = ( ! empty( $section['icon'] ) ) ? '<i class="bop-tab-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
+					$tab_error    = ( ! empty( $errors['sections'][ $tab_key ] ) ) ? '<i class="bop-label-error bop-error">!</i>' : '';
 
-        echo '<div class="bop-wrapper'. esc_attr( $show_all ) .'">';
+					echo '<li><a href="#">' . wp_kses_post($tab_icon) . esc_html($section['title']) . esc_html($tab_error) . '</a></li>';
 
-          if ( $has_nav ) {
+					++$tab_key;
 
-            echo '<div class="bop-nav bop-nav-'. esc_attr( $nav_type ) .' bop-nav-metabox">';
+				}
 
-              echo '<ul>';
+				echo '</ul>';
 
-              $tab_key = 1;
+				echo '</div>';
 
-              foreach ( $this->sections as $section ) {
+			}
 
-                $tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="bop-tab-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
-                $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="bop-label-error bop-error">!</i>' : '';
+			echo '<div class="bop-content">';
 
-                echo '<li><a href="#">'. $tab_icon . $section['title'] . $tab_error .'</a></li>';
+			echo '<div class="bop-sections">';
 
-                $tab_key++;
+			$section_key = 1;
 
-              }
+			foreach ( $this->sections as $section ) {
 
-              echo '</ul>';
+				$section_onload = ( ! $has_nav ) ? ' bop-onload' : '';
+				$section_class  = ( ! empty( $section['class'] ) ) ? ' ' . $section['class'] : '';
+				$section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
+				$section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="bop-section-icon ' . esc_attr( $section['icon'] ) . '"></i>' : '';
 
-            echo '</div>';
+				echo '<div class="bop-section hidden' . esc_attr( $section_onload . $section_class ) . '">';
 
-          }
+				echo ( $section_title || $section_icon ) ? '<div class="bop-section-title"><h3>' . wp_kses_post($section_icon) . esc_html($section_title) . '</h3></div>' : '';
+				echo ( ! empty( $section['description'] ) ) ? '<div class="bop-field bop-section-description">' . esc_html($section['description']) . '</div>' : '';
 
-          echo '<div class="bop-content">';
+				if ( ! empty( $section['fields'] ) ) {
 
-            echo '<div class="bop-sections">';
+					foreach ( $section['fields'] as $field ) {
 
-            $section_key = 1;
+						if ( ! empty( $field['id'] ) && ! empty( $errors['fields'][ $field['id'] ] ) ) {
+							$field['_error'] = $errors['fields'][ $field['id'] ];
+						}
 
-            foreach ( $this->sections as $section ) {
+						if ( ! empty( $field['id'] ) ) {
+							$field['default'] = $this->get_default( $field );
+						}
 
-              $section_onload = ( ! $has_nav ) ? ' bop-onload' : '';
-              $section_class  = ( ! empty( $section['class'] ) ) ? ' '. $section['class'] : '';
-              $section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
-              $section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="bop-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
+						BOP::field( $field, $this->get_meta_value( $comment->comment_ID, $field ), $this->unique, 'comment_metabox' );
 
-              echo '<div class="bop-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
+					}
+				} else {
 
-              echo ( $section_title || $section_icon ) ? '<div class="bop-section-title"><h3>'. $section_icon . $section_title .'</h3></div>' : '';
-              echo ( ! empty( $section['description'] ) ) ? '<div class="bop-field bop-section-description">'. $section['description'] .'</div>' : '';
+					echo '<div class="bop-no-option">' . esc_html__( 'No data available.', 'bookify-pro' ) . '</div>';
 
-              if ( ! empty( $section['fields'] ) ) {
+				}
 
-                foreach ( $section['fields'] as $field ) {
+				echo '</div>';
 
-                  if ( ! empty( $field['id'] ) && ! empty( $errors['fields'][$field['id']] ) ) {
-                    $field['_error'] = $errors['fields'][$field['id']];
-                  }
+				++$section_key;
 
-                  if ( ! empty( $field['id'] ) ) {
-                    $field['default'] = $this->get_default( $field );
-                  }
+			}
 
-                  BOP::field( $field, $this->get_meta_value( $comment->comment_ID, $field ), $this->unique, 'comment_metabox' );
+			echo '</div>';
 
-                }
+			if ( ! empty( $this->args['show_restore'] ) || ! empty( $this->args['show_reset'] ) ) {
 
-              } else {
+				echo '<div class="bop-sections-reset">';
+				echo '<label>';
+				echo '<input type="checkbox" name="' . esc_attr( $this->unique ) . '[_reset]" />';
+				echo '<span class="button bop-button-reset">' . esc_html__( 'Reset', 'bookify-pro' ) . '</span>';
+				echo '<span class="button bop-button-cancel">' . sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'bookify-pro' ), esc_html__( 'Cancel', 'bookify-pro' ) ) . '</span>';
+				echo '</label>';
+				echo '</div>';
 
-                echo '<div class="bop-no-option">'. esc_html__( 'No data available.', 'bookify-pro' ) .'</div>';
+			}
 
-              }
+			echo '</div>';
 
-              echo '</div>';
+			echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="bop-nav-background"></div>' : '';
 
-              $section_key++;
+			echo '<div class="clear"></div>';
 
-            }
+			echo '</div>';
 
-            echo '</div>';
+			echo '</div>';
+		}
 
-            if ( ! empty( $this->args['show_restore'] ) || ! empty( $this->args['show_reset'] ) ) {
+		// save comment metabox
+		public function save_comment_meta_box( $comment_id ) {
 
-              echo '<div class="bop-sections-reset">';
-              echo '<label>';
-              echo '<input type="checkbox" name="'. esc_attr( $this->unique ) .'[_reset]" />';
-              echo '<span class="button bop-button-reset">'. esc_html__( 'Reset', 'bookify-pro' ) .'</span>';
-              echo '<span class="button bop-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'bookify-pro' ), esc_html__( 'Cancel', 'bookify-pro' ) ) .'</span>';
-              echo '</label>';
-              echo '</div>';
+			$count    = 1;
+			$data     = array();
+			$errors   = array();
+			$noncekey = 'bop_comment_metabox_nonce' . $this->unique;
+			$nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
 
-            }
+			if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'bop_comment_metabox_nonce' ) ) {
+				return $comment_id;
+			}
 
-          echo '</div>';
+			// XSS ok.
+			// No worries, This "POST" requests is sanitizing in the below foreach.
+			$request = ( ! empty( $_POST[ $this->unique ] ) ) ? $_POST[ $this->unique ] : array();
 
-          echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="bop-nav-background"></div>' : '';
+			if ( ! empty( $request ) ) {
 
-          echo '<div class="clear"></div>';
+				foreach ( $this->sections as $section ) {
 
-        echo '</div>';
+					if ( ! empty( $section['fields'] ) ) {
 
-      echo '</div>';
+						foreach ( $section['fields'] as $field ) {
 
-    }
+							if ( ! empty( $field['id'] ) ) {
 
-    // save comment metabox
-    public function save_comment_meta_box( $comment_id ) {
+								$field_id    = $field['id'];
+								$field_value = isset( $request[ $field_id ] ) ? $request[ $field_id ] : '';
 
-      $count    = 1;
-      $data     = array();
-      $errors   = array();
-      $noncekey = 'bop_comment_metabox_nonce'. $this->unique;
-      $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
+								// Sanitize "post" request of field.
+								if ( ! isset( $field['sanitize'] ) ) {
 
-      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'bop_comment_metabox_nonce' ) ) {
-        return $comment_id;
-      }
+									if ( is_array( $field_value ) ) {
+										$data[ $field_id ] = wp_kses_post_deep( $field_value );
+									} else {
+										$data[ $field_id ] = wp_kses_post( $field_value );
+									}
+								} elseif ( isset( $field['sanitize'] ) && is_callable( $field['sanitize'] ) ) {
 
-      // XSS ok.
-      // No worries, This "POST" requests is sanitizing in the below foreach.
-      $request = ( ! empty( $_POST[ $this->unique ] ) ) ? $_POST[ $this->unique ] : array();
+											$data[ $field_id ] = call_user_func( $field['sanitize'], $field_value );
 
-      if ( ! empty( $request ) ) {
+								} else {
 
-        foreach ( $this->sections as $section ) {
+										$data[ $field_id ] = $field_value;
 
-          if ( ! empty( $section['fields'] ) ) {
+								}
 
-            foreach ( $section['fields'] as $field ) {
+								// Validate "post" request of field.
+								if ( isset( $field['validate'] ) && is_callable( $field['validate'] ) ) {
 
-              if ( ! empty( $field['id'] ) ) {
+										$has_validated = call_user_func( $field['validate'], $field_value );
 
-                $field_id    = $field['id'];
-                $field_value = isset( $request[$field_id] ) ? $request[$field_id] : '';
+									if ( ! empty( $has_validated ) ) {
 
-                // Sanitize "post" request of field.
-                if ( ! isset( $field['sanitize'] ) ) {
+										$errors['sections'][ $count ]  = true;
+										$errors['fields'][ $field_id ] = $has_validated;
+										$data[ $field_id ]             = $this->get_meta_value( $comment_id, $field );
 
-                  if( is_array( $field_value ) ) {
-                    $data[$field_id] = wp_kses_post_deep( $field_value );
-                  } else {
-                    $data[$field_id] = wp_kses_post( $field_value );
-                  }
+									}
+								}
+							}
+						}
+					}
 
-                } else if( isset( $field['sanitize'] ) && is_callable( $field['sanitize'] ) ) {
+					++$count;
 
-                  $data[$field_id] = call_user_func( $field['sanitize'], $field_value );
+				}
+			}
 
-                } else {
+			$data = apply_filters( "bop_{$this->unique}_save", $data, $comment_id, $this );
 
-                  $data[$field_id] = $field_value;
+			do_action( "bop_{$this->unique}_save_before", $data, $comment_id, $this );
 
-                }
+			if ( empty( $data ) || ! empty( $request['_reset'] ) ) {
 
-                // Validate "post" request of field.
-                if ( isset( $field['validate'] ) && is_callable( $field['validate'] ) ) {
+				if ( $this->args['data_type'] !== 'serialize' ) {
+					foreach ( $this->pre_fields as $field ) {
+						if ( ! empty( $field['id'] ) ) {
+							delete_comment_meta( $comment_id, $field['id'] );
+						}
+					}
+				} else {
+						delete_comment_meta( $comment_id, $this->unique );
+				}
+			} else {
 
-                  $has_validated = call_user_func( $field['validate'], $field_value );
+				if ( $this->args['data_type'] !== 'serialize' ) {
+					foreach ( $data as $key => $value ) {
+						update_comment_meta( $comment_id, $key, $value );
+					}
+				} else {
+					update_comment_meta( $comment_id, $this->unique, $data );
+				}
 
-                  if ( ! empty( $has_validated ) ) {
+				if ( ! empty( $errors ) ) {
+					update_comment_meta( $comment_id, '_bop_errors_' . $this->unique, $errors );
+				}
+			}
 
-                    $errors['sections'][$count] = true;
-                    $errors['fields'][$field_id] = $has_validated;
-                    $data[$field_id] = $this->get_meta_value( $comment_id, $field );
+			do_action( "bop_{$this->unique}_saved", $data, $comment_id, $this );
 
-                  }
-
-                }
-
-              }
-
-            }
-
-          }
-
-          $count++;
-
-        }
-
-      }
-
-      $data = apply_filters( "bop_{$this->unique}_save", $data, $comment_id, $this );
-
-      do_action( "bop_{$this->unique}_save_before", $data, $comment_id, $this );
-
-      if ( empty( $data ) || ! empty( $request['_reset'] ) ) {
-
-        if ( $this->args['data_type'] !== 'serialize' ) {
-          foreach ( $this->pre_fields as $field ) {
-            if ( ! empty( $field['id'] ) ) {
-              delete_comment_meta( $comment_id, $field['id'] );
-            }
-          }
-        } else {
-          delete_comment_meta( $comment_id, $this->unique );
-        }
-
-      } else {
-
-        if ( $this->args['data_type'] !== 'serialize' ) {
-          foreach ( $data as $key => $value ) {
-            update_comment_meta( $comment_id, $key, $value );
-          }
-        } else {
-          update_comment_meta( $comment_id, $this->unique, $data );
-        }
-
-        if ( ! empty( $errors ) ) {
-          update_comment_meta( $comment_id, '_bop_errors_'. $this->unique, $errors );
-        }
-
-      }
-
-      do_action( "bop_{$this->unique}_saved", $data, $comment_id, $this );
-
-      do_action( "bop_{$this->unique}_save_after", $data, $comment_id, $this );
-
-    }
-  }
+			do_action( "bop_{$this->unique}_save_after", $data, $comment_id, $this );
+		}
+	}
 }

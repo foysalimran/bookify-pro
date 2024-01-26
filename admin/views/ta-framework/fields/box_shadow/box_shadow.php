@@ -31,7 +31,6 @@ if ( ! class_exists( 'BOP_Field_box_shadow' ) ) {
 		 * @param string $where To where show the output CSS.
 		 * @param string $parent The parent args.
 		 */
-
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
 		}
@@ -123,7 +122,6 @@ if ( ! class_exists( 'BOP_Field_box_shadow' ) ) {
 			echo '<div class="clear"></div>';
 
 			echo wp_kses_post( $this->field_after() );
-
 		}
 	}
 }
