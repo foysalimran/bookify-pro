@@ -112,14 +112,14 @@ if ( ! class_exists( 'BOP_Resize' ) ) {
 
 				// Check if $img_url is local.
 				if ( false === strpos( $url, $upload_url ) ) {
-					throw new BOP_Exception( 'Image must be local: ' . $url );
+					throw new BOP_Exception( esc_html__('Image must be local: ', 'bookify-pro') . $url );
 				}
 				// Define path of image.
 				$rel_path = str_replace( $upload_url, '', $url );
 				$img_path = $upload_dir . $rel_path;
 				// Check if img path exists, and is an image indeed.
 				if ( ! file_exists( $img_path ) or ! getimagesize( $img_path ) ) {
-					throw new BOP_Exception( 'Image file does not exist (or is not an image): ' . $img_path );
+					throw new BOP_Exception( esc_html__('Image file does not exist (or is not an image): ', 'bookify-pro') . $img_path );
 				}
 				// Get image info.
 				$info                    = pathinfo( $img_path );
@@ -142,7 +142,7 @@ if ( ! class_exists( 'BOP_Resize' ) ) {
 					$destfilename = "{$upload_dir}{$dst_rel_path}-{$suffix}.{$ext}";
 					if ( ! $dims || ( true === $crop && false === $upscale && ( $dst_w < $width || $dst_h < $height ) ) ) {
 						// Can't resize, so return false saying that the action to do could not be processed as planned.
-						throw new BOP_Exception( 'Unable to resize image because image_resize_dimensions() failed' );
+						throw new BOP_Exception( esc_html__('Unable to resize image because image_resize_dimensions() failed', 'bookify-pro') );
 					} elseif ( file_exists( $destfilename ) && getimagesize( $destfilename ) ) {
 						// Else check if cache exists.
 						$img_url = "{$upload_url}{$dst_rel_path}-{$suffix}.{$ext}";
@@ -151,8 +151,8 @@ if ( ! class_exists( 'BOP_Resize' ) ) {
 						$editor = wp_get_image_editor( $img_path );
 						if ( is_wp_error( $editor ) || is_wp_error( $editor->resize( $width, $height, $crop ) ) ) {
 							throw new BOP_Exception(
-								'Unable to get WP_Image_Editor: ' .
-												$editor->get_error_message() . ' (is GD or ImageMagick installed?)'
+								esc_html__('Unable to get WP_Image_Editor: ', 'bookify-pro') .
+												$editor->get_error_message() . esc_html__(' (is GD or ImageMagick installed?)', 'bookify-pro') 
 							);
 						}
 						$resized_file = $editor->save();
@@ -160,7 +160,7 @@ if ( ! class_exists( 'BOP_Resize' ) ) {
 							$resized_rel_path = str_replace( $upload_dir, '', $resized_file['path'] );
 							$img_url          = $upload_url . $resized_rel_path;
 						} else {
-							throw new BOP_Exception( 'Unable to save resized image file: ' . $editor->get_error_message() );
+							throw new BOP_Exception( esc_html__('Unable to save resized image file: ', 'bookify-pro') . $editor->get_error_message() );
 						}
 					}
 				}
@@ -182,7 +182,7 @@ if ( ! class_exists( 'BOP_Resize' ) ) {
 				}
 				return $image;
 			} catch ( BOP_Exception $ex ) {
-				error_log( 'BOP_Resize.process() error: ' . $ex->getMessage() );
+				error_log( esc_html__('BOP_Resize.process() error: ', 'bookify-pro') . $ex->getMessage() );
 				if ( $this->throw_on_error ) {
 					// Bubble up exception.
 					throw $ex;

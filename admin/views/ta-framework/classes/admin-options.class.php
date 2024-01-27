@@ -479,7 +479,7 @@ if ( ! class_exists( 'BOP_Options' ) ) {
 
 				echo '<input type="hidden" class="bop-section-id" name="bop_transient[section]" value="1">';
 
-				wp_nonce_field( 'bop_options_nonce', 'bop_options_nonce' . $this->unique );
+				wp_nonce_field( 'bop_options_nonce', 'bop_options_nonce' . esc_attr($this->unique) );
 
 			echo '<div class="bop-header' . esc_attr( $sticky_class ) . '">';
 				echo '<div class="bop-header-inner">';

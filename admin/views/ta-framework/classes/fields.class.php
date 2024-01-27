@@ -116,7 +116,7 @@ if ( ! class_exists( 'BOP_Fields' ) ) {
 			$output .= ( ! empty( $this->field['help'] ) ) ? '<div class="bop-help"><span class="bop-help-text">' . $this->field['help'] . '</span><i class="fas fa-question-circle"></i></div>' : '';
 			$output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="bop-error-text">' . $this->field['_error'] . '</div>' : '';
 
-			return $output;
+			return wp_kses_post($output);
 		}
 
 

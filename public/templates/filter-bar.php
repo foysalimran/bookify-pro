@@ -25,25 +25,49 @@ if ( is_array( $advanced_filter ) && ! $bop_query->is_main_query() ) {
 	if ( ! empty( $filter_bar ) ) { ?>
 		<div class="bop-filter-bar">
 			<?php
-				echo wp_kses($filter_bar, array(
-					'form' => array('class' => true, 'style' => true),
-					'p' => array(),
-					'div' => array('class' => true),
-					'label' => array(),
-					'input' => array('checked' => true, 'type' => true, 'name' => true, 'data-taxonomy' => true, 'value' => true),
-				));
+				echo wp_kses(
+					$filter_bar,
+					array(
+						'form'  => array(
+							'class' => true,
+							'style' => true,
+						),
+						'p'     => array(),
+						'div'   => array( 'class' => true ),
+						'label' => array(),
+						'input' => array(
+							'checked'       => true,
+							'type'          => true,
+							'name'          => true,
+							'data-taxonomy' => true,
+							'value'         => true,
+						),
+					)
+				);
 			?>
 		</div>
 	<?php } if ( ! empty( $ex_filter_bar ) ) { ?>
 			<div class="bop_ex_filter_bar">
-			<?php 
-				echo wp_kses($ex_filter_bar, array(
-				'form' => array('class' => true, 'style' => true),
-				'p' => array(),
-				'div' => array('class' => true),
-				'label' => array(),
-				'input' => array('checked' => true, 'type' => true, 'name' => true, 'data-taxonomy' => true, 'value' => true),
-				)); 
+			<?php
+				echo wp_kses(
+					$ex_filter_bar,
+					array(
+						'form'  => array(
+							'class' => true,
+							'style' => true,
+						),
+						'p'     => array(),
+						'div'   => array( 'class' => true ),
+						'label' => array(),
+						'input' => array(
+							'checked'       => true,
+							'type'          => true,
+							'name'          => true,
+							'data-taxonomy' => true,
+							'value'         => true,
+						),
+					)
+				);
 			?>
 			</div>
 	<?php }

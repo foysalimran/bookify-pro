@@ -128,7 +128,7 @@ if ( 'center' === $carousel_mode ) {
 
 ?>
 <!-- Markup Starts -->
-<div id="bop_wrapper-<?php echo esc_html( $bop_gl_id ); ?>" class="<?php self::bop_wrapper_classes( $layout_preset, $bop_gl_id, $pagination_type, $item_same_height_class ); ?> <?php self::wrapper_data( $pagination_type, $pagination_type_mobile, $bop_gl_id ); ?> <?php echo esc_html( $carousel_mode ); ?>" data-sid="<?php echo esc_html( $bop_gl_id ); ?>">
+<div id="bop_wrapper-<?php echo esc_html( $bop_gl_id ); ?>" class="<?php esc_attr( self::bop_wrapper_classes( $layout_preset, $bop_gl_id, $pagination_type, $item_same_height_class ) ); ?> <?php esc_attr( self::wrapper_data( $pagination_type, $pagination_type_mobile, $bop_gl_id ) ); ?> <?php echo esc_html( $carousel_mode ); ?>" data-sid="<?php echo esc_html( $bop_gl_id ); ?>">
 
 <?php
 	BOP_HTML::bop_section_title( $section_title, $show_section_title );
