@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div id="bop_wrapper-<?php echo esc_attr( $bop_gl_id ); ?>" class="<?php self::bop_wrapper_classes( $layout_preset, $bop_gl_id, $grid_style, $item_same_height_class ); ?>" <?php self::wrapper_data( $pagination_type, $pagination_type_mobile, $bop_gl_id ); ?> data-lang="<?php echo esc_attr( $spta_lang ); ?>">
+<div id="bop_wrapper-<?php echo esc_attr( $bop_gl_id ); ?>" class="<?php esc_attr( self::bop_wrapper_classes( $layout_preset, $bop_gl_id, $grid_style, $item_same_height_class ) ); ?>" <?php esc_attr( self::wrapper_data( $pagination_type, $pagination_type_mobile, $bop_gl_id ) ); ?> data-lang="<?php echo esc_attr( $spta_lang ); ?>">
 
 	<?php
 	BOP_HTML::bop_section_title( $section_title, $show_section_title );

@@ -96,7 +96,7 @@ $bop_single_book_fildes = $options['bop_single_book_fildes'];
 					<?php
 				endwhile;
 			else :
-				echo esc_html__('None', 'bookify-pro');
+				echo esc_html__( 'None', 'bookify-pro' );
 			endif;
 
 			$bop_query     = $bookify_query;

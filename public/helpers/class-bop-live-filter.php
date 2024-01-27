@@ -86,27 +86,68 @@ class BOP_Live_Filter {
 
 		if ( 'fl_checkbox' === $btn_type ) {
 			$all_label  = ! empty( $all_text ) ? $all_text : '';
-			$all_button = ! empty( $all_text ) ? '<div class="fl_checkbox"><label><input checked type="checkbox" name="' . $taxonomy . '" data-taxonomy="' . $taxonomy . '"value="all">' . $all_label . '</label></div>' : '';
+			$all_button = ! empty( $all_text ) ? '<div class="fl_checkbox"><label><input checked type="checkbox" name="' . esc_attr( $taxonomy ) . '" data-taxonomy="' . esc_attr( $taxonomy ) . '"value="all">' . wp_kses_post( $all_label ) . '</label></div>' : '';
 
-			$first_item = '<form class="bop-filter-by-checkbox bop-bar" data-taxonomy="' . $taxonomy . '" style="text-align:' . esc_attr( $align ) . ';"> <p>' . esc_html( $label ) . '</p>';
-			$push_item  = '<div class="fl_checkbox"><label><input ' . $is_checked . ' name="' . $taxonomy . '" type="checkbox" ' . $checked . ' data-taxonomy="' . $taxonomy . '" value="' . $term . '">' . $name . $post_count_markup . '</span></label></div>';
+			$first_item = '<form class="bop-filter-by-checkbox bop-bar" data-taxonomy="' . esc_attr( $taxonomy ) . '" style="text-align:' . esc_attr( $align ) . ';"> <p>' . esc_html( $label ) . '</p>';
+			$push_item  = '<div class="fl_checkbox"><label><input ' . esc_attr( $is_checked ) . ' name="' . esc_attr( $taxonomy ) . '" type="checkbox" ' . esc_attr( $checked ) . ' data-taxonomy="' . esc_attr( $taxonomy ) . '" value="' . esc_attr( $term ) . '">' . esc_attr( $name ) . esc_attr( $post_count_markup ) . '</span></label></div>';
 		} elseif ( 'fl_radio' === $btn_type ) {
 			$all_label  = ! empty( $all_text ) ? $all_text : '';
-			$all_button = ! empty( $all_text ) ? '<div class="fl_radio"><label><input checked type="radio" name="' . $taxonomy . '" data-taxonomy="' . $taxonomy . '"value="all">' . $all_label . '</label></div>' : '';
-			$first_item = '<form class="bop-filter-by bop-bar" style="text-align:' . esc_attr( $align ) . ';"> <p>' . esc_html( $label ) . '</p>' . $all_button;
-			$push_item  = '<div class="fl_radio"><label><input ' . $is_checked . ' name="' . $taxonomy . '" type="radio" ' . $checked . ' data-taxonomy="' . $taxonomy . '" value="' . $term . '">' . $name . $post_count_markup . '</span></label></div>';
+			$all_button = ! empty( $all_text ) ? '<div class="fl_radio"><label><input checked type="radio" name="' . esc_attr( $taxonomy ) . '" data-taxonomy="' . esc_attr( $taxonomy ) . '"value="all">' . wp_kses_post( $all_label ) . '</label></div>' : '';
+
+			$allowed_html = array(
+				'div'   => array(
+					'class' => array(),
+				),
+				'label' => array(),
+				'input' => array(
+					'checked'       => array(),
+					'type'          => array(),
+					'name'          => array(),
+					'data-taxonomy' => array(),
+					'value'         => array(),
+				),
+			);
+
+			$first_item = '<form class="bop-filter-by bop-bar" style="text-align:' . esc_attr( $align ) . ';"> <p>' . esc_html( $label ) . '</p>' . wp_kses( $all_button, $allowed_html );
+			$push_item  = '<div class="fl_radio"><label><input ' . esc_attr( $is_checked ) . ' name="' . esc_attr( $taxonomy ) . '" type="radio" ' . esc_attr( $checked ) . ' data-taxonomy="' . esc_attr( $taxonomy ) . '" value="' . esc_attr( $term ) . '">' . esc_attr( $name ) . esc_attr( $post_count_markup ) . '</span></label></div>';
 		} elseif ( 'fl_btn' === $btn_type ) {
 			$all_label  = ! empty( $all_text ) ? '<div>' . $all_text . '</div>' : '';
-			$all_button = ! empty( $all_text ) ? '<div class="fl_radio"><label><input checked type="radio" name="' . $taxonomy . '" data-taxonomy="' . $taxonomy . '" value="all">' . $all_label . '</label></div>' : '';
+			$all_button = ! empty( $all_text ) ? '<div class="fl_radio"><label><input checked type="radio" name="' . esc_attr( $taxonomy ) . '" data-taxonomy="' . esc_attr( $taxonomy ) . '" value="all">' . wp_kses_post( $all_label ) . '</label></div>' : '';
 
-			$first_item = '<form class="bop-filter-by bop-bar fl_button filter-' . $taxonomy . '" style="text-align:' . esc_attr( $align ) . ';"> <p>' . esc_html( $label ) . '</p>' . $all_button;
-			$push_item  = '<div class="fl_radio"><label><input ' . $is_checked . ' name="' . $taxonomy . '" type="radio" ' . $checked . ' data-taxonomy="' . $taxonomy . '" value="' . $term . '"><div>' . $name . $post_count_markup . '</div></label></div>';
+			$allowed_html = array(
+				'div'   => array(
+					'class' => array(),
+				),
+				'label' => array(),
+				'input' => array(
+					'checked'       => array(),
+					'type'          => array(),
+					'name'          => array(),
+					'data-taxonomy' => array(),
+					'value'         => array(),
+				),
+			);
+
+			$first_item = '<form class="bop-filter-by bop-bar fl_button filter-' . esc_attr( $taxonomy ) . '" style="text-align:' . esc_attr( $align ) . ';"> <p>' . esc_html( $label ) . '</p>' . wp_kses( $all_button, $allowed_html );
+			$push_item  = '<div class="fl_radio"><label><input ' . esc_attr( $is_checked ) . ' name="' . esc_attr( $taxonomy ) . '" type="radio" ' . esc_attr( $checked ) . ' data-taxonomy="' . esc_attr( $taxonomy ) . '" value="' . esc_attr( $term ) . '"><div>' . esc_attr( $name ) . esc_attr( $post_count_markup ) . '</div></label></div>';
 		} else {
-			$all_label  = ! empty( $all_text ) ? $all_text : '';
-			$all_button = ! empty( $all_text ) ? '<option value="all"  data-taxonomy="' . $taxonomy . '">' . $all_label . '</option>' : '';
-
-			$first_item = '<form class="bop-filter-by bop-bar" style="text-align:' . esc_attr( $align ) . ';"> <label class="bop-label">' . esc_html( $label ) . '</label> <select>' . $all_button;
-			$push_item  = '<option data-taxonomy="' . $taxonomy . '" ' . $selected . ' ' . $is_selected . ' value="' . $term . '">' . $name . $post_count_markup . '</option>';
+			$all_label    = ! empty( $all_text ) ? $all_text : '';
+			$all_button   = ! empty( $all_text ) ? '<option value="all"  data-taxonomy="' . esc_attr( $taxonomy ) . '">' . esc_html( $all_label ) . '</option>' : '';
+			$allowed_html = array(
+				'div'   => array(
+					'class' => array(),
+				),
+				'label' => array(),
+				'input' => array(
+					'checked'       => array(),
+					'type'          => array(),
+					'name'          => array(),
+					'data-taxonomy' => array(),
+					'value'         => array(),
+				),
+			);
+			$first_item   = '<form class="bop-filter-by bop-bar" style="text-align:' . esc_attr( $align ) . ';"> <label class="bop-label">' . esc_html( $label ) . '</label> <select>' . wp_kses( $all_button, $allowed_html );
+			$push_item    = '<option data-taxonomy="' . esc_attr( $taxonomy ) . '" ' . esc_attr( $selected ) . ' ' . esc_attr( $is_selected ) . ' value="' . esc_attr( $term ) . '">' . esc_attr( $name ) . esc_attr( $post_count_markup ) . '</option>';
 		}
 		$filter_output = array(
 			'first_item' => $first_item,
@@ -196,8 +237,8 @@ class BOP_Live_Filter {
 		$author_id           = isset( $_POST['author_id'] ) ? sanitize_text_field( wp_unslash( $_POST['author_id'] ) ) : '';
 		$last_filter         = isset( $_POST['last_filter'] ) ? sanitize_text_field( wp_unslash( $_POST['last_filter'] ) ) : '';
 		$paged               = isset( $_POST['page'] ) ? sanitize_text_field( wp_unslash( $_POST['page'] ) ) : '';
-		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : ''; //phpcs:ignore
-		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : ''; //phpcs:ignore
+		$custom_fields_array = isset( $_POST['custom_fields_array'] ) ? wp_unslash( $_POST['custom_fields_array'] ) : '';
+		$selected_term_list  = isset( $_POST['term_list'] ) ? wp_unslash( $_POST['term_list'] ) : '';
 
 		$view_options                 = get_post_meta( $bop_gl_id, 'ta_bookify_options', true );
 		$query_args                   = BOP_QueryInside::get_filtered_content( $view_options, $bop_gl_id );
@@ -258,7 +299,7 @@ class BOP_Live_Filter {
 						$terms           = isset( $taxonomy_types[ $index ]['bop_select_terms'] ) ? $taxonomy_types[ $index ]['bop_select_terms'] : $all_terms;
 						$all_post_ids    = get_posts( $query_args );
 						$post_limit      = count( $all_post_ids );
-						$url_last_filter = isset($_GET['slf']) ? wp_unslash(sanitize_text_field($_GET['slf'])) : ''; //phpcs:ignore
+						$url_last_filter = isset( $_GET['slf'] ) ? wp_unslash( sanitize_text_field( $_GET['slf'] ) ) : '';
 
 						if ( ! empty( $selected_term_list ) && is_array( $selected_term_list ) ) {
 							if ( $last_filter == $taxonomy && 'AND' === $relation ) {
@@ -368,25 +409,23 @@ class BOP_Live_Filter {
 					++$index;
 				}
 				$allowed_tags = array(
-					'form' => array(
+					'form'  => array(
 						'class' => array(),
 						'style' => array(),
 					),
-					'p' => array(),
-					'div' => array(
+					'p'     => array(),
+					'div'   => array(
 						'class' => array(),
 					),
 					'label' => array(),
 					'input' => array(
-						'checked' => array(),
-						'type' => array(),
-						'name' => array(),
+						'checked'       => array(),
+						'type'          => array(),
+						'name'          => array(),
 						'data-taxonomy' => array(),
-						'value' => array(),
+						'value'         => array(),
 					),
 				);
-				
-
 
 				echo wp_kses(
 					$output,
@@ -413,10 +452,10 @@ class BOP_Live_Filter {
 		$author_id           = isset( $_POST['author_id'] ) ? sanitize_text_field( wp_unslash( $_POST['author_id'] ) ) : '';
 		$last_filter         = isset( $_POST['last_filter'] ) ? sanitize_text_field( wp_unslash( $_POST['last_filter'] ) ) : '';
 		$paged               = isset( $_POST['page'] ) ? sanitize_text_field( wp_unslash( $_POST['page'] ) ) : '';
-		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : ''; //phpcs:ignore
+		$custom_fields_array = isset( $_POST['custom_fields_array'] ) ? wp_unslash( $_POST['custom_fields_array'] ) : '';
 		$selected_term_list  = isset( $_POST['term_list'] ) ? wp_unslash( $_POST['term_list'] ) : '';
-		$settings            = array(); //phpcs:ignore
-		parse_str($_POST['data'], $settings); //phpcs:ignore
+		$settings            = array();
+		parse_str( $_POST['data'], $settings );
 		$layout                       = $settings['ta_bookify_layouts'];
 		$layout_preset                = isset( $layout['bop_layout_preset'] ) ? $layout['bop_layout_preset'] : '';
 		$view_options                 = $settings['ta_bookify_options'];
@@ -486,7 +525,7 @@ class BOP_Live_Filter {
 			$bop_select_author_by  = isset( $bop_filter_by_author['bop_select_author_by'] ) ? $bop_filter_by_author['bop_select_author_by'] : '';
 			$ajax_filter_options   = isset( $bop_filter_by_author['ajax_filter_options'] ) ? $bop_filter_by_author['ajax_filter_options'] : '';
 			$btn_type              = isset( $ajax_filter_options['ajax_filter_style'] ) ? $ajax_filter_options['ajax_filter_style'] : '';
-			$label                 = isset( $ajax_filter_options['ajax_filter_label'] ) && ! empty( $ajax_filter_options['ajax_filter_label'] ) ? $ajax_filter_options['ajax_filter_label'] : 'Author';
+			$label                 = isset( $ajax_filter_options['ajax_filter_label'] ) && ! empty( $ajax_filter_options['ajax_filter_label'] ) ? $ajax_filter_options['ajax_filter_label'] : esc_html__( 'Author', 'bookify-pro' );
 			$all_text              = isset( $ajax_filter_options['ajax_rename_all_text'] ) ? $ajax_filter_options['ajax_rename_all_text'] : '';
 			$hide_empty            = isset( $ajax_filter_options['ajax_hide_empty'] ) ? $ajax_filter_options['ajax_hide_empty'] : '';
 			$show_count            = isset( $ajax_filter_options['ajax_show_count'] ) ? $ajax_filter_options['ajax_show_count'] : '';
@@ -518,29 +557,27 @@ class BOP_Live_Filter {
 						array_push( $newterm_array, $push_item );
 					}
 				}
-				$tax_html = implode( '', $newterm_array );
-				$output   = '';
-				$output   = $output . force_balance_tags( $tax_html );
+				$tax_html     = implode( '', $newterm_array );
+				$output       = '';
+				$output       = $output . force_balance_tags( $tax_html );
 				$allowed_tags = array(
-					'form' => array(
+					'form'  => array(
 						'class' => array(),
 						'style' => array(),
 					),
-					'p' => array(),
-					'div' => array(
+					'p'     => array(),
+					'div'   => array(
 						'class' => array(),
 					),
 					'label' => array(),
 					'input' => array(
-						'checked' => array(),
-						'type' => array(),
-						'name' => array(),
+						'checked'       => array(),
+						'type'          => array(),
+						'name'          => array(),
 						'data-taxonomy' => array(),
-						'value' => array(),
+						'value'         => array(),
 					),
 				);
-				
-
 
 				echo wp_kses(
 					$output,
@@ -638,7 +675,7 @@ class BOP_Live_Filter {
 								$newcustom_array[ $index ] = array(
 									'<div class="bop-custom-field-filter-slider bop-bar" style="text-align:' . $bop_live_filter_align . ';"><p>
 							<label>' . esc_html( $ajax_filter_label ) . '</label>
-							<input value="' . $min . '-' . $max . '" type="text" name=' . esc_attr( $field_key ) . ' class="bop-input" data-crmin="' . $crmin . '" data-min="' . $min . '" data-crmax="' . $crmax . '" data-max="' . $max . '" readonly>
+							<input value="' . esc_attr( $min ) . '-' . esc_attr( $max ) . '" type="text" name=' . esc_attr( $field_key ) . ' class="bop-input" data-crmin="' . esc_attr( $crmin ) . '" data-min="' . esc_attr( $min ) . '" data-crmax="' . esc_attr( $crmax ) . '" data-max="' . esc_attr( $max ) . '" readonly>
 						 </p> <div class="bop-slider"></div></div>',
 								);
 							}
@@ -684,25 +721,23 @@ class BOP_Live_Filter {
 					++$index;
 				}
 				$allowed_tags = array(
-					'form' => array(
+					'form'  => array(
 						'class' => array(),
 						'style' => array(),
 					),
-					'p' => array(),
-					'div' => array(
+					'p'     => array(),
+					'div'   => array(
 						'class' => array(),
 					),
 					'label' => array(),
 					'input' => array(
-						'checked' => array(),
-						'type' => array(),
-						'name' => array(),
+						'checked'       => array(),
+						'type'          => array(),
+						'name'          => array(),
 						'data-taxonomy' => array(),
-						'value' => array(),
+						'value'         => array(),
 					),
 				);
-				
-
 
 				echo wp_kses(
 					$output,
@@ -737,29 +772,27 @@ class BOP_Live_Filter {
 					$push_item = self::bop_orderby_filter_style( $btn_type, $label, $bop_live_filter_align, $orderby, $sid )['push_item'];
 					array_push( $newterm_array, $push_item );
 				}
-				$tax_html = implode( '', $newterm_array );
-				$output   = '';
-				$output   = $output . force_balance_tags( $tax_html );
+				$tax_html     = implode( '', $newterm_array );
+				$output       = '';
+				$output       = $output . force_balance_tags( $tax_html );
 				$allowed_tags = array(
-					'form' => array(
+					'form'  => array(
 						'class' => array(),
 						'style' => array(),
 					),
-					'p' => array(),
-					'div' => array(
+					'p'     => array(),
+					'div'   => array(
 						'class' => array(),
 					),
 					'label' => array(),
 					'input' => array(
-						'checked' => array(),
-						'type' => array(),
-						'name' => array(),
+						'checked'       => array(),
+						'type'          => array(),
+						'name'          => array(),
 						'data-taxonomy' => array(),
-						'value' => array(),
+						'value'         => array(),
 					),
 				);
-				
-
 
 				echo wp_kses(
 					$output,
@@ -794,29 +827,27 @@ class BOP_Live_Filter {
 					$push_item = self::bop_order_filter_style( $btn_type, $label, $bop_live_filter_align, $order, $bop_select_filter_order, $sid )['push_item'];
 					array_push( $newterm_array, $push_item );
 				}
-				$tax_html = implode( '', $newterm_array );
-				$output   = '';
-				$output   = $output . force_balance_tags( $tax_html );
+				$tax_html     = implode( '', $newterm_array );
+				$output       = '';
+				$output       = $output . force_balance_tags( $tax_html );
 				$allowed_tags = array(
-					'form' => array(
+					'form'  => array(
 						'class' => array(),
 						'style' => array(),
 					),
-					'p' => array(),
-					'div' => array(
+					'p'     => array(),
+					'div'   => array(
 						'class' => array(),
 					),
 					'label' => array(),
 					'input' => array(
-						'checked' => array(),
-						'type' => array(),
-						'name' => array(),
+						'checked'       => array(),
+						'type'          => array(),
+						'name'          => array(),
 						'data-taxonomy' => array(),
-						'value' => array(),
+						'value'         => array(),
 					),
 				);
-				
-
 
 				echo wp_kses(
 					$output,
@@ -857,16 +888,16 @@ class BOP_Live_Filter {
 		}
 		if ( 'fl_radio' === $btn_type ) {
 			$all_label  = ! empty( $all_text ) ? $all_text : '';
-			$first_item = '<div class="bop-author-filter bop-bar" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p><div class="fl_radio"><label><input checked type="radio" name="author" value="all">' . $all_label . '</label></div>';
-			$push_item  = '<div class="fl_radio"><label><input name="author" type="radio" ' . $a_checked . ' value="' . esc_attr( $author_id ) . '">' . esc_attr( $author_name ) . $post_count_markup . '</label></div>';
+			$first_item = '<div class="bop-author-filter bop-bar" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p><div class="fl_radio"><label><input checked type="radio" name="author" value="all">' . wp_kses_post( $all_label ) . '</label></div>';
+			$push_item  = '<div class="fl_radio"><label><input name="author" type="radio" ' . esc_attr( $a_checked ) . ' value="' . esc_attr( $author_id ) . '">' . esc_attr( $author_name ) . $post_count_markup . '</label></div>';
 		} elseif ( 'fl_btn' === $btn_type ) {
 			$all_label  = ! empty( $all_text ) ? '<div>' . $all_text . '</div>' : '';
-			$first_item = '<div class="bop-author-filter bop-bar fl_button" style="text-align:' . esc_attr( $align ) . ';"> <p>' . esc_html( $label ) . '</p><div class="fl_radio"><label><input checked type="radio" name="author" value="all">' . $all_label . '</label></div>';
-			$push_item  = '<div class="fl_radio"><label><input name="author" type="radio" ' . $a_checked . ' value="' . esc_attr( $author_id ) . '"><div>' . esc_attr( $author_name ) . $post_count_markup . '</div></label></div>';
+			$first_item = '<div class="bop-author-filter bop-bar fl_button" style="text-align:' . esc_attr( $align ) . ';"> <p>' . esc_html( $label ) . '</p><div class="fl_radio"><label><input checked type="radio" name="author" value="all">' . wp_kses_post( $all_label ) . '</label></div>';
+			$push_item  = '<div class="fl_radio"><label><input name="author" type="radio" ' . esc_attr( $a_checked ) . ' value="' . esc_attr( $author_id ) . '"><div>' . esc_attr( $author_name ) . $post_count_markup . '</div></label></div>';
 		} else {
 			$all_label  = ! empty( $all_text ) ? $all_text : '';
-			$first_item = '<div class="bop-author-filter bop-bar" style="text-align:' . esc_attr( $align ) . ';"> <label class="bop-label">' . esc_html( $label ) . '</label><select><option  name="author" value="all">' . $all_label . '</option>';
-			$push_item  = '<option name="author" value="' . esc_attr( $author_id ) . '" ' . $a_selected . '>' . esc_attr( $author_name ) . $post_count_markup . ' </option>';
+			$first_item = '<div class="bop-author-filter bop-bar" style="text-align:' . esc_attr( $align ) . ';"> <label class="bop-label">' . esc_html( $label ) . '</label><select><option  name="author" value="all">' . wp_kses_post( $all_label ) . '</option>';
+			$push_item  = '<option name="author" value="' . esc_attr( $author_id ) . '" ' . esc_attr( $a_selected ) . '>' . esc_attr( $author_name ) . $post_count_markup . ' </option>';
 		}
 		$filter_output = array(
 			'first_item' => $first_item,
@@ -891,7 +922,8 @@ class BOP_Live_Filter {
 	 * @param  bool   $show_count is show post count.
 	 * @return statement
 	 */
-	public static function bop_custom_field_filter_style( $btn_type, $label = 'Custom field', $all_text = 'All', $align = 'center', $field_key = null, $value = null, $p_count = '', $id = '', $selected = '', $checked = '', $show_count = false ) {
+	public static function bop_custom_field_filter_style( $btn_type, $label, $all_text, $align, $field_key = null, $value = null, $p_count = '', $id = '', $selected = '', $checked = '', $show_count = false ) {
+
 		$post_count_markup = '';
 		if ( $show_count ) {
 			$post_count_markup = '<span class="bop-count">(' . $p_count . ')</span>';
@@ -931,19 +963,19 @@ class BOP_Live_Filter {
 
 		if ( 'fl_checkbox' === $btn_type ) {
 			$first_item = '<div class="bop-custom-field-filter-checkbox bop-bar" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p>';
-			$push_item  = '<div class="fl_checkbox"><label><input name="' . esc_attr( $field_key ) . '" type="checkbox" ' . $a_checked . '  value="' . esc_attr( $value ) . '">' . wp_kses_post( $capitalize_value ) . '</span></label></div>';
+			$push_item  = '<div class="fl_checkbox"><label><input name="' . esc_attr( $field_key ) . '" type="checkbox" ' . esc_attr( $a_checked ) . '  value="' . esc_attr( $value ) . '">' . wp_kses_post( $capitalize_value ) . '</span></label></div>';
 		} elseif ( 'fl_radio' === $btn_type ) {
 			$all_label  = ! empty( $all_text ) ? $all_text : '';
-			$first_item = '<div class="bop-custom-field-filter bop-bar" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p><div class="fl_radio"><label><input checked type="radio" name="' . esc_attr( $field_key ) . '" value="all">' . $all_label . '</label></div>';
-			$push_item  = '<div class="fl_radio"><label><input name="' . esc_attr( $field_key ) . '" type="radio" ' . $a_checked . ' value="' . esc_attr( $value ) . '">' . wp_kses_post( $capitalize_value ) . '</label></div>';
+			$first_item = '<div class="bop-custom-field-filter bop-bar" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p><div class="fl_radio"><label><input checked type="radio" name="' . esc_attr( $field_key ) . '" value="all">' . wp_kses_post( $all_label ) . '</label></div>';
+			$push_item  = '<div class="fl_radio"><label><input name="' . esc_attr( $field_key ) . '" type="radio" ' . esc_attr( $a_checked ) . ' value="' . esc_attr( $value ) . '">' . wp_kses_post( $capitalize_value ) . '</label></div>';
 		} elseif ( 'fl_btn' === $btn_type ) {
 			$all_label  = ! empty( $all_text ) ? '<div>' . esc_html( $all_text ) . '</div>' : '';
-			$first_item = '<div class="bop-custom-field-filter bop-bar fl_button filter-' . $field_key . '" style="text-align:' . esc_attr( $align ) . ';"> <p>' . esc_html( $label ) . '</p><div class="fl_radio"><label><input checked type="radio" name="' . esc_attr( $field_key ) . '" value="all">' . $all_label . '</label></div>';
-			$push_item  = '<div class="fl_radio"><label><input name="' . esc_attr( $field_key ) . '" type="radio" ' . $a_checked . ' value="' . esc_attr( $value ) . '"><div>' . wp_kses_post( $capitalize_value ) . '</div></label></div>';
+			$first_item = '<div class="bop-custom-field-filter bop-bar fl_button filter-' . $field_key . '" style="text-align:' . esc_attr( $align ) . ';"> <p>' . esc_html( $label ) . '</p><div class="fl_radio"><label><input checked type="radio" name="' . esc_attr( $field_key ) . '" value="all">' . wp_kses_post( $all_label ) . '</label></div>';
+			$push_item  = '<div class="fl_radio"><label><input name="' . esc_attr( $field_key ) . '" type="radio" ' . esc_attr( $a_checked ) . ' value="' . esc_attr( $value ) . '"><div>' . wp_kses_post( $capitalize_value ) . '</div></label></div>';
 		} else {
 			$all_label  = ! empty( $all_text ) ? $all_text : '';
-			$first_item = '<div class="bop-custom-field-filter bop-bar" style="text-align:' . esc_attr( $align ) . ';"> <label class="bop-label">' . esc_html( $label ) . '</label><select><option  name="' . $field_key . '" value="all">' . $all_label . '</option>';
-			$push_item  = '<option name="' . $field_key . '" value="' . $value . '" ' . $a_selected . '>' . wp_kses_post( $capitalize_value ) . ' </option>';
+			$first_item = '<div class="bop-custom-field-filter bop-bar" style="text-align:' . esc_attr( $align ) . ';"> <label class="bop-label">' . esc_html( $label ) . '</label><select><option  name="' . $field_key . '" value="all">' . wp_kses_post( $all_label ) . '</option>';
+			$push_item  = '<option name="' . $field_key . '" value="' . esc_attr( $value ) . '" ' . esc_attr( $a_selected ) . '>' . wp_kses_post( $capitalize_value ) . ' </option>';
 		}
 		$filter_output = array(
 			'first_item' => $first_item,
@@ -981,13 +1013,13 @@ class BOP_Live_Filter {
 
 		if ( 'fl_radio' === $btn_type ) {
 			$first_item = '<div class="bop-order-by bop-bar" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p><div class="fl_radio"><label><input checked type="radio" name="orderby" value="">None</label></div>';
-			$push_item  = '<div class="fl_radio"><label><input name="orderby" type="radio"  ' . $is_checked . ' value="' . $orderby . '">' . $orderby . '</label></div>';
+			$push_item  = '<div class="fl_radio"><label><input name="orderby" type="radio"  ' . esc_attr( $is_checked ) . ' value="' . esc_attr( $orderby ) . '">' . esc_attr( $orderby ) . '</label></div>';
 		} elseif ( 'fl_btn' === $btn_type ) {
 			$first_item = '<div class="bop-order-by bop-bar fl-btn" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p> <div class="fl_radio"><label><input checked type="radio" name="orderby" value=""><div>None</div></label></div>';
-			$push_item  = '<div class="fl_radio"><label><input type="radio" name="orderby" ' . $is_checked . ' value="' . $orderby . '"><div>' . $orderby . '</div></label></div>';
+			$push_item  = '<div class="fl_radio"><label><input type="radio" name="orderby" ' . esc_attr( $is_checked ) . ' value="' . esc_attr( $orderby ) . '"><div>' . esc_attr( $orderby ) . '</div></label></div>';
 		} else {
 			$first_item = '<div class="bop-order-by bop-bar" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p><select><option  name="orderby" value="">None</option>';
-			$push_item  = '<option name="orderby" ' . $is_selected . ' value="' . $orderby . '">' . $orderby . '</option>';
+			$push_item  = '<option name="orderby" ' . esc_attr( $is_selected ) . ' value="' . esc_attr( $orderby ) . '">' . esc_attr( $orderby ) . '</option>';
 		}
 		$filter_output = array(
 			'first_item' => $first_item,
@@ -1025,13 +1057,13 @@ class BOP_Live_Filter {
 		}
 		if ( 'fl_radio' === $btn_type ) {
 			$first_item = '<div class="bop-order bop-bar" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p>';
-			$push_item  = '<div class="fl_radio"><label><input name="order" ' . $checked . ' type="radio" value="' . $order . '">' . $order . '</label></div>';
+			$push_item  = '<div class="fl_radio"><label><input name="order" ' . esc_attr( $checked ) . ' type="radio" value="' . esc_attr( $order ) . '">' . esc_attr( $order ) . '</label></div>';
 		} elseif ( 'fl_btn' === $btn_type ) {
 			$first_item = '<div class="bop-order bop-bar fl-btn" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p>';
-			$push_item  = '<div class="fl_radio"><label><input type="radio" ' . $checked . ' name="order" value="' . $order . '"><div>' . $order . '</div></label></div>';
+			$push_item  = '<div class="fl_radio"><label><input type="radio" ' . esc_attr( $checked ) . ' name="order" value="' . esc_attr( $order ) . '"><div>' . esc_attr( $order ) . '</div></label></div>';
 		} else {
 			$first_item = '<div class="bop-order bop-bar" style="text-align:' . esc_attr( $align ) . ';"><p>' . esc_html( $label ) . '</p><select>';
-			$push_item  = '<option name="order" ' . $selected . ' value="' . $order . '">' . $order . '</option>';
+			$push_item  = '<option name="order" ' . esc_attr( $selected ) . ' value="' . esc_attr( $order ) . '">' . esc_attr( $order ) . '</option>';
 		}
 		$filter_output = array(
 			'first_item' => $first_item,
@@ -1064,7 +1096,7 @@ class BOP_Live_Filter {
 				$ajax_filter_options   = isset( $bop_filter_by_keyword['ajax_filter_options'] ) ? $bop_filter_by_keyword['ajax_filter_options'] : '';
 				$label                 = isset( $ajax_filter_options['ajax_filter_label'] ) && ! empty( $ajax_filter_options['ajax_filter_label'] ) ? $ajax_filter_options['ajax_filter_label'] : '';
 				$bop_live_filter_align = isset( $ajax_filter_options['bop_live_filter_align'] ) ? $ajax_filter_options['bop_live_filter_align'] : 'center';
-				echo '<div class="bop-ajax-search bop-bar" style="text-align:' . esc_attr( $bop_live_filter_align ) . ';"><label class="bop-label">' . wp_kses_post( $label ) . ' <input type="text" value="' . esc_attr( $final_keyword ) . '" class="bop-search-field" placeholder="Search..."></label></div>';
+				echo '<div class="bop-ajax-search bop-bar" style="text-align:' . esc_attr( $bop_live_filter_align ) . ';"><label class="bop-label">' . wp_kses_post( $label ) . ' <input type="text" value="' . esc_attr( $final_keyword ) . '" class="bop-search-field" placeholder="'. esc_html__('Search...', 'bookify-pro') .'"></label></div>';
 			}
 		}
 	}

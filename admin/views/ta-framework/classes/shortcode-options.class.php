@@ -20,7 +20,7 @@ if ( ! class_exists( 'BOP_Shortcoder' ) ) {
 		public $pre_tabs     = array();
 		public $pre_sections = array();
 		public $args         = array(
-			'button_title'   => 'Add Shortcode',
+			'button_title'   =>'Add Shortcode',
 			'select_title'   => 'Select a shortcode',
 			'insert_title'   => 'Insert Shortcode',
 			'show_in_editor' => true,

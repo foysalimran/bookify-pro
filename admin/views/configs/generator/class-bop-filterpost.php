@@ -1058,10 +1058,10 @@ class BOP_FilterPost {
 										'sanitize'        => 'bop_sanitize_number_array_field',
 										'all'             => true,
 										'all_icon'        => false,
-										'all_placeholder' => esc_html('2019', 'bookify-pro'),
+										'all_placeholder' => esc_html__('2019', 'bookify-pro'),
 										'show_units'      => false,
 										'default'         => array(
-											'all' => esc_html('2019', 'bookify-pro'),
+											'all' => esc_html__('2019', 'bookify-pro'),
 										),
 										'min'             => '1990',
 										'dependency'      => array( 'bop_select_post_date_type', '==', 'specific_year' ),

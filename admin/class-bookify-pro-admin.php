@@ -151,19 +151,19 @@ class Bookify_Pro_Admin {
 			$bop_post_slug = 'books';
 		}
 		$labels = array(
-			'name'               => __( 'Bookify', 'bookify-pro' ),
-			'singular_name'      => __( 'Bookify', 'bookify-pro' ),
-			'add_new'            => __( 'Add New Book', 'bookify-pro' ),
-			'add_new_item'       => __( 'Add New Book', 'bookify-pro' ),
-			'edit_item'          => __( 'Edit Book', 'bookify-pro' ),
-			'new_item'           => __( 'New Book', 'bookify-pro' ),
-			'all_items'          => __( 'All Books', 'bookify-pro' ),
-			'view_item'          => __( 'View Book', 'bookify-pro' ),
-			'search_items'       => __( 'Search Book', 'bookify-pro' ),
-			'not_found'          => __( 'No Book Found', 'bookify-pro' ),
-			'not_found_in_trash' => __( 'No Book Found in Trash', 'bookify-pro' ),
+			'name'               => esc_html__( 'Bookify', 'bookify-pro' ),
+			'singular_name'      => esc_html__( 'Bookify', 'bookify-pro' ),
+			'add_new'            => esc_html__( 'Add New Book', 'bookify-pro' ),
+			'add_new_item'       => esc_html__( 'Add New Book', 'bookify-pro' ),
+			'edit_item'          => esc_html__( 'Edit Book', 'bookify-pro' ),
+			'new_item'           => esc_html__( 'New Book', 'bookify-pro' ),
+			'all_items'          => esc_html__( 'All Books', 'bookify-pro' ),
+			'view_item'          => esc_html__( 'View Book', 'bookify-pro' ),
+			'search_items'       => esc_html__( 'Search Book', 'bookify-pro' ),
+			'not_found'          => esc_html__( 'No Book Found', 'bookify-pro' ),
+			'not_found_in_trash' => esc_html__( 'No Book Found in Trash', 'bookify-pro' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => __( 'Bookify', 'bookify-pro' ),
+			'menu_name'          => esc_html__( 'Bookify', 'bookify-pro' ),
 		);
 
 		$args = array(
@@ -223,17 +223,17 @@ class Bookify_Pro_Admin {
 			$book_category_slug = 'book_category';
 		}
 		$taxonomy_labels = array(
-			'name'              => __( 'Book Categories', 'bookify-pro' ),
-			'singular_name'     => __( 'Book Categories', 'bookify-pro' ),
-			'search_items'      => __( 'Search Book Categoriess', 'bookify-pro' ),
-			'all_items'         => __( 'All Book Categoriess', 'bookify-pro' ),
-			'parent_item'       => __( 'Parent Book Categories', 'bookify-pro' ),
-			'parent_item_colon' => __( 'Parent Book Categories:', 'bookify-pro' ),
-			'edit_item'         => __( 'Edit Book Categories', 'bookify-pro' ),
-			'update_item'       => __( 'Update Book Categories', 'bookify-pro' ),
-			'add_new_item'      => __( 'Add New Book Categories', 'bookify-pro' ),
-			'new_item_name'     => __( 'New Book Categories Name', 'bookify-pro' ),
-			'menu_name'         => __( 'Book Categories', 'bookify-pro' ),
+			'name'              => esc_html__( 'Book Categories', 'bookify-pro' ),
+			'singular_name'     => esc_html__( 'Book Categories', 'bookify-pro' ),
+			'search_items'      => esc_html__( 'Search Book Categoriess', 'bookify-pro' ),
+			'all_items'         => esc_html__( 'All Book Categoriess', 'bookify-pro' ),
+			'parent_item'       => esc_html__( 'Parent Book Categories', 'bookify-pro' ),
+			'parent_item_colon' => esc_html__( 'Parent Book Categories:', 'bookify-pro' ),
+			'edit_item'         => esc_html__( 'Edit Book Categories', 'bookify-pro' ),
+			'update_item'       => esc_html__( 'Update Book Categories', 'bookify-pro' ),
+			'add_new_item'      => esc_html__( 'Add New Book Categories', 'bookify-pro' ),
+			'new_item_name'     => esc_html__( 'New Book Categories Name', 'bookify-pro' ),
+			'menu_name'         => esc_html__( 'Book Categories', 'bookify-pro' ),
 		);
 
 		$taxonomy_args = array(
@@ -278,8 +278,31 @@ class Bookify_Pro_Admin {
 		$bookifys_types = isset( $bop_layouts['bop_layout_preset'] ) ? $bop_layouts['bop_layout_preset'] : '';
 		switch ( $column ) {
 			case 'shortcode':
-				$column_field = '<input  class="ta_bop_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[bookify id=&quot;' . $post_id . '&quot;]"/> <div class="bop-after-copy-text"><i class="far fa-check-circle"></i> Shortcode Copied to Clipboard! </div>';
-				echo $column_field;
+
+
+				$allowed_html = array(
+					'input' => array(
+						'class'    => array(),
+						'style'    => array(),
+						'title'    => array(),
+						'onClick'  => array(),
+						'value'    => array(),
+						'readonly' => array(),
+						'type' => array(),
+					),
+					'i'     => array(
+						'class' => array(),
+					),
+					'div'   => array(
+						'class' => array(),
+					),
+				);
+				
+				$column_field = '<input class="ta_bop_input" style="width: 230px; padding: 4px 8px; cursor: pointer;" type="text" onClick="selectText(this)" readonly="readonly" value="[bookify id=&quot;' . esc_attr($post_id) . '&quot;]"/>
+                 <div class="bop-after-copy-text"><i class="far fa-check-circle"></i> "' . esc_html__('Shortcode Copied to Clipboard!', 'bookify-pro') . '" </div>';
+				
+				echo wp_kses($column_field, $allowed_html);
+				
 				break;
 			case 'bop_layout':
 				$layout = ucwords( str_replace( '_layout', ' ', $bookifys_types ) );

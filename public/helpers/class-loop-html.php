@@ -633,11 +633,11 @@ class BOP_HTML {
 		$big = 999999999; // need an unlikely integer.
 		if ( $pages > 1 ) {
 			$page_current     = max( 1, get_query_var( 'paged' ) );
-			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : ''; //phpcs:ignore
+			$filter_url_value = isset( $_SERVER['QUERY_STRING'] ) ? wp_unslash( $_SERVER['QUERY_STRING'] ) : '';
 			if ( ! empty( $filter_url_value ) ) {
-				$shortcode_id = isset($_GET['sps']) ? wp_unslash(sanitize_text_field($_GET['sps'])) : ''; //phpcs:ignore
+				$shortcode_id = isset( $_GET['sps'] ) ? wp_unslash( sanitize_text_field( $_GET['sps'] ) ) : '';
 				if ( $shortcode_id == $views_id ) {
-					$bop_page = isset($_GET['bop_page']) ? wp_unslash(sanitize_text_field($_GET['bop_page'])) : ''; //phpcs:ignore
+					$bop_page = isset( $_GET['bop_page'] ) ? wp_unslash( sanitize_text_field( $_GET['bop_page'] ) ) : '';
 					if ( ! empty( $bop_page ) ) {
 						$page_current = $bop_page;
 					}
@@ -684,7 +684,7 @@ class BOP_HTML {
 					$html .= $link;
 					++$p_num;
 				}
-				echo wp_kses_post($html); //phpcs:ignore
+				echo wp_kses_post( $html );
 			} elseif ( 'no_ajax' === $pagination_type ) {
 
 				$paged_var    = 'paged' . $views_id;
@@ -704,7 +704,7 @@ class BOP_HTML {
 						'next_text' => '<i class="fas fa-angle-right"></i>',
 					)
 				);
-				echo implode($page_links); //phpcs:ignore
+				echo implode( $page_links );
 			} else {
 				$page_links = paginate_links(
 					array(
@@ -741,7 +741,7 @@ class BOP_HTML {
 					$html .= $link;
 					++$p_num;
 				}
-				echo wp_kses_post($html); //phpcs:ignore
+				echo wp_kses_post( $html );
 			}
 		}
 	}
